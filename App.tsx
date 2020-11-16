@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React, { useState } from "react";
+import { Text, View, StyleSheet } from "react-native";
 // import { TextField } from 'material-bread'
-import { TextInput, Checkbox, RadioButton } from 'react-native-paper';
+import { TextInput, Checkbox, RadioButton } from "react-native-paper";
 
-import { atom, Provider, useAtom } from 'jotai';
-import create, { useStore } from 'zustand';
+import { atom, Provider, useAtom } from "jotai";
+import create, { useStore } from "zustand";
 
+import { styles } from "./style";
 // import { Input as NachosInput } from 'nachos-ui';
 
-import _ from 'lodash';
+import _ from "lodash";
 
 // TODO: CReate Radio/Checkbox Question Component
 // TODO: Create TextInput Component
@@ -17,380 +18,41 @@ import _ from 'lodash';
 
 // all the state here before the components
 
-const chiefCompains = atom('');
-
-const patientInfo = atom({
-  dob: '',
-  years: '',
-  mos: '',
-  days: '',
-});
-
-// ZUSTAND STORE HERE
-const useGeneralSymptoms = create((set) => ({
-  fever: '',
-  feverDays: 0,
-  chills: '',
-  chillsDays: 0,
-  awerenessOfHearbeat: '',
-  awerenessOfHearbeatDays: 0,
-  skinLession: '',
-  skinLessionDays: 0,
-
-  changeFever: (fever) => set((state) => ({ fever: fever })),
-  setFeverDays: (days) => set((state) => ({ feverDays: days })),
-
-  setChills: (chills) => set((state) => ({ chills: chills })),
-  setChillsDays: (days) => set((state) => ({ chillsDays: days })),
-
-  //thos is to update all data state
-  setGeneralState: (data) => set((state) => ({ ...state, ...data })),
-}));
-
-const useRespiratory = create((set) => ({
-  caugh: '',
-  caughDays: 0,
-  caughNature: '',
-  caughSpatum: '',
-  caughTime: '',
-  rhinorrhea: '',
-  rhinorrheaDays: 0,
-  lossOfSmell: '',
-  lossOfSmellDays: '',
-  lossOfVoice: '',
-  lossOfVoiceDays: 0,
-
-  facialPain: '',
-  facialPainDays: 0,
-  nasalCongestion: '',
-  nasalCongestionDays: 0,
-
-  dentalPain: '',
-  dentalPainDays: 0,
-
-  changeInVoice: '',
-  changeInVoiceDays: 0,
-  sneezing: '',
-  sneezingDays: '',
-  badBreath: '',
-  badBreathDays: 0,
-  chestTightness: '',
-  chestTightnessDays: 0,
-  chestPain: '',
-  chestPainDays: 0,
-
-  //thos is to update all data state
-  setRespiratory: (data) => set((state) => ({ ...state, ...data })),
-}));
-
-const useGI = create((set) => ({
-  vomiting: '',
-  vomitingDays: 0,
-  vomitingType: '',
-
-  diarrhoea: '',
-  diarrhoeaDays: 0,
-  diarrhoeaTimesDay: 0,
-  diarrhoeaType: '',
-  isDiarrhoesBloody: '',
-  anyTenesmus: '',
-
-  abnominalPain: '',
-  abnominalPainDays: 0,
-  abnominalPainLocation: '',
-
-  //this varibale to be renamed
-
-  abnominalPainEpigastric: '',
-  abnominalPainIsRadiating: '',
-
-  abdominalCramps: '',
-  abdominalCrampsDays: 0,
-
-  lackOfAppetite: '',
-  lackOfAppetiteDays: 0,
-
-  weightLoss: '',
-  weightLossDays: '',
-
-  difficultySwallowing: '',
-  difficultySwallowingDays: 0,
-
-  painInUrination: '',
-  painInUrinationDays: 0,
-
-  frequencyOfUrination: '',
-  frequencyOfUrinationTimesDay: 0,
-  frequencyOfUrinationDays: 0,
-
-  //thos is to update all data state
-  setGI: (data) => set((state) => ({ ...state, ...data })),
-}));
-
-const citiesAtom = atom(['Tokyo', 'Kyoto', 'Osaka']);
-
-function Row({ children, style }) {
-  return (
-    <View style={{ flexDirection: 'row', flex: 1, ...style }}>{children}</View>
-  );
-}
-
-function Col({ children, cols, style }) {
-  return (
-    <View
-      style={[
-        style,
-        {
-          flex: cols ? cols : 1,
-          flexDirection: 'column',
-          borderRightColor: '#333',
-          borderWidth: 0.1,
-          paddingHorizontal: 8,
-          paddingVertical: 16,
-          justifyContent: 'center',
-        },
-      ]}>
-      {children}
-    </View>
-  );
-}
-
-const Input = ({
-  label,
-  placeholder,
-  multiline,
-  numberOfLines,
-  text,
-  setText,
-}) => {
-  // const [text, setText] = React.useState('');
-
-  return (
-    <TextInput
-      value={text}
-      onChangeText={(text) => setText(text)}
-      placeholder={placeholder ? placeholder : null}
-      style={
-        {
-          // height: 40,
-          // backgroundColor:"white"
-        }
-      }
-      // mode="flat"
-      label={label ? label : null}
-      multiline={multiline}
-      numberOfLines={numberOfLines}
-      // multiline={true}
-    />
-  );
-};
-
-const CheckBox = ({ label }) => {
-  const [checked, setChecked] = React.useState(false);
-
-  return (
-    <Row>
-      <Checkbox
-        status={checked ? 'checked' : 'unchecked'}
-        onPress={() => {
-          setChecked(!checked);
-        }}
-      />
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          paddingTop: 5,
-          marginLeft: -5,
-        }}>
-        <Text style={{}}>{label ? label : ''}</Text>
-      </View>
-    </Row>
-  );
-};
-
-function SimpleQuestion({
-  label,
-  options,
-  horizontal = true,
-  radio = true,
-  checked,
-  setChecked,
-}) {
-  const simpleQns = [{ label: 'Male' }, { label: 'Female' }];
-  // const [checked, setChecked] = React.useState('first');
-
-  if (radio) {
-    return (
-      <Row style={{}}>
-        {options.map((qn, index) => (
-          <>
-            <RadioButton
-              value={qn}
-              status={checked === qn ? 'checked' : 'unchecked'}
-              onPress={() => {
-                console.log('Checked : ', qn);
-                return setChecked(qn);
-              }}
-            />
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                paddingTop: 0,
-                marginLeft: -3,
-              }}>
-              <Text style={{}}>{qn ? _.startCase(_.camelCase(qn)) : ''}</Text>
-            </View>
-          </>
-        ))}
-      </Row>
-    );
-  }
-  return (
-    <Row>
-      {options.map((qn, index) => (
-        <CheckBox label={qn} />
-      ))}
-    </Row>
-  );
-}
+// importing all the components and states here
+import { useGeneralSymptoms, useRespiratory, useGI } from "./store";
+import {
+  Row,
+  Col,
+  Input,
+  CheckBox,
+  SimpleQuestion,
+  Spacer,
+  FitTextToCell,
+  BasicSymptomInput,
+  Header,
+  MainHeader,
+  // TableHeader
+  // ChiefComplaints
+} from "./components";
 
 // this component might need some optimizations
 
-const BasicSymptomInput = ({ label, onChange, times }) => {
-  const [checked, setChecked] = useState('');
-
-  //TODO : to manage input text outside the component
-
-  const [days, setDays] = useState('');
-  const [timesDay, setTimesDay] = useState('');
-  React.useEffect(() => {
-    if (days !== '' && checked !== '') onChange({ checked, days, timesDay });
-  }, [checked, timesDay, days]);
-
+function TableHeader({ title = "" }) {
   return (
-    <>
-      <Col style={styles.headerLightGray}>
-        <Text>{label}</Text>
-      </Col>
-
-      <Col>
-        <SimpleQuestion
-          options={['yes', 'no']}
-          checked={checked}
-          setChecked={(text) => {
-            setChecked(text);
-          }}
-        />
-      </Col>
-      <Col>
-        <FitTextToCell>
-          {times && (
-            <>
-              <Input
-                label="# TImes / Day"
-                placeholder="# TImes / Day"
-                text={timesDay}
-                setText={(text) => {
-                  setTimesDay(text);
-                }}
-              />
-              <Spacer size={8} />
-            </>
-          )}
-          <Input
-            label="Days"
-            placeholder="Days"
-            text={days}
-            setText={(text) => {
-              setDays(text);
-            }}
-          />
-        </FitTextToCell>
-      </Col>
-    </>
-  );
-};
-function Spacer({ size }) {
-  return <View style={{ marginVertical: size ? size : null }} />;
-}
-
-const Header = () => {
-  // states to be updated
-
-  const [patientId, setPatientId] = useState('');
-  const [visitDate, setVisitDate] = useState('');
-
-  return (
-    <View style={styles.headerContainer}>
-      <View style={{ flex: 1 }}>
-        <Row>
-          <View style={{ width: 80, justifyContent: 'center' }}>
-            <Text>Patient ID </Text>
-          </View>
-
-          <View style={{}}>
-            <Input text={patientId} setText={(text) => setPatientId(text)} />
-          </View>
-        </Row>
-
-        <Spacer size={2} />
-        <Row>
-          <View style={{ width: 80, justifyContent: 'center' }}>
-            <Text>Visit Date </Text>
-          </View>
-
-          <View style={{}}>
-            <Input text={visitDate} setText={(text) => setVisitDate(text)} />
-          </View>
-        </Row>
-      </View>
-
-      <View style={{ justifyContent: 'center' }}>
-        <Text>Elsa Healh Logo</Text>
-      </View>
-    </View>
-  );
-};
-
-function MainHeader() {
-  return (
-    <Text
-      style={{ marginVertical: 20, textAlign: 'center', fontWeight: 'bold' }}>
-      Pediatric Admission Form
-    </Text>
-  );
-}
-
-function TableHeader({ title = '' }) {
-  return (
-    <View style={{ backgroundColor: 'black' }}>
+    <View style={{ backgroundColor: "black" }}>
       <Row>
         <Col>
-          <Text style={{ color: 'white' }}>{title}</Text>
+          <Text style={{ color: "white" }}>{title}</Text>
         </Col>
       </Row>
     </View>
   );
 }
 
-function Table({ children, headerTitle }) {
+function Table({ children, headerTitle }:{children?:any,headerTitle?:any}) {
   return (
-    <View style={{ borderWidth: 1, borderColor: '#333' }}>
+    <View style={{ borderWidth: 1, borderColor: "#333" }}>
       <TableHeader title={headerTitle} />
-      {children}
-    </View>
-  );
-}
-
-function FitTextToCell({ children }) {
-  return (
-    <View
-      style={{
-        marginVertical: -16,
-        marginHorizontal: -8,
-      }}>
       {children}
     </View>
   );
@@ -400,17 +62,17 @@ function PatientInformation() {
   // const [info, setInfo] = useAtom(patientInfo);
 
   //will migrate local state to gloabl state
-  const [dob, setDob] = useState('');
+  const [dob, setDob] = useState("");
   const [years, setYears] = useState(0);
   const [mos, setMos] = useState(0);
   const [days, setDays] = useState(0);
-  const [residence, setResidence] = useState('');
+  const [residence, setResidence] = useState("");
 
   //state for gender
-  const [gender, setGender] = React.useState('');
+  const [gender, setGender] = React.useState("");
 
   //state for medical conditions
-  const [medicalCondition, setMedicalCondition] = React.useState('');
+  const [medicalCondition, setMedicalCondition] = React.useState("");
 
   //this is strange why updating does not work
   //  setText={(text) => {
@@ -418,7 +80,7 @@ function PatientInformation() {
   //               setInfo({dob:text,...info})
   //             }}
   const [info, setInfo] = useState({
-    dob: '',
+    dob: "",
     years: 0,
     mos: 0,
     days: 0,
@@ -435,7 +97,7 @@ function PatientInformation() {
             <Input
               text={dob}
               setText={(text) => {
-                console.log('info here:', text);
+                console.log("info here:", text);
                 setDob(text);
               }}
             />
@@ -449,7 +111,7 @@ function PatientInformation() {
               placeholder="Years"
               text={years}
               setText={(text) => {
-                console.log('info here:', text);
+                console.log("info here:", text);
                 setYears(text);
               }}
             />
@@ -462,7 +124,7 @@ function PatientInformation() {
               placeholder="Mos"
               text={mos}
               setText={(text) => {
-                console.log('info here:', text);
+                console.log("info here:", text);
                 setMos(text);
               }}
             />
@@ -475,7 +137,7 @@ function PatientInformation() {
               placeholder="Days"
               text={days}
               setText={(text) => {
-                console.log('info here:', text);
+                console.log("info here:", text);
                 setDays(text);
               }}
             />
@@ -489,7 +151,7 @@ function PatientInformation() {
         </Col>
         <Col cols={3}>
           <SimpleQuestion
-            options={['male', 'female']}
+            options={["male", "female"]}
             checked={gender}
             setChecked={setGender}
           />
@@ -502,7 +164,7 @@ function PatientInformation() {
             <Input
               text={residence}
               setText={(text) => {
-                console.log('Residence:', text);
+                console.log("Residence:", text);
                 setResidence(text);
               }}
             />
@@ -520,7 +182,7 @@ function PatientInformation() {
             <Input
               text={medicalCondition}
               setText={(text) => {
-                console.log('Medical Condition :', text);
+                console.log("Medical Condition :", text);
                 setMedicalCondition(text);
               }}
             />
@@ -532,10 +194,10 @@ function PatientInformation() {
 }
 
 function ChiefComplaints() {
-  const [complaints, setComplaints] = useAtom(chiefCompains);
+  const [complaints, setComplaints] = useState("");
 
   React.useEffect(() => {
-    console.log('Complains : ', complaints);
+    console.log("Complains : ", complaints);
   }, [complaints]);
 
   return (
@@ -588,7 +250,7 @@ function Symptoms() {
 
   React.useEffect(
     (text) => {
-      console.log('General data : ', gi);
+      console.log("General data : ", gi);
     },
     [gi]
   );
@@ -604,10 +266,10 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={general.fever}
             setChecked={(text) => {
-              console.log('Hello There ', text);
+              console.log("Hello There ", text);
               // setGeneral({ fever: text, ...general });
               changeFever(text);
             }}
@@ -630,10 +292,10 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={general.chills}
             setChecked={(text) => {
-              console.log('Hello There ', text);
+              console.log("Hello There ", text);
               // setGeneral({ fever: text, ...general });
               setChills(text);
             }}
@@ -659,7 +321,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={general.awerenessOfHearbeat}
             setChecked={(text) => {
               // console.log('Hello There ', text);
@@ -689,7 +351,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={general.skinLession}
             setChecked={(text) => {
               // console.log('Hello There ', text);
@@ -727,7 +389,7 @@ function Symptoms() {
 
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={respiratory.caugh}
             setChecked={(text) => {
               setRespiratory({ caugh: text });
@@ -750,7 +412,7 @@ function Symptoms() {
         <Col cols={3.3}>
           <Row>
             <SimpleQuestion
-              options={['Wet', 'Dry']}
+              options={["Wet", "Dry"]}
               checked={respiratory.caughNature}
               setChecked={(text) => {
                 setRespiratory({ caughNature: text });
@@ -761,7 +423,7 @@ function Symptoms() {
           <Text>If productive, what is sputum color:</Text>
           <Row>
             <SimpleQuestion
-              options={['Red', 'green', 'white', 'clear']}
+              options={["Red", "green", "white", "clear"]}
               checked={respiratory.caughSpatum}
               setChecked={(text) => {
                 setRespiratory({ caughSpatum: text });
@@ -772,7 +434,7 @@ function Symptoms() {
           <Text>Time </Text>
           <Row>
             <SimpleQuestion
-              options={['morning', 'night', 'whole day', 'clear']}
+              options={["morning", "night", "whole day", "clear"]}
               checked={respiratory.caughTime}
               setChecked={(text) => {
                 setRespiratory({ caughTime: text });
@@ -788,7 +450,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={respiratory.rhinorrhea}
             setChecked={(text) => {
               setRespiratory({ rhinorrhea: text });
@@ -812,7 +474,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={respiratory.sneezing}
             setChecked={(text) => {
               setRespiratory({ sneezing: text });
@@ -839,7 +501,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={respiratory.lossOfSmell}
             setChecked={(text) => {
               setRespiratory({ lossOfSmell: text });
@@ -863,7 +525,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={respiratory.lossOfVoice}
             setChecked={(text) => {
               setRespiratory({ lossOfVoice: text });
@@ -890,7 +552,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={respiratory.changeInVoice}
             setChecked={(text) => {
               setRespiratory({ changeInVoice: text });
@@ -914,7 +576,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={respiratory.facialPain}
             setChecked={(text) => {
               setRespiratory({ facialPain: text });
@@ -941,7 +603,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={respiratory.dentalPain}
             setChecked={(text) => {
               setRespiratory({ dentalPain: text });
@@ -965,7 +627,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={respiratory.nasalCongestion}
             setChecked={(text) => {
               setRespiratory({ nasalCongestion: text });
@@ -992,7 +654,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={respiratory.badBreath}
             setChecked={(text) => {
               setRespiratory({ badBreath: text });
@@ -1016,7 +678,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={respiratory.chestTightness}
             setChecked={(text) => {
               setRespiratory({ chestTightness: text });
@@ -1043,7 +705,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={respiratory.chestPain}
             setChecked={(text) => {
               setRespiratory({ chestPain: text });
@@ -1083,10 +745,10 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={gi.vomiting}
             setChecked={(text) => {
-              console.log('Hello There ', text);
+              console.log("Hello There ", text);
               // setGeneral({ fever: text, ...general });
               setGI({ vomiting: text });
             }}
@@ -1107,7 +769,7 @@ function Symptoms() {
         <Col cols={3.3}>
           <Text>Type : </Text>
           <SimpleQuestion
-            options={['Food', 'Bile', 'Blood']}
+            options={["Food", "Bile", "Blood"]}
             checked={gi.vomitingType}
             setChecked={(text) => {
               // console.log('Hello There ', text);
@@ -1124,7 +786,7 @@ function Symptoms() {
         </Col>
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={gi.diarrhoea}
             setChecked={(text) => {
               // console.log('Hello There ', text);
@@ -1157,7 +819,7 @@ function Symptoms() {
         <Col cols={3.3}>
           <Text>Type : </Text>
           <SimpleQuestion
-            options={['Watery', 'Rice Walter', 'Normal', 'Hard']}
+            options={["Watery", "Rice Walter", "Normal", "Hard"]}
             checked={gi.diarrhoeaType}
             setChecked={(text) => {
               // console.log('Hello There ', text);
@@ -1168,7 +830,7 @@ function Symptoms() {
 
           <Text>Is bloody ? : </Text>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={gi.isDiarrhoesBloody}
             setChecked={(text) => {
               // console.log('Hello There ', text);
@@ -1179,7 +841,7 @@ function Symptoms() {
 
           <Text>Any Tenesmus ? : </Text>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={gi.anyTenesmus}
             setChecked={(text) => {
               // console.log('Hello There ', text);
@@ -1197,7 +859,7 @@ function Symptoms() {
 
         <Col>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={gi.abnominalPain}
             setChecked={(text) => {
               // console.log('Hello There ', text);
@@ -1221,7 +883,7 @@ function Symptoms() {
         <Col cols={3.3}>
           <Text>Location : </Text>
           <SimpleQuestion
-            options={['Epigastric', 'Umbilical', 'Hypogastric']}
+            options={["Epigastric", "Umbilical", "Hypogastric"]}
             checked={gi.abnominalPainLocation}
             setChecked={(text) => {
               // console.log('Hello There ', text);
@@ -1232,7 +894,7 @@ function Symptoms() {
 
           <Text>If Epigastric, is it before or after meals? : </Text>
           <SimpleQuestion
-            options={['before', 'after']}
+            options={["before", "after"]}
             checked={gi.abnominalPainEpigastric}
             setChecked={(text) => {
               // console.log('Hello There ', text);
@@ -1243,7 +905,7 @@ function Symptoms() {
 
           <Text>Does it radiate to the back? ? : </Text>
           <SimpleQuestion
-            options={['yes', 'no']}
+            options={["yes", "no"]}
             checked={gi.abnominalPainIsRadiating}
             setChecked={(text) => {
               // console.log('Hello There ', text);
@@ -1258,7 +920,7 @@ function Symptoms() {
         <BasicSymptomInput
           label="Abdominal Cramps"
           onChange={(res) => {
-            console.log('What does : ', res);
+            console.log("What does : ", res);
             setGI({
               abdominalCramps: res.checked,
               abdominalCrampsDays: res.days,
@@ -1268,7 +930,7 @@ function Symptoms() {
         <BasicSymptomInput
           label="Lack of appetite"
           onChange={(res) => {
-            console.log('What does : ', res);
+            console.log("What does : ", res);
             setGI({
               lackOfAppetite: res.checked,
               lackOfAppetiteDays: res.days,
@@ -1281,7 +943,7 @@ function Symptoms() {
         <BasicSymptomInput
           label="Weight Loss"
           onChange={(res) => {
-            console.log('What does : ', res);
+            console.log("What does : ", res);
             setGI({
               weightLoss: res.checked,
               weightLossDays: res.days,
@@ -1291,7 +953,7 @@ function Symptoms() {
         <BasicSymptomInput
           label="Difficulty swallowing"
           onChange={(res) => {
-            console.log('What does : ', res);
+            console.log("What does : ", res);
             setGI({
               difficultySwallowing: res.checked,
               difficultySwallowingDays: res.days,
@@ -1304,7 +966,7 @@ function Symptoms() {
         <BasicSymptomInput
           label="Pain on urination"
           onChange={(res) => {
-            console.log('What does : ', res);
+            console.log("What does : ", res);
             setGI({
               painInUrination: res.checked,
               painInUrinationDays: res.days,
@@ -1316,7 +978,7 @@ function Symptoms() {
           label="Frequency of urination"
           times={true}
           onChange={(res) => {
-            console.log('What does : ', res);
+            console.log("What does : ", res);
             setGI({
               frequencyOfUrination: res.checked,
               frequencyOfUrinationDays: res.days,
@@ -2584,25 +2246,3 @@ export default function App() {
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  headerContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  headerLightGray: {
-    backgroundColor: '#bcc2b0',
-  },
-  headerDarkGray: {
-    backgroundColor: '#797d70',
-  },
-
-  headerCell: {
-    padding: 12,
-  },
-  contentCell: {
-    paddingVertical: 16,
-    paddingHorizontal: 8,
-  },
-});
