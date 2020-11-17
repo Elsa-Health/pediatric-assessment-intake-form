@@ -19,20 +19,6 @@ export * from './SignExams'
 export * from './Differentials'
 export * from './OrdersResults'
 export * from './FinalDiagnosis'
+export * from './FixTextToCell'
 
 
-
-import {View} from 'react-native'
-
-export function FitTextToCell({ children }) {
-    return (
-      <View
-        style={{
-          marginVertical: -16,
-          marginHorizontal: -8,
-        }}>
-        {children}
-      </View>
-    );
-  }
-  

@@ -29,7 +29,7 @@ export const Header = () => {
             </View>
   
             <View style={{}}>
-              <Input text={patientId} setText={(text) => setPatientId(text)} />
+              <Input text={patientId} setText={(text: React.SetStateAction<string>) => setPatientId(text)} />
             </View>
           </Row>
   
@@ -40,7 +40,7 @@ export const Header = () => {
             </View>
   
             <View style={{}}>
-              <Input text={visitDate} setText={(text) => setVisitDate(text)} />
+              <Input text={visitDate} setText={(text: React.SetStateAction<string>) => setVisitDate(text)} />
             </View>
           </Row>
         </View>

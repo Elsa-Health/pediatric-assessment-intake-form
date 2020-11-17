@@ -41,7 +41,7 @@ export function PatientInformation() {
             <FitTextToCell>
               <Input
                 text={dob}
-                setText={(text) => {
+                setText={(text: React.SetStateAction<string>) => {
                   console.log("info here:", text);
                   setDob(text);
                 }}
@@ -55,7 +55,7 @@ export function PatientInformation() {
                 label="Years"
                 placeholder="Years"
                 text={years}
-                setText={(text) => {
+                setText={(text: React.SetStateAction<number>) => {
                   console.log("info here:", text);
                   setYears(text);
                 }}
@@ -68,7 +68,7 @@ export function PatientInformation() {
                 label="Mos"
                 placeholder="Mos"
                 text={mos}
-                setText={(text) => {
+                setText={(text: React.SetStateAction<number>) => {
                   console.log("info here:", text);
                   setMos(text);
                 }}
@@ -81,7 +81,7 @@ export function PatientInformation() {
                 label="Days"
                 placeholder="Days"
                 text={days}
-                setText={(text) => {
+                setText={(text: React.SetStateAction<number>) => {
                   console.log("info here:", text);
                   setDays(text);
                 }}
@@ -108,7 +108,7 @@ export function PatientInformation() {
             <FitTextToCell>
               <Input
                 text={residence}
-                setText={(text) => {
+                setText={(text: React.SetStateAction<string>) => {
                   console.log("Residence:", text);
                   setResidence(text);
                 }}
@@ -126,7 +126,7 @@ export function PatientInformation() {
             <FitTextToCell>
               <Input
                 text={medicalCondition}
-                setText={(text) => {
+                setText={(text: React.SetStateAction<string>) => {
                   console.log("Medical Condition :", text);
                   setMedicalCondition(text);
                 }}

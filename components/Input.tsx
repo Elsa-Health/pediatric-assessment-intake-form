@@ -10,9 +10,9 @@ export const Input = ({
   setText,
 }: {
   label?: string;
-  placeholder?: string|undefined;
+  placeholder?: string | undefined;
   multiline?: boolean;
-  numberOfLines: number;
+  numberOfLines?: number;
   text?: string;
   setText?: any;
 }) => {
@@ -20,6 +20,10 @@ export const Input = ({
 
   return (
     <TextInput
+
+      // still not sure what accessibilitstates means
+      
+      accessibilityStates={"none"}
       value={text}
       onChangeText={(text) => setText(text)}
       placeholder={placeholder ? placeholder : undefined}
