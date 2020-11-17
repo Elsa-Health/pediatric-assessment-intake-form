@@ -1,9 +1,8 @@
 import React from "react";
-import { View } from "react-native";
-import {Row,Col} from './'
+import { View, Text } from "react-native";
+import { Row, Col } from ".";
 
-
-export function TableHeader({ title = "" }) {
+export function TableHeader({ title }:{title?:string}) {
   return (
     <View style={{ backgroundColor: "black" }}>
       <Row>

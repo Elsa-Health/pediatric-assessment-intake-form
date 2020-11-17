@@ -14,6 +14,11 @@ export * from './Header'
 export * from './PatientInformation'
 export * from './ChiefComplaints'
 export * from './Symptoms'
+export * from './AdditionalPatientInformation'
+export * from './SignExams'
+export * from './Differentials'
+export * from './OrdersResults'
+export * from './FinalDiagnosis'
 
 
 
