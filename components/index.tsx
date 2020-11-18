@@ -20,5 +20,6 @@ export * from './Differentials'
 export * from './OrdersResults'
 export * from './FinalDiagnosis'
 export * from './FixTextToCell'
+export * from './RemovePadding'
 
 

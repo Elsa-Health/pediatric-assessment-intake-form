@@ -49,7 +49,8 @@ import {
 export default function App() {
   return (
     <Provider>
-      <View style={{ padding: 72 }}>
+      <View style={{backgroundColor:"#DEDFE4",paddingVertical:36}}>
+      <View style={{ padding: 72,width:1024,alignSelf:"center",backgroundColor:"white" }}>
         <Header />
         <MainHeader />
         <PatientInformation />
@@ -67,6 +68,7 @@ export default function App() {
         <OrdersResults />
         <Spacer size={23} />
         <FinalDiagnosis />
+      </View>
       </View>
     </Provider>
   );

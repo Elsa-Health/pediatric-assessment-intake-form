@@ -13,7 +13,6 @@ export function Col({
   return (
     <View
       style={[
-        style,
         {
           flex: cols ? cols : 1,
           flexDirection: "column",
@@ -23,6 +22,7 @@ export function Col({
           paddingVertical: 16,
           justifyContent: "center",
         },
+        style,
       ]}
     >
       {children}

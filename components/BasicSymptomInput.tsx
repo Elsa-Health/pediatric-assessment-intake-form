@@ -9,10 +9,12 @@ export const BasicSymptomInput = ({
   label,
   onChange,
   times,
+  showNumberDays = true,
 }: {
   label?: string;
-  onChange?: (...args:any) => {};
+  onChange?: (...args: any) => {};
   times?: number;
+  showNumberDays?: boolean;
 }) => {
   const [checked, setChecked] = useState();
 
@@ -21,7 +23,8 @@ export const BasicSymptomInput = ({
   const [days, setDays] = useState("");
   const [timesDay, setTimesDay] = useState("");
   React.useEffect(() => {
-    if (days !== "" && checked !== ""&&onChange) onChange({ checked, days, timesDay });
+    if (days !== "" && checked !== "" && onChange)
+      onChange({ checked, days, timesDay });
   }, [checked, timesDay, days]);
 
   return (
@@ -54,14 +57,16 @@ export const BasicSymptomInput = ({
               <Spacer size={8} />
             </>
           )}
-          <Input
-            label="Days"
-            placeholder="Days"
-            text={days}
-            setText={(text: React.SetStateAction<string>) => {
-              setDays(text);
-            }}
-          />
+          {showNumberDays && (
+            <Input
+              label="Days"
+              placeholder="Days"
+              text={days}
+              setText={(text: React.SetStateAction<string>) => {
+                setDays(text);
+              }}
+            />
+          )}
         </FitTextToCell>
       </Col>
     </>
