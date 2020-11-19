@@ -14,21 +14,7 @@ import { styles } from "../style";
 import { Text, View } from "react-native";
 
 export function Symptoms() {
-  // const [fever, setFever] = React.useState('');
 
-  // still not sure why object can be updated
-  // const [general, setGeneral] = useState({
-  //   fever: '',
-  //   feverDays: 0,
-  //   chills: '',
-  //   chillsDays: 0,
-  //   awerenessOfHearbeat: '',
-  //   awerenessOfHearbeatDays: 0,
-  //   skinLession: '',
-  // });
-
-  // below state management way to be updated
-  // generalSymptoms
 
   const general = useGeneralSymptoms((state) => state);
   const changeFever = useGeneralSymptoms((state) => state.changeFever);
@@ -49,12 +35,8 @@ export function Symptoms() {
 
   // console.log('Fever is here : ', respiratory);
 
-  React.useEffect(
-    (text) => {
-      console.log("General data : ", gi);
-    },
-    [gi]
-  );
+  console.log("The inspected data below")
+  console.table(gi)
 
   return (
     <Table headerTitle="Symptoms">
@@ -70,7 +52,7 @@ export function Symptoms() {
             options={["yes", "no"]}
             checked={general.fever}
             setChecked={(text) => {
-              console.log("Hello There ", text);
+              // console.log("Hello There ", text);
               // setGeneral({ fever: text, ...general });
               changeFever(text);
             }}
@@ -80,7 +62,7 @@ export function Symptoms() {
           <FitTextToCell>
             <Input
               label="Days"
-              placeholder="Days"
+              // placeholder="Days"
               text={general.feverDays}
               setText={(text) => {
                 setFeverDays(text);
@@ -1087,7 +1069,6 @@ export function Symptoms() {
       </Col>
 
       <Row>
-      
         <BasicSymptomInput
           label="Inability to breastfeed"
           // times={true}
@@ -1160,5 +1141,3 @@ export function Symptoms() {
     </Table>
   );
 }
-
-

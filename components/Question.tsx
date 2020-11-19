@@ -17,7 +17,7 @@ export function SimpleQuestion({
   options?: string[];
   horizontal?: boolean;
   radio?: boolean;
-  checked?: boolean;
+  checked: string;
   setChecked?: any;
 }) {
   // const simpleQns = [{ label: 'Male' }, { label: 'Female' }];
@@ -26,7 +26,7 @@ export function SimpleQuestion({
   if (radio) {
     return (
       <>
-        {label&&<Text>{label}</Text>}
+        {label && <Text>{label}</Text>}
         {horizontal ? (
           <Row style={{ alignItems: "center" }}>
             {options &&
@@ -37,7 +37,7 @@ export function SimpleQuestion({
                     status={checked === qn ? "checked" : "unchecked"}
                     onPress={() => {
                       console.log("Checked : ", qn);
-                      return setChecked(qn);
+                      setChecked(qn);
                     }}
                   />
                   <View
@@ -56,16 +56,16 @@ export function SimpleQuestion({
               ))}
           </Row>
         ) : (
-          <Col style={{borderWidth:0 }}>
+          <Col style={{ borderWidth: 0 }}>
             {options &&
               options.map((qn, index) => (
-                <Row style={{alignItems:"center"}}>
+                <Row style={{ alignItems: "center" }}>
                   <RadioButton
                     value={qn}
                     status={checked === qn ? "checked" : "unchecked"}
                     onPress={() => {
                       console.log("Checked : ", qn);
-                      return setChecked(qn);
+                      setChecked(qn);
                     }}
                   />
                   <View

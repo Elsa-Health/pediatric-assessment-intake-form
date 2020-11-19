@@ -1,3 +1,6 @@
+
+// THIS APP WORKS BEST IN GOOGLE CHROME SOME THINGS BREAKS IN FIREFOX
+
 import React, { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 // import { TextField } from 'material-bread'
