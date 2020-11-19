@@ -1,36 +1,17 @@
 import React,{useState} from 'react'
 import {Text} from 'react-native'
 import {Table,Row,Col,FitTextToCell,Input,SimpleQuestion} from '.'
+import { usePatientInformation } from '../store';
 import {styles } from '../style'
 
+
+
 export function PatientInformation() {
-    // const [info, setInfo] = useAtom(patientInfo);
-  
-    //will migrate local state to gloabl state
-    const [dob, setDob] = useState("");
-    const [years, setYears] = useState(0);
-    const [mos, setMos] = useState(0);
-    const [days, setDays] = useState(0);
-    const [residence, setResidence] = useState("");
-  
-    //state for gender
-    const [gender, setGender] = React.useState("");
-  
-    //state for medical conditions
-    const [medicalCondition, setMedicalCondition] = React.useState("");
-  
-    //this is strange why updating does not work
-    //  setText={(text) => {
-    //               console.log('info here:', text);
-    //               setInfo({dob:text,...info})
-    //             }}
-    const [info, setInfo] = useState({
-      dob: "",
-      years: 0,
-      mos: 0,
-      days: 0,
-    });
-  
+  const patientInfo = usePatientInformation((state) => state);
+  const setPatientInfo= usePatientInformation((state) => state.setPatientInformation);
+
+
+  console.log("PAtient info ",patientInfo)
     return (
       <Table headerTitle="Patient Information">
         <Row>
@@ -40,24 +21,24 @@ export function PatientInformation() {
           <Col cols={3}>
             <FitTextToCell>
               <Input
-                text={dob}
+                text={patientInfo.dob}
+                placeholder="24/06/2020"
                 setText={(text: React.SetStateAction<string>) => {
-                  console.log("info here:", text);
-                  setDob(text);
+                  setPatientInfo({dob:text})
                 }}
               />
             </FitTextToCell>
           </Col>
-          <Col style={styles.headerLightGray}>Age</Col>
+          <Col style={styles.headerLightGray}><Text>Age</Text></Col>
           <Col>
             <FitTextToCell>
               <Input
                 label="Years"
                 placeholder="Years"
-                text={years}
+                text={patientInfo.years}
                 setText={(text: React.SetStateAction<number>) => {
                   console.log("info here:", text);
-                  setYears(text);
+                  setPatientInfo({years:text})
                 }}
               />
             </FitTextToCell>
@@ -67,10 +48,10 @@ export function PatientInformation() {
               <Input
                 label="Mos"
                 placeholder="Mos"
-                text={mos}
+                text={patientInfo.months}
                 setText={(text: React.SetStateAction<number>) => {
                   console.log("info here:", text);
-                  setMos(text);
+                  setPatientInfo({months:text})
                 }}
               />
             </FitTextToCell>
@@ -80,10 +61,10 @@ export function PatientInformation() {
               <Input
                 label="Days"
                 placeholder="Days"
-                text={days}
+                text={patientInfo.days}
                 setText={(text: React.SetStateAction<number>) => {
                   console.log("info here:", text);
-                  setDays(text);
+                  setPatientInfo({days:text})
                 }}
               />
             </FitTextToCell>
@@ -97,20 +78,22 @@ export function PatientInformation() {
           <Col cols={3}>
             <SimpleQuestion
               options={["male", "female"]}
-              checked={gender}
-              setChecked={setGender}
+              checked={patientInfo.sex}
+              setChecked={(res)=>{
+                console.log("patient info gender is ",res)
+              }}
             />
           </Col>
           <Col cols={3} style={styles.headerLightGray}>
-            Residency Location
+           <Text> Residency Location</Text>
           </Col>
           <Col cols={4}>
             <FitTextToCell>
               <Input
-                text={residence}
+                text={patientInfo.location}
                 setText={(text: React.SetStateAction<string>) => {
                   console.log("Residence:", text);
-                  setResidence(text);
+                  setPatientInfo({location:text})
                 }}
               />
             </FitTextToCell>
@@ -125,10 +108,10 @@ export function PatientInformation() {
           <Col cols={8}>
             <FitTextToCell>
               <Input
-                text={medicalCondition}
+                text={patientInfo.otherMedicalConditaion}
                 setText={(text: React.SetStateAction<string>) => {
                   console.log("Medical Condition :", text);
-                  setMedicalCondition(text);
+                  setPatientInfo({ otherMedicalConditaion:text})
                 }}
               />
             </FitTextToCell>

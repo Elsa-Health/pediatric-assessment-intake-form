@@ -1,5 +1,7 @@
 import create, { useStore } from "zustand";
 
+export * from './patientInformation'
+
 // ZUSTAND STORE HERE
 export const useGeneralSymptoms = create((set) => ({
   fever: "",

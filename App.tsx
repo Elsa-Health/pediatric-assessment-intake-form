@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 // import { TextField } from 'material-bread'
-import { TextInput, Checkbox, RadioButton } from "react-native-paper";
 
 import { atom, Provider, useAtom } from "jotai";
 import create, { useStore } from "zustand";
