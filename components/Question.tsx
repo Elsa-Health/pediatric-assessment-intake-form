@@ -36,7 +36,7 @@ export function SimpleQuestion({
                     value={qn}
                     status={checked === qn ? "checked" : "unchecked"}
                     onPress={() => {
-                      console.log("Checked : ", qn);
+                      // console.log("Checked : ", qn);
                       setChecked(qn);
                     }}
                   />
@@ -64,7 +64,7 @@ export function SimpleQuestion({
                     value={qn}
                     status={checked === qn ? "checked" : "unchecked"}
                     onPress={() => {
-                      console.log("Checked : ", qn);
+                      // console.log("Checked : ", qn);
                       setChecked(qn);
                     }}
                   />

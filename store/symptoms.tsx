@@ -1,14 +1,14 @@
-import create from 'zustand'
+import create from "zustand";
 
 export const useGeneralSymptoms = create((set) => ({
   fever: "",
-  feverDays: '',
+  feverDays: "",
   chills: "",
-  chillsDays: '',
+  chillsDays: "",
   awerenessOfHearbeat: "",
-  awerenessOfHearbeatDays: '',
+  awerenessOfHearbeatDays: "",
   skinLession: "",
-  skinLessionDays: '',
+  skinLessionDays: "",
 
   changeFever: (fever) => set((state) => ({ fever: fever })),
   setFeverDays: (days) => set((state) => ({ feverDays: days })),
@@ -22,35 +22,35 @@ export const useGeneralSymptoms = create((set) => ({
 
 export const useRespiratory = create((set) => ({
   caugh: "",
-  caughDays: '',
+  caughDays: "",
   caughNature: "",
   caughSpatum: "",
   caughTime: "",
   rhinorrhea: "",
-  rhinorrheaDays: '',
+  rhinorrheaDays: "",
   lossOfSmell: "",
   lossOfSmellDays: "",
   lossOfVoice: "",
-  lossOfVoiceDays: '',
+  lossOfVoiceDays: "",
 
   facialPain: "",
-  facialPainDays: '',
+  facialPainDays: "",
   nasalCongestion: "",
-  nasalCongestionDays: '',
+  nasalCongestionDays: "",
 
   dentalPain: "",
-  dentalPainDays: '',
+  dentalPainDays: "",
 
   changeInVoice: "",
-  changeInVoiceDays: '',
+  changeInVoiceDays: "",
   sneezing: "",
   sneezingDays: "",
   badBreath: "",
-  badBreathDays: '',
+  badBreathDays: "",
   chestTightness: "",
-  chestTightnessDays: '',
+  chestTightnessDays: "",
   chestPain: "",
-  chestPainDays: '',
+  chestPainDays: "",
 
   //thos is to update all data state
   setRespiratory: (data) => set((state) => ({ ...state, ...data })),
@@ -58,18 +58,18 @@ export const useRespiratory = create((set) => ({
 
 export const useGI = create((set) => ({
   vomiting: "",
-  vomitingDays: '',
+  vomitingDays: "",
   vomitingType: "",
 
   diarrhoea: "",
-  diarrhoeaDays: '',
-  diarrhoeaTimesDay: '',
+  diarrhoeaDays: "",
+  diarrhoeaTimesDay: "",
   diarrhoeaType: "",
   isDiarrhoesBloody: "",
   anyTenesmus: "",
 
   abnominalPain: "",
-  abnominalPainDays: '',
+  abnominalPainDays: "",
   abnominalPainLocation: "",
 
   //this varibale to be renamed
@@ -78,26 +78,103 @@ export const useGI = create((set) => ({
   abnominalPainIsRadiating: "",
 
   abdominalCramps: "",
-  abdominalCrampsDays: '',
+  abdominalCrampsDays: "",
 
   lackOfAppetite: "",
-  lackOfAppetiteDays: '',
+  lackOfAppetiteDays: "",
 
   weightLoss: "",
   weightLossDays: "",
 
   difficultySwallowing: "",
-  difficultySwallowingDays: '',
+  difficultySwallowingDays: "",
 
   painInUrination: "",
-  painInUrinationDays: '',
+  painInUrinationDays: "",
 
   frequencyOfUrination: "",
-  frequencyOfUrinationTimesDay: '',
-  frequencyOfUrinationDays: '',
+  frequencyOfUrinationTimesDay: "",
+  frequencyOfUrinationDays: "",
 
   //thos is to update all data state
   setGI: (data) => set((state) => ({ ...state, ...data })),
 }));
 
+export const useCNS = create((set) => ({
+  headache: "",
+  headacheDays: "",
 
+  coma: "",
+  comaDays: "",
+
+  hypothermia: "",
+  hypothermiaDays: "",
+
+  seizures: "",
+  seizuresDays: "",
+
+  neckPain: "",
+  neckPainDays: "",
+
+  highlyPitchedCrying: "",
+  highlyPitchedCryingDays: "",
+
+  setCNS: (data) => set((state) => ({ ...state, ...data })),
+}));
+
+export const useMusculoskeletal = create((set) => ({
+  myalgia: "",
+  myalgiaDays: "",
+
+  historyOfTrauma: "",
+  historyOfTraumaDays: "",
+
+  fatique: "",
+  fatiqueDays: "",
+
+  setMusculoskeletal: (data) => set((state) => ({ ...state, ...data })),
+}));
+
+export const useEarsAndEyes = create((set) => ({
+  redEyes: "",
+  redEyesDays: "",
+
+  painfulEyes: "",
+  painfulEyesDays: "",
+
+  earPain: "",
+  earPainDays: "",
+
+  eyeDischarge: "",
+  eyeDischargeDays: "",
+
+  earDischarge: "",
+  earDischargeDays: "",
+
+  sunkenEyes: "",
+  sunkenEyesDays: "",
+
+  setEarsAndEyes: (data) => set((state) => ({ ...state, ...data })),
+}));
+
+export const useMouth = create((set) => ({
+  dryness: "",
+  drynessDays: "",
+
+  cottonFeeling: "",
+  cottonFeelingDays: "",
+
+  ulcerationsInside: "",
+  ulcerationsInsideDays: "",
+
+  ulcerationsAround: "",
+  ulcerationsAroundDays: "",
+
+  setMouth: (data) => set((state) => ({ ...state, ...data })),
+}));
+
+export const useNeonatal = create((set) => ({
+  inabilityToBreastFeed: "",
+
+  setNeonatal: (data) => set((state) => ({ ...state, ...data })),
+}));

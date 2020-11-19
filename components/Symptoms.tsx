@@ -1,5 +1,14 @@
 import React from "react";
-import { useGeneralSymptoms, useRespiratory, useGI } from "../store";
+import {
+  useGeneralSymptoms,
+  useRespiratory,
+  useGI,
+  useCNS,
+  useMusculoskeletal,
+  useEarsAndEyes,
+  useMouth,
+  useNeonatal,
+} from "../store";
 import {
   Table,
   Col,
@@ -14,8 +23,6 @@ import { styles } from "../style";
 import { Text, View } from "react-native";
 
 export function Symptoms() {
-
-
   const general = useGeneralSymptoms((state) => state);
   const changeFever = useGeneralSymptoms((state) => state.changeFever);
   const setFeverDays = useGeneralSymptoms((state) => state.setFeverDays);
@@ -33,10 +40,30 @@ export function Symptoms() {
   const gi = useGI((state) => state);
   const setGI = useGI((state) => state.setGI);
 
-  // console.log('Fever is here : ', respiratory);
+  // CNS symptoms
+  const cns = useCNS((state) => state);
+  const setCNS = useCNS((state) => state.setCNS);
 
-  console.log("The inspected data below")
-  console.table(gi)
+  // CNS symptoms
+  const musculoskeletal = useMusculoskeletal((state) => state);
+  const setMusculoskeletal = useMusculoskeletal(
+    (state) => state.setMusculoskeletal
+  );
+
+  //eyes and ear symptoms
+  const earsAndEyes = useEarsAndEyes((state) => state);
+  const setEarsAndEyes = useEarsAndEyes((state) => state.setEarsAndEyes);
+
+  //mouth symptoms
+  const mouth = useMouth((state) => state);
+  const setMouth = useMouth((state) => state.setMouth);
+
+  //mouth symptoms
+  const neonatal = useNeonatal((state) => state);
+  const setNeonatal = useNeonatal((state) => state.setNeonatal);
+
+  console.log("The inspected data below");
+  console.table(neonatal);
 
   return (
     <Table headerTitle="Symptoms">
@@ -703,7 +730,7 @@ export function Symptoms() {
         <BasicSymptomInput
           label="Abdominal Cramps"
           onChange={(res) => {
-            console.log("What does : ", res);
+            // console.log("What does : ", res);
             setGI({
               abdominalCramps: res.checked,
               abdominalCrampsDays: res.days,
@@ -713,7 +740,7 @@ export function Symptoms() {
         <BasicSymptomInput
           label="Lack of appetite"
           onChange={(res) => {
-            console.log("What does : ", res);
+            // console.log("What does : ", res);
             setGI({
               lackOfAppetite: res.checked,
               lackOfAppetiteDays: res.days,
@@ -726,7 +753,7 @@ export function Symptoms() {
         <BasicSymptomInput
           label="Weight Loss"
           onChange={(res) => {
-            console.log("What does : ", res);
+            // console.log("What does : ", res);
             setGI({
               weightLoss: res.checked,
               weightLossDays: res.days,
@@ -734,9 +761,9 @@ export function Symptoms() {
           }}
         />
         <BasicSymptomInput
-          label="Difficulty swallowing"
+          // label="Difficulty swallowing"
           onChange={(res) => {
-            console.log("What does : ", res);
+            // console.log("What does : ", res);
             setGI({
               difficultySwallowing: res.checked,
               difficultySwallowingDays: res.days,
@@ -749,7 +776,7 @@ export function Symptoms() {
         <BasicSymptomInput
           label="Pain on urination"
           onChange={(res) => {
-            console.log("What does : ", res);
+            // console.log("What does : ", res);
             setGI({
               painInUrination: res.checked,
               painInUrinationDays: res.days,
@@ -761,7 +788,7 @@ export function Symptoms() {
           label="Frequency of urination"
           times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
+            // console.log("What does : ", res);
             setGI({
               frequencyOfUrination: res.checked,
               frequencyOfUrinationDays: res.days,
@@ -783,11 +810,11 @@ export function Symptoms() {
           label="Headache"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            // console.log("What does : ", res);
+            setCNS({
+              headache: res.checked,
+              headacheDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -795,11 +822,11 @@ export function Symptoms() {
           label="Coma"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            // console.log("What does : ", res);
+            setCNS({
+              coma: res.checked,
+              comaDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -810,11 +837,11 @@ export function Symptoms() {
           label="Hypothermia"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            // console.log("What does : ", res);
+            setCNS({
+              hypothermia: res.checked,
+              hypothermiaDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -822,11 +849,11 @@ export function Symptoms() {
           label="Seizures"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            // console.log("What does : ", res);
+            setCNS({
+              seizures: res.checked,
+              seizuresDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -837,11 +864,11 @@ export function Symptoms() {
           label="Neck Pain"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            // console.log("What does : ", res);
+            setCNS({
+              neckPain: res.checked,
+              neckPainDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -850,11 +877,11 @@ export function Symptoms() {
           label="High pitched crying"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            // console.log("What does : ", res);
+            setCNS({
+              highlyPitchedCrying: res.checked,
+              highlyPitchedCryingDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -869,10 +896,10 @@ export function Symptoms() {
           label="Myalgia"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
+            // console.log("What does : ", res);
+            setMusculoskeletal({
+              myalgia: res.checked,
+              myalgiaDays: res.days,
               frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
@@ -882,10 +909,10 @@ export function Symptoms() {
           label="History of Trauma"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
+            // console.log("What does : ", res);
+            setMusculoskeletal({
+              historyOfTrauma: res.checked,
+              historyOfTraumaDays: res.days,
               frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
@@ -897,10 +924,10 @@ export function Symptoms() {
           label="Fatigue"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
+            // console.log("What does : ", res);
+            setMusculoskeletal({
+              fatique: res.checked,
+              fatiqueDays: res.days,
               frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
@@ -925,11 +952,11 @@ export function Symptoms() {
           label="Red Eyes"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            // console.log("What does : ", res);
+            setEarsAndEyes({
+              redEyes: res.checked,
+              redEyesDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -938,11 +965,10 @@ export function Symptoms() {
           label="Painful Eyes"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            setEarsAndEyes({
+              painfulEyes: res.checked,
+              painfulEyesDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -953,11 +979,10 @@ export function Symptoms() {
           label="Ear Pain"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            setEarsAndEyes({
+              earPain: res.checked,
+              earPainDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -966,11 +991,10 @@ export function Symptoms() {
           label="Eye Discharge"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            setEarsAndEyes({
+              eyeDischarge: res.checked,
+              eyeDischargeDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -981,11 +1005,10 @@ export function Symptoms() {
           label="Ear Discharge"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            setEarsAndEyes({
+              earDischarge: res.checked,
+              earDischargeDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -994,11 +1017,10 @@ export function Symptoms() {
           label="Sunken Eyes"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            setEarsAndEyes({
+              sunkenEyes: res.checked,
+              sunkenEyesDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -1013,11 +1035,11 @@ export function Symptoms() {
           label="Dryness"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            // console.log("What does : ", res);
+            setMouth({
+              dryness: res.checked,
+              drynessDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -1026,11 +1048,10 @@ export function Symptoms() {
           label="Cotton Feeling"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            setMouth({
+              cottonFeeling: res.checked,
+              cottonFeelingDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -1041,11 +1062,10 @@ export function Symptoms() {
           label="Ulcerations Inside of Mouth"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            setMouth({
+              ulcerationsInside: res.checked,
+              ulcerationsInsideDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -1054,11 +1074,10 @@ export function Symptoms() {
           label="Ulcerations around Mouth/ Corners"
           // times={true}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            setMouth({
+              ulcerationsAround: res.checked,
+              ulcerationsAroundDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -1074,11 +1093,11 @@ export function Symptoms() {
           // times={true}
           showNumberDays={false}
           onChange={(res) => {
-            console.log("What does : ", res);
-            setGI({
-              frequencyOfUrination: res.checked,
-              frequencyOfUrinationDays: res.days,
-              frequencyOfUrinationTimesDay: res.timesDay,
+            // console.log("What does : ", res);
+            setNeonatal({
+              inabilityToBreastFeed: res.checked,
+              // frequencyOfUrinationDays: res.days,
+              // frequencyOfUrinationTimesDay: res.timesDay,
             });
           }}
         />
@@ -1099,28 +1118,28 @@ export function Symptoms() {
 
       <Row>
         <Col>
-          <Text>S</Text>
+          <Text>  </Text>
         </Col>
         <Col>
-          <Text></Text>
+          <Text>  </Text>
         </Col>
         <Col>
-          <Text></Text>
+          <Text>  </Text>
         </Col>
         <Col>
-          <Text></Text>
+          <Text>  </Text>
         </Col>
         <Col>
-          <Text></Text>
+          <Text>  </Text>
         </Col>
         <Col>
-          <Text></Text>
+          <Text>  </Text>
         </Col>
       </Row>
 
       <Row>
         <Col>
-          <Text>S</Text>
+          <Text>  </Text>
         </Col>
         <Col>
           <Text></Text>

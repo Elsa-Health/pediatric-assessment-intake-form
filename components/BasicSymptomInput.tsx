@@ -23,7 +23,10 @@ export const BasicSymptomInput = ({
   const [days, setDays] = useState("");
   const [timesDay, setTimesDay] = useState("");
   React.useEffect(() => {
-    if (days !== "" && checked !== "" && onChange)
+
+    // to fix issues for days left empty
+    
+    if ( checked !== "" && onChange)
       onChange({ checked, days, timesDay });
   }, [checked, timesDay, days]);
 
