@@ -1,3 +1,5 @@
 export * from './patientInformation'
 export * from './symptoms'
 export * from './chiefComplains'
+export * from './additionPatientInformation'
+export * from './signsExams'

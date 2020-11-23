@@ -62,8 +62,8 @@ export function Symptoms() {
   const neonatal = useNeonatal((state) => state);
   const setNeonatal = useNeonatal((state) => state.setNeonatal);
 
-  console.log("The inspected data below");
-  console.table(neonatal);
+  // console.log("The inspected data below");
+  // console.table(neonatal);
 
   return (
     <Table headerTitle="Symptoms">
