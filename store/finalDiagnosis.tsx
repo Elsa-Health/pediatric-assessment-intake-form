@@ -6,3 +6,5 @@ export const useFinalDiagnosis = create((set) => ({
   //thos is to update all data state
   setFinalDiagnosis: (data) => set((state) => ({ ...state, ...data })),
 }));
+
+
