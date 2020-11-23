@@ -4,8 +4,15 @@ import { Text } from "react-native";
 import { styles } from "../style";
 import { FitTextToCell } from "./FixTextToCell";
 import { Input } from "./Input";
+import { useDifferentials } from "../store";
 
 export function Diefferentials() {
+  const differentials = useDifferentials((state) => state);
+  const setDifferentials = useDifferentials((state) => state.setDifferentials);
+
+  console.log("Debugging differential values : ");
+  console.table(differentials);
+
   return (
     <Table headerTitle="Differentials">
       <Row>
@@ -14,7 +21,14 @@ export function Diefferentials() {
         </Col>
         <Col cols={3}>
           <FitTextToCell>
-            <Input />
+            <Input
+              text={differentials.differentialOne}
+              setText={(text) => {
+                setDifferentials({
+                  differentialOne: text,
+                });
+              }}
+            />
           </FitTextToCell>
         </Col>
       </Row>
@@ -24,7 +38,14 @@ export function Diefferentials() {
         </Col>
         <Col cols={3}>
           <FitTextToCell>
-            <Input />
+            <Input
+              text={differentials.differentialTwo}
+              setText={(text) => {
+                setDifferentials({
+                  differentialTwo: text,
+                });
+              }}
+            />
           </FitTextToCell>
         </Col>
       </Row>
@@ -34,7 +55,14 @@ export function Diefferentials() {
         </Col>
         <Col cols={3}>
           <FitTextToCell>
-            <Input />
+            <Input
+              text={differentials.differentialThree}
+              setText={(text) => {
+                setDifferentials({
+                  differentialThree: text,
+                });
+              }}
+            />
           </FitTextToCell>
         </Col>
       </Row>
