@@ -74,6 +74,13 @@ export const useSkinExamination = create((set) => ({
 
   skinUnamedQuestion: "", //refer to form skin type box, then the right box has the checkboxes with no labels
 
+  feature:'',
+  featureColor:'',
+
+  houseHoldWithSimilarProblem:'',
+
+  notes:'',
+
   //thos is to update all data state
   setSkinExamination: (data) => set((state) => ({ ...state, ...data })),
 }));
@@ -119,6 +126,7 @@ export const useNeurologicalExamination = create((set) => ({
   cranialNerves:'',
   cranialNervesNumber:'',
 
+  cannotIllicit:'',
   
   //thos is to update all data state
   setNeurologicalExamination: (data) => set((state) => ({ ...state, ...data })),

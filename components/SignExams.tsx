@@ -46,7 +46,7 @@ export function SignsExam() {
   );
 
   console.log("Debugging the signs and exams: ");
-  console.table(neurologicalExamination);
+  console.table(skinExamination);
 
   return (
     <Table headerTitle="Signs/ Exam">
@@ -707,20 +707,45 @@ please indicate the location in the picture.)"
           />
         </Col>
         <Col>
-          <SimpleQuestion options={["Bleeding", "Pruritic", "Discolored :"]} />
-          <Input />
+          <SimpleQuestion
+            options={["Bleeding", "Pruritic", "Worsens at night", "Colored:"]}
+            checked={skinExamination.feature}
+            setChecked={(text) => {
+              // console.log("Hello There ", text);
+              // setGeneral({ fever: text, ...general });
+              setSkinExamination({ feature: text });
+            }}
+          />
+          <Input
+            label="If Colored, specify the color here : "
+            text={skinExamination.featureColor}
+            setText={(text) => {
+              setSkinExamination({ featureColor: text });
+            }}
+          />
           <Spacer size={8} />
           <SimpleQuestion
-            options={[
-              "Worsens at night",
-              "Another household member with similar problem",
-            ]}
-            horizontal={false}
+            options={["Another household member with similar problem"]}
+            checked={skinExamination.houseHoldWithSimilarProblem}
+            setChecked={(text) => {
+              // console.log("Hello There ", text);
+              // setGeneral({ fever: text, ...general });
+              setSkinExamination({ houseHoldWithSimilarProblem: text });
+            }}
+            // horizontal={false}
           />
         </Col>
       </Row>
       <Col>
-        <Text>Other information:</Text>
+        <FitTextToCell>
+          <Input
+            label="Other information : "
+            text={skinExamination.notes}
+            setText={(text) => {
+              setSkinExamination({ notes: text });
+            }}
+          />
+        </FitTextToCell>
       </Col>
       <Col style={styles.headerDarkGray}>
         <Text>Neurological Examination</Text>
@@ -734,11 +759,12 @@ please indicate the location in the picture.)"
             <Col style={styles.headerLightGray}>
               <Text>GCS Score:</Text>
               <Input
-                placeholder="/15"
+                label="/15"
                 text={neurologicalExamination.gcsScore}
                 setText={(text) => {
                   setNeurologicalExamination({ gcsScore: text });
                 }}
+                disabled={true}
               />
             </Col>
             <Col>
@@ -1168,7 +1194,7 @@ please indicate the location in the picture.)"
           }}
         />
         <Input
-          placeholder="number(1-12)"
+          label="number(1-12)"
           text={neurologicalExamination.cranialNervesNumber}
           setText={(text) => {
             setNeurologicalExamination({
@@ -1177,11 +1203,16 @@ please indicate the location in the picture.)"
           }}
         />
         <Spacer size={8} />
-        <Text>If abnormal, patient cannot illicit:</Text>
 
         {/* the following component state is not handled  */}
-        <Input 
-        placeholder="State is not handled here"
+        <Input
+          label="If abnormal, patient cannot illicit:"
+          text={neurologicalExamination.cannotIllicit}
+          setText={(text) => {
+            setNeurologicalExamination({
+              cannotIllicit: text,
+            });
+          }}
         />
       </Col>
     </Table>

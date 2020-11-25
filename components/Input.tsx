@@ -8,6 +8,7 @@ export const Input = ({
   numberOfLines,
   text,
   setText,
+  disabled=false,
 }: {
   label?: string;
   placeholder?: string | undefined;
@@ -15,6 +16,7 @@ export const Input = ({
   numberOfLines?: number;
   text?: string;
   setText?: any;
+  disabled?:boolean
 }) => {
   // const [text, setText] = React.useState('');
 
@@ -38,6 +40,7 @@ export const Input = ({
       multiline={multiline}
       numberOfLines={numberOfLines}
       // multiline={true}
+      // disabled
     />
   );
 };
