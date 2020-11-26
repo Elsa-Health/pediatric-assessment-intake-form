@@ -25,6 +25,34 @@ import {
   useRespiratory,
   useGI,
   usePatientInformation,
+  useChiefComplains,
+  useCNS,
+  useMusculoskeletal,
+  useEarsAndEyes,
+  useMouth,
+  useNeonatal,
+  useBirthHistory,
+  useNutritionalHistory,
+  useVaccinationHistory,
+  useMedicalHistory,
+  useVitalSigns,
+  useGeneralExamination,
+  useRespiratoryExamination,
+  useAbdominalExamination,
+  useSkinExamination,
+  useNeurologicalExamination,
+  useDifferentials,
+  useMalariaTests,
+  useMicrobiologyTests,
+  useTBTests,
+  useChemistryTests,
+  useStoolTests,
+  useHematologyTests,
+  useXRayTests,
+  useGlucoseTests,
+  useHIVTests,
+  useUrineTests,
+  useFinalDiagnosis,
 } from "./store";
 import {
   Row,
@@ -52,17 +80,123 @@ import {
 import { Button } from "react-native-paper";
 import { getEnvironment } from "./variables";
 import { useHeaderInformation } from "./store/headerInformation";
+import { useMainStore } from "./store/main";
 
 const SubmitButton = ({ loading = false }: { loading?: boolean }) => {
+  // const mainStore = useMainStore((state) => state);
+
+  // console.log("Main store : ", mainStore);
+  const [loadingIn,setLoadingIn]=useState(false)
+
   const headerInfo = useHeaderInformation((state) => state);
   const patientInfo = usePatientInformation((state) => state);
+  const chiefComplains = useChiefComplains((state) => state);
+
+  // Symptoms stores
+  const generalSymptoms = useGeneralSymptoms((state) => state);
+  const respiratory = useRespiratory((state) => state);
+  const gi = useGI((state) => state);
+  const cns = useCNS((state) => state);
+  const muskuloskeletal = useMusculoskeletal((state) => state);
+  const eyesAndEars = useEarsAndEyes((state) => state);
+  const mouth = useMouth((state) => state);
+
+  const neonatal = useNeonatal((state) => state);
+
+  //additional patient information stores
+  const birthHistory = useBirthHistory((state) => state);
+  const nutrionalHistory = useNutritionalHistory((state) => state);
+  const vaccinationHistory = useVaccinationHistory((state) => state);
+  const medicalHistory = useMedicalHistory((state) => state);
+
+  //signs and exams store
+  const vitalSignsExam = useVitalSigns((state) => state);
+  const generalExam = useGeneralExamination((state) => state);
+  const respiratoryExam = useRespiratoryExamination((state) => state);
+  const abdominalExam = useAbdominalExamination((state) => state);
+  const skinExam = useSkinExamination((state) => state);
+
+  const neurologicalExam = useNeurologicalExamination((state) => state);
+
+  //differential examination
+  const differentials = useDifferentials((state) => state);
+
+  // investigation and orders store
+  const malariaTests = useMalariaTests((state) => state);
+  const microbiologyTests = useMicrobiologyTests((state) => state);
+  const tbTests = useTBTests((state) => state);
+  const chemistryTests = useChemistryTests((state) => state);
+  const stoolTests = useStoolTests((state) => state);
+
+  const hematologyTests = useHematologyTests((state) => state);
+  const xrayTests = useXRayTests((state) => state);
+
+  const glucoseTests = useGlucoseTests((state) => state);
+  const hivTests = useHIVTests((state) => state);
+
+  const urineTests = useUrineTests((state) => state);
+
+  //final diagnosis
+  const finalDiagnosis = useFinalDiagnosis((state) => state);
 
   console.log("Header info : ", patientInfo);
 
+  //to move this to main store may be?
   const data = {
     // all data here
-    headerInfo: headerInfo,
-    patientInfo: patientInfo,
+
+    //todo : may be to remove setFunctions to store object
+
+    patientId: headerInfo.patientID,
+    visitDate: headerInfo.visitDate,
+    patientInfo: {
+      ...patientInfo,
+    },
+    chiefComplains: {
+      ...chiefComplains,
+    },
+    symptoms: {
+      general: { ...generalSymptoms },
+      respiratory: { ...respiratory },
+      gi: { ...gi },
+      cns: { ...cns },
+      musculoskeletal: { ...muskuloskeletal },
+      eyesAndEars: { ...eyesAndEars },
+      mouth: { ...mouth },
+      neontal: { ...neonatal },
+    },
+    additionalPatientInfomation: {
+      birthHistory: { ...birthHistory },
+      nutrionalHistory: { ...nutrionalHistory },
+      vaccinationHistory: { ...vaccinationHistory },
+      previousMedicalHistroy: { ...medicalHistory },
+    },
+    signsExams:{
+      vitalSigns:{...vitalSignsExam},
+      geneal:{...generalExam},
+      respiratory:{...respiratoryExam},
+      abdominal:{...abdominalExam},
+      skin:{...skinExam},
+      neurologicalExam:{...neurologicalExam},
+
+    },
+    differentials:{
+      ...differentials
+    },
+    investigationOrdersAndResults:{
+      malaria:{...malariaTests},
+      microbiology:{...microbiologyTests},
+      tb:{...tbTests},
+      chemistry:{...chemistryTests},
+      stool:{...stoolTests},
+      hematology:{...hematologyTests},
+      xray:{...xrayTests},
+      glucose:{...glucoseTests},
+      hiv:{...hivTests},
+      urine:{...urineTests}
+      
+    },
+    finalDiagnosis:{...finalDiagnosis}
   };
 
   const params = {
@@ -73,16 +207,22 @@ const SubmitButton = ({ loading = false }: { loading?: boolean }) => {
     body: JSON.stringify(data),
   };
 
+  
   const handleSubmit = () => {
-    console.log(getEnvironment());
+    console.log("The submitted data");
+    console.log(data);
+    setLoadingIn(true)
     fetch(getEnvironment()?.url, params)
       .then((res) => res.json())
       .then((data) => {
         console.log("Returned data");
         console.log(data);
+        setLoadingIn(false)
       })
       .catch((err) => {
         console.log("Something went wrong : ", err);
+        setLoadingIn(false)
+
       });
   };
 
@@ -100,17 +240,19 @@ const SubmitButton = ({ loading = false }: { loading?: boolean }) => {
         labelStyle={{
           color: "white",
         }}
-        loading={loading}
+        loading={loadingIn}
         uppercase={false}
-        disabled={loading}
+        disabled={loadingIn}
       >
-        {loading ? "Submitting the data..." : "Submit "}
+        {loadingIn ? "Submitting the data..." : "Submit "}
       </Button>
     </View>
   );
 };
 
 export default function App() {
+  const mainStore = useMainStore((state) => state);
+
   return (
     <Provider>
       <View style={{ backgroundColor: "#DEDFE4", paddingVertical: 36 }}>

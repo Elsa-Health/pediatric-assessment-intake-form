@@ -20,6 +20,8 @@ export const useGeneralExamination = create((set) => ({
   hairTexture: "",
   eyesConjuctive: "",
   ent: "",
+
+  // these can be set objects 
   mouthOutside: "",
   mouthInside: "",
   handsFingerClubbing: "",
