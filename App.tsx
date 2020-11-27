@@ -215,11 +215,13 @@ const SubmitButton = ({ loading = false }: { loading?: boolean }) => {
     fetch(getEnvironment()?.url, params)
       .then((res) => res.json())
       .then((data) => {
+        alert("data already submitted")
         console.log("Returned data");
         console.log(data);
         setLoadingIn(false)
       })
       .catch((err) => {
+        alert("oops something went wrong please  try again")
         console.log("Something went wrong : ", err);
         setLoadingIn(false)
 
