@@ -78,6 +78,9 @@ import { getEnvironment } from "./variables";
 import { useHeaderInformation } from "./store/headerInformation";
 import { useMainStore } from "./store/main";
 
+
+import TestRenderer from 'react-test-renderer';
+
 const SubmitButton = ({ loading = false }: { loading?: boolean }) => {
 	// const mainStore = useMainStore((state) => state);
 
@@ -247,8 +250,8 @@ const SubmitButton = ({ loading = false }: { loading?: boolean }) => {
 export default function App() {
 	// const mainStore = useMainStore((state) => state);
 	// const { SUBMIT_URL } = process.env;
-	console.log("ROOT APP URL ", SUBMIT_URL);
-
+	// console.log("ROOT APP URL ", SUBMIT_URL);
+	// console.log(TestRenderer.create(<Symptoms/>).toJSON());
 	return (
 		<View style={{ backgroundColor: "#DEDFE4", paddingVertical: 36 }}>
 			<View
