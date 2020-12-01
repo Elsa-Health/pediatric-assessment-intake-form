@@ -139,7 +139,7 @@ const SubmitButton = ({ loading = false }: { loading?: boolean }) => {
   //final diagnosis
   const finalDiagnosis = useFinalDiagnosis((state) => state);
 
-  console.log("Header info : ", patientInfo);
+  // console.log("Header info : ", patientInfo);
 
   //to move this to main store may be?
   const data = {
@@ -253,7 +253,7 @@ const SubmitButton = ({ loading = false }: { loading?: boolean }) => {
 };
 
 export default function App() {
-  const mainStore = useMainStore((state) => state);
+  // const mainStore = useMainStore((state) => state);
 
   return (
     <Provider>

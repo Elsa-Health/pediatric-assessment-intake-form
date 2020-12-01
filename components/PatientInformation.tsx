@@ -55,6 +55,7 @@ export function PatientInformation() {
                 // console.log("info here:", text);
                 setPatientInfo({ months: text });
               }}
+              keyboardType="numeric"
             />
           </FitTextToCell>
         </Col>
@@ -86,7 +87,6 @@ export function PatientInformation() {
               setPatientInfo({ sex: text });
             }}
           />
-         
         </Col>
         <Col cols={3} style={styles.headerLightGray}>
           <Text> Residency Location</Text>
