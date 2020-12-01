@@ -1,14 +1,9 @@
 // THIS APP WORKS BEST IN GOOGLE CHROME SOME THINGS BREAKS IN FIREFOX
 
 import React, { useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View } from "react-native";
 // import { TextField } from 'material-bread'
 
-import { atom, Provider, useAtom } from "jotai";
-import create, { useStore } from "zustand";
-
-import { styles } from "./style";
-// import { Input as NachosInput } from 'nachos-ui';
 import { SUBMIT_URL } from "@env";
 
 import _ from "lodash";
@@ -255,37 +250,35 @@ export default function App() {
 	console.log("ROOT APP URL ", SUBMIT_URL);
 
 	return (
-		<Provider>
-			<View style={{ backgroundColor: "#DEDFE4", paddingVertical: 36 }}>
-				<View
-					style={{
-						padding: 72,
-						width: 1024,
-						alignSelf: "center",
-						backgroundColor: "white",
-					}}
-				>
-					<Header />
-					<MainHeader />
-					<PatientInformation />
-					<Spacer size={12} />
-					<ChiefComplaints />
-					<Spacer size={12} />
-					<Symptoms />
-					<Spacer size={12} />
-					<AdditionalPatientInformation />
-					<Spacer size={12} />
-					<SignsExam />
-					<Spacer size={12} />
-					<Diefferentials />
-					<Spacer size={12} />
-					<OrdersResults />
-					<Spacer size={23} />
-					<FinalDiagnosis />
-					<Spacer size={23} />
-					<SubmitButton />
-				</View>
+		<View style={{ backgroundColor: "#DEDFE4", paddingVertical: 36 }}>
+			<View
+				style={{
+					padding: 72,
+					width: 1024,
+					alignSelf: "center",
+					backgroundColor: "white",
+				}}
+			>
+				<Header />
+				<MainHeader />
+				<PatientInformation />
+				<Spacer size={12} />
+				<ChiefComplaints />
+				<Spacer size={12} />
+				<Symptoms />
+				<Spacer size={12} />
+				<AdditionalPatientInformation />
+				<Spacer size={12} />
+				<SignsExam />
+				<Spacer size={12} />
+				<Diefferentials />
+				<Spacer size={12} />
+				<OrdersResults />
+				<Spacer size={23} />
+				<FinalDiagnosis />
+				<Spacer size={23} />
+				<SubmitButton />
 			</View>
-		</Provider>
+		</View>
 	);
 }

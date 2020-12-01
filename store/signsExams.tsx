@@ -59,6 +59,9 @@ export const useAbdominalExamination = create((set) => ({
 
   analExamination: "", //missing input for this in the form
 
+
+  abdomenSection:"",
+  
   //thos is to update all data state
   setAbdominalExamination: (data) => set((state) => ({ ...state, ...data })),
 }));
