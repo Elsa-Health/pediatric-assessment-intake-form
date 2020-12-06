@@ -36,8 +36,8 @@ export function AdditionalPatientInformation() {
     (state) => state.setMedicalHistory
   );
 
-  console.log("Debugging the additional patient information ");
-  console.table(medicalHistory);
+  // console.log("Debugging the additional patient information ");
+  // console.table(medicalHistory);
 
   return (
     <Table headerTitle="Additional Patient Information:">

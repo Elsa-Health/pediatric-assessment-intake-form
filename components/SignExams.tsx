@@ -47,8 +47,8 @@ export function SignsExam() {
 		(state) => state.setNeurologicalExamination
 	);
 
-	console.log("Debugging the signs and exams: ");
-	console.table(skinExamination);
+	// console.log("Debugging the signs and exams: ");
+	// console.table(skinExamination);
 
 	return (
 		<Table headerTitle="Signs/ Exam">

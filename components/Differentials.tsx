@@ -10,8 +10,8 @@ export function Diefferentials() {
   const differentials = useDifferentials((state) => state);
   const setDifferentials = useDifferentials((state) => state.setDifferentials);
 
-  console.log("Debugging differential values : ");
-  console.table(differentials);
+  // console.log("Debugging differential values : ");
+  // console.table(differentials);
 
   return (
     <Table headerTitle="Differentials">
