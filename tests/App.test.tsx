@@ -1,12 +1,10 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import { fireEvent, render, waitFor } from "@testing-library/react-native";
 
-import App from '../App';
+import App from "../App";
 
-// jest.useFakeTimers()
-describe('<App />', () => {
-  it('has 1 child', () => {
-    const tree = renderer.create(<App />).toJSON();
-    expect(tree.children.length).toBe(1);
-  });
+test("examples of some things", async () => {
+	const { getByTestId, getByText, queryByTestId, toJSON } = render(<App />);
+
+	// expect(toJSON()).toMatchSnapshot();
 });
