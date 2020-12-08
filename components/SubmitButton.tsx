@@ -1,7 +1,7 @@
 // THIS APP WORKS BEST IN GOOGLE CHROME SOME THINGS BREAKS IN FIREFOX
 
 import React, { useState } from "react";
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 // import { TextField } from 'material-bread'
 
 import { SUBMIT_URL } from "@env";
@@ -181,28 +181,14 @@ const SubmitButton = ({ loading = false }: { loading?: boolean }) => {
 			setLoadingIn(false);
 			console.log("something went wrong ", response);
 			const message = `An error has occured: ${response.status}`;
-
+			if(Platform.OS=='web') alert('Something went wrong while submitting the data')
 			throw new Error(message);
 		}
 		const res = await response.json();
 		setLoadingIn(false);
 		console.log("Returned response : ", res);
-
-		// fetch(SUBMIT_URL, params)
-		// 	.then((res) => res.json())
-		// 	.then((data) => {
-		// 		// alert("data already submitted");
-		// 		console.log("Everything went well ");
-		// 		console.log(data);
-		//         setLoadingIn(false);
-
-		// 	})
-		// 	.catch((err) => {
-		// 		// alert("oops something went wrong please  try again");
-		//         console.log("Something went wrong : ", err);
-		//         setLoadingIn(false);
-
-		// 	});
+		
+		if(Platform.OS=='web') alert('Data already submitted')
 	};
 
 	return (
