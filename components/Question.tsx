@@ -12,7 +12,7 @@ interface SimpleQuestionProps {
 	options?: string[];
 	horizontal?: boolean;
 	radio?: boolean;
-	checked: string;
+	checked?: string;
 	setChecked?: any;
 }
 
@@ -32,7 +32,7 @@ export const SimpleQuestion: React.FC<SimpleQuestionProps> = React.memo(
 	}) => {
 		// const simpleQns = [{ label: 'Male' }, { label: 'Female' }];
 		// const [checked, setChecked] = React.useState('first');
-		const [value, setValue] = React.useState("");
+		// const [value, setValue] = React.useState("");
 		if (radio) {
 			return (
 				<>

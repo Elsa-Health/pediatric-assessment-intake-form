@@ -2,13 +2,13 @@ import React, { Component, useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import _ from "lodash";
 
-export function RadioButton(props: { options: any; setChecked: any }) {
+export function RadioButton({ options, setChecked }: { options: any; setChecked: any }) {
     const [value, setValue] = useState(null)
-    const { options, setChecked } = props;
+
 
     return (
         <>
-            {options.map((res, index) => {
+            {options.map((res: string | ((prevState: null) => null) | null, index: string) => {
                 return (
                     <View key={res + "__" + index} style={styles.container}>
                         <TouchableOpacity

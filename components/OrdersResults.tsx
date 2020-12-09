@@ -624,7 +624,7 @@ export function OrdersResults() {
           <Row>
             <Col>
               <SimpleQuestion
-                options={["Micro & culture"]}
+                options={["Laboratory"]}
                 checked={glucoseTests.laboratory}
                 setChecked={(text) => {
                   // console.log("Hello There ", text);

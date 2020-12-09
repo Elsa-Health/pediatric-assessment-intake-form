@@ -172,23 +172,26 @@ const SubmitButton = ({ loading = false }: { loading?: boolean }) => {
 	};
 
 	const handleSubmit = async () => {
-		console.log("Submitting the data to the server ...");
+		console.log("Submitting the data to the server ...",SUBMIT_URL);
 		// console.log(data);
 		setLoadingIn(true);
+		fetch(SUBMIT_URL, params)
+			.then(res => res.json())
+			.then(res => {
+				setLoadingIn(false);
+				console.log("Returned response : ", res);
 
-		const response = await fetch(SUBMIT_URL, params);
-		if (!response.ok) {
-			setLoadingIn(false);
-			console.log("something went wrong ", response);
-			const message = `An error has occured: ${response.status}`;
-			if(Platform.OS=='web') alert('Something went wrong while submitting the data')
-			throw new Error(message);
-		}
-		const res = await response.json();
-		setLoadingIn(false);
-		console.log("Returned response : ", res);
-		
-		if(Platform.OS=='web') alert('Data already submitted')
+				if (Platform.OS == 'web') alert('Data already submitted')
+			})
+			.catch(err => {
+				setLoadingIn(false);
+				console.log("something went wrong ", err);
+
+				if (Platform.OS == 'web') alert('Something went wrong while submitting the data')
+
+			})
+
+
 	};
 
 	return (
