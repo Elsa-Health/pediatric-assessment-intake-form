@@ -1,10 +1,11 @@
 import React from "react";
 import { Row, CheckBox } from ".";
-import { RadioButton } from "react-native-paper";
+
 import { View, Text } from "react-native";
 import _ from "lodash";
 import { Col } from "./Col";
 import { RadioGroup as NachosRadioGroup } from "nachos-ui";
+import { RadioButton } from './'
 
 interface SimpleQuestionProps {
 	label?: string;
@@ -14,6 +15,11 @@ interface SimpleQuestionProps {
 	checked: string;
 	setChecked?: any;
 }
+
+
+const PROP = [
+	'Heello', 'World'
+];
 
 export const SimpleQuestion: React.FC<SimpleQuestionProps> = React.memo(
 	({
@@ -35,96 +41,22 @@ export const SimpleQuestion: React.FC<SimpleQuestionProps> = React.memo(
 						<Row
 							style={{
 								flexWrap: "wrap",
-								
+								marginBottom: 5
+
 							}}
 						>
-							<NachosRadioGroup
-								onChange={(value) => setChecked(value)}
-								defaultSelected="gr"
-								options={options}
-								style={{ flexDirection: "column" }}
-							/>
-							{/* {options &&
-								options.map((qn, index) => (
-									<View key={`simple-question__${index}`}>
-										<RadioButton
-											value={qn}
-											status={
-												checked === qn
-													? "checked"
-													: "unchecked"
-											}
-											onPress={() => {
-												// console.log("Checked : ", qn);
-												setChecked(qn);
-											}}
-										/>
-										<View
-											style={{
-												alignItems: "center",
-												justifyContent: "center",
-												paddingTop: 0,
-												marginLeft: -3,
-											}}
-										>
-											<Text style={{}}>
-												{qn
-													? _.startCase(
-															_.camelCase(qn)
-													  )
-													: ""}
-											</Text>
-										</View>
-									</View>
-								))} */}
+
+							<RadioButton options={options} setChecked={setChecked} />
+
+
+
 						</Row>
 					) : (
-						<Col style={{ borderWidth: 0,backgroundColor:"yellow", flexWrap: 'wrap' }}>
-							<NachosRadioGroup
-								onChange={(value) => setChecked(value)}
-								defaultSelected="gr"
-								options={options}
-								style={{ flexDirection: "column",backgroundColor:'red', flexWrap: 'wrap' }}
-							/>
+							<Col style={{ borderWidth: 0, flexWrap: "wrap", marginBottom: 5 }}>
+								<RadioButton options={options} setChecked={setChecked} />
 
-							{/* {options &&
-								options.map((qn, index) => (
-									<Row
-										key={`question___${index}`}
-										style={{ alignItems: "center" }}
-									>
-										<RadioButton
-											value={qn}
-											status={
-												checked === qn
-													? "checked"
-													: "unchecked"
-											}
-											onPress={() => {
-												// console.log("Checked : ", qn);
-												setChecked(qn);
-											}}
-										/>
-										<View
-											style={{
-												alignItems: "center",
-												justifyContent: "center",
-												paddingTop: 0,
-												marginLeft: -3,
-											}}
-										>
-											<Text style={{}}>
-												{qn
-													? _.startCase(
-															_.camelCase(qn)
-													  )
-													: ""}
-											</Text>
-										</View>
-									</Row>
-								))} */}
-						</Col>
-					)}
+							</Col>
+						)}
 				</>
 			);
 		}

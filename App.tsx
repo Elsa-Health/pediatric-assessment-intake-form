@@ -18,25 +18,6 @@ import _ from "lodash";
 // importing all the components and states here
 import { Button, H4, Switcher, Radio, ThemeProvider } from "nachos-ui";
 
-class RadioExample extends React.Component {
-	state = { value: null };
-	render() {
-		const radioStyle = { margin: 10 };
-		return (
-			<View>
-				<H4>Example:</H4>
-				{/* <Button>Button</Button> */}
-				<Switcher
-					defaultSelected="bus"
-					onChange={(value) => this.setState({ value })}
-				>
-					<Radio value="car" style={radioStyle} />
-					<Radio value="bus" style={radioStyle} />
-				</Switcher>
-			</View>
-		);
-	}
-}
 
 import {
 	Row,
@@ -60,8 +41,11 @@ import {
 	OrdersResults,
 	FinalDiagnosis,
 	SubmitButton,
+	RadioButton
 	// ChiefComplaints
 } from "./components";
+
+
 
 export default function App() {
 	// const mainStore = useMainStore((state) => state);
@@ -89,6 +73,8 @@ export default function App() {
 							setCheck(el);
 						}}
 					/> */}
+
+					
 
 					<Header />
 					<MainHeader />

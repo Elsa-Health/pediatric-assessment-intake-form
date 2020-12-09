@@ -22,5 +22,6 @@ export * from './FinalDiagnosis'
 export * from './FixTextToCell'
 export * from './RemovePadding'
 export * from './SubmitButton'
+export * from './Radio'
 
 
