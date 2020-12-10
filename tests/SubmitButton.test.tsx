@@ -20,18 +20,18 @@ describe("<SubmitButton/>", () => {
 		// const onPressMock = jest.fn();
 		const { findByTestId } = render(<SubmitButton />);
 
-		const button = findByTestId("submitButton");
+		const button = await findByTestId("submitButton");
 		const buttonLoadingText = "Submitting the data...";
 
-		fireEvent.press(await button);
+		fireEvent.press(button);
 
 		//check if button is loading and is disabled, since they all share the same state value
-		expect((await button).props.children.props.disabled).toBe(true);
+		expect(button.props.children.props.disabled).toBe(true);
 
 		//check if after button click change to expected one
-		expect(
-			(await button).props.children._owner.memoizedProps.children
-		).toBe(buttonLoadingText);
+		expect(button.props.children._owner.memoizedProps.children).toBe(
+			buttonLoadingText
+		);
 		// check if the data is submitted
 
 		// console.log('Button after press')
