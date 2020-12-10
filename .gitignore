@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 node_modules
 .expo
 .env
 .expo/packager-info.json
+=======
+node_modules/*
+.expo/*
+.env
+>>>>>>> 4e9c1734504548d0212ed775357794555f8b62f1

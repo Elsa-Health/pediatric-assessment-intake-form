@@ -19,7 +19,7 @@ export function Col({
           borderRightColor: "#333",
           borderWidth: 0.1,
           paddingHorizontal: 8,
-          paddingVertical: 16,
+          paddingVertical: '1rem',
           justifyContent: "center",
         },
         style,
