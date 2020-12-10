@@ -761,7 +761,7 @@ export function Symptoms() {
           }}
         />
         <BasicSymptomInput
-          // label="Difficulty swallowing"
+          label="Difficulty swallowing"
           onChange={(res) => {
             // console.log("What does : ", res);
             setGI({

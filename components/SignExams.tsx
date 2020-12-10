@@ -47,8 +47,8 @@ export function SignsExam() {
 		(state) => state.setNeurologicalExamination
 	);
 
-	console.log("Debugging the signs and exams: ");
-	console.table(skinExamination);
+	// console.log("Debugging the signs and exams: ");
+	// console.table(neurologicalExamination);
 
 	return (
 		<Table headerTitle="Signs/ Exam">
@@ -709,6 +709,7 @@ please indicate the location in the picture.)"
 							setSkinExamination({ lessionShape: text });
 						}}
 					/>
+					<Spacer size={8}/>
 					<SimpleQuestion
 						options={["Multiple", "Single lesion"]}
 						checked={skinExamination.lessionFrequency}
