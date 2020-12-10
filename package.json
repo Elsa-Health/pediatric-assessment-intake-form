@@ -6,7 +6,8 @@
 		"ios": "expo start --ios",
 		"web": "expo start --web",
 		"eject": "expo eject",
-		"test": "jest --runInBand --detectOpenHandles"
+		"test": "jest ",
+		"build:web":"expo build:web"
 	},
 	"dependencies": {
 		"@eva-design/eva": "^2.0.0",
