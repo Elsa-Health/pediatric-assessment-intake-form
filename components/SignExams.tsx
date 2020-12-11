@@ -47,8 +47,8 @@ export function SignsExam() {
 		(state) => state.setNeurologicalExamination
 	);
 
-	console.log("Debugging the signs and exams: ");
-	console.table(skinExamination);
+	// console.log("Debugging the signs and exams: ");
+	// console.table(abdominalExamination);
 
 	return (
 		<Table headerTitle="Signs/ Exam">
@@ -654,7 +654,14 @@ please indicate the location in the picture.)"
 						}}
 					/>
 					<Spacer size={12} />
-					<Text>Anal examination (e.g.; if pinworms observed):</Text>
+					{/* <Text>:</Text> */}
+					<Input
+						label="Anal examination (e.g.; if pinworms observed)"
+						text={abdominalExamination.analExamination}
+						setText={(text) => {
+							setAbdominalExamination({ analExamination: text });
+						}}
+					/>
 				</Col>
 				<Col>
 					<SimpleQuestion
@@ -663,9 +670,9 @@ please indicate the location in the picture.)"
 							"Lower Left",
 							"Lower Right",
 							"Upper Right",
-            ]}
-            label="Abdomen Section"
-            horizontal={false}
+						]}
+						label="Abdomen Section"
+						horizontal={false}
 						checked={abdominalExamination.abdomenSection}
 						setChecked={(text) => {
 							// console.log("Hello There ", text);
@@ -709,6 +716,7 @@ please indicate the location in the picture.)"
 							setSkinExamination({ lessionShape: text });
 						}}
 					/>
+					<Spacer size={8} />
 					<SimpleQuestion
 						options={["Multiple", "Single lesion"]}
 						checked={skinExamination.lessionFrequency}
