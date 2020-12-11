@@ -55,8 +55,8 @@ export function OrdersResults() {
   const urineTests = useUrineTests((state) => state);
   const setUrineTests = useUrineTests((state) => state.setUrineTests);
 
-  // console.log("Debugging the data on orders and results : ");
-  // console.table(urineTests);
+  console.log("Debugging the data on orders and results : ");
+  console.table(urineTests);
 
   return (
     <Table headerTitle="Investigations Ordered and Results">
@@ -127,7 +127,7 @@ export function OrdersResults() {
                 options={["Lumbar puncture"]}
                 checked={microbiologyTests.lumberPuncture}
                 setChecked={(text) => {
-                  // console.log("Hello There ", text);
+                  console.log("Lumber puncture ", text);
                   // setGeneral({ fever: text, ...general });
 
                   // we can set custom values here

@@ -1,6 +1,6 @@
 import create from "zustand";
 
-export const useGeneralSymptoms = create((set) => ({
+export const initialGeneralSymptoms = {
   fever: "",
   feverDays: "",
   chills: "",
@@ -9,6 +9,9 @@ export const useGeneralSymptoms = create((set) => ({
   awerenessOfHearbeatDays: "",
   skinLession: "",
   skinLessionDays: "",
+}
+export const useGeneralSymptoms = create((set) => ({
+  ...initialGeneralSymptoms,
 
   changeFever: (fever) => set((state) => ({ fever: fever })),
   setFeverDays: (days) => set((state) => ({ feverDays: days })),
@@ -20,12 +23,12 @@ export const useGeneralSymptoms = create((set) => ({
   setGeneralState: (data) => set((state) => ({ ...state, ...data })),
 }));
 
-export const useRespiratory = create((set) => ({
-  caugh: "",
-  caughDays: "",
-  caughNature: "",
-  caughSpatum: "",
-  caughTime: "",
+export const initialRespiratorySymptoms = {
+  cough: "",
+  coughDays: "",
+  coughNature: "",
+  coughSpatum: "",
+  coughTime: "",
   rhinorrhea: "",
   rhinorrheaDays: "",
   lossOfSmell: "",
@@ -51,12 +54,15 @@ export const useRespiratory = create((set) => ({
   chestTightnessDays: "",
   chestPain: "",
   chestPainDays: "",
+}
+export const useRespiratory = create((set) => ({
+  ...initialRespiratorySymptoms,
 
   //thos is to update all data state
   setRespiratory: (data) => set((state) => ({ ...state, ...data })),
 }));
 
-export const useGI = create((set) => ({
+export const initialGISymtoms = {
   vomiting: "",
   vomitingDays: "",
   vomitingType: "",
@@ -95,12 +101,14 @@ export const useGI = create((set) => ({
   frequencyOfUrination: "",
   frequencyOfUrinationTimesDay: "",
   frequencyOfUrinationDays: "",
-
+}
+export const useGI = create((set) => ({
+  ...initialGISymtoms,
   //thos is to update all data state
   setGI: (data) => set((state) => ({ ...state, ...data })),
 }));
 
-export const useCNS = create((set) => ({
+export const initilCNSSymtoms = {
   headache: "",
   headacheDays: "",
 
@@ -119,10 +127,13 @@ export const useCNS = create((set) => ({
   highlyPitchedCrying: "",
   highlyPitchedCryingDays: "",
 
+}
+export const useCNS = create((set) => ({
+  ...initilCNSSymtoms,
   setCNS: (data) => set((state) => ({ ...state, ...data })),
 }));
 
-export const useMusculoskeletal = create((set) => ({
+export const initialMusculoskeletal = {
   myalgia: "",
   myalgiaDays: "",
 
@@ -132,10 +143,13 @@ export const useMusculoskeletal = create((set) => ({
   fatique: "",
   fatiqueDays: "",
 
+}
+export const useMusculoskeletal = create((set) => ({
+  ...initialMusculoskeletal,
   setMusculoskeletal: (data) => set((state) => ({ ...state, ...data })),
 }));
 
-export const useEarsAndEyes = create((set) => ({
+export const initialEarsAndEyes = {
   redEyes: "",
   redEyesDays: "",
 
@@ -153,11 +167,14 @@ export const useEarsAndEyes = create((set) => ({
 
   sunkenEyes: "",
   sunkenEyesDays: "",
+}
+export const useEarsAndEyes = create((set) => ({
 
+  ...initialEarsAndEyes,
   setEarsAndEyes: (data) => set((state) => ({ ...state, ...data })),
 }));
 
-export const useMouth = create((set) => ({
+export const initialMouth = {
   dryness: "",
   drynessDays: "",
 
@@ -170,6 +187,9 @@ export const useMouth = create((set) => ({
   ulcerationsAround: "",
   ulcerationsAroundDays: "",
 
+}
+export const useMouth = create((set) => ({
+  ...initialMouth,
   setMouth: (data) => set((state) => ({ ...state, ...data })),
 }));
 

@@ -5,11 +5,13 @@ import _ from "lodash";
 export function RadioButton({
 	options,
 	setChecked,
+	checked
 }: {
 	options: any;
 	setChecked: any;
+	checked?: any
 }) {
-	const [value, setValue] = useState(null);
+	// const [value, setValue] = useState(null);
 
 	return (
 		<>
@@ -21,14 +23,14 @@ export function RadioButton({
 					return (
 						<View key={res + "__" + index} style={styles.container}>
 							<TouchableOpacity
-                                style={{flexDirection:'row'}}
+								style={{ flexDirection: 'row' }}
 								onPress={() => {
-									setValue(res);
+									// setValue(res);
 									setChecked(res);
 								}}
 							>
 								<View style={styles.radioCircle}>
-									{value === res && (
+									{checked === res && (
 										<View style={styles.selectedRb} />
 									)}
 								</View>

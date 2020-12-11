@@ -46,14 +46,14 @@ export const SimpleQuestion: React.FC<SimpleQuestionProps> = React.memo(
 							}}
 						>
 
-							<RadioButton options={options} setChecked={setChecked} />
+							<RadioButton options={options} setChecked={setChecked} checked={checked}/>
 
 
 
 						</Row>
 					) : (
 							<Col style={{ borderWidth: 0, flexWrap: "wrap", marginBottom: 5 }}>
-								<RadioButton options={options} setChecked={setChecked} />
+								<RadioButton options={options} setChecked={setChecked} checked={checked}/>
 
 							</Col>
 						)}

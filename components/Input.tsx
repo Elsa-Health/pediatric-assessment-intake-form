@@ -1,7 +1,7 @@
 import React from "react";
 import { TextInput } from "react-native-paper";
 import { TextInputProps } from "react-native-paper/lib/typescript/src/components/TextInput/TextInput";
-
+import _ from 'lodash'
 interface InputProps extends TextInputProps {
 	label?: string;
 	placeholder?: string | undefined;

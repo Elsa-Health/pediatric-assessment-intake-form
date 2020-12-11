@@ -200,9 +200,9 @@ export function Symptoms() {
         <Col>
           <SimpleQuestion
             options={["yes", "no"]}
-            checked={respiratory.caugh}
+            checked={respiratory.cough}
             setChecked={(text) => {
-              setRespiratory({ caugh: text });
+              setRespiratory({ cough: text });
             }}
           />
         </Col>
@@ -211,9 +211,9 @@ export function Symptoms() {
             <Input
               label="Days"
               placeholder="Days"
-              text={respiratory.caughDays}
+              text={respiratory.coughDays}
               setText={(text) => {
-                setRespiratory({ caughDays: text });
+                setRespiratory({ coughDays: text });
               }}
             />
           </FitTextToCell>
@@ -223,9 +223,9 @@ export function Symptoms() {
           <Row>
             <SimpleQuestion
               options={["Wet", "Dry"]}
-              checked={respiratory.caughNature}
+              checked={respiratory.coughNature}
               setChecked={(text) => {
-                setRespiratory({ caughNature: text });
+                setRespiratory({ coughNature: text });
               }}
             />
           </Row>
@@ -234,9 +234,9 @@ export function Symptoms() {
           <Row>
             <SimpleQuestion
               options={["Red", "green", "white", "clear"]}
-              checked={respiratory.caughSpatum}
+              checked={respiratory.coughSpatum}
               setChecked={(text) => {
-                setRespiratory({ caughSpatum: text });
+                setRespiratory({ coughSpatum: text });
               }}
             />
           </Row>
@@ -245,9 +245,9 @@ export function Symptoms() {
           <Row>
             <SimpleQuestion
               options={["morning", "night", "whole day", "clear"]}
-              checked={respiratory.caughTime}
+              checked={respiratory.coughTime}
               setChecked={(text) => {
-                setRespiratory({ caughTime: text });
+                setRespiratory({ coughTime: text });
               }}
             />
           </Row>
