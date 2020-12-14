@@ -7,7 +7,7 @@ export function objectLowercaseValues(obj) {
     }
     var keys = Object.keys(obj);
     var result = {};
-    keys.map(function(k, v) {
+    keys.map(function (k, v) {
         if (typeof k === 'string') {
             if (typeof obj[k] === 'string') {
                 result[k.toLowerCase()] = obj[k].toLowerCase();
