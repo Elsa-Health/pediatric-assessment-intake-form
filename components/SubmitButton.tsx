@@ -48,7 +48,13 @@ import {
 import { Button } from "react-native-paper";
 import { useHeaderInformation } from "../store/headerInformation";
 
-const SubmitButton = ({ loading = false }: { loading?: boolean }) => {
+const SubmitButton = ({
+	loading = false,
+	user,
+}: {
+	loading?: boolean;
+	user: { email: string | null; uid: string | null };
+}) => {
 	// const mainStore = useMainStore((state) => state);
 
 	// console.log("Main store : ", mainStore);
@@ -161,6 +167,7 @@ const SubmitButton = ({ loading = false }: { loading?: boolean }) => {
 			urine: { ...urineTests },
 		},
 		finalDiagnosis: { ...finalDiagnosis },
+		dataClerk: { ...user },
 	};
 
 	const params = {
@@ -172,26 +179,27 @@ const SubmitButton = ({ loading = false }: { loading?: boolean }) => {
 	};
 
 	const handleSubmit = async () => {
-		console.log("Submitting the data to the server ...",SUBMIT_URL);
+		if (!window.confirm("Are you sure you want to submit?")) {
+			return;
+		}
+		console.log("Submitting the data to the server ...", SUBMIT_URL);
 		// console.log(data);
 		setLoadingIn(true);
 		fetch(SUBMIT_URL, params)
-			.then(res => res.json())
-			.then(res => {
+			.then((res) => res.json())
+			.then((res) => {
 				setLoadingIn(false);
 				console.log("Returned response : ", res);
 
-				if (Platform.OS == 'web') alert('Data already submitted')
+				if (Platform.OS == "web") alert("Data already submitted");
 			})
-			.catch(err => {
+			.catch((err) => {
 				setLoadingIn(false);
 				console.log("something went wrong ", err);
 
-				if (Platform.OS == 'web') alert('Something went wrong while submitting the data')
-
-			})
-
-
+				if (Platform.OS == "web")
+					alert("Something went wrong while submitting the data");
+			});
 	};
 
 	return (

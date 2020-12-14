@@ -18,7 +18,6 @@ import _ from "lodash";
 // importing all the components and states here
 import { Button, H4, Switcher, Radio, ThemeProvider } from "nachos-ui";
 
-
 import {
 	Row,
 	Col,
@@ -41,11 +40,14 @@ import {
 	OrdersResults,
 	FinalDiagnosis,
 	SubmitButton,
-	RadioButton
+	RadioButton,
 	// ChiefComplaints
 } from "./components";
 
-
+interface User {
+	email: string | null;
+	uid: string | null;
+}
 
 export default function App() {
 	// const mainStore = useMainStore((state) => state);
@@ -53,6 +55,34 @@ export default function App() {
 	// console.log("ROOT APP URL ", SUBMIT_URL);
 	// console.log(TestRenderer.create(<Symptoms/>).toJSON());
 	const [check, setCheck] = useState("");
+	const [user, setUser] = useState<User>({
+		email: null,
+		uid: null,
+	});
+
+	React.useEffect(() => {
+		if (window.location !== window.parent.location) {
+			// The page is in an iframe
+			window.addEventListener(
+				"message",
+				(event) => {
+					const { message, value } = event.data;
+					if (message === "userData") {
+						setUser({
+							email: value?.email || null,
+							uid: value?.uid || null,
+						});
+					}
+				},
+				false
+			);
+		} else {
+			// The page is not in an iframe
+			// Add mechanism to get the user information
+		}
+	}),
+		[];
+
 	return (
 		<ThemeProvider>
 			<View style={{ backgroundColor: "#DEDFE4", paddingVertical: 36 }}>
@@ -74,8 +104,6 @@ export default function App() {
 						}}
 					/> */}
 
-					
-
 					<Header />
 					<MainHeader />
 					<PatientInformation />
@@ -94,7 +122,7 @@ export default function App() {
 					<Spacer size={23} />
 					<FinalDiagnosis />
 					<Spacer size={23} />
-					<SubmitButton />
+					<SubmitButton user={user} />
 				</View>
 			</View>
 		</ThemeProvider>
