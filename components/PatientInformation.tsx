@@ -11,7 +11,8 @@ export function PatientInformation() {
     (state) => state.setPatientInformation
   );
 
-  // console.log("Patient info 1:  ", patientInfo);
+  // console.log("Patient info 1:  ");
+  // console.table(patientInfo)
   return (
     <Table headerTitle="Patient Information">
       <Row>

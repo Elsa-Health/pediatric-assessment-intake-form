@@ -10,8 +10,8 @@ export function FinalDiagnosis() {
     (state) => state.setFinalDiagnosis
   );
 
-  console.log("Debugging the final diagnosis : ")
-  console.table(finalDiagnosis)
+  // console.log("Debugging the final diagnosis : ")
+  // console.table(finalDiagnosis)
 
   
   return (
