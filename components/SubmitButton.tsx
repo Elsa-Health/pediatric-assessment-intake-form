@@ -360,7 +360,7 @@ const SubmitButton = ({
 			.catch((err) => {
 				setLoadingIn(false);
 				// console.log("something went wrong ", err);
-				setHeader;
+				// setHeader;
 				if (Platform.OS == "web")
 					alert("Something went wrong while submitting the data");
 			});
