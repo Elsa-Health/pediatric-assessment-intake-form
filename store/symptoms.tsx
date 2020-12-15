@@ -1,200 +1,201 @@
 import create from "zustand";
 
 export const initialGeneralSymptoms = {
-  fever: "",
-  feverDays: "",
-  chills: "",
-  chillsDays: "",
-  awerenessOfHearbeat: "",
-  awerenessOfHearbeatDays: "",
-  skinLession: "",
-  skinLessionDays: "",
-}
+	fever: "",
+	feverDays: "",
+	chills: "",
+	chillsDays: "",
+	awerenessOfHearbeat: "",
+	awerenessOfHearbeatDays: "",
+	skinLession: "",
+	skinLessionDays: "",
+};
 export const useGeneralSymptoms = create((set) => ({
-  ...initialGeneralSymptoms,
+	...initialGeneralSymptoms,
 
-  changeFever: (fever) => set((state) => ({ fever: fever })),
-  setFeverDays: (days) => set((state) => ({ feverDays: days })),
+	changeFever: (fever) => set((state) => ({ fever: fever })),
+	setFeverDays: (days) => set((state) => ({ feverDays: days })),
 
-  setChills: (chills) => set((state) => ({ chills: chills })),
-  setChillsDays: (days) => set((state) => ({ chillsDays: days })),
+	setChills: (chills) => set((state) => ({ chills: chills })),
+	setChillsDays: (days) => set((state) => ({ chillsDays: days })),
 
-  //thos is to update all data state
-  setGeneralState: (data) => set((state) => ({ ...state, ...data })),
+	//thos is to update all data state
+	setGeneralState: (data) => set((state) => ({ ...state, ...data })),
 }));
 
 export const initialRespiratorySymptoms = {
-  cough: "",
-  coughDays: "",
-  coughNature: "",
-  coughSpatum: "",
-  coughTime: "",
-  rhinorrhea: "",
-  rhinorrheaDays: "",
-  lossOfSmell: "",
-  lossOfSmellDays: "",
-  lossOfVoice: "",
-  lossOfVoiceDays: "",
+	cough: "",
+	coughDays: "",
+	coughNature: "",
+	coughSpatum: "",
+	coughTime: "",
+	rhinorrhea: "",
+	rhinorrheaDays: "",
+	lossOfSmell: "",
+	lossOfSmellDays: "",
+	lossOfVoice: "",
+	lossOfVoiceDays: "",
 
-  facialPain: "",
-  facialPainDays: "",
-  nasalCongestion: "",
-  nasalCongestionDays: "",
+	facialPain: "",
+	facialPainDays: "",
+	nasalCongestion: "",
+	nasalCongestionDays: "",
 
-  dentalPain: "",
-  dentalPainDays: "",
+	dentalPain: "",
+	dentalPainDays: "",
 
-  changeInVoice: "",
-  changeInVoiceDays: "",
-  sneezing: "",
-  sneezingDays: "",
-  badBreath: "",
-  badBreathDays: "",
-  chestTightness: "",
-  chestTightnessDays: "",
-  chestPain: "",
-  chestPainDays: "",
-}
+	changeInVoice: "",
+	changeInVoiceDays: "",
+	sneezing: "",
+	sneezingDays: "",
+	badBreath: "",
+	badBreathDays: "",
+	chestTightness: "",
+	chestTightnessDays: "",
+	chestPain: "",
+	chestPainDays: "",
+};
 export const useRespiratory = create((set) => ({
-  ...initialRespiratorySymptoms,
+	...initialRespiratorySymptoms,
 
-  //thos is to update all data state
-  setRespiratory: (data) => set((state) => ({ ...state, ...data })),
+	//thos is to update all data state
+	setRespiratory: (data) => set((state) => ({ ...state, ...data })),
 }));
 
 export const initialGISymtoms = {
-  vomiting: "",
-  vomitingDays: "",
-  vomitingType: "",
+	vomiting: "",
+	vomitingDays: "",
+	vomitingType: "",
 
-  diarrhoea: "",
-  diarrhoeaDays: "",
-  diarrhoeaTimesDay: "",
-  diarrhoeaType: "",
-  isDiarrhoesBloody: "",
-  anyTenesmus: "",
+	diarrhoea: "",
+	diarrhoeaDays: "",
+	diarrhoeaTimesDay: "",
+	diarrhoeaType: "",
+	isDiarrhoesBloody: "",
+	anyTenesmus: "",
 
-  abnominalPain: "",
-  abnominalPainDays: "",
-  abnominalPainLocation: "",
+	abnominalPain: "",
+	abnominalPainDays: "",
+	abnominalPainLocation: "",
 
-  //this varibale to be renamed
+	//this varibale to be renamed
 
-  abnominalPainEpigastric: "",
-  abnominalPainIsRadiating: "",
+	abnominalPainEpigastric: "",
+	abnominalPainIsRadiating: "",
 
-  abdominalCramps: "",
-  abdominalCrampsDays: "",
+	abdominalCramps: "",
+	abdominalCrampsDays: "",
 
-  lackOfAppetite: "",
-  lackOfAppetiteDays: "",
+	lackOfAppetite: "",
+	lackOfAppetiteDays: "",
 
-  weightLoss: "",
-  weightLossDays: "",
+	weightLoss: "",
+	weightLossDays: "",
 
-  difficultySwallowing: "",
-  difficultySwallowingDays: "",
+	difficultySwallowing: "",
+	difficultySwallowingDays: "",
 
-  painInUrination: "",
-  painInUrinationDays: "",
+	painInUrination: "",
+	painInUrinationDays: "",
 
-  frequencyOfUrination: "",
-  frequencyOfUrinationTimesDay: "",
-  frequencyOfUrinationDays: "",
-}
+	frequencyOfUrination: "",
+	frequencyOfUrinationTimesDay: "",
+	frequencyOfUrinationDays: "",
+};
 export const useGI = create((set) => ({
-  ...initialGISymtoms,
-  //thos is to update all data state
-  setGI: (data) => set((state) => ({ ...state, ...data })),
+	...initialGISymtoms,
+	//thos is to update all data state
+	setGI: (data) => set((state) => ({ ...state, ...data })),
 }));
 
 export const initilCNSSymtoms = {
-  headache: "",
-  headacheDays: "",
+	headache: "",
+	headacheDays: "",
 
-  coma: "",
-  comaDays: "",
+	coma: "",
+	comaDays: "",
 
-  hypothermia: "",
-  hypothermiaDays: "",
+	hypothermia: "",
+	hypothermiaDays: "",
 
-  seizures: "",
-  seizuresDays: "",
+	seizures: "",
+	seizuresDays: "",
 
-  neckPain: "",
-  neckPainDays: "",
+	neckPain: "",
+	neckPainDays: "",
 
-  highlyPitchedCrying: "",
-  highlyPitchedCryingDays: "",
-
-}
+	highlyPitchedCrying: "",
+	highlyPitchedCryingDays: "",
+};
 export const useCNS = create((set) => ({
-  ...initilCNSSymtoms,
-  setCNS: (data) => set((state) => ({ ...state, ...data })),
+	...initilCNSSymtoms,
+	setCNS: (data) => set((state) => ({ ...state, ...data })),
 }));
 
 export const initialMusculoskeletal = {
-  myalgia: "",
-  myalgiaDays: "",
+	myalgia: "",
+	myalgiaDays: "",
 
-  historyOfTrauma: "",
-  historyOfTraumaDays: "",
+	historyOfTrauma: "",
+	historyOfTraumaDays: "",
 
-  fatique: "",
-  fatiqueDays: "",
-
-}
+	fatique: "",
+	fatiqueDays: "",
+};
 export const useMusculoskeletal = create((set) => ({
-  ...initialMusculoskeletal,
-  setMusculoskeletal: (data) => set((state) => ({ ...state, ...data })),
+	...initialMusculoskeletal,
+	setMusculoskeletal: (data) => set((state) => ({ ...state, ...data })),
 }));
 
 export const initialEarsAndEyes = {
-  redEyes: "",
-  redEyesDays: "",
+	redEyes: "",
+	redEyesDays: "",
 
-  painfulEyes: "",
-  painfulEyesDays: "",
+	painfulEyes: "",
+	painfulEyesDays: "",
 
-  earPain: "",
-  earPainDays: "",
+	earPain: "",
+	earPainDays: "",
 
-  eyeDischarge: "",
-  eyeDischargeDays: "",
+	eyeDischarge: "",
+	eyeDischargeDays: "",
 
-  earDischarge: "",
-  earDischargeDays: "",
+	earDischarge: "",
+	earDischargeDays: "",
 
-  sunkenEyes: "",
-  sunkenEyesDays: "",
-}
+	sunkenEyes: "",
+	sunkenEyesDays: "",
+};
 export const useEarsAndEyes = create((set) => ({
-
-  ...initialEarsAndEyes,
-  setEarsAndEyes: (data) => set((state) => ({ ...state, ...data })),
+	...initialEarsAndEyes,
+	setEarsAndEyes: (data) => set((state) => ({ ...state, ...data })),
 }));
 
 export const initialMouth = {
-  dryness: "",
-  drynessDays: "",
+	dryness: "",
+	drynessDays: "",
 
-  cottonFeeling: "",
-  cottonFeelingDays: "",
+	cottonFeeling: "",
+	cottonFeelingDays: "",
 
-  ulcerationsInside: "",
-  ulcerationsInsideDays: "",
+	ulcerationsInside: "",
+	ulcerationsInsideDays: "",
 
-  ulcerationsAround: "",
-  ulcerationsAroundDays: "",
-
-}
+	ulcerationsAround: "",
+	ulcerationsAroundDays: "",
+};
 export const useMouth = create((set) => ({
-  ...initialMouth,
-  setMouth: (data) => set((state) => ({ ...state, ...data })),
+	...initialMouth,
+	setMouth: (data) => set((state) => ({ ...state, ...data })),
 }));
 
 export const useNeonatal = create((set) => ({
-  inabilityToBreastFeed: "",
+	inabilityToBreastFeed: "",
 
-  setNeonatal: (data) => set((state) => ({ ...state, ...data })),
+	setNeonatal: (data) => set((state) => ({ ...state, ...data })),
+}));
+
+export const useOthers = create((set) => ({
+	others: "",
+	setOthers: (data) => set((state) => ({ ...state, ...data })),
 }));

@@ -71,6 +71,7 @@ import {
 	initialHivTests,
 	initialUrineTests,
 	initialDifferentials,
+	useOthers,
 } from "../store";
 
 import { Button } from "react-native-paper";
@@ -115,6 +116,8 @@ const SubmitButton = ({
 	const { setMouth, ...mouth } = useMouth((state) => state);
 
 	const { setNeonatal, ...neonatal } = useNeonatal((state) => state);
+
+	const { setOthers, ...others } = useOthers((state) => state);
 
 	//additional patient information stores
 	const { setBirthHistory, ...birthHistory } = useBirthHistory(
@@ -216,6 +219,7 @@ const SubmitButton = ({
 			eyesAndEars: { ...eyesAndEars },
 			mouth: { ...mouth },
 			neontal: { ...neonatal },
+			...others,
 		},
 		additionalPatientInfomation: {
 			birthHistory: { ...birthHistory },
@@ -248,7 +252,7 @@ const SubmitButton = ({
 		},
 		finalDiagnosis: { ...finalDiagnosis },
 		dataClerk: { ...user },
-		addedTime:Date.now()
+		addedTime: Date.now(),
 	};
 
 	const toLowerCase = (obj) => {
@@ -304,6 +308,8 @@ const SubmitButton = ({
 		setMouth(initialMouth);
 		setNeonatal({ inabilityToBreastFeed: "" });
 
+		setOthers({others:''})
+
 		// clearing additiona patient info
 		setBirthHistory(initialBirthHistory);
 		setNutritionalHistory(initialNutritionalHistroy);
@@ -334,6 +340,7 @@ const SubmitButton = ({
 
 		//clearing final diagnosis
 		setFinalDiagnosis({ finalDiagnosisText: "" });
+		
 	};
 
 	const handleSubmit = async () => {
@@ -341,28 +348,28 @@ const SubmitButton = ({
 			return;
 		}
 		console.log("Submitting the data to the server ...", DEVELOPMENT_URL);
-		// console.log(data);
-		setLoadingIn(true);
-		fetch(DEVELOPMENT_URL, params)
-			.then((res) => res.json())
-			.then((res) => {
-				setLoadingIn(false);
-				// console.log("Returned response : ", res);
+		console.log(data);
+		// setLoadingIn(true);
+		// fetch(DEVELOPMENT_URL, params)
+		// 	.then((res) => res.json())
+		// 	.then((res) => {
+		// 		setLoadingIn(false);
+		// 		// console.log("Returned response : ", res);
 
-				clearStores();
+		// 		clearStores();
 
-				if (Platform.OS == "web") {
-					alert("Data already submitted");
-					window.scrollTo({ top: 0, behavior: "smooth" });
-				}
-			})
-			.catch((err) => {
-				setLoadingIn(false);
-				// console.log("something went wrong ", err);
-				// setHeader;
-				if (Platform.OS == "web")
-					alert("Something went wrong while submitting the data");
-			});
+		// 		if (Platform.OS == "web") {
+		// 			alert("Data already submitted");
+		// 			window.scrollTo({ top: 0, behavior: "smooth" });
+		// 		}
+		// 	})
+		// 	.catch((err) => {
+		// 		setLoadingIn(false);
+		// 		// console.log("something went wrong ", err);
+		// 		// setHeader;
+		// 		if (Platform.OS == "web")
+		// 			alert("Something went wrong while submitting the data");
+		// 	});
 	};
 
 	return (
