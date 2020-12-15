@@ -336,13 +336,11 @@ const SubmitButton = ({
 	};
 
 	const handleSubmit = async () => {
-		// TESTING_SUBMIT_URL
-		// PRODUCTION_SUBMIT_URL
-		// console.log("Submitting the data to the server ...", PRODUCTION_SUBMIT_URL);
-
-		// console.log('lower case data')
-		// console.log();
-
+		if (!window.confirm("Are you sure you want to submit?")) {
+			return;
+		}
+		console.log("Submitting the data to the server ...", DEVELOPMENT_URL);
+		// console.log(data);
 		setLoadingIn(true);
 		fetch(DEVELOPMENT_URL, params)
 			.then((res) => res.json())
