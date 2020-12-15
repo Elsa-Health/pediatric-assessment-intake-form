@@ -347,29 +347,29 @@ const SubmitButton = ({
 		if (!window.confirm("Are you sure you want to submit?")) {
 			return;
 		}
-		console.log("Submitting the data to the server ...", DEVELOPMENT_URL);
-		console.log(data);
-		// setLoadingIn(true);
-		// fetch(DEVELOPMENT_URL, params)
-		// 	.then((res) => res.json())
-		// 	.then((res) => {
-		// 		setLoadingIn(false);
-		// 		// console.log("Returned response : ", res);
+		// console.log("Submitting the data to the server ...", DEVELOPMENT_URL);
+		// console.log(data);
+		setLoadingIn(true);
+		fetch(DEVELOPMENT_URL, params)
+			.then((res) => res.json())
+			.then((res) => {
+				setLoadingIn(false);
+				// console.log("Returned response : ", res);
 
-		// 		clearStores();
+				clearStores();
 
-		// 		if (Platform.OS == "web") {
-		// 			alert("Data already submitted");
-		// 			window.scrollTo({ top: 0, behavior: "smooth" });
-		// 		}
-		// 	})
-		// 	.catch((err) => {
-		// 		setLoadingIn(false);
-		// 		// console.log("something went wrong ", err);
-		// 		// setHeader;
-		// 		if (Platform.OS == "web")
-		// 			alert("Something went wrong while submitting the data");
-		// 	});
+				if (Platform.OS == "web") {
+					alert("Data already submitted");
+					window.scrollTo({ top: 0, behavior: "smooth" });
+				}
+			})
+			.catch((err) => {
+				setLoadingIn(false);
+				// console.log("something went wrong ", err);
+				// setHeader;
+				if (Platform.OS == "web")
+					alert("Something went wrong while submitting the data");
+			});
 	};
 
 	return (

@@ -67,8 +67,8 @@ export function Symptoms() {
 
 	//others symotoms
 	const { setOthers, ...others } = useOthers((state) => state);
-	console.log("The inspected data below");
-	console.table(others);
+	// console.log("The inspected data below");
+	// console.table(others);
 
 	return (
 		<Table headerTitle="Symptoms">
