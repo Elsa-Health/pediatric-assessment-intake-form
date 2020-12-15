@@ -248,6 +248,7 @@ const SubmitButton = ({
 		},
 		finalDiagnosis: { ...finalDiagnosis },
 		dataClerk: { ...user },
+		addedTime:Date.now()
 	};
 
 	const toLowerCase = (obj) => {
