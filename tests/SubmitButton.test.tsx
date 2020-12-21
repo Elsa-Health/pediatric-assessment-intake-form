@@ -16,28 +16,31 @@ describe("<SubmitButton/>", () => {
 		expect(button).not.toBeNull(); //checking the button if is not null
 	});
 
-	test("Button text change when button is pressed", async () => {
-		// const onPressMock = jest.fn();
-		const { findByTestId } = render(<SubmitButton />);
+	// FIXME: @george - this should not be tested until we refactor becuse we are going to make a request outwards
+	// We need to mock the submit function
 
-		const button = await findByTestId("submitButton");
-		const buttonLoadingText = "Submitting the data...";
+	// test("Button text change when button is pressed", async () => {
+	// 	// const onPressMock = jest.fn();
+	// 	const { findByTestId } = render(<SubmitButton />);
 
-		fireEvent.press(button);
+	// 	const button = await findByTestId("submitButton");
+	// 	const buttonLoadingText = "Submitting the data...";
 
-		//check if button is loading and is disabled, since they all share the same state value
-		expect(button.props.children.props.disabled).toBe(true);
+	// 	fireEvent.press(button);
 
-		//check if after button click change to expected one
-		expect(button.props.children._owner.memoizedProps.children).toBe(
-			buttonLoadingText
-		);
-		// check if the data is submitted
+	// 	//check if button is loading and is disabled, since they all share the same state value
+	// 	// expect(button.props.children.props.disabled).toBe(true);
 
-		// console.log('Button after press')
-		// console.log((await button).props.children._owner.memoizedProps.children,{depth:10})
-		// await waitFor(async() => expect(await findByText('Submitting the data...')).toBeTruthy())
+	// 	//check if after button click change to expected one
+	// 	expect(button.props.children._owner.memoizedProps.children).toBe(
+	// 		buttonLoadingText
+	// 	);
+	// 	// check if the data is submitted
 
-		// expect(button).not.toBeNull()  //checking the button if is not null
-	});
+	// 	// console.log('Button after press')
+	// 	// console.log((await button).props.children._owner.memoizedProps.children,{depth:10})
+	// 	// await waitFor(async() => expect(await findByText('Submitting the data...')).toBeTruthy())
+
+	// 	// expect(button).not.toBeNull()  //checking the button if is not null
+	// });
 });

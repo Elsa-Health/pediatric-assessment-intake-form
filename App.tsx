@@ -1,9 +1,8 @@
 // THIS APP WORKS BEST IN GOOGLE CHROME SOME THINGS BREAKS IN FIREFOX
 
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, Platform } from "react-native";
 // import { TextField } from 'material-bread'
-
 
 import _ from "lodash";
 
@@ -59,7 +58,10 @@ export default function App() {
 	});
 
 	React.useEffect(() => {
-		if (window.location !== window.parent.location) {
+		if (
+			Platform.OS === "web" &&
+			window.location !== window.parent.location
+		) {
 			// The page is in an iframe
 			window.addEventListener(
 				"message",

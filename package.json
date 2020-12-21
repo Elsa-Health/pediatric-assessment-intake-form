@@ -7,7 +7,7 @@
 		"web": "expo start --web",
 		"eject": "expo eject",
 		"test": "jest ",
-		"build:web":"expo build:web"
+		"build:web": "expo build:web"
 	},
 	"dependencies": {
 		"@eva-design/eva": "^2.0.0",
@@ -32,6 +32,8 @@
 	},
 	"devDependencies": {
 		"@babel/core": "~7.9.0",
+		"@testing-library/dom": "^7.29.0",
+		"@testing-library/jest-dom": "^5.11.6",
 		"@testing-library/jest-native": "^3.4.3",
 		"@testing-library/react-native": "^7.1.0",
 		"@types/jest": "^26.0.15",
@@ -39,7 +41,10 @@
 		"@types/react-dom": "~16.9.8",
 		"@types/react-native": "~0.63.2",
 		"@types/react-test-renderer": "^17.0.0",
+		"babel-jest": "^26.6.3",
 		"expo-cli": "^4.0.13",
+		"identity-obj-proxy": "^3.0.0",
+		"jest-dom": "^4.0.0",
 		"jest-expo": "^39.0.0",
 		"react-test-renderer": "^17.0.1",
 		"typescript": "~3.9.5"
@@ -48,6 +53,18 @@
 		"preset": "jest-expo",
 		"transformIgnorePatterns": [
 			"node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+		],
+		"collectCoverage": true,
+		"collectCoverageFrom": [
+			"**/*.{js,jsx,ts,tsx}",
+			"!**/coverage/**",
+			"!**/.vercel/**",
+			"!**/.github/**",
+			"!**/web-build/**",
+			"!**/test-coverage/**",
+			"!**/node_modules/**",
+			"!**/babel.config.js",
+			"!**/jest.setup.js"
 		]
 	},
 	"private": false
