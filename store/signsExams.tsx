@@ -37,7 +37,8 @@ export const initialGeneralExamination = {
 	skinPinchTest: "",
 	lowerLimbEdema: "",
 	ifLowerLimbeEdemaYes: "",
-	lymphNodes: "",
+  lymphNodes: "",
+  palpableRightLeftGroupOf:""
 };
 export const useGeneralExamination = create((set) => ({
 	...initialGeneralExamination,
@@ -81,14 +82,14 @@ export const initialSkinExamination = {
 	lessionShape: "",
 	lessionFrequency: "", //name picked up randomly
 
-	type: "",
+	type: [],
 	typeOther: "",
 
 	margins: "",
 
 	skinUnamedQuestion: "", //refer to form skin type box, then the right box has the checkboxes with no labels
 
-	feature: "",
+	feature: [],
 	featureColor: "",
 
 	houseHoldWithSimilarProblem: "",
@@ -114,7 +115,7 @@ export const initialneurologicalExamination = {
 
 	neckRigidigty: "",
 
-	neonate: "",
+	neonate: [],
 	motorFlexion: "",
 
 	gait: "",

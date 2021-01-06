@@ -65,12 +65,12 @@ export const useRespiratory = create((set) => ({
 export const initialGISymtoms = {
 	vomiting: "",
 	vomitingDays: "",
-	vomitingType: "",
+	vomitingType: [],
 
 	diarrhoea: "",
 	diarrhoeaDays: "",
 	diarrhoeaTimesDay: "",
-	diarrhoeaType: "",
+	diarrhoeaType: [],
 	isDiarrhoesBloody: "",
 	anyTenesmus: "",
 
@@ -80,7 +80,7 @@ export const initialGISymtoms = {
 
 	//this varibale to be renamed
 
-	abnominalPainEpigastric: "",
+	abnominalPainEpigastric: [],
 	abnominalPainIsRadiating: "",
 
 	abdominalCramps: "",

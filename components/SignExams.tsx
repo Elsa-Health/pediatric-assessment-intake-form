@@ -484,14 +484,23 @@ export function SignsExam() {
 					{/* still not sure about the input for the second argument below according to the from */}
 					<SimpleQuestion
 						options={[
-							"Non palpable ",
-							"Palpable Right/Left group of:",
+							"Non palpable",
+							"Palpable",
+						
 						]}
 						checked={generalExamination.lymphNodes}
 						setChecked={(text) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
 							setGeneralExamination({ lymphNodes: text });
+						}}
+					/>
+					<Text>If Palpable ? </Text>
+					<Input
+						label="Right/Left Group Of"
+						text={generalExamination.palpableRightLeftGroupOf}
+						setText={(text) => {
+							setGeneralExamination({ palpableRightLeftGroupOf: text });
 						}}
 					/>
 				</Col>
@@ -744,7 +753,7 @@ please indicate the location in the picture.)"
 							"Ringworm",
 							"Rose spots",
 							"Burn",
-							"Other",
+							
 						]}
 						label="Type : "
 						checked={skinExamination.type}
@@ -753,10 +762,12 @@ please indicate the location in the picture.)"
 							// setGeneral({ fever: text, ...general });
 							setSkinExamination({ type: text });
 						}}
+						mutiple={true}
 					/>
 
 					{/* show this only when other is selected */}
 					<Input
+						label="Other"
 						text={skinExamination.typeOther}
 						setText={(text) => {
 							setSkinExamination({ typeOther: text });
@@ -780,7 +791,7 @@ please indicate the location in the picture.)"
 							"Bleeding",
 							"Pruritic",
 							"Worsens at night",
-							"Colored:",
+							"Discolored:",
 						]}
 						checked={skinExamination.feature}
 						setChecked={(text) => {
@@ -788,6 +799,7 @@ please indicate the location in the picture.)"
 							// setGeneral({ fever: text, ...general });
 							setSkinExamination({ feature: text });
 						}}
+						mutiple={true}
 					/>
 					<Input
 						label="If Colored, specify the color here : "
@@ -979,6 +991,7 @@ please indicate the location in the picture.)"
 								// setGeneral({ fever: text, ...general });
 								setNeurologicalExamination({ neonate: text });
 							}}
+							mutiple={true}
 						/>
 					</Col>
 
@@ -1366,7 +1379,7 @@ please indicate the location in the picture.)"
 			<Col>
 				<Text>Cranial Nerves</Text>
 				<SimpleQuestion
-					options={["All intact", "Abnormal: Cranial nerve (s) "]}
+					options={["All intact", "Abnormal"]}
 					checked={neurologicalExamination.cranialNerves}
 					setChecked={(text) => {
 						// console.log("Hello There ", text);
@@ -1375,7 +1388,7 @@ please indicate the location in the picture.)"
 					}}
 				/>
 				<Input
-					label="number(1-12)"
+					label="Abnormal cranial nerve(s) number (1-12)"
 					text={neurologicalExamination.cranialNervesNumber}
 					setText={(text) => {
 						setNeurologicalExamination({
