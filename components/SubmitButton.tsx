@@ -125,7 +125,7 @@ const SubmitButton = ({
 	);
 	const {
 		setNutritionalHistory,
-		...nutrionalHistory
+		...nutritionalHistory
 	} = useNutritionalHistory((state) => state);
 	const {
 		setVaccinationHistory,
@@ -223,7 +223,7 @@ const SubmitButton = ({
 		},
 		additionalPatientInfomation: {
 			birthHistory: { ...birthHistory },
-			nutrionalHistory: { ...nutrionalHistory },
+			nutritionalHistory: { ...nutrionalHistory },
 			vaccinationHistory: { ...vaccinationHistory },
 			previousMedicalHistroy: { ...medicalHistory },
 		},
@@ -308,7 +308,7 @@ const SubmitButton = ({
 		setMouth(initialMouth);
 		setNeonatal({ inabilityToBreastFeed: "" });
 
-		setOthers({others:''})
+		setOthers({ others: "" });
 
 		// clearing additiona patient info
 		setBirthHistory(initialBirthHistory);
@@ -340,13 +340,13 @@ const SubmitButton = ({
 
 		//clearing final diagnosis
 		setFinalDiagnosis({ finalDiagnosisText: "" });
-		
 	};
 
 	const handleSubmit = async () => {
 		if (!window.confirm("Are you sure you want to submit?")) {
 			return;
 		}
+		return
 		// console.log("Submitting the data to the server ...", DEVELOPMENT_URL);
 		// console.log(data);
 		setLoadingIn(true);
