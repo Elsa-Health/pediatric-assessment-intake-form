@@ -173,9 +173,9 @@ export function AdditionalPatientInformation() {
 						}}
 					/>
 
-          <Text>If After Birth, if started after (Days) </Text>
+					<Text>If After Birth, if started after (Days) </Text>
 					<Input
-						text={nutritionHistory.breastfeedingStartTimeMonths}
+						text={nutritionHistory.breastfeedingStartTimeDays}
 						label="Days"
 						setText={(text) => {
 							setNutritionHistory({
@@ -288,16 +288,17 @@ export function AdditionalPatientInformation() {
 			<Col style={styles.headerDarkGray}>
 				<Text>Previous Medical History</Text>
 			</Col>
+
 			<Row>
 				<Col>
 					<Text>Any previous admission ? </Text>
 					<SimpleQuestion
 						options={["yes", "no"]}
-						checked={medicalHistory.previousSubmission}
+						checked={medicalHistory.previousAdmission}
 						setChecked={(text) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
-							setMedicalHistory({ previousSubmission: text });
+							setMedicalHistory({ previousAdmission: text });
 						}}
 					/>
 				</Col>
@@ -305,10 +306,10 @@ export function AdditionalPatientInformation() {
 					<FitTextToCell>
 						<Input
 							placeholder="If yes, why?"
-							text={medicalHistory.whyPreviousSubmission}
+							text={medicalHistory.whyPreviousAdmission}
 							setText={(text) => {
 								setMedicalHistory({
-									whyPreviousSubmission: text,
+									whyPreviousAdmission: text,
 								});
 							}}
 						/>

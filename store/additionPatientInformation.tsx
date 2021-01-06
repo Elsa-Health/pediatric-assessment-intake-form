@@ -40,8 +40,8 @@ export const useVaccinationHistory = create((set) => ({
 }));
 
 export const initialMedicalHistory = {
-	previousSubmission: "",
-	whyPreviousSubmission: "",
+	previousAdmission: "",
+	whyPreviousAdmission: "",
 	antibioticUse: "",
 };
 export const useMedicalHistory = create((set) => ({
