@@ -40,10 +40,7 @@ export function RadioButton({
 									// setValue(res);
 									if (mutiple) {
 										//add mutplie to list
-										console.log(
-											"this is mutple inputs : ",
-											res
-										);
+
 										if (checked.includes(res)) {
 											//remove from an array
 											const tempo = removeMutipleItem(

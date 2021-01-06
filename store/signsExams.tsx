@@ -1,158 +1,152 @@
 import create from "zustand";
 
 export const initialVitalSigns = {
-  temp: "",
-  respRate: "",
-  hr: "",
-  o2Sat: "",
-  bp: "",
-  weight: "",
-  height: ""
-}
+	temp: "",
+	respRate: "",
+	hr: "",
+	o2Sat: "",
+	bp: "",
+	weight: "",
+	height: "",
+};
 export const useVitalSigns = create((set) => ({
-  ...initialVitalSigns,
-  //thos is to update all data state
-  setVitalSigns: (data) => set((state) => ({ ...state, ...data })),
+	...initialVitalSigns,
+	//thos is to update all data state
+	setVitalSigns: (data) => set((state) => ({ ...state, ...data })),
 }));
 
 export const initialGeneralExamination = {
-  mentalStatus: "",
+	mentalStatus: "",
 
-  childAppearance: [], //this is mutliple input to be fixed in simplequesiton component
-  hairColor: "",
-  hairTexture: "",
-  eyesConjuctive: "",
-  ent: "",
+	childAppearance: [], //this is mutliple input to be fixed in simplequesiton component
+	hairColor: "",
+	hairTexture: "",
+	eyesConjuctive: "",
+	ent: "",
 
-  // these can be set objects 
-  mouthOutside: "",
-  mouthInside: "",
-  handsFingerClubbing: "",
-  handsPalmerPallor: "",
-  handsPeripheralCyanosis: "",
-  handsCapillaryRefillTime: "",
+	// these can be set objects
+	mouthOutside: [],
+	mouthInside: [],
+	handsFingerClubbing: "",
+	handsPalmerPallor: "",
+	handsPeripheralCyanosis: "",
+	handsCapillaryRefillTime: "",
 
-  tonsils: "",
-  centralCyanosis: "",
-  skinPinchTest: "",
-  lowerLimbEdema: "",
-  ifLowerLimbeEdemaYes: "",
-  lymphNodes: "",
-}
+	tonsils: "",
+	centralCyanosis: "",
+	skinPinchTest: "",
+	lowerLimbEdema: "",
+	ifLowerLimbeEdemaYes: "",
+	lymphNodes: "",
+};
 export const useGeneralExamination = create((set) => ({
-
-  ...initialGeneralExamination,
-  //thos is to update all data state
-  setGeneralExamination: (data) => set((state) => ({ ...state, ...data })),
+	...initialGeneralExamination,
+	//thos is to update all data state
+	setGeneralExamination: (data) => set((state) => ({ ...state, ...data })),
 }));
 
-
 export const initialRespiratoryExamination = {
-  chestLook: [],
-  airEntry: "",
-  breathSounds: "",
-  crackles: "",
-  wheezing: "",
-
-}
+	chestLook: [],
+	airEntry: "",
+	breathSounds: "",
+	crackles: "",
+	wheezing: "",
+};
 export const useRespiratoryExamination = create((set) => ({
-  ...initialRespiratoryExamination,
-  //thos is to update all data state
-  setRespiratoryExamination: (data) => set((state) => ({ ...state, ...data })),
+	...initialRespiratoryExamination,
+	//thos is to update all data state
+	setRespiratoryExamination: (data) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
 export const initialAbdominalExamination = {
-  masses: "",
-  tenderness: "",
-  reboundTenderness: "",
-  rectalProlapse: "",
+	masses: "",
+	tenderness: "",
+	reboundTenderness: "",
+	rectalProlapse: "",
 
-  analExamination: "", //missing input for this in the form
+	analExamination: "", //missing input for this in the form
 
-
-  abdomenSection: "",
-}
+	abdomenSection: "",
+};
 export const useAbdominalExamination = create((set) => ({
-
-  ...initialAbdominalExamination,
-  //thos is to update all data state
-  setAbdominalExamination: (data) => set((state) => ({ ...state, ...data })),
+	...initialAbdominalExamination,
+	//thos is to update all data state
+	setAbdominalExamination: (data) => set((state) => ({ ...state, ...data })),
 }));
 
-
 export const initialSkinExamination = {
-  lession: "",
-  lessionRegion: "",
-  lessionShape: "",
-  lessionFrequency: "", //name picked up randomly
+	lession: "",
+	lessionRegion: "",
+	lessionShape: "",
+	lessionFrequency: "", //name picked up randomly
 
-  type: "",
-  typeOther: "",
+	type: "",
+	typeOther: "",
 
-  margins: "",
+	margins: "",
 
-  skinUnamedQuestion: "", //refer to form skin type box, then the right box has the checkboxes with no labels
+	skinUnamedQuestion: "", //refer to form skin type box, then the right box has the checkboxes with no labels
 
-  feature: '',
-  featureColor: '',
+	feature: "",
+	featureColor: "",
 
-  houseHoldWithSimilarProblem: '',
+	houseHoldWithSimilarProblem: "",
 
-  notes: '',
-
-}
+	notes: "",
+};
 export const useSkinExamination = create((set) => ({
-  ...initialSkinExamination,
-  //thos is to update all data state
-  setSkinExamination: (data) => set((state) => ({ ...state, ...data })),
+	...initialSkinExamination,
+	//thos is to update all data state
+	setSkinExamination: (data) => set((state) => ({ ...state, ...data })),
 }));
 
 export const initialneurologicalExamination = {
-  gcsScore: "",
-  gcsScoreEyes: "",
-  gcsScoreVerbal: "",
-  gcsScoreMotor: "",
+	gcsScore: "",
+	gcsScoreEyes: "",
+	gcsScoreVerbal: "",
+	gcsScoreMotor: "",
 
-  blantyreScore: "",
-  blantyreScoreEyes: "",
-  blantyreScoreVerbal: "",
-  blantyreScoreMotor: "",
+	blantyreScore: "",
+	blantyreScoreEyes: "",
+	blantyreScoreVerbal: "",
+	blantyreScoreMotor: "",
 
-  neckRigidigty: "",
+	neckRigidigty: "",
 
-  neonate: "",
-  motorFlexion: "",
+	neonate: "",
+	motorFlexion: "",
 
-  gait: "",
+	gait: "",
 
-  rightUpperLimbsSensation: "",
-  rightUpperLimbsPower: "",
-  rightUpperLimbsMuscleTone: "",
-  rightUpperLimbsReflexes: "",
+	rightUpperLimbsSensation: "",
+	rightUpperLimbsPower: "",
+	rightUpperLimbsMuscleTone: "",
+	rightUpperLimbsReflexes: "",
 
-  leftUpperLimbsSensation: "",
-  leftUpperLimbsPower: "",
-  lefttUpperLimbsMuscleTone: "",
-  lefttUpperLimbsReflexes: "",
+	leftUpperLimbsSensation: "",
+	leftUpperLimbsPower: "",
+	lefttUpperLimbsMuscleTone: "",
+	lefttUpperLimbsReflexes: "",
 
-  rightLowerLimbsSensation: "",
-  rightLowerLimbsPower: "",
-  rightLowerLimbsMuscleTone: "",
-  rightLowerLimbsReflexes: "",
+	rightLowerLimbsSensation: "",
+	rightLowerLimbsPower: "",
+	rightLowerLimbsMuscleTone: "",
+	rightLowerLimbsReflexes: "",
 
-  leftLowerLimbsSensation: "",
-  leftLowerLimbsPower: "",
-  leftLowerLimbsMuscleTone: "",
-  leftLowerLimbsReflexes: "",
+	leftLowerLimbsSensation: "",
+	leftLowerLimbsPower: "",
+	leftLowerLimbsMuscleTone: "",
+	leftLowerLimbsReflexes: "",
 
-  cranialNerves: '',
-  cranialNervesNumber: '',
+	cranialNerves: "",
+	cranialNervesNumber: "",
 
-  cannotIllicit: '',
-}
+	cannotIllicit: "",
+};
 export const useNeurologicalExamination = create((set) => ({
-
-  ...initialneurologicalExamination,
-  //thos is to update all data state
-  setNeurologicalExamination: (data) => set((state) => ({ ...state, ...data })),
+	...initialneurologicalExamination,
+	//thos is to update all data state
+	setNeurologicalExamination: (data) =>
+		set((state) => ({ ...state, ...data })),
 }));

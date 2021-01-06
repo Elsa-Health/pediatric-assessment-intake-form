@@ -294,6 +294,7 @@ export function SignsExam() {
 							// setGeneral({ fever: text, ...general });
 							setGeneralExamination({ mouthOutside: text });
 						}}
+						mutiple={true}
 					/>
 				</Col>
 
@@ -314,6 +315,7 @@ export function SignsExam() {
 							// setGeneral({ fever: text, ...general });
 							setGeneralExamination({ mouthInside: text });
 						}}
+						mutiple={true}
 					/>
 				</Col>
 			</Row>
