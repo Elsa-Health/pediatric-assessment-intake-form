@@ -18,7 +18,7 @@ export const useVitalSigns = create((set) => ({
 export const initialGeneralExamination = {
   mentalStatus: "",
 
-  childAppearance: "", //this is mutliple input to be fixed in simplequesiton component
+  childAppearance: [], //this is mutliple input to be fixed in simplequesiton component
   hairColor: "",
   hairTexture: "",
   eyesConjuctive: "",

@@ -5,21 +5,19 @@ import { View, Text } from "react-native";
 import _ from "lodash";
 import { Col } from "./Col";
 import { RadioGroup as NachosRadioGroup } from "nachos-ui";
-import { RadioButton } from './'
+import { RadioButton } from "./";
 
 interface SimpleQuestionProps {
 	label?: string;
 	options?: string[];
 	horizontal?: boolean;
 	radio?: boolean;
-	checked?: string;
+	checked?: string | string[];
 	setChecked?: any;
+	mutiple?: boolean;
 }
 
-
-const PROP = [
-	'Heello', 'World'
-];
+const PROP = ["Heello", "World"];
 
 export const SimpleQuestion: React.FC<SimpleQuestionProps> = React.memo(
 	({
@@ -29,6 +27,7 @@ export const SimpleQuestion: React.FC<SimpleQuestionProps> = React.memo(
 		radio = true,
 		checked,
 		setChecked,
+		mutiple = false,
 	}) => {
 		// const simpleQns = [{ label: 'Male' }, { label: 'Female' }];
 		// const [checked, setChecked] = React.useState('first');
@@ -41,22 +40,32 @@ export const SimpleQuestion: React.FC<SimpleQuestionProps> = React.memo(
 						<Row
 							style={{
 								flexWrap: "wrap",
-								marginBottom: 5
-
+								marginBottom: 5,
 							}}
 						>
-
-							<RadioButton options={options} setChecked={setChecked} checked={checked}/>
-
-
-
+							<RadioButton
+								options={options}
+								setChecked={setChecked}
+								checked={checked}
+								mutiple={mutiple}
+							/>
 						</Row>
 					) : (
-							<Col style={{ borderWidth: 0, flexWrap: "wrap", marginBottom: 5 }}>
-								<RadioButton options={options} setChecked={setChecked} checked={checked}/>
-
-							</Col>
-						)}
+						<Col
+							style={{
+								borderWidth: 0,
+								flexWrap: "wrap",
+								marginBottom: 5,
+							}}
+						>
+							<RadioButton
+								options={options}
+								setChecked={setChecked}
+								checked={checked}
+								mutiple={mutiple}
+							/>
+						</Col>
+					)}
 				</>
 			);
 		}
