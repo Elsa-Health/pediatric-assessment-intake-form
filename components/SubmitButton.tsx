@@ -223,7 +223,7 @@ const SubmitButton = ({
 		},
 		additionalPatientInfomation: {
 			birthHistory: { ...birthHistory },
-			nutritionalHistory: { ...nutrionalHistory },
+			nutritionalHistory: { ...nutritionalHistory },
 			vaccinationHistory: { ...vaccinationHistory },
 			previousMedicalHistroy: { ...medicalHistory },
 		},
@@ -346,7 +346,7 @@ const SubmitButton = ({
 		if (!window.confirm("Are you sure you want to submit?")) {
 			return;
 		}
-		return
+		return;
 		// console.log("Submitting the data to the server ...", DEVELOPMENT_URL);
 		// console.log(data);
 		setLoadingIn(true);

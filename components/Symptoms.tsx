@@ -68,8 +68,8 @@ export function Symptoms() {
 	//others symotoms
 	const { setOthers, ...others } = useOthers((state) => state);
 	
-	console.log("The inspected data below");
-	console.table(others);
+	// console.log("The inspected data below");
+	// console.table(others);
 	
 	return (
 		<Table headerTitle="Symptoms">
@@ -792,6 +792,7 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Frequency of urination"
+					options={['Incraese','Decrease']}
 					times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
