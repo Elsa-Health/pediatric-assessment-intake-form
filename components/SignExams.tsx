@@ -199,8 +199,10 @@ export function SignsExam() {
 						setChecked={(text) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
+
 							setGeneralExamination({ childAppearance: text });
 						}}
+						mutiple={true}
 					/>
 				</Col>
 			</Row>
@@ -292,6 +294,7 @@ export function SignsExam() {
 							// setGeneral({ fever: text, ...general });
 							setGeneralExamination({ mouthOutside: text });
 						}}
+						mutiple={true}
 					/>
 				</Col>
 
@@ -312,6 +315,7 @@ export function SignsExam() {
 							// setGeneral({ fever: text, ...general });
 							setGeneralExamination({ mouthInside: text });
 						}}
+						mutiple={true}
 					/>
 				</Col>
 			</Row>
@@ -513,6 +517,7 @@ export function SignsExam() {
 							// setGeneral({ fever: text, ...general });
 							setRespiratoryExamination({ chestLook: text });
 						}}
+						mutiple={true}
 					/>
 				</Col>
 				<Col>

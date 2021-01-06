@@ -7,3 +7,5 @@ node_modules
 .vercel
 web-build
 web-build/*
+coverage
+yarn-error.log
