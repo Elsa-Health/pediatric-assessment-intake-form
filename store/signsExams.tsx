@@ -48,7 +48,7 @@ export const useGeneralExamination = create((set) => ({
 
 
 export const initialRespiratoryExamination = {
-  chestLook: "",
+  chestLook: [],
   airEntry: "",
   breathSounds: "",
   crackles: "",

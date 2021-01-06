@@ -199,7 +199,7 @@ export function SignsExam() {
 						setChecked={(text) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
-							console.log('Child apperance output : ',text)
+
 							setGeneralExamination({ childAppearance: text });
 						}}
 						mutiple={true}
@@ -515,6 +515,7 @@ export function SignsExam() {
 							// setGeneral({ fever: text, ...general });
 							setRespiratoryExamination({ chestLook: text });
 						}}
+						mutiple={true}
 					/>
 				</Col>
 				<Col>
