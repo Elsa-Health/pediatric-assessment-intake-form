@@ -55,8 +55,8 @@ export function OrdersResults() {
   const urineTests = useUrineTests((state) => state);
   const setUrineTests = useUrineTests((state) => state.setUrineTests);
 
-  console.log("Debugging the data on orders and results : ");
-  console.table(urineTests);
+  // console.log("Debugging the data on orders and results : ");
+  // console.table(urineTests);
 
   return (
     <Table headerTitle="Investigations Ordered and Results">
