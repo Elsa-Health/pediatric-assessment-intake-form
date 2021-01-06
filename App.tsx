@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { View } from "react-native";
 // import { TextField } from 'material-bread'
 
-import { SUBMIT_URL } from "@env";
 
 import _ from "lodash";
 

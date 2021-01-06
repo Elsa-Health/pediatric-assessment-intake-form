@@ -71,6 +71,7 @@ import {
 	initialHivTests,
 	initialUrineTests,
 	initialDifferentials,
+	useOthers,
 } from "../store";
 
 import { Button } from "react-native-paper";
@@ -115,6 +116,8 @@ const SubmitButton = ({
 	const { setMouth, ...mouth } = useMouth((state) => state);
 
 	const { setNeonatal, ...neonatal } = useNeonatal((state) => state);
+
+	const { setOthers, ...others } = useOthers((state) => state);
 
 	//additional patient information stores
 	const { setBirthHistory, ...birthHistory } = useBirthHistory(
@@ -216,6 +219,7 @@ const SubmitButton = ({
 			eyesAndEars: { ...eyesAndEars },
 			mouth: { ...mouth },
 			neontal: { ...neonatal },
+			...others,
 		},
 		additionalPatientInfomation: {
 			birthHistory: { ...birthHistory },
@@ -248,6 +252,7 @@ const SubmitButton = ({
 		},
 		finalDiagnosis: { ...finalDiagnosis },
 		dataClerk: { ...user },
+		addedTime: Date.now(),
 	};
 
 	const toLowerCase = (obj) => {
@@ -303,6 +308,8 @@ const SubmitButton = ({
 		setMouth(initialMouth);
 		setNeonatal({ inabilityToBreastFeed: "" });
 
+		setOthers({others:''})
+
 		// clearing additiona patient info
 		setBirthHistory(initialBirthHistory);
 		setNutritionalHistory(initialNutritionalHistroy);
@@ -333,13 +340,14 @@ const SubmitButton = ({
 
 		//clearing final diagnosis
 		setFinalDiagnosis({ finalDiagnosisText: "" });
+		
 	};
 
 	const handleSubmit = async () => {
 		if (!window.confirm("Are you sure you want to submit?")) {
 			return;
 		}
-		console.log("Submitting the data to the server ...", DEVELOPMENT_URL);
+		// console.log("Submitting the data to the server ...", DEVELOPMENT_URL);
 		// console.log(data);
 		setLoadingIn(true);
 		fetch(DEVELOPMENT_URL, params)
