@@ -351,7 +351,7 @@ const SubmitButton = ({
 		// console.log("Submitting the data to the server ...", DEVELOPMENT_URL);
 		// console.log(data);
 		setLoadingIn(true);
-		fetch(DEVELOPMENT_URL, params)
+		fetch(PRODUCTION_URL, params)
 			.then((res) => res.json())
 			.then((res) => {
 				setLoadingIn(false);
