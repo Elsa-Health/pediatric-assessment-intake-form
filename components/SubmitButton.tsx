@@ -79,6 +79,7 @@ import {
 	initialHeaderInfo,
 	useHeaderInformation,
 } from "../store/headerInformation";
+import isDev from "../utils";
 
 const SubmitButton = ({
 	loading = false,
@@ -350,7 +351,7 @@ const SubmitButton = ({
 		// console.log("Submitting the data to the server ...", DEVELOPMENT_URL);
 		// console.log(data);
 		setLoadingIn(true);
-		fetch(DEVELOPMENT_URL, params)
+		fetch(isDev() ? DEVELOPMENT_URL : PRODUCTION_URL, params)
 			.then((res) => res.json())
 			.then((res) => {
 				setLoadingIn(false);
@@ -368,7 +369,10 @@ const SubmitButton = ({
 				// console.log("something went wrong ", err);
 				// setHeader;
 				if (Platform.OS == "web")
-					alert("Something went wrong while submitting the data");
+					alert(
+						"Something went wrong while submitting the data : " +
+							JSON.stringify(err)
+					);
 			});
 	};
 

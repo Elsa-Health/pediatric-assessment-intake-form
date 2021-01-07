@@ -173,7 +173,7 @@ export function AdditionalPatientInformation() {
 						}}
 					/>
 
-					<Text>If After Birth, if started after (Days) </Text>
+					<Text>If after birth, breastfeeding started after how many days? </Text>
 					<Input
 						text={nutritionHistory.breastfeedingStartTimeDays}
 						label="Days"

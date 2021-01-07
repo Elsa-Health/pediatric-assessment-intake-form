@@ -67,10 +67,10 @@ export function Symptoms() {
 
 	//others symotoms
 	const { setOthers, ...others } = useOthers((state) => state);
-	
+
 	// console.log("The inspected data below");
 	// console.table(others);
-	
+
 	return (
 		<Table headerTitle="Symptoms">
 			<Col style={styles.headerDarkGray}>
@@ -592,6 +592,7 @@ export function Symptoms() {
 							// setGeneral({ fever: text, ...general });
 							setGI({ vomitingType: text });
 						}}
+						mutiple={true}
 					/>
 				</Col>
 			</Row>
@@ -642,6 +643,7 @@ export function Symptoms() {
 							// setGeneral({ fever: text, ...general });
 							setGI({ diarrhoeaType: text });
 						}}
+						mutiple={true}
 					/>
 
 					<Text>Is bloody ? : </Text>
@@ -717,6 +719,7 @@ export function Symptoms() {
 							// setGeneral({ fever: text, ...general });
 							setGI({ abnominalPainEpigastric: text });
 						}}
+						mutiple={true}
 					/>
 
 					<Text>Does it radiate to the back? ? : </Text>
@@ -792,7 +795,7 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Frequency of urination"
-					options={['Incraese','Decrease']}
+					options={["Incraese", "Decrease"]}
 					times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
