@@ -80,8 +80,8 @@ export function PatientInformation() {
 					<SimpleQuestion
 						options={["male", "female"]}
 						checked={patientInfo.sex}
-						setChecked={(text:string| string[]) => {
-							setPatientInfo({ sex: text as string});
+						setChecked={(text: string | string[]) => {
+							setPatientInfo({ sex: text as string });
 						}}
 					/>
 				</Col>
