@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Platform, View } from "react-native";
 // import { TextField } from 'material-bread'
 
-import { DEVELOPMENT_URL, PRODUCTION_URL } from "@env";
+// import { DEVELOPMENT_URL, PRODUCTION_URL } from "@env";
 
 import _ from "lodash";
 
@@ -350,30 +350,30 @@ const SubmitButton = ({
 		// return;
 		// console.log("Submitting the data to the server ...", DEVELOPMENT_URL);
 		// console.log(data);
-		setLoadingIn(true);
-		fetch(PRODUCTION_URL, params)
-			.then((res) => res.json())
-			.then((res) => {
-				setLoadingIn(false);
-				// console.log("Returned response : ", res);
+		// setLoadingIn(true);
+		// fetch(PRODUCTION_URL, params)
+		// 	.then((res) => res.json())
+		// 	.then((res) => {
+		// 		setLoadingIn(false);
+		// 		// console.log("Returned response : ", res);
 
-				clearStores();
+		// 		clearStores();
 
-				if (Platform.OS == "web") {
-					alert("Data already submitted");
-					window.scrollTo({ top: 0, behavior: "smooth" });
-				}
-			})
-			.catch((err) => {
-				setLoadingIn(false);
-				// console.log("something went wrong ", err);
-				// setHeader;
-				if (Platform.OS == "web")
-					alert(
-						"Something went wrong while submitting the data : " +
-							JSON.stringify(err)
-					);
-			});
+		// 		if (Platform.OS == "web") {
+		// 			alert("Data already submitted");
+		// 			window.scrollTo({ top: 0, behavior: "smooth" });
+		// 		}
+		// 	})
+		// 	.catch((err) => {
+		// 		setLoadingIn(false);
+		// 		// console.log("something went wrong ", err);
+		// 		// setHeader;
+		// 		if (Platform.OS == "web")
+		// 			alert(
+		// 				"Something went wrong while submitting the data : " +
+		// 					JSON.stringify(err)
+		// 			);
+		// 	});
 	};
 
 	return (

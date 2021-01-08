@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { View } from "react-native";
 // import { TextField } from 'material-bread'
 
-
 import _ from "lodash";
 
 // TODO: CReate Radio/Checkbox Question Component
@@ -40,7 +39,7 @@ import {
 	SubmitButton,
 	RadioButton,
 	// ChiefComplaints
-} from "./components";
+} from "../components";
 
 interface User {
 	email: string | null;
