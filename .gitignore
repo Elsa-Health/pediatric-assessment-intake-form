@@ -2,7 +2,7 @@ node_modules/*
 node_modules
 .expo/*
 .expo
-.env
+.env*
 
 .vercel
 web-build

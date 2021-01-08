@@ -79,7 +79,7 @@ export default function App() {
 		}
 	}),
 		[];
-
+	console.log("Env variable : ",process.env.NEXT_PUBLIC_SUBMIT_URL)
 	return (
 		<View style={{ backgroundColor: "#DEDFE4", paddingVertical: 36 }}>
 			<View

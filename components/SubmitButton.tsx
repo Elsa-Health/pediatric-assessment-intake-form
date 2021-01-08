@@ -1,14 +1,9 @@
-// THIS APP WORKS BEST IN GOOGLE CHROME SOME THINGS BREAKS IN FIREFOX
-
 import React, { useState } from "react";
 import { Platform, View } from "react-native";
-// import { TextField } from 'material-bread'
-
-// import { DEVELOPMENT_URL, PRODUCTION_URL } from "@env";
 
 import _ from "lodash";
 
-import "isomorphic-fetch"; //trying to handle fetch on node.js
+import "isomorphic-fetch";
 
 import {
 	useGeneralSymptoms,
@@ -347,33 +342,32 @@ const SubmitButton = ({
 		if (!window.confirm("Are you sure you want to submit?")) {
 			return;
 		}
-		// return;
-		// console.log("Submitting the data to the server ...", DEVELOPMENT_URL);
-		// console.log(data);
-		// setLoadingIn(true);
-		// fetch(PRODUCTION_URL, params)
-		// 	.then((res) => res.json())
-		// 	.then((res) => {
-		// 		setLoadingIn(false);
-		// 		// console.log("Returned response : ", res);
 
-		// 		clearStores();
+		setLoadingIn(true);
 
-		// 		if (Platform.OS == "web") {
-		// 			alert("Data already submitted");
-		// 			window.scrollTo({ top: 0, behavior: "smooth" });
-		// 		}
-		// 	})
-		// 	.catch((err) => {
-		// 		setLoadingIn(false);
-		// 		// console.log("something went wrong ", err);
-		// 		// setHeader;
-		// 		if (Platform.OS == "web")
-		// 			alert(
-		// 				"Something went wrong while submitting the data : " +
-		// 					JSON.stringify(err)
-		// 			);
-		// 	});
+		fetch(process.env.NEXT_PUBLIC_SUBMIT_URL, params)
+			.then((res) => res.json())
+			.then((res) => {
+				setLoadingIn(false);
+				// console.log("Returned response : ", res);
+
+				clearStores();
+
+				if (Platform.OS == "web") {
+					alert("Data already submitted");
+					window.scrollTo({ top: 0, behavior: "smooth" });
+				}
+			})
+			.catch((err) => {
+				setLoadingIn(false);
+				// console.log("something went wrong ", err);
+				// setHeader;
+				if (Platform.OS == "web")
+					alert(
+						"Something went wrong while submitting the data : " +
+							JSON.stringify(err)
+					);
+			});
 	};
 
 	return (
