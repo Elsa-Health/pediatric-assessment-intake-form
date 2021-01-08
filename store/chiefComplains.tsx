@@ -1,7 +1,12 @@
 import create from "zustand";
 
-export const useChiefComplains = create((set) => ({
-  complains: "",
-  //thos is to update all data state
-  setChiefComplains: (data) => set((state) => ({ ...state, ...data })),
+type ChiefComplains = {
+	complains?: string;
+	setChiefComplains: (by: { complains: string }) => void;
+};
+export const useChiefComplains = create<ChiefComplains>((set) => ({
+	complains: "",
+
+	setChiefComplains: (data: { complains: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));

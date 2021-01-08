@@ -76,17 +76,32 @@ type VaccinationHistory = VaccinationHistoryData & {
 };
 export const useVaccinationHistory = create<VaccinationHistory>((set) => ({
 	...initialVaccinationHistory,
-	setVaccinationHistory: (data: VaccinationHistoryData) =>{
-		set((state) => ({ ...state, ...data }))
-	}));
+	setVaccinationHistory: (data: VaccinationHistoryData) => {
+		set((state) => ({ ...state, ...data }));
+	},
+}));
 
+// medical history store
 export const initialMedicalHistory = {
 	previousAdmission: "",
 	whyPreviousAdmission: "",
 	antibioticUse: "",
 };
-export const useMedicalHistory = create((set) => ({
+
+type MedicalHistoryData = {
+	previousAdmission?: string;
+	whyPreviousAdmission?: string;
+	antibioticUse?: string;
+};
+
+type MedicalHistory = MedicalHistoryData & {
+	setMedicalHistory: (
+		by: { [key in keyof MedicalHistoryData]: string }
+	) => void;
+};
+
+export const useMedicalHistory = create<MedicalHistory>((set) => ({
 	...initialMedicalHistory,
-	//thos is to update all data state
-	setMedicalHistory: (data) => set((state) => ({ ...state, ...data })),
+	setMedicalHistory: (data: MedicalHistoryData) =>
+		set((state) => ({ ...state, ...data })),
 }));

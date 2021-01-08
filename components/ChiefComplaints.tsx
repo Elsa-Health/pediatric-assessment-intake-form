@@ -4,20 +4,21 @@ import { Input } from ".";
 import { useChiefComplains } from "../store";
 
 export function ChiefComplaints() {
-  const { complains, setChiefComplains } = useChiefComplains((state) => state);
+	const { complains, setChiefComplains } = useChiefComplains(
+		(state) => state
+	);
 
-  // console.log("Chief Complains here : ", complains);
 
-  return (
-    <Table headerTitle="Chief Complaints">
-      <Input
-        multiline
-        numberOfLines={4}
-        text={complains}
-        setText={(text) => {
-          setChiefComplains({ complains: text });
-        }}
-      />
-    </Table>
-  );
+	return (
+		<Table headerTitle="Chief Complaints">
+			<Input
+				multiline
+				numberOfLines={4}
+				text={complains}
+				setText={(text: string) => {
+					setChiefComplains({ complains: text });
+				}}
+			/>
+		</Table>
+	);
 }
