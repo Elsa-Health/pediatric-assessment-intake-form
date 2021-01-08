@@ -25,12 +25,6 @@ import { Text, View } from "react-native";
 
 export function Symptoms() {
 	const general = useGeneralSymptoms((state) => state);
-	const changeFever = useGeneralSymptoms((state) => state.changeFever);
-	const setFeverDays = useGeneralSymptoms((state) => state.setFeverDays);
-
-	const setChills = useGeneralSymptoms((state) => state.setChills);
-	const setChillsDays = useGeneralSymptoms((state) => state.setChillsDays);
-
 	const setGeneralState = useGeneralSymptoms(
 		(state) => state.setGeneralState
 	);
@@ -68,9 +62,6 @@ export function Symptoms() {
 	//others symotoms
 	const { setOthers, ...others } = useOthers((state) => state);
 
-	// console.log("The inspected data below");
-	// console.table(others);
-
 	return (
 		<Table headerTitle="Symptoms">
 			<Col style={styles.headerDarkGray}>
@@ -84,10 +75,8 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={general.fever}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							changeFever(text);
+						setChecked={(text: string | string[]) => {
+							setGeneralState({ fever: text as string });
 						}}
 					/>
 				</Col>
@@ -95,10 +84,9 @@ export function Symptoms() {
 					<FitTextToCell>
 						<Input
 							label="Days"
-							// placeholder="Days"
 							text={general.feverDays}
-							setText={(text) => {
-								setFeverDays(text);
+							setText={(text: string) => {
+								setGeneralState({ feverDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -110,10 +98,9 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={general.chills}
-						setChecked={(text) => {
+						setChecked={(text: string | string[]) => {
 							console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setChills(text);
+							setGeneralState({ chills: text as string });
 						}}
 					/>
 				</Col>
@@ -123,8 +110,8 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={general.chillsDays}
-							setText={(text) => {
-								setChillsDays(text);
+							setText={(text: string) => {
+								setGeneralState({ chillsDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -139,11 +126,9 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={general.awerenessOfHearbeat}
-						setChecked={(text) => {
-							// console.log('Hello There ', text);
-							// setGeneral({ fever: text, ...general });
+						setChecked={(text: string | string[]) => {
 							setGeneralState({
-								awerenessOfHearbeat: text,
+								awerenessOfHearbeat: text as string,
 							});
 						}}
 					/>
@@ -154,7 +139,7 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={general.awerenessOfHearbeatDays}
-							setText={(text) =>
+							setText={(text: string) =>
 								setGeneralState({
 									awerenessOfHearbeatDays: text,
 								})
@@ -169,11 +154,9 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={general.skinLession}
-						setChecked={(text) => {
-							// console.log('Hello There ', text);
-							// setGeneral({ fever: text, ...general });
+						setChecked={(text: string | string[]) => {
 							setGeneralState({
-								skinLession: text,
+								skinLession: text as string,
 							});
 						}}
 					/>
@@ -184,7 +167,7 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={general.skinLessionDays}
-							setText={(text) => {
+							setText={(text: string) => {
 								setGeneralState({
 									skinLessionDays: text,
 								});
@@ -207,8 +190,8 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={respiratory.cough}
-						setChecked={(text) => {
-							setRespiratory({ cough: text });
+						setChecked={(text: string | string[]) => {
+							setRespiratory({ cough: text as string });
 						}}
 					/>
 				</Col>
@@ -218,7 +201,7 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={respiratory.coughDays}
-							setText={(text) => {
+							setText={(text: string) => {
 								setRespiratory({ coughDays: text });
 							}}
 						/>
@@ -230,8 +213,8 @@ export function Symptoms() {
 						<SimpleQuestion
 							options={["Wet", "Dry"]}
 							checked={respiratory.coughNature}
-							setChecked={(text) => {
-								setRespiratory({ coughNature: text });
+							setChecked={(text: string | string[]) => {
+								setRespiratory({ coughNature: text as string });
 							}}
 						/>
 					</Row>
@@ -241,8 +224,8 @@ export function Symptoms() {
 						<SimpleQuestion
 							options={["Red", "green", "white", "clear"]}
 							checked={respiratory.coughSpatum}
-							setChecked={(text) => {
-								setRespiratory({ coughSpatum: text });
+							setChecked={(text: string | string[]) => {
+								setRespiratory({ coughSpatum: text as string });
 							}}
 						/>
 					</Row>
@@ -252,8 +235,8 @@ export function Symptoms() {
 						<SimpleQuestion
 							options={["morning", "night", "whole day", "clear"]}
 							checked={respiratory.coughTime}
-							setChecked={(text) => {
-								setRespiratory({ coughTime: text });
+							setChecked={(text: string | string[]) => {
+								setRespiratory({ coughTime: text as string });
 							}}
 						/>
 					</Row>
@@ -268,8 +251,8 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={respiratory.rhinorrhea}
-						setChecked={(text) => {
-							setRespiratory({ rhinorrhea: text });
+						setChecked={(text: string | string[]) => {
+							setRespiratory({ rhinorrhea: text as string });
 						}}
 					/>
 				</Col>
@@ -279,7 +262,7 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={respiratory.rhinorrheaDays}
-							setText={(text) => {
+							setText={(text: string) => {
 								setRespiratory({ rhinorrheaDays: text });
 							}}
 						/>
@@ -292,8 +275,8 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={respiratory.sneezing}
-						setChecked={(text) => {
-							setRespiratory({ sneezing: text });
+						setChecked={(text: string | string[]) => {
+							setRespiratory({ sneezing: text as string });
 						}}
 					/>
 				</Col>
@@ -303,7 +286,7 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={respiratory.sneezingDays}
-							setText={(text) => {
+							setText={(text: string) => {
 								setRespiratory({ sneezingDays: text });
 							}}
 						/>
@@ -319,8 +302,8 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={respiratory.lossOfSmell}
-						setChecked={(text) => {
-							setRespiratory({ lossOfSmell: text });
+						setChecked={(text: string | string[]) => {
+							setRespiratory({ lossOfSmell: text as string });
 						}}
 					/>
 				</Col>
@@ -329,8 +312,8 @@ export function Symptoms() {
 						<Input
 							label="Days"
 							placeholder="Days"
-							text={respiratory.l}
-							setText={(text) => {
+							text={respiratory.lossOfSmellDays}
+							setText={(text: string) => {
 								setRespiratory({ lossOfSmellDays: text });
 							}}
 						/>
@@ -343,8 +326,8 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={respiratory.lossOfVoice}
-						setChecked={(text) => {
-							setRespiratory({ lossOfVoice: text });
+						setChecked={(text: string | string[]) => {
+							setRespiratory({ lossOfVoice: text as string });
 						}}
 					/>
 				</Col>
@@ -354,7 +337,7 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={respiratory.lossOfVoiceDays}
-							setText={(text) => {
+							setText={(text: string) => {
 								setRespiratory({ lossOfVoiceDays: text });
 							}}
 						/>
@@ -370,8 +353,8 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={respiratory.changeInVoice}
-						setChecked={(text) => {
-							setRespiratory({ changeInVoice: text });
+						setChecked={(text: string | string[]) => {
+							setRespiratory({ changeInVoice: text as string });
 						}}
 					/>
 				</Col>
@@ -381,7 +364,7 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={respiratory.changeInVoiceDays}
-							setText={(text) => {
+							setText={(text: string) => {
 								setRespiratory({ changeInVoiceDays: text });
 							}}
 						/>
@@ -394,8 +377,8 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={respiratory.facialPain}
-						setChecked={(text) => {
-							setRespiratory({ facialPain: text });
+						setChecked={(text: string | string[]) => {
+							setRespiratory({ facialPain: text as string });
 						}}
 					/>
 				</Col>
@@ -405,7 +388,7 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={respiratory.facialPainDays}
-							setText={(text) => {
+							setText={(text: string) => {
 								setRespiratory({ facialPainDays: text });
 							}}
 						/>
@@ -421,8 +404,8 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={respiratory.dentalPain}
-						setChecked={(text) => {
-							setRespiratory({ dentalPain: text });
+						setChecked={(text: string | string[]) => {
+							setRespiratory({ dentalPain: text as string });
 						}}
 					/>
 				</Col>
@@ -432,7 +415,7 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={respiratory.dentalPainDays}
-							setText={(text) => {
+							setText={(text: string) => {
 								setRespiratory({ dentalPainDays: text });
 							}}
 						/>
@@ -445,8 +428,8 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={respiratory.nasalCongestion}
-						setChecked={(text) => {
-							setRespiratory({ nasalCongestion: text });
+						setChecked={(text: string | string[]) => {
+							setRespiratory({ nasalCongestion: text as string });
 						}}
 					/>
 				</Col>
@@ -456,7 +439,7 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={respiratory.nasalCongestionDays}
-							setText={(text) => {
+							setText={(text: string) => {
 								setRespiratory({ nasalCongestionDays: text });
 							}}
 						/>
@@ -472,8 +455,8 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={respiratory.badBreath}
-						setChecked={(text) => {
-							setRespiratory({ badBreath: text });
+						setChecked={(text: string | string[]) => {
+							setRespiratory({ badBreath: text as string });
 						}}
 					/>
 				</Col>
@@ -483,7 +466,7 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={respiratory.badBreathDays}
-							setText={(text) => {
+							setText={(text: string) => {
 								setRespiratory({ badBreathDays: text });
 							}}
 						/>
@@ -496,8 +479,8 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={respiratory.chestTightness}
-						setChecked={(text) => {
-							setRespiratory({ chestTightness: text });
+						setChecked={(text: string | string[]) => {
+							setRespiratory({ chestTightness: text as string });
 						}}
 					/>
 				</Col>
@@ -507,7 +490,7 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={respiratory.chestTightnessDays}
-							setText={(text) => {
+							setText={(text: string) => {
 								setRespiratory({ chestTightnessDays: text });
 							}}
 						/>
@@ -523,8 +506,8 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={respiratory.chestPain}
-						setChecked={(text) => {
-							setRespiratory({ chestPain: text });
+						setChecked={(text: string | string[]) => {
+							setRespiratory({ chestPain: text as string });
 						}}
 					/>
 				</Col>
@@ -534,7 +517,7 @@ export function Symptoms() {
 							label="Days"
 							placeholder="Days"
 							text={respiratory.chestPainDays}
-							setText={(text) => {
+							setText={(text: string) => {
 								setRespiratory({ chestPainDays: text });
 							}}
 						/>
@@ -563,9 +546,7 @@ export function Symptoms() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={gi.vomiting}
-						setChecked={(text) => {
-							console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
+						setChecked={(text: string | string[]) => {
 							setGI({ vomiting: text });
 						}}
 					/>
@@ -1030,7 +1011,6 @@ export function Symptoms() {
 						setEarsAndEyes({
 							sunkenEyes: res.checked,
 							sunkenEyesDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -1043,13 +1023,10 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Dryness"
-					// times={true}
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						setMouth({
 							dryness: res.checked,
 							drynessDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -1061,7 +1038,6 @@ export function Symptoms() {
 						setMouth({
 							cottonFeeling: res.checked,
 							cottonFeelingDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -1075,14 +1051,12 @@ export function Symptoms() {
 						setMouth({
 							ulcerationsInside: res.checked,
 							ulcerationsInsideDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 
 				<BasicSymptomInput
 					label="Ulcerations around Mouth/ Corners"
-					// times={true}
 					onChange={(res) => {
 						setMouth({
 							ulcerationsAround: res.checked,
@@ -1102,12 +1076,13 @@ export function Symptoms() {
 					label="Inability to breastfeed"
 					// times={true}
 					showNumberDays={false}
-					onChange={(res) => {
-						// console.log("What does : ", res);
+					onChange={(res: {
+						checked?: string | undefined;
+						days?: string | undefined;
+						timesDay?: string | undefined;
+					}) => {
 						setNeonatal({
-							inabilityToBreastFeed: res.checked,
-							// frequencyOfUrinationDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
+							inabilityToBreastFeed: res.checked as string,
 						});
 					}}
 				/>
@@ -1130,7 +1105,7 @@ export function Symptoms() {
 				multiline
 				numberOfLines={4}
 				text={others.others}
-				setText={(text) => {
+				setText={(text: string) => {
 					setOthers({ others: text });
 				}}
 			/>

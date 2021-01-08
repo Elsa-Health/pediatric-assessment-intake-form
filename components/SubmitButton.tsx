@@ -38,7 +38,7 @@ import {
 	useHIVTests,
 	useUrineTests,
 	useFinalDiagnosis,
-	initialPatientInfo,
+	initialPatientInformation,
 	initialGeneralSymptoms,
 	initialRespiratorySymptoms,
 	initialGISymtoms,
@@ -71,16 +71,13 @@ import {
 
 import { Button } from "react-native-paper";
 import {
-	initialHeaderInfo,
+	initialHeaderInformation,
 	useHeaderInformation,
 } from "../store/headerInformation";
-import isDev from "../utils";
 
 const SubmitButton = ({
-	loading = false,
 	user,
 }: {
-	loading?: boolean;
 	user: { email: string | null; uid: string | null };
 }) => {
 	// const mainStore = useMainStore((state) => state);
@@ -190,8 +187,6 @@ const SubmitButton = ({
 		(state) => state
 	);
 
-	// console.log("Header info : ", patientInfo);
-
 	//to move this to main store may be?
 	const data = {
 		// all data here
@@ -251,34 +246,10 @@ const SubmitButton = ({
 		addedTime: Date.now(),
 	};
 
-	const toLowerCase = (obj) => {
-		if (!obj) {
-			return;
-		}
-		if (typeof obj !== "Object" && typeof obj !== "object") {
-			return;
-		}
-		var keys = Object.keys(obj);
-		var result = {};
-		keys.map(function (k, v) {
-			if (typeof k === "string") {
-				if (typeof obj[k] === "string") {
-					result[k.toLowerCase()] = obj[k].toLowerCase();
-				} else {
-					// if the node is an object, perform the same process over that node
-					if (
-						typeof obj[k] === "Object" ||
-						typeof obj[k] === "object"
-					) {
-						result[k.toLowerCase()] = toLowerCase(obj[k]);
-					} else {
-						result[k.toLowerCase()] = obj[k];
-					}
-				}
-			}
-		});
-		return result;
-	};
+	function toLowerCase(data: any) {
+		// convert to lowercase here
+		return data;
+	}
 
 	const params = {
 		headers: {
@@ -290,8 +261,8 @@ const SubmitButton = ({
 
 	const clearStores = () => {
 		// clearing the data here
-		setHeaderInfo(initialHeaderInfo);
-		setPatientInformation(initialPatientInfo);
+		setHeaderInfo(initialHeaderInformation);
+		setPatientInformation(initialPatientInformation);
 		setChiefComplains({ complains: "" });
 
 		//clearing symtoms states
@@ -373,14 +344,12 @@ const SubmitButton = ({
 	return (
 		<View>
 			<Button
-				// icon="camera"
 				testID="submitButton"
 				mode="contained"
 				onPress={handleSubmit}
 				style={{
 					height: 48,
 					justifyContent: "center",
-					// backgroundColor: "#0B0E26",
 				}}
 				labelStyle={{
 					color: "white",

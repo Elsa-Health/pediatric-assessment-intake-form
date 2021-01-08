@@ -1,5 +1,6 @@
 import create from "zustand";
 
+// general symptoms store
 export const initialGeneralSymptoms = {
 	fever: "",
 	feverDays: "",
@@ -10,19 +11,31 @@ export const initialGeneralSymptoms = {
 	skinLession: "",
 	skinLessionDays: "",
 };
-export const useGeneralSymptoms = create((set) => ({
+
+type GeneralSymptomsData = {
+	fever?: string;
+	feverDays?: string;
+	chills?: string;
+	chillsDays?: string;
+	awerenessOfHearbeat?: string;
+	awerenessOfHearbeatDays?: string;
+	skinLession?: string;
+	skinLessionDays?: string;
+};
+
+type GeneralSymptoms = GeneralSymptomsData & {
+	setGeneralState: (
+		by: { [key in keyof GeneralSymptomsData]: string }
+	) => void;
+};
+
+export const useGeneralSymptoms = create<GeneralSymptoms>((set) => ({
 	...initialGeneralSymptoms,
-
-	changeFever: (fever) => set((state) => ({ fever: fever })),
-	setFeverDays: (days) => set((state) => ({ feverDays: days })),
-
-	setChills: (chills) => set((state) => ({ chills: chills })),
-	setChillsDays: (days) => set((state) => ({ chillsDays: days })),
-
-	//thos is to update all data state
-	setGeneralState: (data) => set((state) => ({ ...state, ...data })),
+	setGeneralState: (data: { [key in keyof GeneralSymptomsData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
+// respiratory symptoms store
 export const initialRespiratorySymptoms = {
 	cough: "",
 	coughDays: "",
@@ -55,13 +68,53 @@ export const initialRespiratorySymptoms = {
 	chestPain: "",
 	chestPainDays: "",
 };
-export const useRespiratory = create((set) => ({
+
+type RespiratoryData = {
+	cough?: string;
+	coughDays?: string;
+	coughNature?: string;
+	coughSpatum?: string;
+	coughTime?: string;
+	rhinorrhea?: string;
+	rhinorrheaDays?: string;
+	lossOfSmell?: string;
+	lossOfSmellDays?: string;
+	lossOfVoice?: string;
+	lossOfVoiceDays?: string;
+
+	facialPain?: string;
+	facialPainDays?: string;
+	nasalCongestion?: string;
+	nasalCongestionDays?: string;
+
+	dentalPain?: string;
+	dentalPainDays?: string;
+
+	changeInVoice?: string;
+	changeInVoiceDays?: string;
+	sneezing?: string;
+	sneezingDays?: string;
+	badBreath?: string;
+	badBreathDays?: string;
+	chestTightness?: string;
+	chestTightnessDays?: string;
+	chestPain?: string;
+	chestPainDays?: string;
+};
+
+type Respiratory = RespiratoryData & {
+	setRespiratory: (by: { [key in keyof RespiratoryData]: string }) => void;
+};
+
+export const useRespiratory = create<Respiratory>((set) => ({
 	...initialRespiratorySymptoms,
 
 	//thos is to update all data state
-	setRespiratory: (data) => set((state) => ({ ...state, ...data })),
+	setRespiratory: (data: { [key in keyof RespiratoryData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
+//GI symptoms store
 export const initialGISymtoms = {
 	vomiting: "",
 	vomitingDays: "",
@@ -77,8 +130,6 @@ export const initialGISymtoms = {
 	abnominalPain: "",
 	abnominalPainDays: "",
 	abnominalPainLocation: "",
-
-	//this varibale to be renamed
 
 	abnominalPainEpigastric: [],
 	abnominalPainIsRadiating: "",
@@ -102,12 +153,58 @@ export const initialGISymtoms = {
 	frequencyOfUrinationTimesDay: "",
 	frequencyOfUrinationDays: "",
 };
-export const useGI = create((set) => ({
+
+type GISymtomsData = {
+	vomiting?: string;
+	vomitingDays?: string;
+	vomitingType?: string[];
+
+	diarrhoea?: string;
+	diarrhoeaDays?: string;
+	diarrhoeaTimesDay?: string;
+	diarrhoeaType: string[];
+	isDiarrhoesBloody?: string;
+	anyTenesmus?: string;
+
+	abnominalPain?: string;
+	abnominalPainDays?: string;
+	abnominalPainLocation?: string;
+
+	abnominalPainEpigastric?: string[];
+	abnominalPainIsRadiating?: string;
+
+	abdominalCramps?: string;
+	abdominalCrampsDays?: string;
+
+	lackOfAppetite?: string;
+	lackOfAppetiteDays?: string;
+
+	weightLoss?: string;
+	weightLossDays?: string;
+
+	difficultySwallowing?: string;
+	difficultySwallowingDays?: string;
+
+	painInUrination?: string;
+	painInUrinationDays?: string;
+
+	frequencyOfUrination?: string;
+	frequencyOfUrinationTimesDay?: string;
+	frequencyOfUrinationDays?: string;
+};
+
+type GISymtoms = GISymtomsData & {
+	setGI: (by: { [key in keyof GISymtomsData]: string }) => void;
+};
+
+export const useGI = create<GISymtoms>((set) => ({
 	...initialGISymtoms,
 	//thos is to update all data state
-	setGI: (data) => set((state) => ({ ...state, ...data })),
+	setGI: (data: { [key in keyof GISymtomsData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
+// CNS Symptoms store
 export const initilCNSSymtoms = {
 	headache: "",
 	headacheDays: "",
@@ -127,11 +224,36 @@ export const initilCNSSymtoms = {
 	highlyPitchedCrying: "",
 	highlyPitchedCryingDays: "",
 };
-export const useCNS = create((set) => ({
+
+type CNSData = {
+	headache?: string;
+	headacheDays?: string;
+	coma?: string;
+	comaDays?: string;
+	hypothermia?: string;
+	hypothermiaDays?: string;
+
+	seizures?: string;
+	seizuresDays?: string;
+
+	neckPain?: string;
+	neckPainDays?: string;
+
+	highlyPitchedCrying?: string;
+	highlyPitchedCryingDays?: string;
+};
+
+type CNS = CNSData & {
+	setCNS: (by: { [key in keyof CNSData]: string }) => void;
+};
+
+export const useCNS = create<CNS>((set) => ({
 	...initilCNSSymtoms,
-	setCNS: (data) => set((state) => ({ ...state, ...data })),
+	setCNS: (data: { [key in keyof CNSData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
+// musculoskeletal symptoms store
 export const initialMusculoskeletal = {
 	myalgia: "",
 	myalgiaDays: "",
@@ -142,11 +264,34 @@ export const initialMusculoskeletal = {
 	fatique: "",
 	fatiqueDays: "",
 };
-export const useMusculoskeletal = create((set) => ({
+
+type MusculoskeletalData = {
+	myalgia?: string;
+	myalgiaDays?: string;
+
+	historyOfTrauma?: string;
+	historyOfTraumaDays?: string;
+
+	fatique?: string;
+	fatiqueDays?: string;
+};
+
+type Musculoskeletal = MusculoskeletalData & {
+	setMusculoskeletal: (
+		by: { [key in keyof MusculoskeletalData]: string }
+	) => void;
+};
+
+export const useMusculoskeletal = create<Musculoskeletal>((set) => ({
 	...initialMusculoskeletal,
-	setMusculoskeletal: (data) => set((state) => ({ ...state, ...data })),
+	setMusculoskeletal: (
+		data: { [key in keyof MusculoskeletalData]: string }
+	) => set((state) => ({ ...state, ...data })),
 }));
 
+// ears and eyes
+
+// initial mouth stire
 export const initialEarsAndEyes = {
 	redEyes: "",
 	redEyesDays: "",
@@ -166,11 +311,37 @@ export const initialEarsAndEyes = {
 	sunkenEyes: "",
 	sunkenEyesDays: "",
 };
-export const useEarsAndEyes = create((set) => ({
+
+type EarsAndEyesData = {
+	redEyes?: string;
+	redEyesDays?: string;
+
+	painfulEyes?: string;
+	painfulEyesDays?: string;
+
+	earPain?: string;
+	earPainDays?: string;
+
+	eyeDischarge?: string;
+	eyeDischargeDays?: string;
+
+	earDischarge?: string;
+	earDischargeDays?: string;
+
+	sunkenEyes?: string;
+	sunkenEyesDays?: string;
+};
+
+type EarsAndEyes = EarsAndEyesData & {
+	setEarsAndEyes: (by: { [key in keyof EarsAndEyesData]: string }) => void;
+};
+
+export const useEarsAndEyes = create<EarsAndEyes>((set) => ({
 	...initialEarsAndEyes,
 	setEarsAndEyes: (data) => set((state) => ({ ...state, ...data })),
 }));
 
+// initial mouth stire
 export const initialMouth = {
 	dryness: "",
 	drynessDays: "",
@@ -184,18 +355,51 @@ export const initialMouth = {
 	ulcerationsAround: "",
 	ulcerationsAroundDays: "",
 };
-export const useMouth = create((set) => ({
+
+type MouthData = {
+	dryness?: string;
+	drynessDays?: string;
+
+	cottonFeeling?: string;
+	cottonFeelingDays?: string;
+
+	ulcerationsInside?: string;
+	ulcerationsInsideDays?: string;
+
+	ulcerationsAround?: string;
+	ulcerationsAroundDays?: string;
+};
+
+type Mouth = MouthData & {
+	setMouth: (by: { [key in keyof MouthData]: string }) => void;
+};
+
+export const useMouth = create<Mouth>((set) => ({
 	...initialMouth,
-	setMouth: (data) => set((state) => ({ ...state, ...data })),
+	setMouth: (data: { [key in keyof MouthData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
-export const useNeonatal = create((set) => ({
+// neonatal symptoms store
+type Neonatal = {
+	inabilityToBreastFeed?: string;
+	setNeonatal: (by: { inabilityToBreastFeed: string }) => void;
+};
+export const useNeonatal = create<Neonatal>((set) => ({
 	inabilityToBreastFeed: "",
 
-	setNeonatal: (data) => set((state) => ({ ...state, ...data })),
+	setNeonatal: (data: { inabilityToBreastFeed: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
-export const useOthers = create((set) => ({
+//other stymtoms store
+
+type Others = {
+	others?: string;
+	setOthers: (by: { others: string }) => void;
+};
+export const useOthers = create<Others>((set) => ({
 	others: "",
-	setOthers: (data) => set((state) => ({ ...state, ...data })),
+	setOthers: (data: { others: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));

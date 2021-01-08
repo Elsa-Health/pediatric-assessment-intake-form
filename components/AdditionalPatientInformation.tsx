@@ -44,8 +44,8 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["full term", "pre-term", "post term"]}
 						checked={birthHistory.gestation}
-						setChecked={(text: string) => {
-							setBirthHistory({ gestation: text });
+						setChecked={(text: string | string[]) => {
+							setBirthHistory({ gestation: text as string });
 						}}
 					/>
 				</Col>
@@ -72,9 +72,9 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={birthHistory.complicationsAfterDelivery}
-						setChecked={(text: string) => {
+						setChecked={(text: string | string[]) => {
 							setBirthHistory({
-								complicationsAfterDelivery: text,
+								complicationsAfterDelivery: text as string,
 							});
 						}}
 					/>
@@ -86,8 +86,8 @@ export function AdditionalPatientInformation() {
 					<FitTextToCell>
 						<Input
 							text={birthHistory.apgarScore}
-							setText={(text: string) => {
-								setBirthHistory({ apgarScore: text });
+							setText={(text: string | string[]) => {
+								setBirthHistory({ apgarScore: text as string });
 							}}
 						/>
 					</FitTextToCell>
@@ -122,8 +122,8 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={nutritionHistory.breastfed}
-						setChecked={(text: string) => {
-							setNutritionHistory({ breastfed: text });
+						setChecked={(text: string | string[]) => {
+							setNutritionHistory({ breastfed: text as string });
 						}}
 					/>
 				</Col>
@@ -134,8 +134,10 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={nutritionHistory.wasItExclusive}
-						setChecked={(text: string) => {
-							setNutritionHistory({ wasItExclusive: text });
+						setChecked={(text: string | string[]) => {
+							setNutritionHistory({
+								wasItExclusive: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -148,9 +150,9 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["At Birth", "After Birth"]}
 						checked={nutritionHistory.breadfeedingStartTime}
-						setChecked={(text: string) => {
+						setChecked={(text: string | string[]) => {
 							setNutritionHistory({
-								breadfeedingStartTime: text,
+								breadfeedingStartTime: text as string,
 							});
 						}}
 					/>
@@ -176,7 +178,16 @@ export function AdditionalPatientInformation() {
 					<Text>(If yes) When did the breastfeeding start?</Text>
 				</Col>
 				<Col>
-		
+					{/* <Row style={{ alignItems: "center" }}> */}
+					{/* <SimpleQuestion
+              options={["At Birth", "After Birth"]}
+              checked={nutritionHistory.breadfeedingStartTime}
+              setChecked={(text) => {
+                // console.log("Hello There ", text);
+                // setGeneral({ fever: text, ...general });
+                setNutritionHistory({ breadfeedingStartTime: text });
+              }}
+            /> */}
 
 					<FitTextToCell>
 						<Input
@@ -199,10 +210,12 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={nutritionHistory.vitaminASupplements}
-						setChecked={(text: string) => {
+						setChecked={(text: string | string[]) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
-							setNutritionHistory({ vitaminASupplements: text });
+							setNutritionHistory({
+								vitaminASupplements: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -219,11 +232,11 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={vaccinationHistory.updateOnAllVaccines}
-						setChecked={(text: string) => {
+						setChecked={(text: string | string[]) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
 							setVaccinationHistory({
-								updateOnAllVaccines: text,
+								updateOnAllVaccines: text as string,
 							});
 						}}
 					/>
@@ -254,10 +267,12 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={medicalHistory.previousAdmission}
-						setChecked={(text: string) => {
+						setChecked={(text: string | string[]) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
-							setMedicalHistory({ previousAdmission: text });
+							setMedicalHistory({
+								previousAdmission: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -279,10 +294,12 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={medicalHistory.antibioticUse}
-						setChecked={(text: string) => {
+						setChecked={(text: string | string[]) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
-							setMedicalHistory({ antibioticUse: text });
+							setMedicalHistory({
+								antibioticUse: text as string,
+							});
 						}}
 					/>
 				</Col>

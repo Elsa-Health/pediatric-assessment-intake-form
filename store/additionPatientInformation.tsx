@@ -23,7 +23,8 @@ type BirthHistory = BirthHistoryData & {
 
 export const useBirthHistory = create<BirthHistory>((set) => ({
 	...initialBirthHistory,
-	setBirthHistory: (data) => set((state) => ({ ...state, ...data })),
+	setBirthHistory: (data: { [key in keyof BirthHistoryData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
 //nutritional history store

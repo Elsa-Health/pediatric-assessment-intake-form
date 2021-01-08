@@ -47,9 +47,6 @@ export function SignsExam() {
 		(state) => state.setNeurologicalExamination
 	);
 
-	// console.log("Debugging the signs and exams: ");
-	// console.table(abdominalExamination);
-
 	return (
 		<Table headerTitle="Signs/ Exam">
 			<Col style={styles.headerDarkGray}>
@@ -64,7 +61,7 @@ export function SignsExam() {
 						<Input
 							label="*C"
 							text={vitalSigns.temp}
-							setText={(text) => {
+							setText={(text: string) => {
 								setVitalSigns({ temp: text });
 							}}
 						/>
@@ -78,7 +75,7 @@ export function SignsExam() {
 						<Input
 							placeholder="bpm"
 							text={vitalSigns.respRate}
-							setText={(text) => {
+							setText={(text: string) => {
 								setVitalSigns({ respRate: text });
 							}}
 						/>
@@ -92,7 +89,7 @@ export function SignsExam() {
 						<Input
 							placeholder="/min"
 							text={vitalSigns.hr}
-							setText={(text) => {
+							setText={(text: string) => {
 								setVitalSigns({ hr: text });
 							}}
 						/>
@@ -106,7 +103,7 @@ export function SignsExam() {
 						<Input
 							placeholder=" % "
 							text={vitalSigns.o2Sat}
-							setText={(text) => {
+							setText={(text: string) => {
 								setVitalSigns({ o2Sat: text });
 							}}
 						/>
@@ -120,7 +117,7 @@ export function SignsExam() {
 						<Input
 							placeholder="mmhg"
 							text={vitalSigns.bp}
-							setText={(text) => {
+							setText={(text: string) => {
 								setVitalSigns({ bp: text });
 							}}
 						/>
@@ -136,7 +133,7 @@ export function SignsExam() {
 						<Input
 							placeholder="kg"
 							text={vitalSigns.weight}
-							setText={(text) => {
+							setText={(text: string) => {
 								setVitalSigns({ weight: text });
 							}}
 						/>
@@ -150,7 +147,7 @@ export function SignsExam() {
 						<Input
 							placeholder="cm"
 							text={vitalSigns.height}
-							setText={(text) => {
+							setText={(text: string) => {
 								setVitalSigns({ height: text });
 							}}
 						/>
@@ -173,10 +170,10 @@ export function SignsExam() {
 							"not responding",
 						]}
 						checked={generalExamination.mentalStatus}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setGeneralExamination({ mentalStatus: text });
+						setChecked={(text: string | string[]) => {
+							setGeneralExamination({
+								mentalStatus: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -196,11 +193,10 @@ export function SignsExam() {
 							"alert",
 						]}
 						checked={generalExamination.childAppearance}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-
-							setGeneralExamination({ childAppearance: text });
+						setChecked={(text: string | string[]) => {
+							setGeneralExamination({
+								childAppearance: text as string,
+							});
 						}}
 						mutiple={true}
 					/>
@@ -218,10 +214,10 @@ export function SignsExam() {
 					<SimpleQuestion
 						options={["normal", "abnormal"]}
 						checked={generalExamination.hairColor}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setGeneralExamination({ hairColor: text });
+						setChecked={(text: string | string[]) => {
+							setGeneralExamination({
+								hairColor: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -232,10 +228,12 @@ export function SignsExam() {
 					<SimpleQuestion
 						options={["thick", "brittle"]}
 						checked={generalExamination.hairTexture}
-						setChecked={(text) => {
+						setChecked={(text: string | string[]) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
-							setGeneralExamination({ hairTexture: text });
+							setGeneralExamination({
+								hairTexture: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -253,10 +251,12 @@ export function SignsExam() {
 					<SimpleQuestion
 						options={["pale", "not pale"]}
 						checked={generalExamination.eyesConjuctive}
-						setChecked={(text) => {
+						setChecked={(text: string | string[]) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
-							setGeneralExamination({ eyesConjuctive: text });
+							setGeneralExamination({
+								eyesConjuctive: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -271,7 +271,7 @@ export function SignsExam() {
 					<FitTextToCell>
 						<Input
 							text={generalExamination.ent}
-							setText={(text) => {
+							setText={(text: string) => {
 								setGeneralExamination({ ent: text });
 							}}
 						/>
@@ -289,10 +289,10 @@ export function SignsExam() {
 						options={["Angular stomatitis", "Ulcerations"]}
 						horizontal={false}
 						checked={generalExamination.mouthOutside}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setGeneralExamination({ mouthOutside: text });
+						setChecked={(text: string[] | string) => {
+							setGeneralExamination({
+								mouthOutside: text as string[],
+							});
 						}}
 						mutiple={true}
 					/>
@@ -310,10 +310,12 @@ export function SignsExam() {
 							"Cyanosis",
 						]}
 						checked={generalExamination.mouthInside}
-						setChecked={(text) => {
+						setChecked={(text: string | string[]) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
-							setGeneralExamination({ mouthInside: text });
+							setGeneralExamination({
+								mouthInside: text as string,
+							});
 						}}
 						mutiple={true}
 					/>
@@ -331,11 +333,9 @@ export function SignsExam() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={generalExamination.handsFingerClubbing}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
+						setChecked={(text: string | string[]) => {
 							setGeneralExamination({
-								handsFingerClubbing: text,
+								handsFingerClubbing: text as string,
 							});
 						}}
 					/>
@@ -348,10 +348,10 @@ export function SignsExam() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={generalExamination.handsPalmerPallor}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setGeneralExamination({ handsPalmerPallor: text });
+						setChecked={(text: string | string[]) => {
+							setGeneralExamination({
+								handsPalmerPallor: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -365,11 +365,9 @@ export function SignsExam() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={generalExamination.handsPeripheralCyanosis}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
+						setChecked={(text: string | string[]) => {
 							setGeneralExamination({
-								handsPeripheralCyanosis: text,
+								handsPeripheralCyanosis: text as string,
 							});
 						}}
 					/>
@@ -383,9 +381,9 @@ export function SignsExam() {
 						<Input
 							placeholder="Secs"
 							text={generalExamination.handsCapillaryRefillTime}
-							setText={(text) => {
+							setText={(text: string | string[]) => {
 								setGeneralExamination({
-									handsCapillaryRefillTime: text,
+									handsCapillaryRefillTime: text as string,
 								});
 							}}
 						/>
@@ -404,10 +402,8 @@ export function SignsExam() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={generalExamination.tonsils}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setGeneralExamination({ tonsils: text });
+						setChecked={(text: string | string[]) => {
+							setGeneralExamination({ tonsils: text as string });
 						}}
 					/>
 				</Col>
@@ -419,10 +415,10 @@ export function SignsExam() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={generalExamination.centralCyanosis}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setGeneralExamination({ centralCyanosis: text });
+						setChecked={(text: string | string[]) => {
+							setGeneralExamination({
+								centralCyanosis: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -436,10 +432,10 @@ export function SignsExam() {
 					<SimpleQuestion
 						options={["slow", "medium", "normal"]}
 						checked={generalExamination.skinPinchTest}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setGeneralExamination({ skinPinchTest: text });
+						setChecked={(text: string | string[]) => {
+							setGeneralExamination({
+								skinPinchTest: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -453,10 +449,10 @@ export function SignsExam() {
 					<SimpleQuestion
 						options={["Yes", "No"]}
 						checked={generalExamination.lowerLimbEdema}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setGeneralExamination({ lowerLimbEdema: text });
+						setChecked={(text: string | string[]) => {
+							setGeneralExamination({
+								lowerLimbEdema: text as string,
+							});
 						}}
 					/>
 					<Text style={{ marginTop: 12, marginLeft: 10 }}>
@@ -465,11 +461,9 @@ export function SignsExam() {
 					<SimpleQuestion
 						options={["Pitting", "Non-pitting"]}
 						checked={generalExamination.ifLowerLimbeEdemaYes}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
+						setChecked={(text: string | string[]) => {
 							setGeneralExamination({
-								ifLowerLimbeEdemaYes: text,
+								ifLowerLimbeEdemaYes: text as string,
 							});
 						}}
 					/>
@@ -481,26 +475,23 @@ export function SignsExam() {
 					<Text>Lymph Nodes </Text>
 				</Col>
 				<Col cols={11}>
-					{/* still not sure about the input for the second argument below according to the from */}
 					<SimpleQuestion
-						options={[
-							"Non palpable",
-							"Palpable",
-						
-						]}
+						options={["Non palpable", "Palpable"]}
 						checked={generalExamination.lymphNodes}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setGeneralExamination({ lymphNodes: text });
+						setChecked={(text: string | string[]) => {
+							setGeneralExamination({
+								lymphNodes: text as string,
+							});
 						}}
 					/>
 					<Text>If Palpable ? </Text>
 					<Input
 						label="Right/Left Group Of"
 						text={generalExamination.palpableRightLeftGroupOf}
-						setText={(text) => {
-							setGeneralExamination({ palpableRightLeftGroupOf: text });
+						setText={(text: string) => {
+							setGeneralExamination({
+								palpableRightLeftGroupOf: text,
+							});
 						}}
 					/>
 				</Col>
@@ -521,10 +512,10 @@ export function SignsExam() {
 						]}
 						horizontal={false}
 						checked={respiratoryExamination.chestLook}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setRespiratoryExamination({ chestLook: text });
+						setChecked={(text: string | string[]) => {
+							setRespiratoryExamination({
+								chestLook: text as string[],
+							});
 						}}
 						mutiple={true}
 					/>
@@ -544,11 +535,9 @@ export function SignsExam() {
 								options={["Normal", "Diminished"]}
 								// horizontal={false}
 								checked={respiratoryExamination.airEntry}
-								setChecked={(text) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
+								setChecked={(text: string | string[]) => {
 									setRespiratoryExamination({
-										airEntry: text,
+										airEntry: text as string,
 									});
 								}}
 							/>
@@ -567,11 +556,9 @@ export function SignsExam() {
 								]}
 								horizontal={false}
 								checked={respiratoryExamination.breathSounds}
-								setChecked={(text) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
+								setChecked={(text: string | string[]) => {
 									setRespiratoryExamination({
-										breathSounds: text,
+										breathSounds: text as string,
 									});
 								}}
 							/>
@@ -585,11 +572,9 @@ export function SignsExam() {
 							<SimpleQuestion
 								options={["yes", "no"]}
 								checked={respiratoryExamination.crackles}
-								setChecked={(text) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
+								setChecked={(text: string | string[]) => {
 									setRespiratoryExamination({
-										crackles: text,
+										crackles: text as string,
 									});
 								}}
 							/>
@@ -603,11 +588,9 @@ export function SignsExam() {
 							<SimpleQuestion
 								options={["yes", "no"]}
 								checked={respiratoryExamination.wheezing}
-								setChecked={(text) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
+								setChecked={(text: string | string[]) => {
 									setRespiratoryExamination({
-										wheezing: text,
+										wheezing: text as string,
 									});
 								}}
 							/>
@@ -625,10 +608,8 @@ export function SignsExam() {
 						label="Are there any masses on the abdomen? (If yes,
 please indicate the location in the picture.)"
 						checked={abdominalExamination.masses}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setAbdominalExamination({ masses: text });
+						setChecked={(text: string | string[]) => {
+							setAbdominalExamination({ masses: text as string });
 						}}
 					/>
 
@@ -637,10 +618,10 @@ please indicate the location in the picture.)"
 						label="Is there tenderness? (If yes, please indicate
               location.)"
 						checked={abdominalExamination.tenderness}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setAbdominalExamination({ tenderness: text });
+						setChecked={(text: string | string[]) => {
+							setAbdominalExamination({
+								tenderness: text as string,
+							});
 						}}
 					/>
 
@@ -648,11 +629,9 @@ please indicate the location in the picture.)"
 						options={["yes", "no"]}
 						label="Is there any rebound tenderness?"
 						checked={abdominalExamination.reboundTenderness}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
+						setChecked={(text: string | string[]) => {
 							setAbdominalExamination({
-								reboundTenderness: text,
+								reboundTenderness: text as string,
 							});
 						}}
 					/>
@@ -661,19 +640,21 @@ please indicate the location in the picture.)"
 						options={["yes", "no"]}
 						label="Any rectal prolapse?"
 						checked={abdominalExamination.rectalProlapse}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setAbdominalExamination({ rectalProlapse: text });
+						setChecked={(text: string | string[]) => {
+							setAbdominalExamination({
+								rectalProlapse: text as string,
+							});
 						}}
 					/>
 					<Spacer size={12} />
-					{/* <Text>:</Text> */}
+
 					<Input
 						label="Anal examination (e.g.; if pinworms observed)"
 						text={abdominalExamination.analExamination}
-						setText={(text) => {
-							setAbdominalExamination({ analExamination: text });
+						setText={(text: string) => {
+							setAbdominalExamination({
+								analExamination: text,
+							});
 						}}
 					/>
 				</Col>
@@ -688,10 +669,10 @@ please indicate the location in the picture.)"
 						label="Abdomen Section"
 						horizontal={false}
 						checked={abdominalExamination.abdomenSection}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setAbdominalExamination({ abdomenSection: text });
+						setChecked={(text: string | string[]) => {
+							setAbdominalExamination({
+								abdomenSection: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -708,10 +689,8 @@ please indicate the location in the picture.)"
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={skinExamination.lession}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setSkinExamination({ lession: text });
+						setChecked={(text: string | string[]) => {
+							setSkinExamination({ lession: text as string });
 						}}
 					/>
 				</Col>
@@ -719,14 +698,14 @@ please indicate the location in the picture.)"
 					<Text>If yes, where is the lesion?</Text>
 					<Input
 						text={skinExamination.lessionRegion}
-						setText={(text) => {
+						setText={(text: string) => {
 							setSkinExamination({ lessionRegion: text });
 						}}
 					/>
 					<Text>Shape of lesion:</Text>
 					<Input
 						text={skinExamination.lessionShape}
-						setText={(text) => {
+						setText={(text: string) => {
 							setSkinExamination({ lessionShape: text });
 						}}
 					/>
@@ -734,10 +713,10 @@ please indicate the location in the picture.)"
 					<SimpleQuestion
 						options={["Multiple", "Single lesion"]}
 						checked={skinExamination.lessionFrequency}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setSkinExamination({ lessionFrequency: text });
+						setChecked={(text: string | string[]) => {
+							setSkinExamination({
+								lessionFrequency: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -753,14 +732,11 @@ please indicate the location in the picture.)"
 							"Ringworm",
 							"Rose spots",
 							"Burn",
-							
 						]}
 						label="Type : "
 						checked={skinExamination.type}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setSkinExamination({ type: text });
+						setChecked={(text: string | string[]) => {
+							setSkinExamination({ type: text as string[] });
 						}}
 						mutiple={true}
 					/>
@@ -769,7 +745,7 @@ please indicate the location in the picture.)"
 					<Input
 						label="Other"
 						text={skinExamination.typeOther}
-						setText={(text) => {
+						setText={(text: string) => {
 							setSkinExamination({ typeOther: text });
 						}}
 					/>
@@ -778,10 +754,8 @@ please indicate the location in the picture.)"
 						options={["Defined", "Undefined"]}
 						label="Margins : "
 						checked={skinExamination.margins}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setSkinExamination({ margins: text });
+						setChecked={(text: string | string[]) => {
+							setSkinExamination({ margins: text as string });
 						}}
 					/>
 				</Col>
@@ -794,17 +768,15 @@ please indicate the location in the picture.)"
 							"Discolored:",
 						]}
 						checked={skinExamination.feature}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setSkinExamination({ feature: text });
+						setChecked={(text: string | string[]) => {
+							setSkinExamination({ feature: text as string });
 						}}
 						mutiple={true}
 					/>
 					<Input
 						label="If Colored, specify the color here : "
 						text={skinExamination.featureColor}
-						setText={(text) => {
+						setText={(text: string) => {
 							setSkinExamination({ featureColor: text });
 						}}
 					/>
@@ -814,14 +786,11 @@ please indicate the location in the picture.)"
 							"Another household member with similar problem",
 						]}
 						checked={skinExamination.houseHoldWithSimilarProblem}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
+						setChecked={(text: string | string[]) => {
 							setSkinExamination({
-								houseHoldWithSimilarProblem: text,
+								houseHoldWithSimilarProblem: text as string,
 							});
 						}}
-						// horizontal={false}
 					/>
 				</Col>
 			</Row>
@@ -830,7 +799,7 @@ please indicate the location in the picture.)"
 					<Input
 						label="Other information : "
 						text={skinExamination.notes}
-						setText={(text) => {
+						setText={(text: string) => {
 							setSkinExamination({ notes: text });
 						}}
 					/>
@@ -840,8 +809,6 @@ please indicate the location in the picture.)"
 				<Text>Neurological Examination</Text>
 			</Col>
 
-			{/* the inputs for this parts are not clear */}
-			{/* might need to be updated */}
 			<Row>
 				<Col>
 					<Row>
@@ -850,7 +817,7 @@ please indicate the location in the picture.)"
 							<Input
 								label="/15"
 								text={neurologicalExamination.gcsScore}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										gcsScore: text,
 									});
@@ -863,7 +830,7 @@ please indicate the location in the picture.)"
 							<Input
 								placeholder="/4"
 								text={neurologicalExamination.gcsScoreEyes}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										gcsScoreEyes: text,
 									});
@@ -875,7 +842,7 @@ please indicate the location in the picture.)"
 							<Input
 								placeholder="/5"
 								text={neurologicalExamination.gcsScoreVerbal}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										gcsScoreVerbal: text,
 									});
@@ -887,7 +854,7 @@ please indicate the location in the picture.)"
 							<Input
 								placeholder="/6"
 								text={neurologicalExamination.gcsScoreMotor}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										gcsScoreMotor: text,
 									});
@@ -902,7 +869,7 @@ please indicate the location in the picture.)"
 							<Input
 								placeholder="/5"
 								text={neurologicalExamination.blantyreScore}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										blantyreScore: text,
 									});
@@ -914,7 +881,7 @@ please indicate the location in the picture.)"
 							<Input
 								placeholder="/1"
 								text={neurologicalExamination.blantyreScoreEyes}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										blantyreScoreEyes: text,
 									});
@@ -928,7 +895,7 @@ please indicate the location in the picture.)"
 								text={
 									neurologicalExamination.blantyreScoreVerbal
 								}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										blantyreScoreVerbal: text,
 									});
@@ -942,7 +909,7 @@ please indicate the location in the picture.)"
 								text={
 									neurologicalExamination.blantyreScoreMotor
 								}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										blantyreScoreMotor: text,
 									});
@@ -960,11 +927,11 @@ please indicate the location in the picture.)"
 								options={["Rigid", "Supple"]}
 								// horizontal={false}
 								checked={neurologicalExamination.neckRigidigty}
-								setChecked={(text) => {
+								setChecked={(text: string | string[]) => {
 									// console.log("Hello There ", text);
 									// setGeneral({ fever: text, ...general });
 									setNeurologicalExamination({
-										neckRigidigty: text,
+										neckRigidigty: text as string,
 									});
 								}}
 							/>
@@ -983,13 +950,11 @@ please indicate the location in the picture.)"
 								"Moro’s reflex",
 								"Palmar grasp",
 							]}
-							// horizontal={false}
-
 							checked={neurologicalExamination.neonate}
-							setChecked={(text) => {
-								// console.log("Hello There ", text);
-								// setGeneral({ fever: text, ...general });
-								setNeurologicalExamination({ neonate: text });
+							setChecked={(text: string | string[]) => {
+								setNeurologicalExamination({
+									neonate: text as string[],
+								});
 							}}
 							mutiple={true}
 						/>
@@ -1009,11 +974,9 @@ please indicate the location in the picture.)"
 								]}
 								horizontal={false}
 								checked={neurologicalExamination.motorFlexion}
-								setChecked={(text) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
+								setChecked={(text: string | string[]) => {
 									setNeurologicalExamination({
-										motorFlexion: text,
+										motorFlexion: text as string,
 									});
 								}}
 							/>
@@ -1031,7 +994,7 @@ please indicate the location in the picture.)"
 					<FitTextToCell>
 						<Input
 							text={neurologicalExamination.gait}
-							setText={(text) => {
+							setText={(text: string) => {
 								setNeurologicalExamination({ gait: text });
 							}}
 						/>
@@ -1091,11 +1054,11 @@ please indicate the location in the picture.)"
 							checked={
 								neurologicalExamination.rightUpperLimbsSensation
 							}
-							setChecked={(text) => {
+							setChecked={(text: string | string[]) => {
 								// console.log("Hello There ", text);
 								// setGeneral({ fever: text, ...general });
 								setNeurologicalExamination({
-									rightUpperLimbsSensation: text,
+									rightUpperLimbsSensation: text as string,
 								});
 							}}
 						/>
@@ -1107,7 +1070,7 @@ please indicate the location in the picture.)"
 								text={
 									neurologicalExamination.rightUpperLimbsPower
 								}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										rightUpperLimbsPower: text,
 									});
@@ -1122,7 +1085,7 @@ please indicate the location in the picture.)"
 								text={
 									neurologicalExamination.rightUpperLimbsMuscleTone
 								}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										rightUpperLimbsMuscleTone: text,
 									});
@@ -1140,11 +1103,11 @@ please indicate the location in the picture.)"
 							checked={
 								neurologicalExamination.rightUpperLimbsReflexes
 							}
-							setChecked={(text) => {
+							setChecked={(text: string | string[]) => {
 								// console.log("Hello There ", text);
 								// setGeneral({ fever: text, ...general });
 								setNeurologicalExamination({
-									rightUpperLimbsReflexes: text,
+									rightUpperLimbsReflexes: text as string,
 								});
 							}}
 						/>
@@ -1158,11 +1121,9 @@ please indicate the location in the picture.)"
 							checked={
 								neurologicalExamination.leftUpperLimbsSensation
 							}
-							setChecked={(text) => {
-								// console.log("Hello There ", text);
-								// setGeneral({ fever: text, ...general });
+							setChecked={(text: string | string[]) => {
 								setNeurologicalExamination({
-									leftUpperLimbsSensation: text,
+									leftUpperLimbsSensation: text as string,
 								});
 							}}
 						/>
@@ -1174,7 +1135,7 @@ please indicate the location in the picture.)"
 								text={
 									neurologicalExamination.leftUpperLimbsPower
 								}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										leftUpperLimbsPower: text,
 									});
@@ -1189,7 +1150,7 @@ please indicate the location in the picture.)"
 								text={
 									neurologicalExamination.lefttUpperLimbsMuscleTone
 								}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										lefttUpperLimbsMuscleTone: text,
 									});
@@ -1207,11 +1168,11 @@ please indicate the location in the picture.)"
 							checked={
 								neurologicalExamination.lefttUpperLimbsReflexes
 							}
-							setChecked={(text) => {
+							setChecked={(text: string | string[]) => {
 								// console.log("Hello There ", text);
 								// setGeneral({ fever: text, ...general });
 								setNeurologicalExamination({
-									lefttUpperLimbsReflexes: text,
+									lefttUpperLimbsReflexes: text as string,
 								});
 							}}
 						/>
@@ -1249,11 +1210,9 @@ please indicate the location in the picture.)"
 							checked={
 								neurologicalExamination.rightLowerLimbsSensation
 							}
-							setChecked={(text) => {
-								// console.log("Hello There ", text);
-								// setGeneral({ fever: text, ...general });
+							setChecked={(text: string | string[]) => {
 								setNeurologicalExamination({
-									rightLowerLimbsSensation: text,
+									rightLowerLimbsSensation: text as string,
 								});
 							}}
 						/>
@@ -1265,7 +1224,7 @@ please indicate the location in the picture.)"
 								text={
 									neurologicalExamination.rightLowerLimbsPower
 								}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										rightLowerLimbsPower: text,
 									});
@@ -1280,7 +1239,7 @@ please indicate the location in the picture.)"
 								text={
 									neurologicalExamination.rightLowerLimbsMuscleTone
 								}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										rightLowerLimbsMuscleTone: text,
 									});
@@ -1298,11 +1257,11 @@ please indicate the location in the picture.)"
 							checked={
 								neurologicalExamination.rightLowerLimbsReflexes
 							}
-							setChecked={(text) => {
+							setChecked={(text: string | string[]) => {
 								// console.log("Hello There ", text);
 								// setGeneral({ fever: text, ...general });
 								setNeurologicalExamination({
-									rightLowerLimbsReflexes: text,
+									rightLowerLimbsReflexes: text as string,
 								});
 							}}
 						/>
@@ -1316,11 +1275,11 @@ please indicate the location in the picture.)"
 							checked={
 								neurologicalExamination.leftLowerLimbsSensation
 							}
-							setChecked={(text) => {
+							setChecked={(text: string | string[]) => {
 								// console.log("Hello There ", text);
 								// setGeneral({ fever: text, ...general });
 								setNeurologicalExamination({
-									leftLowerLimbsSensation: text,
+									leftLowerLimbsSensation: text as string,
 								});
 							}}
 						/>
@@ -1332,7 +1291,7 @@ please indicate the location in the picture.)"
 								text={
 									neurologicalExamination.leftLowerLimbsPower
 								}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										leftLowerLimbsPower: text,
 									});
@@ -1347,7 +1306,7 @@ please indicate the location in the picture.)"
 								text={
 									neurologicalExamination.leftLowerLimbsMuscleTone
 								}
-								setText={(text) => {
+								setText={(text: string) => {
 									setNeurologicalExamination({
 										leftLowerLimbsMuscleTone: text,
 									});
@@ -1365,11 +1324,11 @@ please indicate the location in the picture.)"
 							checked={
 								neurologicalExamination.leftLowerLimbsReflexes
 							}
-							setChecked={(text) => {
+							setChecked={(text: string | string[]) => {
 								// console.log("Hello There ", text);
 								// setGeneral({ fever: text, ...general });
 								setNeurologicalExamination({
-									leftLowerLimbsReflexes: text,
+									leftLowerLimbsReflexes: text as string,
 								});
 							}}
 						/>
@@ -1381,16 +1340,18 @@ please indicate the location in the picture.)"
 				<SimpleQuestion
 					options={["All intact", "Abnormal"]}
 					checked={neurologicalExamination.cranialNerves}
-					setChecked={(text) => {
+					setChecked={(text: string | string[]) => {
 						// console.log("Hello There ", text);
 						// setGeneral({ fever: text, ...general });
-						setNeurologicalExamination({ cranialNerves: text });
+						setNeurologicalExamination({
+							cranialNerves: text as string,
+						});
 					}}
 				/>
 				<Input
 					label="Abnormal cranial nerve(s) number (1-12)"
 					text={neurologicalExamination.cranialNervesNumber}
-					setText={(text) => {
+					setText={(text: string) => {
 						setNeurologicalExamination({
 							cranialNervesNumber: text,
 						});
@@ -1402,7 +1363,7 @@ please indicate the location in the picture.)"
 				<Input
 					label="If abnormal, patient cannot illicit:"
 					text={neurologicalExamination.cannotIllicit}
-					setText={(text) => {
+					setText={(text: string) => {
 						setNeurologicalExamination({
 							cannotIllicit: text,
 						});

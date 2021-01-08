@@ -13,12 +13,17 @@ export const BasicSymptomInput = ({
 	options,
 }: {
 	label?: string;
-	onChange?: (...args: any) => {};
+	onChange?: (res: {
+		checked?: string;
+		days?: string;
+		timesDay?: string;
+	}) => void;
 	times?: number;
 	showNumberDays?: boolean;
 	options?: string[];
+	setChecked?: any;
 }) => {
-	const [checked, setChecked] = useState();
+	const [checked, setChecked] = useState("");
 
 	//TODO : to manage input text outside the component
 
@@ -42,8 +47,8 @@ export const BasicSymptomInput = ({
 						options && options.length > 0 ? options : ["yes", "no"]
 					}
 					checked={checked}
-					setChecked={(text: React.SetStateAction<undefined>) => {
-						setChecked(text);
+					setChecked={(text: string | string[]) => {
+						setChecked(text as string);
 					}}
 				/>
 			</Col>

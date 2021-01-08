@@ -1,10 +1,9 @@
 import React from "react";
 import { Row, CheckBox } from ".";
 
-import { View, Text } from "react-native";
+import { Text } from "react-native";
 import _ from "lodash";
 import { Col } from "./Col";
-import { RadioGroup as NachosRadioGroup } from "nachos-ui";
 import { RadioButton } from "./";
 
 interface SimpleQuestionProps {
@@ -13,11 +12,9 @@ interface SimpleQuestionProps {
 	horizontal?: boolean;
 	radio?: boolean;
 	checked?: string | string[];
-	setChecked?: any;
+	setChecked?: (text: string|string[]) => void;
 	mutiple?: boolean;
 }
-
-const PROP = ["Heello", "World"];
 
 export const SimpleQuestion: React.FC<SimpleQuestionProps> = React.memo(
 	({
@@ -29,9 +26,6 @@ export const SimpleQuestion: React.FC<SimpleQuestionProps> = React.memo(
 		setChecked,
 		mutiple = false,
 	}) => {
-		// const simpleQns = [{ label: 'Male' }, { label: 'Female' }];
-		// const [checked, setChecked] = React.useState('first');
-		// const [value, setValue] = React.useState("");
 		if (radio) {
 			return (
 				<>

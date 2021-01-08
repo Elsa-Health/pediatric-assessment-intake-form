@@ -709,7 +709,7 @@ export function OrdersResults() {
 							<SimpleQuestion
 								options={["Urinalysis"]}
 								checked={urineTests.urinalysis}
-								setChecked={(text) => {
+								setChecked={(text: string) => {
 									// console.log("Hello There ", text);
 									// setGeneral({ fever: text, ...general });
 
@@ -723,7 +723,7 @@ export function OrdersResults() {
 							<FitTextToCell>
 								<Input
 									text={urineTests.urinalysisValue}
-									setText={(text) => {
+									setText={(text: string) => {
 										setUrineTests({
 											urinalysisValue: text,
 										});
@@ -737,7 +737,7 @@ export function OrdersResults() {
 							<SimpleQuestion
 								options={["Micro & culture"]}
 								checked={urineTests.microCulture}
-								setChecked={(text) => {
+								setChecked={(text: string) => {
 									// console.log("Hello There ", text);
 									// setGeneral({ fever: text, ...general });
 
@@ -751,7 +751,7 @@ export function OrdersResults() {
 							<FitTextToCell>
 								<Input
 									text={urineTests.microCultureValue}
-									setText={(text) => {
+									setText={(text: string) => {
 										setUrineTests({
 											microCultureValue: text,
 										});

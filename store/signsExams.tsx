@@ -1,5 +1,6 @@
 import create from "zustand";
 
+//vital signs store
 export const initialVitalSigns = {
 	temp: "",
 	respRate: "",
@@ -9,22 +10,37 @@ export const initialVitalSigns = {
 	weight: "",
 	height: "",
 };
-export const useVitalSigns = create((set) => ({
+
+type VitalSignsData = {
+	temp?: string;
+	respRate?: string;
+	hr?: string;
+	o2Sat?: string;
+	bp?: string;
+	weight?: string;
+	height?: string;
+};
+
+type VitalSigns = VitalSignsData & {
+	setVitalSigns: (by: { [key in keyof VitalSignsData]: string }) => void;
+};
+
+export const useVitalSigns = create<VitalSigns>((set) => ({
 	...initialVitalSigns,
-	//thos is to update all data state
-	setVitalSigns: (data) => set((state) => ({ ...state, ...data })),
+	setVitalSigns: (data: { [key in keyof VitalSignsData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
+// general examination store
 export const initialGeneralExamination = {
 	mentalStatus: "",
 
-	childAppearance: [], //this is mutliple input to be fixed in simplequesiton component
+	childAppearance: [],
 	hairColor: "",
 	hairTexture: "",
 	eyesConjuctive: "",
 	ent: "",
 
-	// these can be set objects
 	mouthOutside: [],
 	mouthInside: [],
 	handsFingerClubbing: "",
@@ -37,15 +53,53 @@ export const initialGeneralExamination = {
 	skinPinchTest: "",
 	lowerLimbEdema: "",
 	ifLowerLimbeEdemaYes: "",
-  lymphNodes: "",
-  palpableRightLeftGroupOf:""
+	lymphNodes: "",
+	palpableRightLeftGroupOf: "",
 };
-export const useGeneralExamination = create((set) => ({
+
+type GeneralExaminationData = {
+	mentalStatus?: string;
+
+	childAppearance?: string[];
+	hairColor?: string;
+	hairTexture?: string;
+	eyesConjuctive?: string;
+	ent?: string;
+
+	mouthOutside?: string[];
+	mouthInside?: string[];
+	handsFingerClubbing?: string;
+	handsPalmerPallor?: string;
+	handsPeripheralCyanosis?: string;
+	handsCapillaryRefillTime?: string;
+
+	tonsils?: string;
+	centralCyanosis?: string;
+	skinPinchTest?: string;
+	lowerLimbEdema?: string;
+	ifLowerLimbeEdemaYes?: string;
+	lymphNodes?: string;
+	palpableRightLeftGroupOf?: string;
+};
+
+type GeneralExamination = GeneralExaminationData & {
+	setGeneralExamination: (
+		by:
+			| { [key in keyof GeneralExaminationData]: string }
+			| { [key in keyof GeneralExaminationData]: string[] }
+	) => void;
+};
+
+export const useGeneralExamination = create<GeneralExamination>((set) => ({
 	...initialGeneralExamination,
-	//thos is to update all data state
-	setGeneralExamination: (data) => set((state) => ({ ...state, ...data })),
+	setGeneralExamination: (
+		data:
+			| { [key in keyof GeneralExaminationData]: string }
+			| { [key in keyof GeneralExaminationData]: string[] }
+	) => set((state) => ({ ...state, ...data })),
 }));
 
+// respiratory examination store
 export const initialRespiratoryExamination = {
 	chestLook: [],
 	airEntry: "",
@@ -53,41 +107,79 @@ export const initialRespiratoryExamination = {
 	crackles: "",
 	wheezing: "",
 };
-export const useRespiratoryExamination = create((set) => ({
-	...initialRespiratoryExamination,
-	//thos is to update all data state
-	setRespiratoryExamination: (data) =>
-		set((state) => ({ ...state, ...data })),
-}));
 
+type RespiratoryExaminationData = {
+	chestLook?: string[];
+	airEntry?: string;
+	breathSounds?: string;
+	crackles?: string;
+	wheezing?: string;
+};
+
+type RespiratoryExamination = RespiratoryExaminationData & {
+	setRespiratoryExamination: (
+		by:
+			| { [key in keyof RespiratoryExaminationData]: string }
+			| { [key in keyof RespiratoryExaminationData]: string[] }
+	) => void;
+};
+
+export const useRespiratoryExamination = create<RespiratoryExamination>(
+	(set) => ({
+		...initialRespiratoryExamination,
+		setRespiratoryExamination: (data) =>
+			set((state) => ({ ...state, ...data })),
+	})
+);
+
+// abdnominal examination store
 export const initialAbdominalExamination = {
 	masses: "",
 	tenderness: "",
 	reboundTenderness: "",
 	rectalProlapse: "",
 
-	analExamination: "", //missing input for this in the form
+	analExamination: "",
 
 	abdomenSection: "",
 };
-export const useAbdominalExamination = create((set) => ({
+
+type AbdominalExaminationData = {
+	masses?: string;
+	tenderness?: string;
+	reboundTenderness?: string;
+	rectalProlapse?: string;
+	analExamination?: string;
+	abdomenSection?: string;
+};
+
+type AbdominalExamination = AbdominalExaminationData & {
+	setAbdominalExamination: (
+		by: { [key in keyof AbdominalExaminationData]: string }
+	) => void;
+};
+
+export const useAbdominalExamination = create<AbdominalExamination>((set) => ({
 	...initialAbdominalExamination,
 	//thos is to update all data state
-	setAbdominalExamination: (data) => set((state) => ({ ...state, ...data })),
+	setAbdominalExamination: (
+		data: { [key in keyof AbdominalExaminationData]: string }
+	) => set((state) => ({ ...state, ...data })),
 }));
 
+// skin examination
 export const initialSkinExamination = {
 	lession: "",
 	lessionRegion: "",
 	lessionShape: "",
-	lessionFrequency: "", //name picked up randomly
+	lessionFrequency: "",
 
 	type: [],
 	typeOther: "",
 
 	margins: "",
 
-	skinUnamedQuestion: "", //refer to form skin type box, then the right box has the checkboxes with no labels
+	skinUnamedQuestion: "",
 
 	feature: [],
 	featureColor: "",
@@ -96,9 +188,38 @@ export const initialSkinExamination = {
 
 	notes: "",
 };
-export const useSkinExamination = create((set) => ({
+
+type SkinExaminationData = {
+	lession?: string;
+	lessionRegion?: string;
+	lessionShape?: string;
+	lessionFrequency?: string;
+
+	type?: string[];
+	typeOther?: string;
+
+	margins?: string;
+
+	skinUnamedQuestion?: string;
+
+	feature?: string[];
+	featureColor?: string;
+
+	houseHoldWithSimilarProblem?: string;
+
+	notes?: string;
+};
+
+type SkinExamination = SkinExaminationData & {
+	setSkinExamination: (
+		by:
+			| { [key in keyof SkinExaminationData]: string }
+			| { [key in keyof SkinExaminationData]: string[] }
+	) => void;
+};
+
+export const useSkinExamination = create<SkinExamination>((set) => ({
 	...initialSkinExamination,
-	//thos is to update all data state
 	setSkinExamination: (data) => set((state) => ({ ...state, ...data })),
 }));
 
@@ -145,9 +266,67 @@ export const initialneurologicalExamination = {
 
 	cannotIllicit: "",
 };
-export const useNeurologicalExamination = create((set) => ({
-	...initialneurologicalExamination,
-	//thos is to update all data state
-	setNeurologicalExamination: (data) =>
-		set((state) => ({ ...state, ...data })),
-}));
+
+type NeurologicalExaminationData = {
+	gcsScore?: string;
+	gcsScoreEyes?: string;
+	gcsScoreVerbal?: string;
+	gcsScoreMotor?: string;
+
+	blantyreScore?: string;
+	blantyreScoreEyes?: string;
+	blantyreScoreVerbal?: string;
+	blantyreScoreMotor?: string;
+
+	neckRigidigty?: string;
+
+	neonate?: string[];
+	motorFlexion?: string;
+
+	gait?: string;
+
+	rightUpperLimbsSensation?: string;
+	rightUpperLimbsPower?: string;
+	rightUpperLimbsMuscleTone?: string;
+	rightUpperLimbsReflexes?: string;
+
+	leftUpperLimbsSensation?: string;
+	leftUpperLimbsPower?: string;
+	lefttUpperLimbsMuscleTone?: string;
+	lefttUpperLimbsReflexes?: string;
+
+	rightLowerLimbsSensation?: string;
+	rightLowerLimbsPower?: string;
+	rightLowerLimbsMuscleTone?: string;
+	rightLowerLimbsReflexes?: string;
+
+	leftLowerLimbsSensation?: string;
+	leftLowerLimbsPower?: string;
+	leftLowerLimbsMuscleTone?: string;
+	leftLowerLimbsReflexes?: string;
+
+	cranialNerves?: string;
+	cranialNervesNumber?: string;
+
+	cannotIllicit?: string;
+};
+
+type NeurologicalExamination = NeurologicalExaminationData & {
+	setNeurologicalExamination: (
+		by:
+			| { [key in keyof NeurologicalExaminationData]: string }
+			| { [key in keyof NeurologicalExaminationData]: string[] }
+	) => void;
+};
+
+export const useNeurologicalExamination = create<NeurologicalExamination>(
+	(set) => ({
+		...initialneurologicalExamination,
+		//thos is to update all data state
+		setNeurologicalExamination: (
+			data:
+				| { [key in keyof NeurologicalExaminationData]: string }
+				| { [key in keyof NeurologicalExaminationData]: string[] }
+		) => set((state) => ({ ...state, ...data })),
+	})
+);
