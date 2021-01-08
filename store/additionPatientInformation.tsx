@@ -1,5 +1,6 @@
 import create from "zustand";
 
+// birth history store
 export const initialBirthHistory = {
 	gestation: "",
 	mothersAgeAtDelivery: "",
@@ -8,13 +9,24 @@ export const initialBirthHistory = {
 	additionalBirthHistoryNotes: "",
 };
 
-export const useBirthHistory = create((set) => ({
-	...initialBirthHistory,
+type BirthHistoryData = {
+	gestation?: string;
+	mothersAgeAtDelivery?: string;
+	complicationsAfterDelivery?: string;
+	apgarScore?: string;
+	additionalBirthHistoryNotes?: string;
+};
 
-	//thos is to update all data state
+type BirthHistory = BirthHistoryData & {
+	setBirthHistory: (by: { [key in keyof BirthHistoryData]: string }) => void;
+};
+
+export const useBirthHistory = create<BirthHistory>((set) => ({
+	...initialBirthHistory,
 	setBirthHistory: (data) => set((state) => ({ ...state, ...data })),
 }));
 
+//nutritional history store
 export const initialNutritionalHistroy = {
 	breastfed: "",
 	wasItExclusive: "",
@@ -23,21 +35,50 @@ export const initialNutritionalHistroy = {
 	breastfeedingStartTimeMonths: "",
 	vitaminASupplements: "",
 };
-export const useNutritionalHistory = create((set) => ({
+
+type NutritionalHistroyData = {
+	breastfed?: string;
+	wasItExclusive?: string;
+	breadfeedingStartTime?: string;
+	breastfeedingStartTimeDays?: string;
+	breastfeedingStartTimeMonths?: string;
+	vitaminASupplements?: string;
+};
+
+type NutritionalHistroy = NutritionalHistroyData & {
+	setNutritionalHistory: (
+		by: { [key in keyof NutritionalHistroyData]: string }
+	) => void;
+};
+
+export const useNutritionalHistory = create<NutritionalHistroy>((set) => ({
 	...initialNutritionalHistroy,
-	//thos is to update all data state
-	setNutritionalHistory: (data) => set((state) => ({ ...state, ...data })),
+
+	setNutritionalHistory: (data: NutritionalHistroyData) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
+// vacination history store
 export const initialVaccinationHistory = {
 	updateOnAllVaccines: "",
 	missingNotes: "",
 };
-export const useVaccinationHistory = create((set) => ({
+
+type VaccinationHistoryData = {
+	updateOnAllVaccines?: string;
+	missingNotes?: string;
+};
+
+type VaccinationHistory = VaccinationHistoryData & {
+	setVaccinationHistory: (
+		by: { [key in keyof VaccinationHistoryData]: string }
+	) => void;
+};
+export const useVaccinationHistory = create<VaccinationHistory>((set) => ({
 	...initialVaccinationHistory,
-	//thos is to update all data state
-	setVaccinationHistory: (data) => set((state) => ({ ...state, ...data })),
-}));
+	setVaccinationHistory: (data: VaccinationHistoryData) =>{
+		set((state) => ({ ...state, ...data }))
+	}));
 
 export const initialMedicalHistory = {
 	previousAdmission: "",

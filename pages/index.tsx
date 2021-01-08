@@ -1,33 +1,11 @@
-// THIS APP WORKS BEST IN GOOGLE CHROME SOME THINGS BREAKS IN FIREFOX
-
 import React, { useState } from "react";
 import { View } from "react-native";
-// import { TextField } from 'material-bread'
-
 import _ from "lodash";
 
-// TODO: CReate Radio/Checkbox Question Component
-// TODO: Create TextInput Component
-// TODO: Create a better grid system
-// TODO: Reduce repeating codes
-
-// all the state here before the components
-
-// importing all the components and states here
-
 import {
-	Row,
-	Col,
-	Input,
-	CheckBox,
-	SimpleQuestion,
 	Spacer,
-	FitTextToCell,
-	BasicSymptomInput,
 	Header,
 	MainHeader,
-	TableHeader,
-	Table,
 	PatientInformation,
 	ChiefComplaints,
 	Symptoms,
@@ -37,7 +15,7 @@ import {
 	OrdersResults,
 	FinalDiagnosis,
 	SubmitButton,
-	RadioButton,
+
 	// ChiefComplaints
 } from "../components";
 
@@ -47,10 +25,6 @@ interface User {
 }
 
 export default function App() {
-	// const mainStore = useMainStore((state) => state);
-	// const { SUBMIT_URL } = process.env;
-	// console.log("ROOT APP URL ", SUBMIT_URL);
-	// console.log(TestRenderer.create(<Symptoms/>).toJSON());
 	const [check, setCheck] = useState("");
 	const [user, setUser] = useState<User>({
 		email: null,
@@ -74,12 +48,10 @@ export default function App() {
 				false
 			);
 		} else {
-			// The page is not in an iframe
-			// Add mechanism to get the user information
 		}
 	}),
 		[];
-	console.log("Env variable : ",process.env.NEXT_PUBLIC_SUBMIT_URL)
+
 	return (
 		<View style={{ backgroundColor: "#DEDFE4", paddingVertical: 36 }}>
 			<View
@@ -90,16 +62,6 @@ export default function App() {
 					backgroundColor: "white",
 				}}
 			>
-				{/* <SimpleQuestion
-						options={["Hello", "World"]}
-						label="Some question"
-						checked={check}
-						setChecked={(el) => {
-							console.log("some check ", el);
-							setCheck(el);
-						}}
-					/> */}
-
 				<Header />
 				<MainHeader />
 				<PatientInformation />
