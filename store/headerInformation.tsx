@@ -1,12 +1,23 @@
 import create from "zustand";
 
-export const initialHeaderInfo = {
-  patientID: "",
-  visitDate: "",
-}
+export const initialHeaderInformation = {
+	patientID: "",
+	visitDate: "",
+};
 
-export const useHeaderInformation = create((set) => ({
-  ...initialHeaderInfo,
-  //thos is to update all data state
-  setHeaderInfo: (data) => set((state) => ({ ...state, ...data })),
+type HeaderInformationData = {
+	patientID?: string;
+	visitDate?: string;
+};
+
+type HeaderInformation = HeaderInformationData & {
+	setHeaderInfo: (
+		by: { [key in keyof HeaderInformationData]: string }
+	) => void;
+};
+
+export const useHeaderInformation = create<HeaderInformation>((set) => ({
+	...initialHeaderInformation,
+	setHeaderInfo: (data: HeaderInformationData) =>
+		set((state) => ({ ...state, ...data })),
 }));

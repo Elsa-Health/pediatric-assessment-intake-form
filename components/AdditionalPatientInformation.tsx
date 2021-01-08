@@ -176,6 +176,8 @@ export function AdditionalPatientInformation() {
 					<Text>(If yes) When did the breastfeeding start?</Text>
 				</Col>
 				<Col>
+		
+
 					<FitTextToCell>
 						<Input
 							text={nutritionHistory.breastfeedingStartTimeMonths}

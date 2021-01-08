@@ -1,160 +1,278 @@
 import create from "zustand";
 
+// malaria tests store
 export const initialMalariaTests = {
-  bloodSlide: "",
-  bloodSlideValue: "",
+	bloodSlide: "",
+	bloodSlideValue: "",
+	rapidTest: "",
+	rapidTestValue: "",
+};
 
-  rapidTest: "",
-  rapidTestValue: "",
-}
-//not sure how to handle data on the form here
-export const useMalariaTests = create((set) => ({
-  ...initialMalariaTests,
-  // thos is to update all data state
-  setMalariaTests: (data) => set((state) => ({ ...state, ...data })),
+type MalariaTestsData = {
+	bloodSlide?: string;
+	bloodSlideValue?: string;
+	rapidTest?: string;
+	rapidTestValue?: string;
+};
+
+type MalariaTests = MalariaTestsData & {
+	setMalariaTests: (by: { [key in keyof MalariaTestsData]: string }) => void;
+};
+
+export const useMalariaTests = create<MalariaTests>((set) => ({
+	...initialMalariaTests,
+	setMalariaTests: (data: { [key in keyof MalariaTestsData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
+// microbiology tests store
 export const initialMicrobiologyTests = {
-  lumberPuncture: "",
-  lumberPunctureValue: "",
+	lumberPuncture: "",
+	lumberPunctureValue: "",
+	bloodCulture: "",
+	bloodCultureValue: "",
+};
 
-  bloodCulture: "",
-  bloodCultureValue: "",
-}
+type MicrobiologyTestsData = {
+	lumberPuncture?: string;
+	lumberPunctureValue?: string;
+	bloodCulture?: string;
+	bloodCultureValue?: string;
+};
 
-export const useMicrobiologyTests = create((set) => ({
+type MicrobiologyTests = MicrobiologyTestsData & {
+	setMicrobiologyTests: (
+		by: { [key in keyof MicrobiologyTestsData]: string }
+	) => void;
+};
 
-  ...initialMicrobiologyTests,
-  // thos is to update all data state
-  setMicrobiologyTests: (data) => set((state) => ({ ...state, ...data })),
+export const useMicrobiologyTests = create<MicrobiologyTests>((set) => ({
+	...initialMicrobiologyTests,
+	setMicrobiologyTests: (
+		data: { [key in keyof MicrobiologyTestsData]: string }
+	) => set((state) => ({ ...state, ...data })),
 }));
 
+// tb tests stores
 export const initialTbTests = {
-  microAAFBs: "",
-  microAAFBsValue: "",
+	microAAFBs: "",
+	microAAFBsValue: "",
+	mantoux: "",
+	mantouxValue: "",
+	xpertMTBRIF: "",
+	xpertMTBRIFValue: "",
+	mycoTBCulture: "",
+	mycoTBCultureValue: "",
+};
 
-  mantoux: "",
-  mantouxValue: "",
+type TBTestsData = {
+	microAAFBs?: string;
+	microAAFBsValue?: string;
+	mantoux?: string;
+	mantouxValue?: string;
+	xpertMTBRIF?: string;
+	xpertMTBRIFValue?: string;
+	mycoTBCulture?: string;
+	mycoTBCultureValue?: string;
+};
 
-  xpertMTBRIF: "",
-  xpertMTBRIFValue: "",
+type TBTests = TBTestsData & {
+	setTBTests: (by: { [key in keyof TBTestsData]: string }) => void;
+};
 
-  mycoTBCulture: "",
-  mycoTBCultureValue: "",
-}
-
-export const useTBTests = create((set) => ({
-
-  ...initialTbTests,
-  // thos is to update all data state
-  setTBTests: (data) => set((state) => ({ ...state, ...data })),
+export const useTBTests = create<TBTests>((set) => ({
+	...initialTbTests,
+	setTBTests: (data: { [key in keyof TBTestsData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
-
+// chemistry tests store
 export const initialChemistryTests = {
-  nak: "",
-  nakValue: "",
+	nak: "",
+	nakValue: "",
+	uc: "",
+	ucValue: "",
+	caphos: "",
+	caphosValue: "",
+	alb: "",
+	albValue: "",
+	lft: "",
+	lftValue: "",
+};
 
-  uc: "",
-  ucValue: "",
+type ChemistryTestsData = {
+	nak?: string;
+	nakValue?: string;
+	uc?: string;
+	ucValue?: string;
+	caphos?: string;
+	caphosValue?: string;
+	alb?: string;
+	albValue?: string;
+	lft?: string;
+	lftValue?: string;
+};
 
-  caphos: "",
-  caphosValue: "",
+type ChemistryTests = ChemistryTestsData & {
+	setChemistryTests: (
+		by: { [key in keyof ChemistryTestsData]: string }
+	) => void;
+};
 
-  alb: "",
-  albValue: "",
-
-  lft: "",
-  lftValue: "",
-}
-export const useChemistryTests = create((set) => ({
-  ...initialChemistryTests,
-
-  // thos is to update all data state
-  setChemistryTests: (data) => set((state) => ({ ...state, ...data })),
+export const useChemistryTests = create<ChemistryTests>((set) => ({
+	...initialChemistryTests,
+	setChemistryTests: (data: { [key in keyof ChemistryTestsData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
+// stool tests store
 export const initialStoolTests = {
-  microscopy: "",
-  microscopyValue: "",
+	microscopy: "",
+	microscopyValue: "",
+	microCulture: "",
+	microCultureValue: "",
+};
 
-  microCulture: "",
-  microCultureValue: "",
-}
-export const useStoolTests = create((set) => ({
-  ...initialStoolTests,
+type StoolTestsData = {
+	microscopy?: string;
+	microscopyValue?: string;
+	microCulture?: string;
+	microCultureValue?: string;
+};
 
-  // thos is to update all data state
-  setStoolTests: (data) => set((state) => ({ ...state, ...data })),
+type StoolTests = StoolTestsData & {
+	setStoolTests: (by: { [key in keyof StoolTestsData]: string }) => void;
+};
+export const useStoolTests = create<StoolTests>((set) => ({
+	...initialStoolTests,
+	setStoolTests: (data: { [key in keyof StoolTestsData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
+
+// hematology tests store
 
 export const initialHematologyTests = {
-  hb: "",
-  hbValue: "",
+	hb: "",
+	hbValue: "",
+	fullBloodPicture: "",
+	fullBloodPictureValue: "",
+};
 
-  fullBloodPicture: "",
-  fullBloodPictureValue: "",
+type HematologyTestsData = {
+	hb?: string;
+	hbValue?: string;
+	fullBloodPicture?: string;
+	fullBloodPictureValue?: string;
+};
 
-}
-export const useHematologyTests = create((set) => ({
-  ...initialHematologyTests,
-  // thos is to update all data state
-  setHematologyTests: (data) => set((state) => ({ ...state, ...data })),
+type HematologyTests = HematologyTestsData & {
+	setHematologyTests: (
+		by: { [key in keyof HematologyTestsData]: string }
+	) => void;
+};
+
+export const useHematologyTests = create<HematologyTests>((set) => ({
+	...initialHematologyTests,
+	setHematologyTests: (data) => set((state) => ({ ...state, ...data })),
 }));
+
+//  x-ray tests store
 
 export const initialXRayTests = {
-  cxr: "",
-  cxrValue: "",
+	cxr: "",
+	cxrValue: "",
+	other: "",
+	otherValue: "",
+};
 
-  other: "",
-  otherValue: "",
+type XRayTestsData = {
+	cxr?: string;
+	cxrValue?: string;
+	other?: string;
+	otherValue?: string;
+};
 
-}
-export const useXRayTests = create((set) => ({
-  ...initialXRayTests,
-  // thos is to update all data state
-  setXRayTests: (data) => set((state) => ({ ...state, ...data })),
+type XRayTests = XRayTestsData & {
+	setXRayTests: (by: { [key in keyof XRayTestsData]: string }) => void;
+};
+
+export const useXRayTests = create<XRayTests>((set) => ({
+	...initialXRayTests,
+	setXRayTests: (data: { [key in keyof XRayTestsData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
+// glucose tests store
 export const initialGlucoseTests = {
-  stickTest: "",
-  stickTestValue: "",
+	stickTest: "",
+	stickTestValue: "",
+	laboratory: "",
+	laboratoryValue: "",
+};
 
-  laboratory: "",
-  laboratoryValue: "",
-}
-export const useGlucoseTests = create((set) => ({
+type GlucoseTestsData = {
+	stickTest?: string;
+	stickTestValue?: string;
+	laboratory?: string;
+	laboratoryValue?: string;
+};
 
-  ...initialGlucoseTests,
-  // thos is to update all data state
-  setGlucoseTests: (data) => set((state) => ({ ...state, ...data })),
+type GlucoseTests = GlucoseTestsData & {
+	setGlucoseTests: (by: { [key in keyof GlucoseTestsData]: string }) => void;
+};
+
+export const useGlucoseTests = create<GlucoseTests>((set) => ({
+	...initialGlucoseTests,
+	setGlucoseTests: (data: { [key in keyof GlucoseTestsData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
-
+// hiv tests store
 export const initialHivTests = {
-  rapidTest: "",
-  rapidTestValue: "",
+	rapidTest: "",
+	rapidTestValue: "",
+	pcr: "",
+	pcrValue: "",
+};
 
-  pcr: "",
-  pcrValue: "",
-}
-export const useHIVTests = create((set) => ({
-  ...initialHivTests,
-  // thos is to update all data state
-  setHIVTests: (data) => set((state) => ({ ...state, ...data })),
+type HIVTestsData = {
+	rapidTest?: string;
+	rapidTestValue?: string;
+	pcr?: string;
+	pcrValue?: string;
+};
+
+type HIVTests = HIVTestsData & {
+	setHIVTests: (by: { [key in keyof HIVTestsData]: string }) => void;
+};
+
+export const useHIVTests = create<HIVTests>((set) => ({
+	...initialHivTests,
+	setHIVTests: (data: { [key in keyof HIVTestsData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));
 
-
+// urine tests store
 export const initialUrineTests = {
-  urinalysis: "",
-  urinalysisValue: "",
+	urinalysis: "",
+	urinalysisValue: "",
+	microCulture: "",
+	microCultureValue: "",
+};
 
-  microCulture: "",
-  microCultureValue: "",
-}
-export const useUrineTests = create((set) => ({
-  ...initialUrineTests,
+type UrineTestsData = {
+	urinalysis?: string;
+	urinalysisValue?: string;
+	microCulture?: string;
+	microCultureValue?: string;
+};
 
-  // thos is to update all data state
-  setUrineTests: (data) => set((state) => ({ ...state, ...data })),
+type UrineTests = UrineTestsData & {
+	setUrineTests: (by: { [key in keyof UrineTestsData]: string }) => void;
+};
+
+export const useUrineTests = create<UrineTests>((set) => ({
+	...initialUrineTests,
+	setUrineTests: (data: { [key in keyof UrineTestsData]: string }) =>
+		set((state) => ({ ...state, ...data })),
 }));

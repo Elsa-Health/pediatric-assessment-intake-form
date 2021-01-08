@@ -18,15 +18,9 @@ export function MainHeader() {
 	);
 }
 
-// TODO :  Fix Types and Means of submitting data
-
 export const Header = () => {
-	// states to be updated
-
 	const { patientID, visitDate } = useHeaderInformation((state) => state);
 	const setHeaderInfo = useHeaderInformation((state) => state.setHeaderInfo);
-
-	// console.log("patient ID : ", patientID, "Visit Date : ", visitDate);
 
 	return (
 		<View style={styles.headerContainer}>
@@ -39,7 +33,7 @@ export const Header = () => {
 					<View style={{}}>
 						<Input
 							text={patientID}
-							setText={(text: React.SetStateAction<string>) =>
+							setText={(text: string) =>
 								setHeaderInfo({ patientID: text })
 							}
 						/>
@@ -56,7 +50,7 @@ export const Header = () => {
 						<Input
 							text={visitDate}
 							placeholder="24/06/2020"
-							setText={(text: React.SetStateAction<string>) =>
+							setText={(text: string) =>
 								setHeaderInfo({ visitDate: text })
 							}
 						/>
@@ -66,10 +60,11 @@ export const Header = () => {
 
 			<View style={{ justifyContent: "center" }}>
 				<Image
-					style={{ 
-            // ration 2.8 from image size
-            width: 280, height: 100 
-          }}
+					style={{
+						// ration 2.8 from image size
+						width: 280,
+						height: 100,
+					}}
 					source={require("../assets/elsa-logo.png")}
 				/>
 			</View>
