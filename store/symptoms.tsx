@@ -105,7 +105,10 @@ export const initialGISymtoms = {
 export const useGI = create((set) => ({
 	...initialGISymtoms,
 	//thos is to update all data state
-	setGI: (data) => set((state) => ({ ...state, ...data })),
+	setGI: (data) => {
+		console.log("IN STATE: ", data);
+		return set((state) => ({ ...state, ...data }));
+	},
 }));
 
 export const initilCNSSymtoms = {

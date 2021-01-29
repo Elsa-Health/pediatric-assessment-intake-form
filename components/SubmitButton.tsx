@@ -4,7 +4,11 @@ import React, { useState } from "react";
 import { Platform, View } from "react-native";
 // import { TextField } from 'material-bread'
 
-import { DEVELOPMENT_URL, PRODUCTION_URL } from "@env";
+import {
+	DEVELOPMENT_URL,
+	PRODUCTION_URL,
+	NEXT_PUBLIC_PRODUCTION_URL,
+} from "@env";
 
 import _ from "lodash";
 
@@ -72,6 +76,7 @@ import {
 	initialUrineTests,
 	initialDifferentials,
 	useOthers,
+	initialSkinExamination,
 } from "../store";
 
 import { Button } from "react-native-paper";
@@ -322,6 +327,7 @@ const SubmitButton = ({
 		setGeneralExamination(initialGeneralExamination);
 		setRespiratoryExamination(initialRespiratoryExamination);
 		setAbdominalExamination(initialAbdominalExamination);
+		setSkinExamination(initialSkinExamination);
 		setNeurologicalExamination(initialneurologicalExamination);
 
 		// clearing differentials store
@@ -344,6 +350,8 @@ const SubmitButton = ({
 	};
 
 	const handleSubmit = async () => {
+		// console.log("Data", params.body);
+		// clearStores();
 		if (!window.confirm("Are you sure you want to submit?")) {
 			return;
 		}
@@ -368,11 +376,13 @@ const SubmitButton = ({
 				setLoadingIn(false);
 				// console.log("something went wrong ", err);
 				// setHeader;
-				if (Platform.OS == "web")
+				if (Platform.OS == "web") {
+					console.log("Error: ", err);
 					alert(
 						"Something went wrong while submitting the data : " +
 							JSON.stringify(err)
 					);
+				}
 			});
 	};
 
