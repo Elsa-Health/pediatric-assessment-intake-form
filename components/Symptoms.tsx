@@ -67,10 +67,10 @@ export function Symptoms() {
 
 	//others symotoms
 	const { setOthers, ...others } = useOthers((state) => state);
-	
+
 	// console.log("The inspected data below");
 	// console.table(others);
-	
+
 	return (
 		<Table headerTitle="Symptoms">
 			<Col style={styles.headerDarkGray}>
@@ -592,6 +592,7 @@ export function Symptoms() {
 							// setGeneral({ fever: text, ...general });
 							setGI({ vomitingType: text });
 						}}
+						mutiple={true}
 					/>
 				</Col>
 			</Row>
@@ -642,6 +643,7 @@ export function Symptoms() {
 							// setGeneral({ fever: text, ...general });
 							setGI({ diarrhoeaType: text });
 						}}
+						mutiple={true}
 					/>
 
 					<Text>Is bloody ? : </Text>
@@ -717,6 +719,7 @@ export function Symptoms() {
 							// setGeneral({ fever: text, ...general });
 							setGI({ abnominalPainEpigastric: text });
 						}}
+						mutiple={true}
 					/>
 
 					<Text>Does it radiate to the back? ? : </Text>
@@ -735,6 +738,8 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Abdominal Cramps"
+					checked={gi.abdominalCramps}
+					days={gi.abdominalCrampsDays}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setGI({
@@ -745,6 +750,8 @@ export function Symptoms() {
 				/>
 				<BasicSymptomInput
 					label="Lack of appetite"
+					checked={gi.lackOfAppetite}
+					days={gi.lackOfAppetiteDays}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setGI({
@@ -758,6 +765,8 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Weight Loss"
+					checked={gi.weightLoss}
+					days={gi.weightLossDays}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setGI({
@@ -766,8 +775,11 @@ export function Symptoms() {
 						});
 					}}
 				/>
+				{/* TODO: Starting here (delete comment) */}
 				<BasicSymptomInput
 					label="Difficulty swallowing"
+					checked={gi.difficultySwallowing}
+					days={gi.difficultySwallowingDays}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setGI({
@@ -781,6 +793,8 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Pain on urination"
+					checked={gi.painInUrination}
+					days={gi.painInUrinationDays}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setGI({
@@ -792,7 +806,10 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Frequency of urination"
-					options={['Incraese','Decrease']}
+					checked={gi.frequencyOfUrination}
+					days={gi.frequencyOfUrinationDays}
+					timesDay={gi.frequencyOfUrinationTimesDay}
+					options={["Incraese", "Decrease"]}
 					times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
@@ -815,25 +832,27 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Headache"
+					checked={cns.headache}
+					days={cns.headacheDays}
 					// times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setCNS({
 							headache: res.checked,
 							headacheDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 				<BasicSymptomInput
 					label="Coma"
+					checked={cns.coma}
+					days={cns.comaDays}
 					// times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setCNS({
 							coma: res.checked,
 							comaDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -842,25 +861,27 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Hypothermia"
+					checked={cns.hypothermia}
+					days={cns.hypothermiaDays}
 					// times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setCNS({
 							hypothermia: res.checked,
 							hypothermiaDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 				<BasicSymptomInput
 					label="Seizures"
+					checked={cns.seizures}
+					days={cns.seizuresDays}
 					// times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setCNS({
 							seizures: res.checked,
 							seizuresDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -869,26 +890,27 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Neck Pain"
+					checked={cns.neckPain}
+					days={cns.neckPainDays}
 					// times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setCNS({
 							neckPain: res.checked,
 							neckPainDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 
 				<BasicSymptomInput
 					label="High pitched crying"
-					// times={true}
+					checked={cns.highlyPitchedCrying}
+					days={cns.highlyPitchedCryingDays}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setCNS({
 							highlyPitchedCrying: res.checked,
 							highlyPitchedCryingDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -901,26 +923,28 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Myalgia"
+					checked={musculoskeletal.myalgia}
+					days={musculoskeletal.myalgiaDays}
 					// times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setMusculoskeletal({
 							myalgia: res.checked,
 							myalgiaDays: res.days,
-							frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 
 				<BasicSymptomInput
 					label="History of Trauma"
+					checked={musculoskeletal.historyOfTrauma}
+					days={musculoskeletal.historyOfTraumaDays}
 					// times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setMusculoskeletal({
 							historyOfTrauma: res.checked,
 							historyOfTraumaDays: res.days,
-							frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -929,13 +953,14 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Fatigue"
+					checked={musculoskeletal.fatique}
+					days={musculoskeletal.fatiqueDays}
 					// times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setMusculoskeletal({
 							fatique: res.checked,
 							fatiqueDays: res.days,
-							frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -957,6 +982,8 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Red Eyes"
+					checked={earsAndEyes.redEyes}
+					days={earsAndEyes.redEyesDays}
 					// times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
@@ -970,6 +997,8 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Painful Eyes"
+					checked={earsAndEyes.painfulEyes}
+					days={earsAndEyes.painfulEyesDays}
 					// times={true}
 					onChange={(res) => {
 						setEarsAndEyes({
@@ -984,24 +1013,26 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Ear Pain"
+					checked={earsAndEyes.earPain}
+					days={earsAndEyes.earPainDays}
 					// times={true}
 					onChange={(res) => {
 						setEarsAndEyes({
 							earPain: res.checked,
 							earPainDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 
 				<BasicSymptomInput
 					label="Eye Discharge"
+					checked={earsAndEyes.eyeDischarge}
+					days={earsAndEyes.eyeDischargeDays}
 					// times={true}
 					onChange={(res) => {
 						setEarsAndEyes({
 							eyeDischarge: res.checked,
 							eyeDischargeDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -1010,24 +1041,26 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Ear Discharge"
+					checked={earsAndEyes.earDischarge}
+					days={earsAndEyes.earDischargeDays}
 					// times={true}
 					onChange={(res) => {
 						setEarsAndEyes({
 							earDischarge: res.checked,
 							earDischargeDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 
 				<BasicSymptomInput
 					label="Sunken Eyes"
+					checked={earsAndEyes.sunkenEyes}
+					days={earsAndEyes.sunkenEyesDays}
 					// times={true}
 					onChange={(res) => {
 						setEarsAndEyes({
 							sunkenEyes: res.checked,
 							sunkenEyesDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -1040,6 +1073,8 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Dryness"
+					checked={mouth.dryness}
+					days={mouth.drynessDays}
 					// times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
@@ -1053,12 +1088,13 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Cotton Feeling"
+					checked={mouth.cottonFeeling}
+					days={mouth.cottonFeelingDays}
 					// times={true}
 					onChange={(res) => {
 						setMouth({
 							cottonFeeling: res.checked,
 							cottonFeelingDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -1067,6 +1103,8 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Ulcerations Inside of Mouth"
+					checked={mouth.ulcerationsInside}
+					days={mouth.ulcerationsInsideDays}
 					// times={true}
 					onChange={(res) => {
 						setMouth({
@@ -1079,6 +1117,8 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Ulcerations around Mouth/ Corners"
+					checked={mouth.ulcerationsAround}
+					days={mouth.ulcerationsAroundDays}
 					// times={true}
 					onChange={(res) => {
 						setMouth({
@@ -1097,14 +1137,13 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Inability to breastfeed"
+					checked={neonatal.inabilityToBreastFeed}
 					// times={true}
 					showNumberDays={false}
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setNeonatal({
 							inabilityToBreastFeed: res.checked,
-							// frequencyOfUrinationDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>

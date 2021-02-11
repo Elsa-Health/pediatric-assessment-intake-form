@@ -65,12 +65,12 @@ export const useRespiratory = create((set) => ({
 export const initialGISymtoms = {
 	vomiting: "",
 	vomitingDays: "",
-	vomitingType: "",
+	vomitingType: [],
 
 	diarrhoea: "",
 	diarrhoeaDays: "",
 	diarrhoeaTimesDay: "",
-	diarrhoeaType: "",
+	diarrhoeaType: [],
 	isDiarrhoesBloody: "",
 	anyTenesmus: "",
 
@@ -80,7 +80,7 @@ export const initialGISymtoms = {
 
 	//this varibale to be renamed
 
-	abnominalPainEpigastric: "",
+	abnominalPainEpigastric: [],
 	abnominalPainIsRadiating: "",
 
 	abdominalCramps: "",
@@ -105,7 +105,10 @@ export const initialGISymtoms = {
 export const useGI = create((set) => ({
 	...initialGISymtoms,
 	//thos is to update all data state
-	setGI: (data) => set((state) => ({ ...state, ...data })),
+	setGI: (data) => {
+		console.log("IN STATE: ", data);
+		return set((state) => ({ ...state, ...data }));
+	},
 }));
 
 export const initilCNSSymtoms = {

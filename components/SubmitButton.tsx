@@ -4,7 +4,11 @@ import React, { useState } from "react";
 import { Platform, View } from "react-native";
 // import { TextField } from 'material-bread'
 
-import { DEVELOPMENT_URL, PRODUCTION_URL } from "@env";
+import {
+	DEVELOPMENT_URL,
+	PRODUCTION_URL,
+	NEXT_PUBLIC_PRODUCTION_URL,
+} from "@env";
 
 import _ from "lodash";
 
@@ -72,6 +76,7 @@ import {
 	initialUrineTests,
 	initialDifferentials,
 	useOthers,
+	initialSkinExamination,
 } from "../store";
 
 import { Button } from "react-native-paper";
@@ -79,6 +84,7 @@ import {
 	initialHeaderInfo,
 	useHeaderInformation,
 } from "../store/headerInformation";
+import isDev from "../utils";
 
 const SubmitButton = ({
 	loading = false,
@@ -321,6 +327,7 @@ const SubmitButton = ({
 		setGeneralExamination(initialGeneralExamination);
 		setRespiratoryExamination(initialRespiratoryExamination);
 		setAbdominalExamination(initialAbdominalExamination);
+		setSkinExamination(initialSkinExamination);
 		setNeurologicalExamination(initialneurologicalExamination);
 
 		// clearing differentials store
@@ -343,6 +350,8 @@ const SubmitButton = ({
 	};
 
 	const handleSubmit = async () => {
+		// console.log("Data", params.body);
+		// clearStores();
 		if (!window.confirm("Are you sure you want to submit?")) {
 			return;
 		}
@@ -350,7 +359,7 @@ const SubmitButton = ({
 		// console.log("Submitting the data to the server ...", DEVELOPMENT_URL);
 		// console.log(data);
 		setLoadingIn(true);
-		fetch(DEVELOPMENT_URL, params)
+		fetch(PRODUCTION_URL, params)
 			.then((res) => res.json())
 			.then((res) => {
 				setLoadingIn(false);
@@ -367,8 +376,13 @@ const SubmitButton = ({
 				setLoadingIn(false);
 				// console.log("something went wrong ", err);
 				// setHeader;
-				if (Platform.OS == "web")
-					alert("Something went wrong while submitting the data");
+				if (Platform.OS == "web") {
+					console.log("Error: ", err);
+					alert(
+						"Something went wrong while submitting the data : " +
+							JSON.stringify(err)
+					);
+				}
 			});
 	};
 

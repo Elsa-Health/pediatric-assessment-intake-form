@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { View } from "react-native";
 // import { TextField } from 'material-bread'
 
-
 import _ from "lodash";
 
 // TODO: CReate Radio/Checkbox Question Component
@@ -78,8 +77,8 @@ export default function App() {
 			// The page is not in an iframe
 			// Add mechanism to get the user information
 		}
-	}),
-		[];
+	}, []);
+
 
 	return (
 		<View style={{ backgroundColor: "#DEDFE4", paddingVertical: 36 }}>
