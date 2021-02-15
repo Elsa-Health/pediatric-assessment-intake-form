@@ -12,7 +12,7 @@ interface SimpleQuestionProps {
 	horizontal?: boolean;
 	radio?: boolean;
 	checked?: string | string[];
-	setChecked?: (text: string|string[]) => void;
+	setChecked?: (text: string | string[]) => void;
 	mutiple?: boolean;
 }
 

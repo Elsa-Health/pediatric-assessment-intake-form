@@ -7,12 +7,10 @@ import { Input } from "./Input";
 import { useDifferentials } from "../store";
 
 export function Diefferentials() {
-
-  const differentials = useDifferentials((state) => state);
+	const differentials = useDifferentials((state) => state);
 	const setDifferentials = useDifferentials(
 		(state) => state.setDifferentials
 	);
-
 
 	return (
 		<Table headerTitle="Differentials">

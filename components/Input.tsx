@@ -3,7 +3,7 @@ import { TextInput, DefaultTheme } from "react-native-paper";
 import { TextInputProps } from "react-native-paper/lib/typescript/src/components/TextInput/TextInput";
 import _ from "lodash";
 
-interface InputProps extends Omit<TextInputProps, 'theme'>  {
+interface InputProps extends Omit<TextInputProps, "theme"> {
 	label?: string;
 	placeholder?: string | undefined;
 	multiline?: boolean;
@@ -24,7 +24,6 @@ export const Input: React.FC<InputProps> = React.memo(
 		setText,
 		disabled = false,
 		...rest
-		
 	}) => {
 		return (
 			<TextInput

@@ -125,10 +125,10 @@ export function Symptoms() {
 				<Col>
 					<SimpleQuestion
 						options={["yes", "no"]}
-						checked={general.awerenessOfHearbeat}
+						checked={general.awarenessOfHeartbeat}
 						setChecked={(text: string | string[]) => {
 							setGeneralState({
-								awerenessOfHearbeat: text as string,
+								awarenessOfHeartbeat: text as string,
 							});
 						}}
 					/>
@@ -138,10 +138,10 @@ export function Symptoms() {
 						<Input
 							label="Days"
 							placeholder="Days"
-							text={general.awerenessOfHearbeatDays}
+							text={general.awarenessOfHeartbeatDays}
 							setText={(text: string) =>
 								setGeneralState({
-									awerenessOfHearbeatDays: text,
+									awarenessOfHeartbeatDays: text,
 								})
 							}
 						/>
@@ -153,10 +153,10 @@ export function Symptoms() {
 				<Col>
 					<SimpleQuestion
 						options={["yes", "no"]}
-						checked={general.skinLession}
+						checked={general.skinLesion}
 						setChecked={(text: string | string[]) => {
 							setGeneralState({
-								skinLession: text as string,
+								skinLesion: text as string,
 							});
 						}}
 					/>
@@ -166,10 +166,10 @@ export function Symptoms() {
 						<Input
 							label="Days"
 							placeholder="Days"
-							text={general.skinLessionDays}
+							text={general.skinLesionDays}
 							setText={(text: string) => {
 								setGeneralState({
-									skinLessionDays: text,
+									skinLesionDays: text,
 								});
 							}}
 						/>
@@ -630,11 +630,11 @@ export function Symptoms() {
 					<Text>Is bloody ? : </Text>
 					<SimpleQuestion
 						options={["yes", "no"]}
-						checked={gi.isDiarrhoesBloody}
+						checked={gi.isDiarrhoeaBloody}
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ isDiarrhoesBloody: text });
+							setGI({ isDiarrhoeaBloody: text });
 						}}
 					/>
 
@@ -659,11 +659,11 @@ export function Symptoms() {
 				<Col>
 					<SimpleQuestion
 						options={["yes", "no"]}
-						checked={gi.abnominalPain}
+						checked={gi.abdominalPain}
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ abnominalPain: text });
+							setGI({ abdominalPain: text });
 						}}
 					/>
 				</Col>
@@ -672,9 +672,9 @@ export function Symptoms() {
 						<Input
 							label="Days"
 							placeholder="Days"
-							text={gi.abnominalPainDays}
+							text={gi.abdominalPainDays}
 							setText={(text) => {
-								setGI({ abnominalPainDays: text });
+								setGI({ abdominalPainDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -683,22 +683,22 @@ export function Symptoms() {
 					<Text>Location : </Text>
 					<SimpleQuestion
 						options={["Epigastric", "Umbilical", "Hypogastric"]}
-						checked={gi.abnominalPainLocation}
+						checked={gi.abdominalPainLocation}
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ abnominalPainLocation: text });
+							setGI({ abdominalPainLocation: text });
 						}}
 					/>
 
 					<Text>If Epigastric, is it before or after meals? : </Text>
 					<SimpleQuestion
 						options={["before", "after"]}
-						checked={gi.abnominalPainEpigastric}
+						checked={gi.abdominalPainEpigastric}
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ abnominalPainEpigastric: text });
+							setGI({ abdominalPainEpigastric: text });
 						}}
 						mutiple={true}
 					/>
@@ -706,11 +706,11 @@ export function Symptoms() {
 					<Text>Does it radiate to the back? ? : </Text>
 					<SimpleQuestion
 						options={["yes", "no"]}
-						checked={gi.abnominalPainIsRadiating}
+						checked={gi.abdominalPainRadiatingBack}
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ abnominalPainIsRadiating: text });
+							setGI({ abdominalPainRadiatingBack: text });
 						}}
 					/>
 				</Col>
@@ -768,8 +768,8 @@ export function Symptoms() {
 					onChange={(res) => {
 						// console.log("What does : ", res);
 						setGI({
-							painInUrination: res.checked,
-							painInUrinationDays: res.days,
+							painOnUrination: res.checked,
+							painOnUrinationDays: res.days,
 						});
 					}}
 				/>
@@ -783,14 +783,11 @@ export function Symptoms() {
 						setGI({
 							frequencyOfUrination: res.checked,
 							frequencyOfUrinationDays: res.days,
-							frequencyOfUrinationTimesDay: res.timesDay,
+							frequencyOfUrinationTimesPerDay: res.timesDay,
 						});
 					}}
 				/>
 			</Row>
-
-			{/* //state from here have not been intergrated */}
-			{/* fix state management in following areass */}
 
 			<Col style={styles.headerDarkGray}>
 				<Text>CNS</Text>
@@ -799,25 +796,19 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Headache"
-					// times={true}
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						setCNS({
 							headache: res.checked,
 							headacheDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 				<BasicSymptomInput
 					label="Coma"
-					// times={true}
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						setCNS({
 							coma: res.checked,
 							comaDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -828,23 +819,18 @@ export function Symptoms() {
 					label="Hypothermia"
 					// times={true}
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						setCNS({
 							hypothermia: res.checked,
 							hypothermiaDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 				<BasicSymptomInput
 					label="Seizures"
-					// times={true}
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						setCNS({
 							seizures: res.checked,
 							seizuresDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -853,26 +839,20 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Neck Pain"
-					// times={true}
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						setCNS({
 							neckPain: res.checked,
 							neckPainDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 
 				<BasicSymptomInput
 					label="High pitched crying"
-					// times={true}
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						setCNS({
-							highlyPitchedCrying: res.checked,
-							highlyPitchedCryingDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
+							highPitchedCrying: res.checked,
+							highPitchedCryingDays: res.days,
 						});
 					}}
 				/>
@@ -885,26 +865,20 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Myalgia"
-					// times={true}
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						setMusculoskeletal({
 							myalgia: res.checked,
 							myalgiaDays: res.days,
-							frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 
 				<BasicSymptomInput
 					label="History of Trauma"
-					// times={true}
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						setMusculoskeletal({
 							historyOfTrauma: res.checked,
 							historyOfTraumaDays: res.days,
-							frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -915,11 +889,9 @@ export function Symptoms() {
 					label="Fatigue"
 					// times={true}
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						setMusculoskeletal({
 							fatique: res.checked,
 							fatiqueDays: res.days,
-							frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -968,24 +940,20 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Ear Pain"
-					// times={true}
 					onChange={(res) => {
 						setEarsAndEyes({
 							earPain: res.checked,
 							earPainDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 
 				<BasicSymptomInput
 					label="Eye Discharge"
-					// times={true}
 					onChange={(res) => {
 						setEarsAndEyes({
 							eyeDischarge: res.checked,
 							eyeDischargeDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -994,19 +962,16 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Ear Discharge"
-					// times={true}
 					onChange={(res) => {
 						setEarsAndEyes({
 							earDischarge: res.checked,
 							earDischargeDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 
 				<BasicSymptomInput
 					label="Sunken Eyes"
-					// times={true}
 					onChange={(res) => {
 						setEarsAndEyes({
 							sunkenEyes: res.checked,

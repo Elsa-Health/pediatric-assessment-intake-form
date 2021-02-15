@@ -6,10 +6,10 @@ export const initialGeneralSymptoms = {
 	feverDays: "",
 	chills: "",
 	chillsDays: "",
-	awerenessOfHearbeat: "",
-	awerenessOfHearbeatDays: "",
-	skinLession: "",
-	skinLessionDays: "",
+	awarenessOfHeartbeat: "",
+	awarenessOfHeartbeatDays: "",
+	skinLesion: "",
+	skinLesionDays: "",
 };
 
 type GeneralSymptomsData = {
@@ -17,10 +17,10 @@ type GeneralSymptomsData = {
 	feverDays?: string;
 	chills?: string;
 	chillsDays?: string;
-	awerenessOfHearbeat?: string;
-	awerenessOfHearbeatDays?: string;
-	skinLession?: string;
-	skinLessionDays?: string;
+	awarenessOfHeartbeat?: string;
+	awarenessOfHeartbeatDays?: string;
+	skinLesion?: string;
+	skinLesionDays?: string;
 };
 
 type GeneralSymptoms = GeneralSymptomsData & {
@@ -44,23 +44,20 @@ export const initialRespiratorySymptoms = {
 	coughTime: "",
 	rhinorrhea: "",
 	rhinorrheaDays: "",
+	sneezing: "",
+	sneezingDays: "",
 	lossOfSmell: "",
 	lossOfSmellDays: "",
 	lossOfVoice: "",
 	lossOfVoiceDays: "",
-
-	facialPain: "",
-	facialPainDays: "",
-	nasalCongestion: "",
-	nasalCongestionDays: "",
-
-	dentalPain: "",
-	dentalPainDays: "",
-
 	changeInVoice: "",
 	changeInVoiceDays: "",
-	sneezing: "",
-	sneezingDays: "",
+	facialPain: "",
+	facialPainDays: "",
+	dentalPain: "",
+	dentalPainDays: "",
+	nasalCongestion: "",
+	nasalCongestionDays: "",
 	badBreath: "",
 	badBreathDays: "",
 	chestTightness: "",
@@ -124,15 +121,15 @@ export const initialGISymtoms = {
 	diarrhoeaDays: "",
 	diarrhoeaTimesDay: "",
 	diarrhoeaType: [],
-	isDiarrhoesBloody: "",
+	isDiarrhoeaBloody: "",
 	anyTenesmus: "",
 
-	abnominalPain: "",
-	abnominalPainDays: "",
-	abnominalPainLocation: "",
+	abdominalPain: "",
+	abdominalPainDays: "",
+	abdominalPainLocation: "",
 
-	abnominalPainEpigastric: [],
-	abnominalPainIsRadiating: "",
+	abdominalPainEpigastric: [],
+	abdominalPainRadiatingBack: "",
 
 	abdominalCramps: "",
 	abdominalCrampsDays: "",
@@ -146,11 +143,11 @@ export const initialGISymtoms = {
 	difficultySwallowing: "",
 	difficultySwallowingDays: "",
 
-	painInUrination: "",
-	painInUrinationDays: "",
+	painOnUrination: "",
+	painOnUrinationDays: "",
 
 	frequencyOfUrination: "",
-	frequencyOfUrinationTimesDay: "",
+	frequencyOfUrinationTimesPerDay: "",
 	frequencyOfUrinationDays: "",
 };
 
@@ -163,15 +160,15 @@ type GISymtomsData = {
 	diarrhoeaDays?: string;
 	diarrhoeaTimesDay?: string;
 	diarrhoeaType: string[];
-	isDiarrhoesBloody?: string;
+	isDiarrhoeaBloody?: string;
 	anyTenesmus?: string;
 
-	abnominalPain?: string;
-	abnominalPainDays?: string;
-	abnominalPainLocation?: string;
+	abdominalPain?: string;
+	abdominalPainDays?: string;
+	abdominalPainLocation?: string;
 
-	abnominalPainEpigastric?: string[];
-	abnominalPainIsRadiating?: string;
+	abdominalPainEpigastric?: string[];
+	abdominalPainRadiatingBack?: string;
 
 	abdominalCramps?: string;
 	abdominalCrampsDays?: string;
@@ -185,11 +182,11 @@ type GISymtomsData = {
 	difficultySwallowing?: string;
 	difficultySwallowingDays?: string;
 
-	painInUrination?: string;
-	painInUrinationDays?: string;
+	painOnUrination?: string;
+	painOnUrinationDays?: string;
 
 	frequencyOfUrination?: string;
-	frequencyOfUrinationTimesDay?: string;
+	frequencyOfUrinationTimesPerDay?: string;
 	frequencyOfUrinationDays?: string;
 };
 
@@ -221,8 +218,8 @@ export const initilCNSSymtoms = {
 	neckPain: "",
 	neckPainDays: "",
 
-	highlyPitchedCrying: "",
-	highlyPitchedCryingDays: "",
+	highPitchedCrying: "",
+	highPitchedCryingDays: "",
 };
 
 type CNSData = {
@@ -239,8 +236,8 @@ type CNSData = {
 	neckPain?: string;
 	neckPainDays?: string;
 
-	highlyPitchedCrying?: string;
-	highlyPitchedCryingDays?: string;
+	highPitchedCrying?: string;
+	highPitchedCryingDays?: string;
 };
 
 type CNS = CNSData & {

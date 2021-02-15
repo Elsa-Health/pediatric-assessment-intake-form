@@ -8,7 +8,6 @@ export function ChiefComplaints() {
 		(state) => state
 	);
 
-
 	return (
 		<Table headerTitle="Chief Complaints">
 			<Input

@@ -10,7 +10,6 @@ export function FinalDiagnosis() {
 		(state) => state.setFinalDiagnosis
 	);
 
-
 	return (
 		<Table headerTitle="Final Diagnosis:">
 			<Input
