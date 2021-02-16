@@ -38,7 +38,7 @@ export const initialGeneralExamination = {
 	childAppearance: [],
 	hairColor: "",
 	hairTexture: "",
-	eyesConjuctive: "",
+	eyesConjuctiva: "",
 	ent: "",
 
 	mouthOutside: [],
@@ -63,7 +63,7 @@ type GeneralExaminationData = {
 	childAppearance?: string[];
 	hairColor?: string;
 	hairTexture?: string;
-	eyesConjuctive?: string;
+	eyesConjuctiva?: string;
 	ent?: string;
 
 	mouthOutside?: string[];
@@ -169,10 +169,10 @@ export const useAbdominalExamination = create<AbdominalExamination>((set) => ({
 
 // skin examination
 export const initialSkinExamination = {
-	lession: "",
-	lessionRegion: "",
-	lessionShape: "",
-	lessionFrequency: "",
+	lesion: "",
+	lesionRegion: "",
+	lesionShape: "",
+	lesionFrequency: "",
 
 	type: [],
 	typeOther: "",
@@ -190,10 +190,10 @@ export const initialSkinExamination = {
 };
 
 type SkinExaminationData = {
-	lession?: string;
-	lessionRegion?: string;
-	lessionShape?: string;
-	lessionFrequency?: string;
+	lesion?: string;
+	lesionRegion?: string;
+	lesionShape?: string;
+	lesionFrequency?: string;
 
 	type?: string[];
 	typeOther?: string;
@@ -234,7 +234,7 @@ export const initialneurologicalExamination = {
 	blantyreScoreVerbal: "",
 	blantyreScoreMotor: "",
 
-	neckRigidigty: "",
+	neckRigidity: "",
 
 	neonate: [],
 	motorFlexion: "",
@@ -278,7 +278,7 @@ type NeurologicalExaminationData = {
 	blantyreScoreVerbal?: string;
 	blantyreScoreMotor?: string;
 
-	neckRigidigty?: string;
+	neckRigidity?: string;
 
 	neonate?: string[];
 	motorFlexion?: string;

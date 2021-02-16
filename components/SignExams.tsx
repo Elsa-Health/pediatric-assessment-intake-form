@@ -250,12 +250,12 @@ export function SignsExam() {
 				<Col cols={8}>
 					<SimpleQuestion
 						options={["pale", "not pale"]}
-						checked={generalExamination.eyesConjuctive}
+						checked={generalExamination.eyesConjuctiva}
 						setChecked={(text: string | string[]) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
 							setGeneralExamination({
-								eyesConjuctive: text as string,
+								eyesConjuctiva: text as string,
 							});
 						}}
 					/>
@@ -688,34 +688,34 @@ please indicate the location in the picture.)"
 				<Col>
 					<SimpleQuestion
 						options={["yes", "no"]}
-						checked={skinExamination.lession}
+						checked={skinExamination.lesion}
 						setChecked={(text: string | string[]) => {
-							setSkinExamination({ lession: text as string });
+							setSkinExamination({ lesion: text as string });
 						}}
 					/>
 				</Col>
 				<Col cols={2}>
 					<Text>If yes, where is the lesion?</Text>
 					<Input
-						text={skinExamination.lessionRegion}
+						text={skinExamination.lesionRegion}
 						setText={(text: string) => {
-							setSkinExamination({ lessionRegion: text });
+							setSkinExamination({ lesionRegion: text });
 						}}
 					/>
 					<Text>Shape of lesion:</Text>
 					<Input
-						text={skinExamination.lessionShape}
+						text={skinExamination.lesionShape}
 						setText={(text: string) => {
-							setSkinExamination({ lessionShape: text });
+							setSkinExamination({ lesionShape: text });
 						}}
 					/>
 					<Spacer size={8} />
 					<SimpleQuestion
 						options={["Multiple", "Single lesion"]}
-						checked={skinExamination.lessionFrequency}
+						checked={skinExamination.lesionFrequency}
 						setChecked={(text: string | string[]) => {
 							setSkinExamination({
-								lessionFrequency: text as string,
+								lesionFrequency: text as string,
 							});
 						}}
 					/>
@@ -926,12 +926,12 @@ please indicate the location in the picture.)"
 							<SimpleQuestion
 								options={["Rigid", "Supple"]}
 								// horizontal={false}
-								checked={neurologicalExamination.neckRigidigty}
+								checked={neurologicalExamination.neckRigidity}
 								setChecked={(text: string | string[]) => {
 									// console.log("Hello There ", text);
 									// setGeneral({ fever: text, ...general });
 									setNeurologicalExamination({
-										neckRigidigty: text as string,
+										neckRigidity: text as string,
 									});
 								}}
 							/>
