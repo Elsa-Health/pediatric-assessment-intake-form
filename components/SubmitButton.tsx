@@ -350,6 +350,7 @@ const SubmitButton = ({
 				style={{
 					height: 48,
 					justifyContent: "center",
+					backgroundColor: "#1F5EFF",
 				}}
 				labelStyle={{
 					color: "white",
