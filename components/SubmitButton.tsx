@@ -85,105 +85,110 @@ const SubmitButton = ({
 	// console.log("Main store : ", mainStore);
 	const [loadingIn, setLoadingIn] = useState(false);
 
-	const { setHeaderInfo, ...headerInfo } = useHeaderInformation(
+	const { updateHeaderInformation, ...headerInfo } = useHeaderInformation(
 		(state) => state
 	);
-	const { setPatientInformation, ...patientInfo } = usePatientInformation(
+	const { updatePatientInformation, ...patientInfo } = usePatientInformation(
 		(state) => state
 	);
-	const { setChiefComplains, ...chiefComplains } = useChiefComplains(
+	const { updateChiefComplains, ...chiefComplains } = useChiefComplains(
 		(state) => state
 	);
 
 	// Symptoms stores
-	const { setGeneralState, ...generalSymptoms } = useGeneralSymptoms(
+	const { updateGeneralState, ...generalSymptoms } = useGeneralSymptoms(
 		(state) => state
 	);
-	const { setRespiratory, ...respiratory } = useRespiratory((state) => state);
-	const { setGI, ...gi } = useGI((state) => state);
-	const { setCNS, ...cns } = useCNS((state) => state);
-	const { setMusculoskeletal, ...muskuloskeletal } = useMusculoskeletal(
+	const { updateRespiratory, ...respiratory } = useRespiratory(
 		(state) => state
 	);
-	const { setEarsAndEyes, ...eyesAndEars } = useEarsAndEyes((state) => state);
-	const { setMouth, ...mouth } = useMouth((state) => state);
+	const { updateGI, ...gi } = useGI((state) => state);
+	const { updateCNS, ...cns } = useCNS((state) => state);
+	const { updateMusculoskeletal, ...muskuloskeletal } = useMusculoskeletal(
+		(state) => state
+	);
+	const { updateEarsAndEyes, ...eyesAndEars } = useEarsAndEyes(
+		(state) => state
+	);
+	const { updateMouth, ...mouth } = useMouth((state) => state);
 
-	const { setNeonatal, ...neonatal } = useNeonatal((state) => state);
+	const { updateNeonatal, ...neonatal } = useNeonatal((state) => state);
 
-	const { setOthers, ...others } = useOthers((state) => state);
+	const { updateOthers, ...others } = useOthers((state) => state);
 
 	//additional patient information stores
-	const { setBirthHistory, ...birthHistory } = useBirthHistory(
+	const { updateBirthHistory, ...birthHistory } = useBirthHistory(
 		(state) => state
 	);
 	const {
-		setNutritionalHistory,
+		updateNutritionalHistory,
 		...nutritionalHistory
 	} = useNutritionalHistory((state) => state);
 	const {
-		setVaccinationHistory,
+		updateVaccinationHistory,
 		...vaccinationHistory
 	} = useVaccinationHistory((state) => state);
-	const { setMedicalHistory, ...medicalHistory } = useMedicalHistory(
+	const { updateMedicalHistory, ...medicalHistory } = useMedicalHistory(
 		(state) => state
 	);
 
 	//signs and exams store
-	const { setVitalSigns, ...vitalSignsExam } = useVitalSigns(
+	const { updateVitalSigns, ...vitalSignsExam } = useVitalSigns(
 		(state) => state
 	);
-	const { setGeneralExamination, ...generalExam } = useGeneralExamination(
+	const { updateGeneralExamination, ...generalExam } = useGeneralExamination(
 		(state) => state
 	);
 	const {
-		setRespiratoryExamination,
+		updateRespiratoryExamination,
 		...respiratoryExam
 	} = useRespiratoryExamination((state) => state);
 	const {
-		setAbdominalExamination,
+		updateAbdominalExamination,
 		...abdominalExam
 	} = useAbdominalExamination((state) => state);
-	const { setSkinExamination, ...skinExam } = useSkinExamination(
+	const { updateSkinExamination, ...skinExam } = useSkinExamination(
 		(state) => state
 	);
 
 	const {
-		setNeurologicalExamination,
+		updateNeurologicalExamination,
 		...neurologicalExam
 	} = useNeurologicalExamination((state) => state);
 
 	//differential examination
-	const { setDifferentials, ...differentials } = useDifferentials(
+	const { updateDifferentials, ...differentials } = useDifferentials(
 		(state) => state
 	);
 
 	// investigation and orders store
-	const { setMalariaTests, ...malariaTests } = useMalariaTests(
+	const { updateMalariaTests, ...malariaTests } = useMalariaTests(
 		(state) => state
 	);
-	const { setMicrobiologyTests, ...microbiologyTests } = useMicrobiologyTests(
+	const {
+		updateMicrobiologyTests,
+		...microbiologyTests
+	} = useMicrobiologyTests((state) => state);
+	const { updateTBTests, ...tbTests } = useTBTests((state) => state);
+	const { updateChemistryTests, ...chemistryTests } = useChemistryTests(
 		(state) => state
 	);
-	const { setTBTests, ...tbTests } = useTBTests((state) => state);
-	const { setChemistryTests, ...chemistryTests } = useChemistryTests(
-		(state) => state
-	);
-	const { setStoolTests, ...stoolTests } = useStoolTests((state) => state);
+	const { updateStoolTests, ...stoolTests } = useStoolTests((state) => state);
 
-	const { setHematologyTests, ...hematologyTests } = useHematologyTests(
+	const { updateHematologyTests, ...hematologyTests } = useHematologyTests(
 		(state) => state
 	);
-	const { setXRayTests, ...xrayTests } = useXRayTests((state) => state);
+	const { updateXRayTests, ...xrayTests } = useXRayTests((state) => state);
 
-	const { setGlucoseTests, ...glucoseTests } = useGlucoseTests(
+	const { updateGlucoseTests, ...glucoseTests } = useGlucoseTests(
 		(state) => state
 	);
-	const { setHIVTests, ...hivTests } = useHIVTests((state) => state);
+	const { updateHIVTests, ...hivTests } = useHIVTests((state) => state);
 
-	const { setUrineTests, ...urineTests } = useUrineTests((state) => state);
+	const { updateUrineTests, ...urineTests } = useUrineTests((state) => state);
 
 	//final diagnosis
-	const { setFinalDiagnosis, ...finalDiagnosis } = useFinalDiagnosis(
+	const { updateFinalDiagnosis, ...finalDiagnosis } = useFinalDiagnosis(
 		(state) => state
 	);
 
@@ -261,52 +266,52 @@ const SubmitButton = ({
 
 	const clearStores = () => {
 		// clearing the data here
-		setHeaderInfo(initialHeaderInformation);
-		setPatientInformation(initialPatientInformation);
-		setChiefComplains({ complains: "" });
+		updateHeaderInformation(initialHeaderInformation);
+		updatePatientInformation(initialPatientInformation);
+		updateChiefComplains({ complains: "" });
 
 		//clearing symtoms states
-		setGeneralState(initialGeneralSymptoms);
-		setRespiratory(initialRespiratorySymptoms);
-		setGI(initialGISymtoms);
-		setCNS(initilCNSSymtoms);
-		setMusculoskeletal(initialMusculoskeletal);
-		setEarsAndEyes(initialEarsAndEyes);
-		setMouth(initialMouth);
-		setNeonatal({ inabilityToBreastFeed: "" });
+		updateGeneralState(initialGeneralSymptoms);
+		updateRespiratory(initialRespiratorySymptoms);
+		updateGI(initialGISymtoms);
+		updateCNS(initilCNSSymtoms);
+		updateMusculoskeletal(initialMusculoskeletal);
+		updateEarsAndEyes(initialEarsAndEyes);
+		updateMouth(initialMouth);
+		updateNeonatal({ inabilityToBreastFeed: "" });
 
-		setOthers({ others: "" });
+		updateOthers({ others: "" });
 
 		// clearing additiona patient info
-		setBirthHistory(initialBirthHistory);
-		setNutritionalHistory(initialNutritionalHistroy);
-		setVaccinationHistory(initialVaccinationHistory);
-		setMedicalHistory(initialMedicalHistory);
+		updateBirthHistory(initialBirthHistory);
+		updateNutritionalHistory(initialNutritionalHistroy);
+		updateVaccinationHistory(initialVaccinationHistory);
+		updateMedicalHistory(initialMedicalHistory);
 
 		// clearing signs and exams stores
-		setVitalSigns(initialVitalSigns);
-		setGeneralExamination(initialGeneralExamination);
-		setRespiratoryExamination(initialRespiratoryExamination);
-		setAbdominalExamination(initialAbdominalExamination);
-		setNeurologicalExamination(initialneurologicalExamination);
+		updateVitalSigns(initialVitalSigns);
+		updateGeneralExamination(initialGeneralExamination);
+		updateRespiratoryExamination(initialRespiratoryExamination);
+		updateAbdominalExamination(initialAbdominalExamination);
+		updateNeurologicalExamination(initialneurologicalExamination);
 
 		// clearing differentials store
-		setDifferentials(initialDifferentials);
+		updateDifferentials(initialDifferentials);
 
 		// clearing investigantion and orders stores
-		setMalariaTests(initialMalariaTests);
-		setMicrobiologyTests(initialMicrobiologyTests);
-		setTBTests(initialTbTests);
-		setChemistryTests(initialChemistryTests);
-		setStoolTests(initialStoolTests);
-		setHematologyTests(initialHematologyTests);
-		setXRayTests(initialXRayTests);
-		setGlucoseTests(initialGlucoseTests);
-		setHIVTests(initialHivTests);
-		setUrineTests(initialUrineTests);
+		updateMalariaTests(initialMalariaTests);
+		updateMicrobiologyTests(initialMicrobiologyTests);
+		updateTBTests(initialTbTests);
+		updateChemistryTests(initialChemistryTests);
+		updateStoolTests(initialStoolTests);
+		updateHematologyTests(initialHematologyTests);
+		updateXRayTests(initialXRayTests);
+		updateGlucoseTests(initialGlucoseTests);
+		updateHIVTests(initialHivTests);
+		updateUrineTests(initialUrineTests);
 
 		//clearing final diagnosis
-		setFinalDiagnosis({ finalDiagnosisText: "" });
+		updateFinalDiagnosis({ finalDiagnosisText: "" });
 	};
 
 	const handleSubmit = async () => {
@@ -358,6 +363,7 @@ const SubmitButton = ({
 				loading={loadingIn}
 				uppercase={false}
 				disabled={loadingIn}
+				accessibilityStates={null}
 			>
 				{loadingIn ? "Submitting the data..." : "Submit "}
 			</Button>

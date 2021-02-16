@@ -16,14 +16,14 @@ type MicrobiologyTestsData = {
 };
 
 type MicrobiologyTests = MicrobiologyTestsData & {
-	setMicrobiologyTests: (
+	updateMicrobiologyTests: (
 		by: { [key in keyof MicrobiologyTestsData]: string }
 	) => void;
 };
 
 export const useMicrobiologyTests = create<MicrobiologyTests>((set) => ({
 	...initialMicrobiologyTests,
-	setMicrobiologyTests: (
+	updateMicrobiologyTests: (
 		data: { [key in keyof MicrobiologyTestsData]: string }
 	) => set((state) => ({ ...state, ...data })),
 }));

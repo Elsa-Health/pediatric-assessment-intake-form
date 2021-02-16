@@ -22,11 +22,11 @@ type VitalSignsData = {
 };
 
 type VitalSigns = VitalSignsData & {
-	setVitalSigns: (by: { [key in keyof VitalSignsData]: string }) => void;
+	updateVitalSigns: (by: { [key in keyof VitalSignsData]: string }) => void;
 };
 
 export const useVitalSigns = create<VitalSigns>((set) => ({
 	...initialVitalSigns,
-	setVitalSigns: (data: { [key in keyof VitalSignsData]: string }) =>
+	updateVitalSigns: (data: { [key in keyof VitalSignsData]: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

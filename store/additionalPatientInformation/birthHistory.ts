@@ -18,11 +18,13 @@ type BirthHistoryData = {
 };
 
 type BirthHistory = BirthHistoryData & {
-	setBirthHistory: (by: { [key in keyof BirthHistoryData]: string }) => void;
+	updateBirthHistory: (
+		by: { [key in keyof BirthHistoryData]: string }
+	) => void;
 };
 
 export const useBirthHistory = create<BirthHistory>((set) => ({
 	...initialBirthHistory,
-	setBirthHistory: (data: { [key in keyof BirthHistoryData]: string }) =>
+	updateBirthHistory: (data: { [key in keyof BirthHistoryData]: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

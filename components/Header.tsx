@@ -19,8 +19,11 @@ export function MainHeader() {
 }
 
 export const Header = () => {
-	const { patientID, visitDate } = useHeaderInformation((state) => state);
-	const setHeaderInfo = useHeaderInformation((state) => state.setHeaderInfo);
+	const {
+		patientID,
+		visitDate,
+		updateHeaderInformation,
+	} = useHeaderInformation((state) => state);
 
 	return (
 		<View style={styles.headerContainer}>
@@ -34,7 +37,7 @@ export const Header = () => {
 						<Input
 							text={patientID}
 							setText={(text: string) =>
-								setHeaderInfo({ patientID: text })
+								updateHeaderInformation({ patientID: text })
 							}
 						/>
 					</View>
@@ -51,7 +54,7 @@ export const Header = () => {
 							text={visitDate}
 							placeholder="24/06/2020"
 							setText={(text: string) =>
-								setHeaderInfo({ visitDate: text })
+								updateHeaderInformation({ visitDate: text })
 							}
 						/>
 					</View>

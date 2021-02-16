@@ -22,7 +22,7 @@ type AbdominalExaminationData = {
 };
 
 type AbdominalExamination = AbdominalExaminationData & {
-	setAbdominalExamination: (
+	updateAbdominalExamination: (
 		by: { [key in keyof AbdominalExaminationData]: string }
 	) => void;
 };
@@ -30,7 +30,7 @@ type AbdominalExamination = AbdominalExaminationData & {
 export const useAbdominalExamination = create<AbdominalExamination>((set) => ({
 	...initialAbdominalExamination,
 	//thos is to update all data state
-	setAbdominalExamination: (
+	updateAbdominalExamination: (
 		data: { [key in keyof AbdominalExaminationData]: string }
 	) => set((state) => ({ ...state, ...data })),
 }));

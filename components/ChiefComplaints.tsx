@@ -4,7 +4,7 @@ import { Input } from ".";
 import { useChiefComplains } from "../store";
 
 export function ChiefComplaints() {
-	const { complains, setChiefComplains } = useChiefComplains(
+	const { complains, updateChiefComplains } = useChiefComplains(
 		(state) => state
 	);
 
@@ -15,7 +15,7 @@ export function ChiefComplaints() {
 				numberOfLines={4}
 				text={complains}
 				setText={(text: string) => {
-					setChiefComplains({ complains: text });
+					updateChiefComplains({ complains: text });
 				}}
 			/>
 		</Table>

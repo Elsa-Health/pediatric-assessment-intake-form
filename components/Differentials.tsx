@@ -7,9 +7,8 @@ import { Input } from "./Input";
 import { useDifferentials } from "../store";
 
 export function Diefferentials() {
-	const differentials = useDifferentials((state) => state);
-	const setDifferentials = useDifferentials(
-		(state) => state.setDifferentials
+	const { updateDifferentials, ...differentials } = useDifferentials(
+		(state) => state
 	);
 
 	return (
@@ -23,7 +22,7 @@ export function Diefferentials() {
 						<Input
 							text={differentials.differentialOne}
 							setText={(text: string) => {
-								setDifferentials({
+								updateDifferentials({
 									differentialOne: text,
 								});
 							}}
@@ -40,7 +39,7 @@ export function Diefferentials() {
 						<Input
 							text={differentials.differentialTwo}
 							setText={(text: string) => {
-								setDifferentials({
+								updateDifferentials({
 									differentialTwo: text,
 								});
 							}}
@@ -57,7 +56,7 @@ export function Diefferentials() {
 						<Input
 							text={differentials.differentialThree}
 							setText={(text: string) => {
-								setDifferentials({
+								updateDifferentials({
 									differentialThree: text,
 								});
 							}}

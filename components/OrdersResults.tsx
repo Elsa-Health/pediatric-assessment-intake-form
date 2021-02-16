@@ -19,41 +19,36 @@ import {
 } from "../store";
 
 export function OrdersResults() {
-	const malariaTests = useMalariaTests((state) => state);
-	const setMalariaTests = useMalariaTests((state) => state.setMalariaTests);
-
-	const microbiologyTests = useMicrobiologyTests((state) => state);
-	const setMicrobiologyTests = useMicrobiologyTests(
-		(state) => state.setMicrobiologyTests
+	const { updateMalariaTests, ...malariaTests } = useMalariaTests(
+		(state) => state
 	);
 
-	const tbTests = useTBTests((state) => state);
-	const setTBTests = useTBTests((state) => state.setTBTests);
+	const {
+		updataMicrobiologyTests,
+		...microbiologyTests
+	} = useMicrobiologyTests((state) => state);
 
-	const chemistryTests = useChemistryTests((state) => state);
-	const setChemistryTests = useChemistryTests(
-		(state) => state.setChemistryTests
+	const { updateTBTests, ...tbTests } = useTBTests((state) => state);
+
+	const { updateChemistryTests, ...chemistryTests } = useChemistryTests(
+		(state) => state
 	);
 
-	const stoolTests = useStoolTests((state) => state);
-	const setStoolTests = useStoolTests((state) => state.setStoolTests);
+	const { updateStoolTests, ...stoolTests } = useStoolTests((state) => state);
 
-	const hematologyTests = useHematologyTests((state) => state);
-	const setHematologyTests = useHematologyTests(
-		(state) => state.setHematologyTests
+	const { updateHematologyTests, ...hematologyTests } = useHematologyTests(
+		(state) => state
 	);
 
-	const xrayTests = useXRayTests((state) => state);
-	const setXRayTests = useXRayTests((state) => state.setXRayTests);
+	const { updateXRayTests, ...xrayTests } = useXRayTests((state) => state);
 
-	const glucoseTests = useGlucoseTests((state) => state);
-	const setGlucoseTests = useGlucoseTests((state) => state.setGlucoseTests);
+	const { updateGlucoseTests, ...glucoseTests } = useGlucoseTests(
+		(state) => state
+	);
 
-	const hivTests = useHIVTests((state) => state);
-	const setHIVTests = useHIVTests((state) => state.setHIVTests);
+	const { updateHIVTests, ...hivTests } = useHIVTests((state) => state);
 
-	const urineTests = useUrineTests((state) => state);
-	const setUrineTests = useUrineTests((state) => state.setUrineTests);
+	const { updateUrineTests, ...urineTests } = useUrineTests((state) => state);
 
 	return (
 		<Table headerTitle="Investigations Ordered and Results">
@@ -68,7 +63,7 @@ export function OrdersResults() {
 								options={["Blood slide"]}
 								checked={malariaTests.bloodSlide}
 								setChecked={(text: string) => {
-									setMalariaTests({ bloodSlide: text });
+									updateMalariaTests({ bloodSlide: text });
 								}}
 							/>
 						</Col>
@@ -77,7 +72,7 @@ export function OrdersResults() {
 								<Input
 									text={malariaTests.bloodSlideValue}
 									setText={(text: string) => {
-										setMalariaTests({
+										updateMalariaTests({
 											bloodSlideValue: text,
 										});
 									}}
@@ -91,7 +86,7 @@ export function OrdersResults() {
 								options={["Rapid test"]}
 								checked={malariaTests.rapidTest}
 								setChecked={(text: string) => {
-									setMalariaTests({ rapidTest: text });
+									updateMalariaTests({ rapidTest: text });
 								}}
 							/>
 						</Col>
@@ -100,7 +95,7 @@ export function OrdersResults() {
 								<Input
 									text={malariaTests.rapidTestValue}
 									setText={(text: string) => {
-										setMalariaTests({
+										updateMalariaTests({
 											rapidTestValue: text,
 										});
 									}}
@@ -120,7 +115,7 @@ export function OrdersResults() {
 								setChecked={(text: string) => {
 									console.log("Lumber puncture ", text);
 
-									setMicrobiologyTests({
+									updataMicrobiologyTests({
 										lumbarPuncture: text,
 									});
 								}}
@@ -131,7 +126,7 @@ export function OrdersResults() {
 								<Input
 									text={microbiologyTests.lumbarPunctureValue}
 									setText={(text: string) => {
-										setMicrobiologyTests({
+										updataMicrobiologyTests({
 											lumbarPunctureValue: text,
 										});
 									}}
@@ -145,7 +140,7 @@ export function OrdersResults() {
 								options={["Blood Culture"]}
 								checked={microbiologyTests.bloodCulture}
 								setChecked={(text: string) => {
-									setMicrobiologyTests({
+									updataMicrobiologyTests({
 										bloodCulture: text,
 									});
 								}}
@@ -156,7 +151,7 @@ export function OrdersResults() {
 								<Input
 									text={microbiologyTests.bloodCultureValue}
 									setText={(text: string) => {
-										setMicrobiologyTests({
+										updataMicrobiologyTests({
 											bloodCultureValue: text,
 										});
 									}}
@@ -179,7 +174,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setTBTests({ microAAFBs: text });
+									updateTBTests({ microAAFBs: text });
 								}}
 							/>
 						</Col>
@@ -188,7 +183,9 @@ export function OrdersResults() {
 								<Input
 									text={tbTests.microAAFBsValue}
 									setText={(text: string) => {
-										setTBTests({ microAAFBsValue: text });
+										updateTBTests({
+											microAAFBsValue: text,
+										});
 									}}
 								/>
 							</FitTextToCell>
@@ -205,7 +202,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setTBTests({ mantoux: text });
+									updateTBTests({ mantoux: text });
 								}}
 							/>
 						</Col>
@@ -214,7 +211,7 @@ export function OrdersResults() {
 								<Input
 									text={tbTests.mantouxValue}
 									setText={(text: string) => {
-										setTBTests({ mantouxValue: text });
+										updateTBTests({ mantouxValue: text });
 									}}
 								/>
 							</FitTextToCell>
@@ -227,7 +224,7 @@ export function OrdersResults() {
 								options={["Xpert MTB/RIF"]}
 								checked={tbTests.xpertMTBRIF}
 								setChecked={(text: string) => {
-									setTBTests({ xpertMTBRIF: text });
+									updateTBTests({ xpertMTBRIF: text });
 								}}
 							/>
 						</Col>
@@ -236,7 +233,9 @@ export function OrdersResults() {
 								<Input
 									text={tbTests.xpertMTBRIFValue}
 									setText={(text: string) => {
-										setTBTests({ xpertMTBRIFValue: text });
+										updateTBTests({
+											xpertMTBRIFValue: text,
+										});
 									}}
 								/>
 							</FitTextToCell>
@@ -248,7 +247,7 @@ export function OrdersResults() {
 								options={["Myco TB Culture"]}
 								checked={tbTests.mycoTBCulture}
 								setChecked={(text: string) => {
-									setTBTests({ mycoTBCulture: text });
+									updateTBTests({ mycoTBCulture: text });
 								}}
 							/>
 						</Col>
@@ -257,7 +256,7 @@ export function OrdersResults() {
 								<Input
 									text={tbTests.mycoTBCultureValue}
 									setText={(text: string) => {
-										setTBTests({
+										updateTBTests({
 											mycoTBCultureValue: text,
 										});
 									}}
@@ -280,7 +279,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setChemistryTests({ nak: text });
+									updateChemistryTests({ nak: text });
 								}}
 							/>
 						</Col>
@@ -289,7 +288,9 @@ export function OrdersResults() {
 								<Input
 									text={chemistryTests.nakValue}
 									setText={(text: string) => {
-										setChemistryTests({ nakValue: text });
+										updateChemistryTests({
+											nakValue: text,
+										});
 									}}
 								/>
 							</FitTextToCell>
@@ -306,7 +307,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setChemistryTests({ uc: text });
+									updateChemistryTests({ uc: text });
 								}}
 							/>
 						</Col>
@@ -315,7 +316,7 @@ export function OrdersResults() {
 								<Input
 									text={chemistryTests.ucValue}
 									setText={(text: string) => {
-										setChemistryTests({ ucValue: text });
+										updateChemistryTests({ ucValue: text });
 									}}
 								/>
 							</FitTextToCell>
@@ -332,7 +333,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setChemistryTests({ caphos: text });
+									updateChemistryTests({ caphos: text });
 								}}
 							/>
 						</Col>
@@ -341,7 +342,7 @@ export function OrdersResults() {
 								<Input
 									text={chemistryTests.caphosValue}
 									setText={(text: string) => {
-										setChemistryTests({
+										updateChemistryTests({
 											caphosValue: text,
 										});
 									}}
@@ -361,7 +362,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setChemistryTests({ alb: text });
+									updateChemistryTests({ alb: text });
 								}}
 							/>
 						</Col>
@@ -370,7 +371,9 @@ export function OrdersResults() {
 								<Input
 									text={chemistryTests.albValue}
 									setText={(text: string) => {
-										setChemistryTests({ albValue: text });
+										updateChemistryTests({
+											albValue: text,
+										});
 									}}
 								/>
 							</FitTextToCell>
@@ -388,7 +391,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setChemistryTests({ lft: text });
+									updateChemistryTests({ lft: text });
 								}}
 							/>
 						</Col>
@@ -397,7 +400,9 @@ export function OrdersResults() {
 								<Input
 									text={chemistryTests.lftValue}
 									setText={(text: string) => {
-										setChemistryTests({ lftValue: text });
+										updateChemistryTests({
+											lftValue: text,
+										});
 									}}
 								/>
 							</FitTextToCell>
@@ -413,7 +418,7 @@ export function OrdersResults() {
 								options={["Microscopy"]}
 								checked={stoolTests.microscopy}
 								setChecked={(text: string) => {
-									setStoolTests({ microscopy: text });
+									updateStoolTests({ microscopy: text });
 								}}
 							/>
 						</Col>
@@ -422,7 +427,7 @@ export function OrdersResults() {
 								<Input
 									text={stoolTests.microscopyValue}
 									setText={(text: string) => {
-										setStoolTests({
+										updateStoolTests({
 											microscopyValue: text,
 										});
 									}}
@@ -441,7 +446,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setStoolTests({ microCulture: text });
+									updateStoolTests({ microCulture: text });
 								}}
 							/>
 						</Col>
@@ -450,7 +455,7 @@ export function OrdersResults() {
 								<Input
 									text={stoolTests.microCultureValue}
 									setText={(text: string) => {
-										setStoolTests({
+										updateStoolTests({
 											microCultureValue: text,
 										});
 									}}
@@ -475,7 +480,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setHematologyTests({ hb: text });
+									updateHematologyTests({ hb: text });
 								}}
 							/>
 						</Col>
@@ -484,7 +489,9 @@ export function OrdersResults() {
 								<Input
 									text={hematologyTests.hbValue}
 									setText={(text: string) => {
-										setHematologyTests({ hbValue: text });
+										updateHematologyTests({
+											hbValue: text,
+										});
 									}}
 								/>
 							</FitTextToCell>
@@ -501,7 +508,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setHematologyTests({
+									updateHematologyTests({
 										fullBloodPicture: text,
 									});
 								}}
@@ -512,7 +519,7 @@ export function OrdersResults() {
 								<Input
 									text={hematologyTests.fullBloodPictureValue}
 									setText={(text: string) => {
-										setHematologyTests({
+										updateHematologyTests({
 											fullBloodPictureValue: text,
 										});
 									}}
@@ -535,7 +542,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setXRayTests({ cxr: text });
+									updateXRayTests({ cxr: text });
 								}}
 							/>
 						</Col>
@@ -544,7 +551,7 @@ export function OrdersResults() {
 								<Input
 									text={xrayTests.cxrValue}
 									setText={(text: string) => {
-										setXRayTests({ cxrValue: text });
+										updateXRayTests({ cxrValue: text });
 									}}
 								/>
 							</FitTextToCell>
@@ -561,7 +568,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setXRayTests({ other: text });
+									updateXRayTests({ other: text });
 								}}
 							/>
 						</Col>
@@ -570,7 +577,7 @@ export function OrdersResults() {
 								<Input
 									text={xrayTests.otherValue}
 									setText={(text: string) => {
-										setXRayTests({ otherValue: text });
+										updateXRayTests({ otherValue: text });
 									}}
 								/>
 							</FitTextToCell>
@@ -599,7 +606,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setGlucoseTests({ stickTest: text });
+									updateGlucoseTests({ stickTest: text });
 								}}
 							/>
 						</Col>
@@ -608,7 +615,7 @@ export function OrdersResults() {
 								<Input
 									text={glucoseTests.stickTestValue}
 									setText={(text: string) => {
-										setGlucoseTests({
+										updateGlucoseTests({
 											stickTestValue: text,
 										});
 									}}
@@ -627,7 +634,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setGlucoseTests({ laboratory: text });
+									updateGlucoseTests({ laboratory: text });
 								}}
 							/>
 						</Col>
@@ -636,7 +643,7 @@ export function OrdersResults() {
 								<Input
 									text={glucoseTests.laboratoryValue}
 									setText={(text: string) => {
-										setGlucoseTests({
+										updateGlucoseTests({
 											laboratoryValue: text,
 										});
 									}}
@@ -659,7 +666,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setHIVTests({ rapidTest: text });
+									updateHIVTests({ rapidTest: text });
 								}}
 							/>
 						</Col>
@@ -668,7 +675,9 @@ export function OrdersResults() {
 								<Input
 									text={hivTests.rapidTestValue}
 									setText={(text: string) => {
-										setHIVTests({ rapidTestValue: text });
+										updateHIVTests({
+											rapidTestValue: text,
+										});
 									}}
 								/>
 							</FitTextToCell>
@@ -685,7 +694,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setHIVTests({ pcr: text });
+									updateHIVTests({ pcr: text });
 								}}
 							/>
 						</Col>
@@ -694,7 +703,7 @@ export function OrdersResults() {
 								<Input
 									text={hivTests.pcrValue}
 									setText={(text: string) => {
-										setHIVTests({ pcrValue: text });
+										updateHIVTests({ pcrValue: text });
 									}}
 								/>
 							</FitTextToCell>
@@ -715,7 +724,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setUrineTests({ urinalysis: text });
+									updateUrineTests({ urinalysis: text });
 								}}
 							/>
 						</Col>
@@ -724,7 +733,7 @@ export function OrdersResults() {
 								<Input
 									text={urineTests.urinalysisValue}
 									setText={(text: string) => {
-										setUrineTests({
+										updateUrineTests({
 											urinalysisValue: text,
 										});
 									}}
@@ -743,7 +752,7 @@ export function OrdersResults() {
 
 									// we can set custom values here
 
-									setUrineTests({ microCulture: text });
+									updateUrineTests({ microCulture: text });
 								}}
 							/>
 						</Col>
@@ -752,7 +761,7 @@ export function OrdersResults() {
 								<Input
 									text={urineTests.microCultureValue}
 									setText={(text: string) => {
-										setUrineTests({
+										updateUrineTests({
 											microCultureValue: text,
 										});
 									}}
@@ -764,35 +773,6 @@ export function OrdersResults() {
 					<Col style={styles.headerLightGray}>
 						<Text>Other</Text>
 					</Col>
-					{/* <Row>
-            <Col>
-              <Text></Text>
-            </Col>
-            <Col>
-              <FitTextToCell>
-                <Input />
-              </FitTextToCell>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Text></Text>
-            </Col>
-            <Col>
-              <FitTextToCell>
-                <Input />
-              </FitTextToCell>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col>{''}</Col>
-            <Col>
-              <FitTextToCell>
-                <Input />
-              </FitTextToCell>
-            </Col>
-          </Row> */}
 				</Col>
 			</Row>
 		</Table>

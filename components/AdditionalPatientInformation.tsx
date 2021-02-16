@@ -13,22 +13,22 @@ import { Input } from "./Input";
 import { SimpleQuestion } from "./Question";
 
 export function AdditionalPatientInformation() {
-	const birthHistory = useBirthHistory((state) => state);
-	const setBirthHistory = useBirthHistory((state) => state.setBirthHistory);
-
-	const nutritionHistory = useNutritionalHistory((state) => state);
-	const setNutritionHistory = useNutritionalHistory(
-		(state) => state.setNutritionalHistory
+	const { updateBirthHistory, ...birthHistory } = useBirthHistory(
+		(state) => state
 	);
 
-	const vaccinationHistory = useVaccinationHistory((state) => state);
-	const setVaccinationHistory = useVaccinationHistory(
-		(state) => state.setVaccinationHistory
-	);
+	const {
+		updateNutritionalHistory,
+		...nutritionHistory
+	} = useNutritionalHistory((state) => state);
 
-	const medicalHistory = useMedicalHistory((state) => state);
-	const setMedicalHistory = useMedicalHistory(
-		(state) => state.setMedicalHistory
+	const {
+		updateVaccinationHistory,
+		...vaccinationHistory
+	} = useVaccinationHistory((state) => state);
+
+	const { updateMedicalHistory, ...medicalHistory } = useMedicalHistory(
+		(state) => state
 	);
 
 	return (
@@ -45,7 +45,7 @@ export function AdditionalPatientInformation() {
 						options={["full term", "pre-term", "post term"]}
 						checked={birthHistory.gestation}
 						setChecked={(text: string | string[]) => {
-							setBirthHistory({ gestation: text as string });
+							updateBirthHistory({ gestation: text as string });
 						}}
 					/>
 				</Col>
@@ -57,7 +57,9 @@ export function AdditionalPatientInformation() {
 						<Input
 							text={birthHistory.mothersAgeAtDelivery}
 							setText={(text: string) => {
-								setBirthHistory({ mothersAgeAtDelivery: text });
+								updateBirthHistory({
+									mothersAgeAtDelivery: text,
+								});
 							}}
 						/>
 					</FitTextToCell>
@@ -73,7 +75,7 @@ export function AdditionalPatientInformation() {
 						options={["yes", "no"]}
 						checked={birthHistory.complicationsAfterDelivery}
 						setChecked={(text: string | string[]) => {
-							setBirthHistory({
+							updateBirthHistory({
 								complicationsAfterDelivery: text as string,
 							});
 						}}
@@ -87,7 +89,9 @@ export function AdditionalPatientInformation() {
 						<Input
 							text={birthHistory.apgarScore}
 							setText={(text: string | string[]) => {
-								setBirthHistory({ apgarScore: text as string });
+								updateBirthHistory({
+									apgarScore: text as string,
+								});
 							}}
 						/>
 					</FitTextToCell>
@@ -103,7 +107,7 @@ export function AdditionalPatientInformation() {
 						<Input
 							text={birthHistory.additionalBirthHistoryNotes}
 							setText={(text: string) => {
-								setBirthHistory({
+								updateBirthHistory({
 									additionalBirthHistoryNotes: text,
 								});
 							}}
@@ -123,7 +127,9 @@ export function AdditionalPatientInformation() {
 						options={["yes", "no"]}
 						checked={nutritionHistory.breastfed}
 						setChecked={(text: string | string[]) => {
-							setNutritionHistory({ breastfed: text as string });
+							updateNutritionalHistory({
+								breastfed: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -135,7 +141,7 @@ export function AdditionalPatientInformation() {
 						options={["yes", "no"]}
 						checked={nutritionHistory.wasBreastFeedingExclusive}
 						setChecked={(text: string | string[]) => {
-							setNutritionHistory({
+							updateNutritionalHistory({
 								wasBreastFeedingExclusive: text as string,
 							});
 						}}
@@ -151,7 +157,7 @@ export function AdditionalPatientInformation() {
 						options={["At Birth", "After Birth"]}
 						checked={nutritionHistory.breastFeedingStartTime}
 						setChecked={(text: string | string[]) => {
-							setNutritionHistory({
+							updateNutritionalHistory({
 								breastFeedingStartTime: text as string,
 							});
 						}}
@@ -165,7 +171,7 @@ export function AdditionalPatientInformation() {
 						text={nutritionHistory.breastFeedingStartTimeDays}
 						label="Days"
 						setText={(text: string) => {
-							setNutritionHistory({
+							updateNutritionalHistory({
 								breastFeedingStartTimeDays: text,
 							});
 						}}
@@ -185,7 +191,7 @@ export function AdditionalPatientInformation() {
               setChecked={(text) => {
                 // console.log("Hello There ", text);
                 // setGeneral({ fever: text, ...general });
-                setNutritionHistory({ breadfeedingStartTime: text });
+                updateNutritionalHistory({ breadfeedingStartTime: text });
               }}
             /> */}
 
@@ -194,7 +200,7 @@ export function AdditionalPatientInformation() {
 							text={nutritionHistory.breastFeedingStartTimeMonths}
 							label="Months"
 							setText={(text: string) => {
-								setNutritionHistory({
+								updateNutritionalHistory({
 									breastFeedingStartTimeMonths: text,
 								});
 							}}
@@ -213,7 +219,7 @@ export function AdditionalPatientInformation() {
 						setChecked={(text: string | string[]) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
-							setNutritionHistory({
+							updateNutritionalHistory({
 								vitaminASupplements: text as string,
 							});
 						}}
@@ -235,7 +241,7 @@ export function AdditionalPatientInformation() {
 						setChecked={(text: string | string[]) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
-							setVaccinationHistory({
+							updateVaccinationHistory({
 								updateOnAllVaccines: text as string,
 							});
 						}}
@@ -252,7 +258,7 @@ export function AdditionalPatientInformation() {
 					<Input
 						text={vaccinationHistory.missingNotes}
 						setText={(text: string) => {
-							setVaccinationHistory({ missingNotes: text });
+							updateVaccinationHistory({ missingNotes: text });
 						}}
 					/>
 				</FitTextToCell>
@@ -270,7 +276,7 @@ export function AdditionalPatientInformation() {
 						setChecked={(text: string | string[]) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
-							setMedicalHistory({
+							updateMedicalHistory({
 								previousAdmission: text as string,
 							});
 						}}
@@ -282,7 +288,7 @@ export function AdditionalPatientInformation() {
 							placeholder="If yes, why?"
 							text={medicalHistory.whyPreviousAdmission}
 							setText={(text: string) => {
-								setMedicalHistory({
+								updateMedicalHistory({
 									whyPreviousAdmission: text,
 								});
 							}}
@@ -297,7 +303,7 @@ export function AdditionalPatientInformation() {
 						setChecked={(text: string | string[]) => {
 							// console.log("Hello There ", text);
 							// setGeneral({ fever: text, ...general });
-							setMedicalHistory({
+							updateMedicalHistory({
 								antibioticUse: text as string,
 							});
 						}}

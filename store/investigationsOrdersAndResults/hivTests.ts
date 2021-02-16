@@ -16,11 +16,11 @@ type HIVTestsData = {
 };
 
 type HIVTests = HIVTestsData & {
-	setHIVTests: (by: { [key in keyof HIVTestsData]: string }) => void;
+	updateHIVTests: (by: { [key in keyof HIVTestsData]: string }) => void;
 };
 
 export const useHIVTests = create<HIVTests>((set) => ({
 	...initialHivTests,
-	setHIVTests: (data: { [key in keyof HIVTestsData]: string }) =>
+	updateHIVTests: (data: { [key in keyof HIVTestsData]: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

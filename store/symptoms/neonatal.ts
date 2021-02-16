@@ -3,11 +3,11 @@ import create from "zustand";
 // neonatal symptoms store
 type Neonatal = {
 	inabilityToBreastFeed?: string;
-	setNeonatal: (by: { inabilityToBreastFeed: string }) => void;
+	updateNeonatal: (by: { inabilityToBreastFeed: string }) => void;
 };
 export const useNeonatal = create<Neonatal>((set) => ({
 	inabilityToBreastFeed: "",
 
-	setNeonatal: (data: { inabilityToBreastFeed: string }) =>
+	updateNeonatal: (data: { inabilityToBreastFeed: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

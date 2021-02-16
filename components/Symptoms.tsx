@@ -24,43 +24,38 @@ import { styles } from "../style";
 import { Text, View } from "react-native";
 
 export function Symptoms() {
-	const general = useGeneralSymptoms((state) => state);
-	const setGeneralState = useGeneralSymptoms(
-		(state) => state.setGeneralState
+	const { updateGeneralState, ...general } = useGeneralSymptoms(
+		(state) => state
+	);
+	//respiratory sypmtoms
+	const { updateRespiratory, ...respiratory } = useRespiratory(
+		(state) => state
 	);
 
-	//respiratory sypmtoms
-	const respiratory = useRespiratory((state) => state);
-	const setRespiratory = useRespiratory((state) => state.setRespiratory);
-
 	//GI sypmtoms
-	const gi = useGI((state) => state);
-	const setGI = useGI((state) => state.setGI);
+	const { updateGI, ...gi } = useGI((state) => state);
 
 	// CNS symptoms
-	const cns = useCNS((state) => state);
-	const setCNS = useCNS((state) => state.setCNS);
+	const { updateCNS, ...cns } = useCNS((state) => state);
 
-	// CNS symptoms
-	const musculoskeletal = useMusculoskeletal((state) => state);
-	const setMusculoskeletal = useMusculoskeletal(
-		(state) => state.setMusculoskeletal
+	// musculoskeletal symptoms
+	const { updateMusculoskeletal, ...musculoskeletal } = useMusculoskeletal(
+		(state) => state
 	);
 
 	//eyes and ear symptoms
-	const earsAndEyes = useEarsAndEyes((state) => state);
-	const setEarsAndEyes = useEarsAndEyes((state) => state.setEarsAndEyes);
+	const { updateEarsAndEyes, ...earsAndEyes } = useEarsAndEyes(
+		(state) => state
+	);
 
 	//mouth symptoms
-	const mouth = useMouth((state) => state);
-	const setMouth = useMouth((state) => state.setMouth);
+	const { updateMouth, ...mouth } = useMouth((state) => state);
 
 	//mouth symptoms
-	const neonatal = useNeonatal((state) => state);
-	const setNeonatal = useNeonatal((state) => state.setNeonatal);
+	const { updateNeonatal, ...neonatal } = useNeonatal((state) => state);
 
 	//others symotoms
-	const { setOthers, ...others } = useOthers((state) => state);
+	const { updateOthers, ...others } = useOthers((state) => state);
 
 	return (
 		<Table headerTitle="Symptoms">
@@ -76,7 +71,7 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={general.fever}
 						setChecked={(text: string | string[]) => {
-							setGeneralState({ fever: text as string });
+							updateGeneralState({ fever: text as string });
 						}}
 					/>
 				</Col>
@@ -86,7 +81,7 @@ export function Symptoms() {
 							label="Days"
 							text={general.feverDays}
 							setText={(text: string) => {
-								setGeneralState({ feverDays: text });
+								updateGeneralState({ feverDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -100,7 +95,7 @@ export function Symptoms() {
 						checked={general.chills}
 						setChecked={(text: string | string[]) => {
 							console.log("Hello There ", text);
-							setGeneralState({ chills: text as string });
+							updateGeneralState({ chills: text as string });
 						}}
 					/>
 				</Col>
@@ -111,7 +106,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={general.chillsDays}
 							setText={(text: string) => {
-								setGeneralState({ chillsDays: text });
+								updateGeneralState({ chillsDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -127,7 +122,7 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={general.awarenessOfHeartbeat}
 						setChecked={(text: string | string[]) => {
-							setGeneralState({
+							updateGeneralState({
 								awarenessOfHeartbeat: text as string,
 							});
 						}}
@@ -140,7 +135,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={general.awarenessOfHeartbeatDays}
 							setText={(text: string) =>
-								setGeneralState({
+								updateGeneralState({
 									awarenessOfHeartbeatDays: text,
 								})
 							}
@@ -155,7 +150,7 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={general.skinLesion}
 						setChecked={(text: string | string[]) => {
-							setGeneralState({
+							updateGeneralState({
 								skinLesion: text as string,
 							});
 						}}
@@ -168,7 +163,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={general.skinLesionDays}
 							setText={(text: string) => {
-								setGeneralState({
+								updateGeneralState({
 									skinLesionDays: text,
 								});
 							}}
@@ -191,7 +186,7 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={respiratory.cough}
 						setChecked={(text: string | string[]) => {
-							setRespiratory({ cough: text as string });
+							updateRespiratory({ cough: text as string });
 						}}
 					/>
 				</Col>
@@ -202,7 +197,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={respiratory.coughDays}
 							setText={(text: string) => {
-								setRespiratory({ coughDays: text });
+								updateRespiratory({ coughDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -214,7 +209,9 @@ export function Symptoms() {
 							options={["Wet", "Dry"]}
 							checked={respiratory.coughNature}
 							setChecked={(text: string | string[]) => {
-								setRespiratory({ coughNature: text as string });
+								updateRespiratory({
+									coughNature: text as string,
+								});
 							}}
 						/>
 					</Row>
@@ -225,7 +222,9 @@ export function Symptoms() {
 							options={["Red", "green", "white", "clear"]}
 							checked={respiratory.coughSpatum}
 							setChecked={(text: string | string[]) => {
-								setRespiratory({ coughSpatum: text as string });
+								updateRespiratory({
+									coughSpatum: text as string,
+								});
 							}}
 						/>
 					</Row>
@@ -236,7 +235,9 @@ export function Symptoms() {
 							options={["morning", "night", "whole day", "clear"]}
 							checked={respiratory.coughTime}
 							setChecked={(text: string | string[]) => {
-								setRespiratory({ coughTime: text as string });
+								updateRespiratory({
+									coughTime: text as string,
+								});
 							}}
 						/>
 					</Row>
@@ -252,7 +253,7 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={respiratory.rhinorrhea}
 						setChecked={(text: string | string[]) => {
-							setRespiratory({ rhinorrhea: text as string });
+							updateRespiratory({ rhinorrhea: text as string });
 						}}
 					/>
 				</Col>
@@ -263,7 +264,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={respiratory.rhinorrheaDays}
 							setText={(text: string) => {
-								setRespiratory({ rhinorrheaDays: text });
+								updateRespiratory({ rhinorrheaDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -276,7 +277,7 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={respiratory.sneezing}
 						setChecked={(text: string | string[]) => {
-							setRespiratory({ sneezing: text as string });
+							updateRespiratory({ sneezing: text as string });
 						}}
 					/>
 				</Col>
@@ -287,7 +288,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={respiratory.sneezingDays}
 							setText={(text: string) => {
-								setRespiratory({ sneezingDays: text });
+								updateRespiratory({ sneezingDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -303,7 +304,7 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={respiratory.lossOfSmell}
 						setChecked={(text: string | string[]) => {
-							setRespiratory({ lossOfSmell: text as string });
+							updateRespiratory({ lossOfSmell: text as string });
 						}}
 					/>
 				</Col>
@@ -314,7 +315,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={respiratory.lossOfSmellDays}
 							setText={(text: string) => {
-								setRespiratory({ lossOfSmellDays: text });
+								updateRespiratory({ lossOfSmellDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -327,7 +328,7 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={respiratory.lossOfVoice}
 						setChecked={(text: string | string[]) => {
-							setRespiratory({ lossOfVoice: text as string });
+							updateRespiratory({ lossOfVoice: text as string });
 						}}
 					/>
 				</Col>
@@ -338,7 +339,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={respiratory.lossOfVoiceDays}
 							setText={(text: string) => {
-								setRespiratory({ lossOfVoiceDays: text });
+								updateRespiratory({ lossOfVoiceDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -354,7 +355,9 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={respiratory.changeInVoice}
 						setChecked={(text: string | string[]) => {
-							setRespiratory({ changeInVoice: text as string });
+							updateRespiratory({
+								changeInVoice: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -365,7 +368,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={respiratory.changeInVoiceDays}
 							setText={(text: string) => {
-								setRespiratory({ changeInVoiceDays: text });
+								updateRespiratory({ changeInVoiceDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -378,7 +381,7 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={respiratory.facialPain}
 						setChecked={(text: string | string[]) => {
-							setRespiratory({ facialPain: text as string });
+							updateRespiratory({ facialPain: text as string });
 						}}
 					/>
 				</Col>
@@ -389,7 +392,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={respiratory.facialPainDays}
 							setText={(text: string) => {
-								setRespiratory({ facialPainDays: text });
+								updateRespiratory({ facialPainDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -405,7 +408,7 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={respiratory.dentalPain}
 						setChecked={(text: string | string[]) => {
-							setRespiratory({ dentalPain: text as string });
+							updateRespiratory({ dentalPain: text as string });
 						}}
 					/>
 				</Col>
@@ -416,7 +419,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={respiratory.dentalPainDays}
 							setText={(text: string) => {
-								setRespiratory({ dentalPainDays: text });
+								updateRespiratory({ dentalPainDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -429,7 +432,9 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={respiratory.nasalCongestion}
 						setChecked={(text: string | string[]) => {
-							setRespiratory({ nasalCongestion: text as string });
+							updateRespiratory({
+								nasalCongestion: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -440,7 +445,9 @@ export function Symptoms() {
 							placeholder="Days"
 							text={respiratory.nasalCongestionDays}
 							setText={(text: string) => {
-								setRespiratory({ nasalCongestionDays: text });
+								updateRespiratory({
+									nasalCongestionDays: text,
+								});
 							}}
 						/>
 					</FitTextToCell>
@@ -456,7 +463,7 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={respiratory.badBreath}
 						setChecked={(text: string | string[]) => {
-							setRespiratory({ badBreath: text as string });
+							updateRespiratory({ badBreath: text as string });
 						}}
 					/>
 				</Col>
@@ -467,7 +474,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={respiratory.badBreathDays}
 							setText={(text: string) => {
-								setRespiratory({ badBreathDays: text });
+								updateRespiratory({ badBreathDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -480,7 +487,9 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={respiratory.chestTightness}
 						setChecked={(text: string | string[]) => {
-							setRespiratory({ chestTightness: text as string });
+							updateRespiratory({
+								chestTightness: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -491,7 +500,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={respiratory.chestTightnessDays}
 							setText={(text: string) => {
-								setRespiratory({ chestTightnessDays: text });
+								updateRespiratory({ chestTightnessDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -507,7 +516,7 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={respiratory.chestPain}
 						setChecked={(text: string | string[]) => {
-							setRespiratory({ chestPain: text as string });
+							updateRespiratory({ chestPain: text as string });
 						}}
 					/>
 				</Col>
@@ -518,7 +527,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={respiratory.chestPainDays}
 							setText={(text: string) => {
-								setRespiratory({ chestPainDays: text });
+								updateRespiratory({ chestPainDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -547,7 +556,7 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={gi.vomiting}
 						setChecked={(text: string | string[]) => {
-							setGI({ vomiting: text });
+							updateGI({ vomiting: text });
 						}}
 					/>
 				</Col>
@@ -558,7 +567,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={gi.vomitingDays}
 							setText={(text) => {
-								setGI({ vomitingDays: text });
+								updateGI({ vomitingDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -571,7 +580,7 @@ export function Symptoms() {
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ vomitingType: text });
+							updateGI({ vomitingType: text });
 						}}
 						mutiple={true}
 					/>
@@ -589,7 +598,7 @@ export function Symptoms() {
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ diarrhoea: text });
+							updateGI({ diarrhoea: text });
 						}}
 					/>
 				</Col>
@@ -600,7 +609,7 @@ export function Symptoms() {
 							placeholder="#Times / Days"
 							text={gi.diarrhoeaTimesDay}
 							setText={(text) => {
-								setGI({ diarrhoeaTimesDay: text });
+								updateGI({ diarrhoeaTimesDay: text });
 							}}
 						/>
 						<Spacer size={10} />
@@ -609,7 +618,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={gi.diarrhoeaDays}
 							setText={(text) => {
-								setGI({ diarrhoeaDays: text });
+								updateGI({ diarrhoeaDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -622,7 +631,7 @@ export function Symptoms() {
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ diarrhoeaType: text });
+							updateGI({ diarrhoeaType: text });
 						}}
 						mutiple={true}
 					/>
@@ -634,7 +643,7 @@ export function Symptoms() {
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ isDiarrhoeaBloody: text });
+							updateGI({ isDiarrhoeaBloody: text });
 						}}
 					/>
 
@@ -645,7 +654,7 @@ export function Symptoms() {
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ anyTenesmus: text });
+							updateGI({ anyTenesmus: text });
 						}}
 					/>
 				</Col>
@@ -663,7 +672,7 @@ export function Symptoms() {
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ abdominalPain: text });
+							updateGI({ abdominalPain: text });
 						}}
 					/>
 				</Col>
@@ -674,7 +683,7 @@ export function Symptoms() {
 							placeholder="Days"
 							text={gi.abdominalPainDays}
 							setText={(text) => {
-								setGI({ abdominalPainDays: text });
+								updateGI({ abdominalPainDays: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -687,7 +696,7 @@ export function Symptoms() {
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ abdominalPainLocation: text });
+							updateGI({ abdominalPainLocation: text });
 						}}
 					/>
 
@@ -698,7 +707,7 @@ export function Symptoms() {
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ abdominalPainEpigastric: text });
+							updateGI({ abdominalPainEpigastric: text });
 						}}
 						mutiple={true}
 					/>
@@ -710,7 +719,7 @@ export function Symptoms() {
 						setChecked={(text) => {
 							// console.log('Hello There ', text);
 							// setGeneral({ fever: text, ...general });
-							setGI({ abdominalPainRadiatingBack: text });
+							updateGI({ abdominalPainRadiatingBack: text });
 						}}
 					/>
 				</Col>
@@ -721,7 +730,7 @@ export function Symptoms() {
 					label="Abdominal Cramps"
 					onChange={(res) => {
 						// console.log("What does : ", res);
-						setGI({
+						updateGI({
 							abdominalCramps: res.checked,
 							abdominalCrampsDays: res.days,
 						});
@@ -731,7 +740,7 @@ export function Symptoms() {
 					label="Lack of appetite"
 					onChange={(res) => {
 						// console.log("What does : ", res);
-						setGI({
+						updateGI({
 							lackOfAppetite: res.checked,
 							lackOfAppetiteDays: res.days,
 						});
@@ -744,7 +753,7 @@ export function Symptoms() {
 					label="Weight Loss"
 					onChange={(res) => {
 						// console.log("What does : ", res);
-						setGI({
+						updateGI({
 							weightLoss: res.checked,
 							weightLossDays: res.days,
 						});
@@ -754,7 +763,7 @@ export function Symptoms() {
 					label="Difficulty swallowing"
 					onChange={(res) => {
 						// console.log("What does : ", res);
-						setGI({
+						updateGI({
 							difficultySwallowing: res.checked,
 							difficultySwallowingDays: res.days,
 						});
@@ -767,7 +776,7 @@ export function Symptoms() {
 					label="Pain on urination"
 					onChange={(res) => {
 						// console.log("What does : ", res);
-						setGI({
+						updateGI({
 							painOnUrination: res.checked,
 							painOnUrinationDays: res.days,
 						});
@@ -780,7 +789,7 @@ export function Symptoms() {
 					times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
-						setGI({
+						updateGI({
 							frequencyOfUrination: res.checked,
 							frequencyOfUrinationDays: res.days,
 							frequencyOfUrinationTimesPerDay: res.timesDay,
@@ -797,7 +806,7 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Headache"
 					onChange={(res) => {
-						setCNS({
+						updateCNS({
 							headache: res.checked,
 							headacheDays: res.days,
 						});
@@ -806,7 +815,7 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Coma"
 					onChange={(res) => {
-						setCNS({
+						updateCNS({
 							coma: res.checked,
 							comaDays: res.days,
 						});
@@ -819,7 +828,7 @@ export function Symptoms() {
 					label="Hypothermia"
 					// times={true}
 					onChange={(res) => {
-						setCNS({
+						updateCNS({
 							hypothermia: res.checked,
 							hypothermiaDays: res.days,
 						});
@@ -828,7 +837,7 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Seizures"
 					onChange={(res) => {
-						setCNS({
+						updateCNS({
 							seizures: res.checked,
 							seizuresDays: res.days,
 						});
@@ -840,7 +849,7 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Neck Pain"
 					onChange={(res) => {
-						setCNS({
+						updateCNS({
 							neckPain: res.checked,
 							neckPainDays: res.days,
 						});
@@ -850,7 +859,7 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="High pitched crying"
 					onChange={(res) => {
-						setCNS({
+						updateCNS({
 							highPitchedCrying: res.checked,
 							highPitchedCryingDays: res.days,
 						});
@@ -866,7 +875,7 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Myalgia"
 					onChange={(res) => {
-						setMusculoskeletal({
+						updateMusculoskeletal({
 							myalgia: res.checked,
 							myalgiaDays: res.days,
 						});
@@ -876,7 +885,7 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="History of Trauma"
 					onChange={(res) => {
-						setMusculoskeletal({
+						updateMusculoskeletal({
 							historyOfTrauma: res.checked,
 							historyOfTraumaDays: res.days,
 						});
@@ -889,7 +898,7 @@ export function Symptoms() {
 					label="Fatigue"
 					// times={true}
 					onChange={(res) => {
-						setMusculoskeletal({
+						updateMusculoskeletal({
 							fatique: res.checked,
 							fatiqueDays: res.days,
 						});
@@ -916,7 +925,7 @@ export function Symptoms() {
 					// times={true}
 					onChange={(res) => {
 						// console.log("What does : ", res);
-						setEarsAndEyes({
+						updateEarsAndEyes({
 							redEyes: res.checked,
 							redEyesDays: res.days,
 							// frequencyOfUrinationTimesDay: res.timesDay,
@@ -928,7 +937,7 @@ export function Symptoms() {
 					label="Painful Eyes"
 					// times={true}
 					onChange={(res) => {
-						setEarsAndEyes({
+						updateEarsAndEyes({
 							painfulEyes: res.checked,
 							painfulEyesDays: res.days,
 							// frequencyOfUrinationTimesDay: res.timesDay,
@@ -941,7 +950,7 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Ear Pain"
 					onChange={(res) => {
-						setEarsAndEyes({
+						updateEarsAndEyes({
 							earPain: res.checked,
 							earPainDays: res.days,
 						});
@@ -951,7 +960,7 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Eye Discharge"
 					onChange={(res) => {
-						setEarsAndEyes({
+						updateEarsAndEyes({
 							eyeDischarge: res.checked,
 							eyeDischargeDays: res.days,
 						});
@@ -963,7 +972,7 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Ear Discharge"
 					onChange={(res) => {
-						setEarsAndEyes({
+						updateEarsAndEyes({
 							earDischarge: res.checked,
 							earDischargeDays: res.days,
 						});
@@ -973,7 +982,7 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Sunken Eyes"
 					onChange={(res) => {
-						setEarsAndEyes({
+						updateEarsAndEyes({
 							sunkenEyes: res.checked,
 							sunkenEyesDays: res.days,
 						});
@@ -989,7 +998,7 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Dryness"
 					onChange={(res) => {
-						setMouth({
+						updateMouth({
 							dryness: res.checked,
 							drynessDays: res.days,
 						});
@@ -1000,7 +1009,7 @@ export function Symptoms() {
 					label="Cotton Feeling"
 					// times={true}
 					onChange={(res) => {
-						setMouth({
+						updateMouth({
 							cottonFeeling: res.checked,
 							cottonFeelingDays: res.days,
 						});
@@ -1013,7 +1022,7 @@ export function Symptoms() {
 					label="Ulcerations Inside of Mouth"
 					// times={true}
 					onChange={(res) => {
-						setMouth({
+						updateMouth({
 							ulcerationsInside: res.checked,
 							ulcerationsInsideDays: res.days,
 						});
@@ -1023,7 +1032,7 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Ulcerations around Mouth/ Corners"
 					onChange={(res) => {
-						setMouth({
+						updateMouth({
 							ulcerationsAround: res.checked,
 							ulcerationsAroundDays: res.days,
 							// frequencyOfUrinationTimesDay: res.timesDay,
@@ -1046,7 +1055,7 @@ export function Symptoms() {
 						days?: string | undefined;
 						timesDay?: string | undefined;
 					}) => {
-						setNeonatal({
+						updateNeonatal({
 							inabilityToBreastFeed: res.checked as string,
 						});
 					}}
@@ -1071,7 +1080,7 @@ export function Symptoms() {
 				numberOfLines={4}
 				text={others.others}
 				setText={(text: string) => {
-					setOthers({ others: text });
+					updateOthers({ others: text });
 				}}
 			/>
 		</Table>

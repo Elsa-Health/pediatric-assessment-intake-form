@@ -5,9 +5,8 @@ import { usePatientInformation } from "../store";
 import { styles } from "../style";
 
 export function PatientInformation() {
-	const patientInfo = usePatientInformation((state) => state);
-	const setPatientInfo = usePatientInformation(
-		(state) => state.setPatientInformation
+	const { updatePatientInformation, ...patientInfo } = usePatientInformation(
+		(state) => state
 	);
 
 	return (
@@ -22,7 +21,7 @@ export function PatientInformation() {
 							text={patientInfo.dob}
 							placeholder="24/06/2020"
 							setText={(text: string) => {
-								setPatientInfo({ dob: text });
+								updatePatientInformation({ dob: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -38,7 +37,7 @@ export function PatientInformation() {
 							text={patientInfo.years}
 							setText={(text: string) => {
 								// console.log("info here:", text);
-								setPatientInfo({ years: text });
+								updatePatientInformation({ years: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -51,7 +50,7 @@ export function PatientInformation() {
 							text={patientInfo.months}
 							setText={(text: string) => {
 								// console.log("info here:", text);
-								setPatientInfo({ months: text });
+								updatePatientInformation({ months: text });
 							}}
 							keyboardType="numeric"
 						/>
@@ -65,7 +64,7 @@ export function PatientInformation() {
 							text={patientInfo.days}
 							setText={(text: string) => {
 								// console.log("info here:", text);
-								setPatientInfo({ days: text });
+								updatePatientInformation({ days: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -81,7 +80,7 @@ export function PatientInformation() {
 						options={["male", "female"]}
 						checked={patientInfo.sex}
 						setChecked={(text: string | string[]) => {
-							setPatientInfo({ sex: text as string });
+							updatePatientInformation({ sex: text as string });
 						}}
 					/>
 				</Col>
@@ -94,7 +93,7 @@ export function PatientInformation() {
 							text={patientInfo.location}
 							setText={(text: string) => {
 								// console.log("Residence:", text);
-								setPatientInfo({ location: text });
+								updatePatientInformation({ location: text });
 							}}
 						/>
 					</FitTextToCell>
@@ -114,7 +113,7 @@ export function PatientInformation() {
 							text={patientInfo.otherMedicalCondition}
 							setText={(text: string) => {
 								// console.log("Medical Condition :", text);
-								setPatientInfo({
+								updatePatientInformation({
 									otherMedicalCondition: text,
 								});
 							}}

@@ -24,14 +24,14 @@ type MusculoskeletalData = {
 };
 
 type Musculoskeletal = MusculoskeletalData & {
-	setMusculoskeletal: (
+	updateMusculoskeletal: (
 		by: { [key in keyof MusculoskeletalData]: string }
 	) => void;
 };
 
 export const useMusculoskeletal = create<Musculoskeletal>((set) => ({
 	...initialMusculoskeletal,
-	setMusculoskeletal: (
+	updateMusculoskeletal: (
 		data: { [key in keyof MusculoskeletalData]: string }
 	) => set((state) => ({ ...state, ...data })),
 }));

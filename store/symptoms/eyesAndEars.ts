@@ -42,10 +42,10 @@ type EarsAndEyesData = {
 };
 
 type EarsAndEyes = EarsAndEyesData & {
-	setEarsAndEyes: (by: { [key in keyof EarsAndEyesData]: string }) => void;
+	updateEarsAndEyes: (by: { [key in keyof EarsAndEyesData]: string }) => void;
 };
 
 export const useEarsAndEyes = create<EarsAndEyes>((set) => ({
 	...initialEarsAndEyes,
-	setEarsAndEyes: (data) => set((state) => ({ ...state, ...data })),
+	updateEarsAndEyes: (data) => set((state) => ({ ...state, ...data })),
 }));

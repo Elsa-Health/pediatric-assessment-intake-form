@@ -89,7 +89,7 @@ type NeurologicalExaminationData = {
 };
 
 type NeurologicalExamination = NeurologicalExaminationData & {
-	setNeurologicalExamination: (
+	updateNeurologicalExamination: (
 		by:
 			| { [key in keyof NeurologicalExaminationData]: string }
 			| { [key in keyof NeurologicalExaminationData]: string[] }
@@ -100,7 +100,7 @@ export const useNeurologicalExamination = create<NeurologicalExamination>(
 	(set) => ({
 		...initialneurologicalExamination,
 		//thos is to update all data state
-		setNeurologicalExamination: (
+		updateNeurologicalExamination: (
 			data:
 				| { [key in keyof NeurologicalExaminationData]: string }
 				| { [key in keyof NeurologicalExaminationData]: string[] }
