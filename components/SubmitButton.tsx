@@ -195,7 +195,7 @@ const SubmitButton = ({
 
 		patientId: headerInfo.patientID,
 		visitDate: headerInfo.visitDate,
-		patientInfo: {
+		patientInfomation: {
 			...patientInfo,
 		},
 		chiefComplains: {
@@ -209,22 +209,22 @@ const SubmitButton = ({
 			musculoskeletal: { ...muskuloskeletal },
 			eyesAndEars: { ...eyesAndEars },
 			mouth: { ...mouth },
-			neontal: { ...neonatal },
+			neonatal: { ...neonatal },
 			...others,
 		},
 		additionalPatientInfomation: {
 			birthHistory: { ...birthHistory },
 			nutritionalHistory: { ...nutritionalHistory },
 			vaccinationHistory: { ...vaccinationHistory },
-			previousMedicalHistroy: { ...medicalHistory },
+			previousMedicalHistory: { ...medicalHistory },
 		},
 		signsExams: {
 			vitalSigns: { ...vitalSignsExam },
-			geneal: { ...generalExam },
+			general: { ...generalExam },
 			respiratory: { ...respiratoryExam },
 			abdominal: { ...abdominalExam },
 			skin: { ...skinExam },
-			neurologicalExam: { ...neurologicalExam },
+			neurological: { ...neurologicalExam },
 		},
 		differentials: {
 			...differentials,

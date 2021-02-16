@@ -133,10 +133,10 @@ export function AdditionalPatientInformation() {
 				<Col>
 					<SimpleQuestion
 						options={["yes", "no"]}
-						checked={nutritionHistory.wasItExclusive}
+						checked={nutritionHistory.wasBreastFeedingExclusive}
 						setChecked={(text: string | string[]) => {
 							setNutritionHistory({
-								wasItExclusive: text as string,
+								wasBreastFeedingExclusive: text as string,
 							});
 						}}
 					/>
@@ -149,10 +149,10 @@ export function AdditionalPatientInformation() {
 				<Col cols={2}>
 					<SimpleQuestion
 						options={["At Birth", "After Birth"]}
-						checked={nutritionHistory.breadfeedingStartTime}
+						checked={nutritionHistory.breastFeedingStartTime}
 						setChecked={(text: string | string[]) => {
 							setNutritionHistory({
-								breadfeedingStartTime: text as string,
+								breastFeedingStartTime: text as string,
 							});
 						}}
 					/>
@@ -162,11 +162,11 @@ export function AdditionalPatientInformation() {
 						days?{" "}
 					</Text>
 					<Input
-						text={nutritionHistory.breastfeedingStartTimeDays}
+						text={nutritionHistory.breastFeedingStartTimeDays}
 						label="Days"
 						setText={(text: string) => {
 							setNutritionHistory({
-								breastfeedingStartTimeMonths: text,
+								breastFeedingStartTimeDays: text,
 							});
 						}}
 					/>
@@ -191,11 +191,11 @@ export function AdditionalPatientInformation() {
 
 					<FitTextToCell>
 						<Input
-							text={nutritionHistory.breastfeedingStartTimeMonths}
+							text={nutritionHistory.breastFeedingStartTimeMonths}
 							label="Months"
 							setText={(text: string) => {
 								setNutritionHistory({
-									breastfeedingStartTimeMonths: text,
+									breastFeedingStartTimeMonths: text,
 								});
 							}}
 						/>

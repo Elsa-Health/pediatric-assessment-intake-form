@@ -7,7 +7,7 @@ export const initialPatientInformation = {
 	days: "",
 	sex: "",
 	location: "",
-	otherMedicalConditaion: "",
+	otherMedicalCondition: "",
 };
 
 type PatientInformationData = {
@@ -17,7 +17,7 @@ type PatientInformationData = {
 	days?: string;
 	sex?: string;
 	location?: string;
-	otherMedicalConditaion?: string;
+	otherMedicalCondition?: string;
 };
 
 type PatientInformation = PatientInformationData & {

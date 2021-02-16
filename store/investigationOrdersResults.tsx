@@ -27,15 +27,15 @@ export const useMalariaTests = create<MalariaTests>((set) => ({
 
 // microbiology tests store
 export const initialMicrobiologyTests = {
-	lumberPuncture: "",
-	lumberPunctureValue: "",
+	lumbarPuncture: "",
+	lumbarPunctureValue: "",
 	bloodCulture: "",
 	bloodCultureValue: "",
 };
 
 type MicrobiologyTestsData = {
-	lumberPuncture?: string;
-	lumberPunctureValue?: string;
+	lumbarPuncture?: string;
+	lumbarPunctureValue?: string;
 	bloodCulture?: string;
 	bloodCultureValue?: string;
 };

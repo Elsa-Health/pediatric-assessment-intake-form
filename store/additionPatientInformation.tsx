@@ -30,19 +30,19 @@ export const useBirthHistory = create<BirthHistory>((set) => ({
 //nutritional history store
 export const initialNutritionalHistroy = {
 	breastfed: "",
-	wasItExclusive: "",
-	breadfeedingStartTime: "",
-	breastfeedingStartTimeDays: "",
-	breastfeedingStartTimeMonths: "",
+	wasBreastFeedingExclusive: "",
+	breastFeedingStartTime: "",
+	breastFeedingStartTimeDays: "",
+	breastFeedingStartTimeMonths: "",
 	vitaminASupplements: "",
 };
 
 type NutritionalHistroyData = {
 	breastfed?: string;
-	wasItExclusive?: string;
-	breadfeedingStartTime?: string;
-	breastfeedingStartTimeDays?: string;
-	breastfeedingStartTimeMonths?: string;
+	wasBreastFeedingExclusive?: string;
+	breastFeedingStartTime?: string;
+	breastFeedingStartTimeDays?: string;
+	breastFeedingStartTimeMonths?: string;
 	vitaminASupplements?: string;
 };
 

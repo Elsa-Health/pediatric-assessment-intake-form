@@ -111,11 +111,11 @@ export function PatientInformation() {
 				<Col cols={8}>
 					<FitTextToCell>
 						<Input
-							text={patientInfo.otherMedicalConditaion}
+							text={patientInfo.otherMedicalCondition}
 							setText={(text: string) => {
 								// console.log("Medical Condition :", text);
 								setPatientInfo({
-									otherMedicalConditaion: text,
+									otherMedicalCondition: text,
 								});
 							}}
 						/>

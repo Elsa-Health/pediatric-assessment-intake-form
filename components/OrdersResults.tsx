@@ -116,12 +116,12 @@ export function OrdersResults() {
 						<Col>
 							<SimpleQuestion
 								options={["Lumbar puncture"]}
-								checked={microbiologyTests.lumberPuncture}
+								checked={microbiologyTests.lumbarPuncture}
 								setChecked={(text: string) => {
 									console.log("Lumber puncture ", text);
 
 									setMicrobiologyTests({
-										lumberPuncture: text,
+										lumbarPuncture: text,
 									});
 								}}
 							/>
@@ -129,10 +129,10 @@ export function OrdersResults() {
 						<Col>
 							<FitTextToCell>
 								<Input
-									text={microbiologyTests.lumberPunctureValue}
+									text={microbiologyTests.lumbarPunctureValue}
 									setText={(text: string) => {
 										setMicrobiologyTests({
-											lumberPunctureValue: text,
+											lumbarPunctureValue: text,
 										});
 									}}
 								/>
