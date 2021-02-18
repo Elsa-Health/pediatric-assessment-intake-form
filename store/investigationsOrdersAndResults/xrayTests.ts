@@ -16,11 +16,11 @@ type XRayTestsData = {
 };
 
 type XRayTests = XRayTestsData & {
-	setXRayTests: (by: { [key in keyof XRayTestsData]: string }) => void;
+	updateXRayTests: (by: { [key in keyof XRayTestsData]: string }) => void;
 };
 
 export const useXRayTests = create<XRayTests>((set) => ({
 	...initialXRayTests,
-	setXRayTests: (data: { [key in keyof XRayTestsData]: string }) =>
+	updateXRayTests: (data: { [key in keyof XRayTestsData]: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

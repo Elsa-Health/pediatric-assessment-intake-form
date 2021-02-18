@@ -28,13 +28,14 @@ type ChemistryTestsData = {
 };
 
 type ChemistryTests = ChemistryTestsData & {
-	setChemistryTests: (
+	updateChemistryTests: (
 		by: { [key in keyof ChemistryTestsData]: string }
 	) => void;
 };
 
 export const useChemistryTests = create<ChemistryTests>((set) => ({
 	...initialChemistryTests,
-	setChemistryTests: (data: { [key in keyof ChemistryTestsData]: string }) =>
-		set((state) => ({ ...state, ...data })),
+	updateChemistryTests: (
+		data: { [key in keyof ChemistryTestsData]: string }
+	) => set((state) => ({ ...state, ...data })),
 }));

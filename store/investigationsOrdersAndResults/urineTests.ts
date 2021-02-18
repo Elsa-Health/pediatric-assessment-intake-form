@@ -16,11 +16,11 @@ type UrineTestsData = {
 };
 
 type UrineTests = UrineTestsData & {
-	setUrineTests: (by: { [key in keyof UrineTestsData]: string }) => void;
+	updateUrineTests: (by: { [key in keyof UrineTestsData]: string }) => void;
 };
 
 export const useUrineTests = create<UrineTests>((set) => ({
 	...initialUrineTests,
-	setUrineTests: (data: { [key in keyof UrineTestsData]: string }) =>
+	updateUrineTests: (data: { [key in keyof UrineTestsData]: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

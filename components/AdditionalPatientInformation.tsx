@@ -31,6 +31,7 @@ export function AdditionalPatientInformation() {
 		(state) => state
 	);
 
+	console.table(birthHistory);
 	return (
 		<Table headerTitle="Additional Patient Information:">
 			<Col style={styles.headerDarkGray}>
@@ -184,17 +185,6 @@ export function AdditionalPatientInformation() {
 					<Text>(If yes) When did the breastfeeding start?</Text>
 				</Col>
 				<Col>
-					{/* <Row style={{ alignItems: "center" }}> */}
-					{/* <SimpleQuestion
-              options={["At Birth", "After Birth"]}
-              checked={nutritionHistory.breadfeedingStartTime}
-              setChecked={(text) => {
-                // console.log("Hello There ", text);
-                // setGeneral({ fever: text, ...general });
-                updateNutritionalHistory({ breadfeedingStartTime: text });
-              }}
-            /> */}
-
 					<FitTextToCell>
 						<Input
 							text={nutritionHistory.breastFeedingStartTimeMonths}
@@ -206,7 +196,6 @@ export function AdditionalPatientInformation() {
 							}}
 						/>
 					</FitTextToCell>
-					{/* </Row> */}
 				</Col>
 
 				<Col style={styles.headerLightGray}>
@@ -217,8 +206,6 @@ export function AdditionalPatientInformation() {
 						options={["yes", "no"]}
 						checked={nutritionHistory.vitaminASupplements}
 						setChecked={(text: string | string[]) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
 							updateNutritionalHistory({
 								vitaminASupplements: text as string,
 							});
@@ -239,8 +226,6 @@ export function AdditionalPatientInformation() {
 						options={["yes", "no"]}
 						checked={vaccinationHistory.updateOnAllVaccines}
 						setChecked={(text: string | string[]) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
 							updateVaccinationHistory({
 								updateOnAllVaccines: text as string,
 							});
@@ -269,13 +254,11 @@ export function AdditionalPatientInformation() {
 
 			<Row>
 				<Col>
-					<Text>Any previous admission ? </Text>
 					<SimpleQuestion
+						label="Any previous admission ?"
 						options={["yes", "no"]}
 						checked={medicalHistory.previousAdmission}
 						setChecked={(text: string | string[]) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
 							updateMedicalHistory({
 								previousAdmission: text as string,
 							});
@@ -296,13 +279,11 @@ export function AdditionalPatientInformation() {
 					</FitTextToCell>
 				</Col>
 				<Col>
-					<Text>History of antibiotic use?</Text>
 					<SimpleQuestion
+						label="History of antibiotic use?"
 						options={["yes", "no"]}
 						checked={medicalHistory.antibioticUse}
 						setChecked={(text: string | string[]) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
 							updateMedicalHistory({
 								antibioticUse: text as string,
 							});

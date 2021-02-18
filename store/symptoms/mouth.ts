@@ -30,11 +30,11 @@ type MouthData = {
 };
 
 type Mouth = MouthData & {
-	setMouth: (by: { [key in keyof MouthData]: string }) => void;
+	updateMouth: (by: { [key in keyof MouthData]: string }) => void;
 };
 
 export const useMouth = create<Mouth>((set) => ({
 	...initialMouth,
-	setMouth: (data: { [key in keyof MouthData]: string }) =>
+	updateMouth: (data: { [key in keyof MouthData]: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

@@ -16,11 +16,13 @@ type GlucoseTestsData = {
 };
 
 type GlucoseTests = GlucoseTestsData & {
-	setGlucoseTests: (by: { [key in keyof GlucoseTestsData]: string }) => void;
+	updateGlucoseTests: (
+		by: { [key in keyof GlucoseTestsData]: string }
+	) => void;
 };
 
 export const useGlucoseTests = create<GlucoseTests>((set) => ({
 	...initialGlucoseTests,
-	setGlucoseTests: (data: { [key in keyof GlucoseTestsData]: string }) =>
+	updateGlucoseTests: (data: { [key in keyof GlucoseTestsData]: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

@@ -65,13 +65,13 @@ type RespiratoryData = {
 };
 
 type Respiratory = RespiratoryData & {
-	setRespiratory: (by: { [key in keyof RespiratoryData]: string }) => void;
+	updateRespiratory: (by: { [key in keyof RespiratoryData]: string }) => void;
 };
 
 export const useRespiratory = create<Respiratory>((set) => ({
 	...initialRespiratorySymptoms,
 
 	//thos is to update all data state
-	setRespiratory: (data: { [key in keyof RespiratoryData]: string }) =>
+	updateRespiratory: (data: { [key in keyof RespiratoryData]: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

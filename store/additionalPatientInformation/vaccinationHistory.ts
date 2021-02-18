@@ -12,13 +12,13 @@ type VaccinationHistoryData = {
 };
 
 type VaccinationHistory = VaccinationHistoryData & {
-	setVaccinationHistory: (
+	updateVaccinationHistory: (
 		by: { [key in keyof VaccinationHistoryData]: string }
 	) => void;
 };
 export const useVaccinationHistory = create<VaccinationHistory>((set) => ({
 	...initialVaccinationHistory,
-	setVaccinationHistory: (data: VaccinationHistoryData) => {
+	updateVaccinationHistory: (data: VaccinationHistoryData) => {
 		set((state) => ({ ...state, ...data }));
 	},
 }));

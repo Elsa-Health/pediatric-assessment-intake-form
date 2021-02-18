@@ -18,7 +18,7 @@ type RespiratoryExaminationData = {
 };
 
 type RespiratoryExamination = RespiratoryExaminationData & {
-	setRespiratoryExamination: (
+	updateRespiratoryExamination: (
 		by:
 			| { [key in keyof RespiratoryExaminationData]: string }
 			| { [key in keyof RespiratoryExaminationData]: string[] }
@@ -28,7 +28,7 @@ type RespiratoryExamination = RespiratoryExaminationData & {
 export const useRespiratoryExamination = create<RespiratoryExamination>(
 	(set) => ({
 		...initialRespiratoryExamination,
-		setRespiratoryExamination: (data) =>
+		updateRespiratoryExamination: (data) =>
 			set((state) => ({ ...state, ...data })),
 	})
 );

@@ -16,10 +16,10 @@ type StoolTestsData = {
 };
 
 type StoolTests = StoolTestsData & {
-	setStoolTests: (by: { [key in keyof StoolTestsData]: string }) => void;
+	updateStoolTests: (by: { [key in keyof StoolTestsData]: string }) => void;
 };
 export const useStoolTests = create<StoolTests>((set) => ({
 	...initialStoolTests,
-	setStoolTests: (data: { [key in keyof StoolTestsData]: string }) =>
+	updateStoolTests: (data: { [key in keyof StoolTestsData]: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

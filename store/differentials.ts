@@ -13,7 +13,7 @@ type DifferentialsData = {
 };
 
 type Differentials = DifferentialsData & {
-	setDifferentials: (
+	updateDifferentials: (
 		by: { [key in keyof DifferentialsData]: string }
 	) => void;
 };
@@ -21,5 +21,5 @@ type Differentials = DifferentialsData & {
 export const useDifferentials = create<Differentials>((set) => ({
 	...initialDifferentials,
 	//thos is to update all data state
-	setDifferentials: (data) => set((state) => ({ ...state, ...data })),
+	updateDifferentials: (data) => set((state) => ({ ...state, ...data })),
 }));

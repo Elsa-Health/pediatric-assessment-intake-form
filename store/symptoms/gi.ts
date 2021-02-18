@@ -80,12 +80,12 @@ type GISymtomsData = {
 };
 
 type GISymtoms = GISymtomsData & {
-	setGI: (by: { [key in keyof GISymtomsData]: string }) => void;
+	updateGI: (by: { [key in keyof GISymtomsData]: string }) => void;
 };
 
 export const useGI = create<GISymtoms>((set) => ({
 	...initialGISymtoms,
 	//thos is to update all data state
-	setGI: (data: { [key in keyof GISymtomsData]: string }) =>
+	updateGI: (data: { [key in keyof GISymtomsData]: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

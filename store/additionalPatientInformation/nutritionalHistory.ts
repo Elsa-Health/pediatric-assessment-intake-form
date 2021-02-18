@@ -20,7 +20,7 @@ type NutritionalHistroyData = {
 };
 
 type NutritionalHistroy = NutritionalHistroyData & {
-	setNutritionalHistory: (
+	updateNutritionalHistory: (
 		by: { [key in keyof NutritionalHistroyData]: string }
 	) => void;
 };
@@ -28,6 +28,6 @@ type NutritionalHistroy = NutritionalHistroyData & {
 export const useNutritionalHistory = create<NutritionalHistroy>((set) => ({
 	...initialNutritionalHistroy,
 
-	setNutritionalHistory: (data: NutritionalHistroyData) =>
+	updateNutritionalHistory: (data: NutritionalHistroyData) =>
 		set((state) => ({ ...state, ...data })),
 }));

@@ -17,12 +17,12 @@ type HematologyTestsData = {
 };
 
 type HematologyTests = HematologyTestsData & {
-	setHematologyTests: (
+	updateHematologyTests: (
 		by: { [key in keyof HematologyTestsData]: string }
 	) => void;
 };
 
 export const useHematologyTests = create<HematologyTests>((set) => ({
 	...initialHematologyTests,
-	setHematologyTests: (data) => set((state) => ({ ...state, ...data })),
+	updateHematologyTests: (data) => set((state) => ({ ...state, ...data })),
 }));

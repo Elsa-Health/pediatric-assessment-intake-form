@@ -24,11 +24,11 @@ type TBTestsData = {
 };
 
 type TBTests = TBTestsData & {
-	setTBTests: (by: { [key in keyof TBTestsData]: string }) => void;
+	updateTBTests: (by: { [key in keyof TBTestsData]: string }) => void;
 };
 
 export const useTBTests = create<TBTests>((set) => ({
 	...initialTbTests,
-	setTBTests: (data: { [key in keyof TBTestsData]: string }) =>
+	updateTBTests: (data: { [key in keyof TBTestsData]: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

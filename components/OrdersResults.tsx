@@ -24,7 +24,7 @@ export function OrdersResults() {
 	);
 
 	const {
-		updataMicrobiologyTests,
+		updateMicrobiologyTests,
 		...microbiologyTests
 	} = useMicrobiologyTests((state) => state);
 
@@ -115,7 +115,7 @@ export function OrdersResults() {
 								setChecked={(text: string) => {
 									console.log("Lumber puncture ", text);
 
-									updataMicrobiologyTests({
+									updateMicrobiologyTests({
 										lumbarPuncture: text,
 									});
 								}}
@@ -126,7 +126,7 @@ export function OrdersResults() {
 								<Input
 									text={microbiologyTests.lumbarPunctureValue}
 									setText={(text: string) => {
-										updataMicrobiologyTests({
+										updateMicrobiologyTests({
 											lumbarPunctureValue: text,
 										});
 									}}
@@ -140,7 +140,7 @@ export function OrdersResults() {
 								options={["Blood Culture"]}
 								checked={microbiologyTests.bloodCulture}
 								setChecked={(text: string) => {
-									updataMicrobiologyTests({
+									updateMicrobiologyTests({
 										bloodCulture: text,
 									});
 								}}
@@ -151,7 +151,7 @@ export function OrdersResults() {
 								<Input
 									text={microbiologyTests.bloodCultureValue}
 									setText={(text: string) => {
-										updataMicrobiologyTests({
+										updateMicrobiologyTests({
 											bloodCultureValue: text,
 										});
 									}}

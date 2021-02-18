@@ -40,11 +40,11 @@ type CNSData = {
 };
 
 type CNS = CNSData & {
-	setCNS: (by: { [key in keyof CNSData]: string }) => void;
+	updateCNS: (by: { [key in keyof CNSData]: string }) => void;
 };
 
 export const useCNS = create<CNS>((set) => ({
 	...initilCNSSymtoms,
-	setCNS: (data: { [key in keyof CNSData]: string }) =>
+	updateCNS: (data: { [key in keyof CNSData]: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

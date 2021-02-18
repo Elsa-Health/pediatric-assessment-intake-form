@@ -21,7 +21,7 @@ type PatientInformationData = {
 };
 
 type PatientInformation = PatientInformationData & {
-	setPatientInformation: (
+	updatePatientInformation: (
 		by: { [key in keyof PatientInformationData]: string }
 	) => void;
 };
@@ -29,7 +29,7 @@ type PatientInformation = PatientInformationData & {
 export const usePatientInformation = create<PatientInformation>((set) => ({
 	...initialPatientInformation,
 	//thos is to update all data state
-	setPatientInformation: (
+	updatePatientInformation: (
 		data: { [key in keyof PatientInformationData]: string }
 	) => set((state) => ({ ...state, ...data })),
 }));

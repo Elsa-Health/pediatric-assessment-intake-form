@@ -16,11 +16,13 @@ type MalariaTestsData = {
 };
 
 type MalariaTests = MalariaTestsData & {
-	setMalariaTests: (by: { [key in keyof MalariaTestsData]: string }) => void;
+	updateMalariaTests: (
+		by: { [key in keyof MalariaTestsData]: string }
+	) => void;
 };
 
 export const useMalariaTests = create<MalariaTests>((set) => ({
 	...initialMalariaTests,
-	setMalariaTests: (data: { [key in keyof MalariaTestsData]: string }) =>
+	updateMalariaTests: (data: { [key in keyof MalariaTestsData]: string }) =>
 		set((state) => ({ ...state, ...data })),
 }));

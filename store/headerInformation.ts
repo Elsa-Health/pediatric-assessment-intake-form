@@ -11,13 +11,13 @@ type HeaderInformationData = {
 };
 
 type HeaderInformation = HeaderInformationData & {
-	setHeaderInfo: (
+	updateHeaderInformation: (
 		by: { [key in keyof HeaderInformationData]: string }
 	) => void;
 };
 
 export const useHeaderInformation = create<HeaderInformation>((set) => ({
 	...initialHeaderInformation,
-	setHeaderInfo: (data: HeaderInformationData) =>
+	updateHeaderInformation: (data: HeaderInformationData) =>
 		set((state) => ({ ...state, ...data })),
 }));

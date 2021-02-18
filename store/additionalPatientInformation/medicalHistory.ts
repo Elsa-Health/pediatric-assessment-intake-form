@@ -14,13 +14,13 @@ type MedicalHistoryData = {
 };
 
 type MedicalHistory = MedicalHistoryData & {
-	setMedicalHistory: (
+	updateMedicalHistory: (
 		by: { [key in keyof MedicalHistoryData]: string }
 	) => void;
 };
 
 export const useMedicalHistory = create<MedicalHistory>((set) => ({
 	...initialMedicalHistory,
-	setMedicalHistory: (data: MedicalHistoryData) =>
+	updateMedicalHistory: (data: MedicalHistoryData) =>
 		set((state) => ({ ...state, ...data })),
 }));

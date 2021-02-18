@@ -52,7 +52,7 @@ type GeneralExaminationData = {
 };
 
 type GeneralExamination = GeneralExaminationData & {
-	setGeneralExamination: (
+	updateGeneralExamination: (
 		by:
 			| { [key in keyof GeneralExaminationData]: string }
 			| { [key in keyof GeneralExaminationData]: string[] }
@@ -61,7 +61,7 @@ type GeneralExamination = GeneralExaminationData & {
 
 export const useGeneralExamination = create<GeneralExamination>((set) => ({
 	...initialGeneralExamination,
-	setGeneralExamination: (
+	updateGeneralExamination: (
 		data:
 			| { [key in keyof GeneralExaminationData]: string }
 			| { [key in keyof GeneralExaminationData]: string[] }

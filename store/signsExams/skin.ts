@@ -44,7 +44,7 @@ type SkinExaminationData = {
 };
 
 type SkinExamination = SkinExaminationData & {
-	setSkinExamination: (
+	updateSkinExamination: (
 		by:
 			| { [key in keyof SkinExaminationData]: string }
 			| { [key in keyof SkinExaminationData]: string[] }
@@ -53,5 +53,5 @@ type SkinExamination = SkinExaminationData & {
 
 export const useSkinExamination = create<SkinExamination>((set) => ({
 	...initialSkinExamination,
-	setSkinExamination: (data) => set((state) => ({ ...state, ...data })),
+	updateSkinExamination: (data) => set((state) => ({ ...state, ...data })),
 }));

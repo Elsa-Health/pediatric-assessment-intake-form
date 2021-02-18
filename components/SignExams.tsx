@@ -280,8 +280,8 @@ export function SignsExam() {
 					<Text>Mouth </Text>
 				</Col>
 				<Col cols={2}>
-					<Text>Outside : </Text>
 					<SimpleQuestion
+						label="Outside :"
 						options={["Angular stomatitis", "Ulcerations"]}
 						horizontal={false}
 						checked={generalExamination.mouthOutside}
@@ -295,8 +295,8 @@ export function SignsExam() {
 				</Col>
 
 				<Col cols={8}>
-					<Text>Inside : </Text>
 					<SimpleQuestion
+						label="Inside :"
 						options={[
 							"Ulcerations",
 							"Glossitis",
@@ -453,10 +453,9 @@ export function SignsExam() {
 							});
 						}}
 					/>
-					<Text style={{ marginTop: 12, marginLeft: 10 }}>
-						If Yes,
-					</Text>
+					<Spacer size={8} />
 					<SimpleQuestion
+						label="If Yes"
 						options={["Pitting", "Non-pitting"]}
 						checked={generalExamination.ifLowerLimbeEdemaYes}
 						setChecked={(text: string | string[]) => {
