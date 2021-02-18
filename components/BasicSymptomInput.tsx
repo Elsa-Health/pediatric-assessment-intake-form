@@ -30,9 +30,7 @@ export const BasicSymptomInput = ({
 	const [days, setDays] = useState("");
 	const [timesDay, setTimesDay] = useState("");
 	React.useEffect(() => {
-		// to fix issues for days left empty
-
-		if (checked !== "" && onChange) onChange({ checked, days, timesDay });
+		if (onChange) onChange({ checked, days, timesDay });
 	}, [checked, timesDay, days]);
 
 	return (
@@ -48,6 +46,8 @@ export const BasicSymptomInput = ({
 					}
 					checked={checked}
 					setChecked={(text: string | string[]) => {
+						console.log("Something check and here it is : ", text);
+
 						setChecked(text as string);
 					}}
 				/>
