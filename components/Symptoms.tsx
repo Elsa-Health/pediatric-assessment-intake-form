@@ -310,8 +310,6 @@ export function Symptoms() {
 						options={["Food", "Bile", "Blood"]}
 						checked={gi.vomitingType}
 						setChecked={(text) => {
-							// console.log('Hello There ', text);
-							// setGeneral({ fever: text, ...general });
 							updateGI({ vomitingType: text });
 						}}
 						mutiple={true}
@@ -338,8 +336,6 @@ export function Symptoms() {
 						options={["Watery", "Rice Walter", "Normal", "Hard"]}
 						checked={gi.diarrhoeaType}
 						setChecked={(text) => {
-							// console.log('Hello There ', text);
-							// setGeneral({ fever: text, ...general });
 							updateGI({ diarrhoeaType: text });
 						}}
 						mutiple={true}
@@ -350,8 +346,6 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={gi.isDiarrhoeaBloody}
 						setChecked={(text) => {
-							// console.log('Hello There ', text);
-							// setGeneral({ fever: text, ...general });
 							updateGI({ isDiarrhoeaBloody: text });
 						}}
 					/>
@@ -361,8 +355,6 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={gi.anyTenesmus}
 						setChecked={(text) => {
-							// console.log('Hello There ', text);
-							// setGeneral({ fever: text, ...general });
 							updateGI({ anyTenesmus: text });
 						}}
 					/>
@@ -386,8 +378,6 @@ export function Symptoms() {
 						options={["Epigastric", "Umbilical", "Hypogastric"]}
 						checked={gi.abdominalPainLocation}
 						setChecked={(text) => {
-							// console.log('Hello There ', text);
-							// setGeneral({ fever: text, ...general });
 							updateGI({ abdominalPainLocation: text });
 						}}
 					/>
@@ -397,8 +387,6 @@ export function Symptoms() {
 						options={["before", "after"]}
 						checked={gi.abdominalPainEpigastric}
 						setChecked={(text) => {
-							// console.log('Hello There ', text);
-							// setGeneral({ fever: text, ...general });
 							updateGI({ abdominalPainEpigastric: text });
 						}}
 						mutiple={true}
@@ -409,8 +397,6 @@ export function Symptoms() {
 						options={["yes", "no"]}
 						checked={gi.abdominalPainRadiatingBack}
 						setChecked={(text) => {
-							// console.log('Hello There ', text);
-							// setGeneral({ fever: text, ...general });
 							updateGI({ abdominalPainRadiatingBack: text });
 						}}
 					/>
@@ -421,7 +407,6 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Abdominal Cramps"
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						updateGI({
 							abdominalCramps: res.checked,
 							abdominalCrampsDays: res.days,
@@ -431,7 +416,6 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Lack of appetite"
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						updateGI({
 							lackOfAppetite: res.checked,
 							lackOfAppetiteDays: res.days,
@@ -444,7 +428,6 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Weight Loss"
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						updateGI({
 							weightLoss: res.checked,
 							weightLossDays: res.days,
@@ -454,7 +437,6 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Difficulty swallowing"
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						updateGI({
 							difficultySwallowing: res.checked,
 							difficultySwallowingDays: res.days,
@@ -467,7 +449,6 @@ export function Symptoms() {
 				<BasicSymptomInput
 					label="Pain on urination"
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						updateGI({
 							painOnUrination: res.checked,
 							painOnUrinationDays: res.days,
@@ -480,7 +461,6 @@ export function Symptoms() {
 					options={["Incraese", "Decrease"]}
 					times={true}
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						updateGI({
 							frequencyOfUrination: res.checked,
 							frequencyOfUrinationDays: res.days,
@@ -518,7 +498,6 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Hypothermia"
-					// times={true}
 					onChange={(res) => {
 						updateCNS({
 							hypothermia: res.checked,
@@ -588,7 +567,6 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Fatigue"
-					// times={true}
 					onChange={(res) => {
 						updateMusculoskeletal({
 							fatique: res.checked,
@@ -614,25 +592,20 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Red Eyes"
-					// times={true}
 					onChange={(res) => {
-						// console.log("What does : ", res);
 						updateEarsAndEyes({
 							redEyes: res.checked,
 							redEyesDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
 
 				<BasicSymptomInput
 					label="Painful Eyes"
-					// times={true}
 					onChange={(res) => {
 						updateEarsAndEyes({
 							painfulEyes: res.checked,
 							painfulEyesDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -699,7 +672,6 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Cotton Feeling"
-					// times={true}
 					onChange={(res) => {
 						updateMouth({
 							cottonFeeling: res.checked,
@@ -712,7 +684,6 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Ulcerations Inside of Mouth"
-					// times={true}
 					onChange={(res) => {
 						updateMouth({
 							ulcerationsInside: res.checked,
@@ -727,7 +698,6 @@ export function Symptoms() {
 						updateMouth({
 							ulcerationsAround: res.checked,
 							ulcerationsAroundDays: res.days,
-							// frequencyOfUrinationTimesDay: res.timesDay,
 						});
 					}}
 				/>
@@ -740,7 +710,6 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Inability to breastfeed"
-					// times={true}
 					showNumberDays={false}
 					onChange={(res: {
 						checked?: string | undefined;

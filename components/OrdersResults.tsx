@@ -169,11 +169,6 @@ export function OrdersResults() {
 								options={["Micro for AAFBs"]}
 								checked={tbTests.microAAFBs}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateTBTests({ microAAFBs: text });
 								}}
 							/>
@@ -197,11 +192,6 @@ export function OrdersResults() {
 								options={["Mantoux"]}
 								checked={tbTests.mantoux}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateTBTests({ mantoux: text });
 								}}
 							/>
@@ -274,11 +264,6 @@ export function OrdersResults() {
 								options={["Na/K"]}
 								checked={chemistryTests.nak}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateChemistryTests({ nak: text });
 								}}
 							/>
@@ -302,11 +287,6 @@ export function OrdersResults() {
 								options={["U & C"]}
 								checked={chemistryTests.uc}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateChemistryTests({ uc: text });
 								}}
 							/>
@@ -328,11 +308,6 @@ export function OrdersResults() {
 								options={["Ca + Phos"]}
 								checked={chemistryTests.caphos}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateChemistryTests({ caphos: text });
 								}}
 							/>
@@ -357,11 +332,6 @@ export function OrdersResults() {
 								options={["Alb"]}
 								checked={chemistryTests.alb}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateChemistryTests({ alb: text });
 								}}
 							/>
@@ -386,11 +356,6 @@ export function OrdersResults() {
 								options={["LFT"]}
 								checked={chemistryTests.lft}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateChemistryTests({ lft: text });
 								}}
 							/>
@@ -441,11 +406,6 @@ export function OrdersResults() {
 								options={["Micro & culture"]}
 								checked={stoolTests.microCulture}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateStoolTests({ microCulture: text });
 								}}
 							/>
@@ -475,11 +435,6 @@ export function OrdersResults() {
 								options={["HB"]}
 								checked={hematologyTests.hb}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateHematologyTests({ hb: text });
 								}}
 							/>
@@ -503,11 +458,6 @@ export function OrdersResults() {
 								options={["Full blood picture:"]}
 								checked={hematologyTests.fullBloodPicture}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateHematologyTests({
 										fullBloodPicture: text,
 									});
@@ -537,11 +487,6 @@ export function OrdersResults() {
 								options={["CXR"]}
 								checked={xrayTests.cxr}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateXRayTests({ cxr: text });
 								}}
 							/>
@@ -563,11 +508,6 @@ export function OrdersResults() {
 								options={["Other"]}
 								checked={xrayTests.other}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateXRayTests({ other: text });
 								}}
 							/>
@@ -583,14 +523,6 @@ export function OrdersResults() {
 							</FitTextToCell>
 						</Col>
 					</Row>
-					{/* <Row>
-            <Col></Col>
-            <Col>
-              <FitTextToCell>
-                <Input />
-              </FitTextToCell>
-            </Col>
-          </Row> */}
 
 					<Col style={styles.headerLightGray}>
 						<Text>Glucose</Text>
@@ -601,11 +533,6 @@ export function OrdersResults() {
 								options={["Stick Test"]}
 								checked={glucoseTests.stickTest}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateGlucoseTests({ stickTest: text });
 								}}
 							/>
@@ -629,11 +556,6 @@ export function OrdersResults() {
 								options={["Laboratory"]}
 								checked={glucoseTests.laboratory}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateGlucoseTests({ laboratory: text });
 								}}
 							/>
@@ -661,11 +583,6 @@ export function OrdersResults() {
 								options={["Rapid Test"]}
 								checked={hivTests.rapidTest}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateHIVTests({ rapidTest: text });
 								}}
 							/>
@@ -689,11 +606,6 @@ export function OrdersResults() {
 								options={["PCR"]}
 								checked={hivTests.pcr}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateHIVTests({ pcr: text });
 								}}
 							/>
@@ -719,11 +631,6 @@ export function OrdersResults() {
 								options={["Urinalysis"]}
 								checked={urineTests.urinalysis}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateUrineTests({ urinalysis: text });
 								}}
 							/>
@@ -747,11 +654,6 @@ export function OrdersResults() {
 								options={["Micro & culture"]}
 								checked={urineTests.microCulture}
 								setChecked={(text: string) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
-
-									// we can set custom values here
-
 									updateUrineTests({ microCulture: text });
 								}}
 							/>

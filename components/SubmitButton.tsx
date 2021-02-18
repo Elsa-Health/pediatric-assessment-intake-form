@@ -80,9 +80,6 @@ const SubmitButton = ({
 }: {
 	user: { email: string | null; uid: string | null };
 }) => {
-	// const mainStore = useMainStore((state) => state);
-
-	// console.log("Main store : ", mainStore);
 	const [loadingIn, setLoadingIn] = useState(false);
 
 	const { updateHeaderInformation, ...headerInfo } = useHeaderInformation(
@@ -325,7 +322,6 @@ const SubmitButton = ({
 			.then((res) => res.json())
 			.then((res) => {
 				setLoadingIn(false);
-				// console.log("Returned response : ", res);
 
 				clearStores();
 
@@ -336,8 +332,7 @@ const SubmitButton = ({
 			})
 			.catch((err) => {
 				setLoadingIn(false);
-				// console.log("something went wrong ", err);
-				// setHeader;
+
 				if (Platform.OS == "web")
 					alert(
 						"Something went wrong while submitting the data : " +

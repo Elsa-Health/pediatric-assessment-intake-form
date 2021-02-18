@@ -225,8 +225,6 @@ export function SignsExam() {
 						options={["thick", "brittle"]}
 						checked={generalExamination.hairTexture}
 						setChecked={(text: string | string[]) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
 							updateGeneralExamination({
 								hairTexture: text as string,
 							});
@@ -248,8 +246,6 @@ export function SignsExam() {
 						options={["pale", "not pale"]}
 						checked={generalExamination.eyesConjuctiva}
 						setChecked={(text: string | string[]) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
 							updateGeneralExamination({
 								eyesConjuctiva: text as string,
 							});
@@ -307,8 +303,6 @@ export function SignsExam() {
 						]}
 						checked={generalExamination.mouthInside}
 						setChecked={(text: string | string[]) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
 							updateGeneralExamination({
 								mouthInside: text as string,
 							});
@@ -530,7 +524,6 @@ export function SignsExam() {
 						<Col>
 							<SimpleQuestion
 								options={["Normal", "Diminished"]}
-								// horizontal={false}
 								checked={respiratoryExamination.airEntry}
 								setChecked={(text: string | string[]) => {
 									updateRespiratoryExamination({
@@ -740,7 +733,6 @@ please indicate the location in the picture.)"
 						mutiple={true}
 					/>
 
-					{/* show this only when other is selected */}
 					<Input
 						label="Other"
 						text={skinExamination.typeOther}
@@ -924,11 +916,8 @@ please indicate the location in the picture.)"
 						<Col cols={3}>
 							<SimpleQuestion
 								options={["Rigid", "Supple"]}
-								// horizontal={false}
 								checked={neurologicalExamination.neckRigidity}
 								setChecked={(text: string | string[]) => {
-									// console.log("Hello There ", text);
-									// setGeneral({ fever: text, ...general });
 									updateNeurologicalExamination({
 										neckRigidity: text as string,
 									});
@@ -1027,8 +1016,6 @@ please indicate the location in the picture.)"
 							<Text>Upper Limbs</Text>
 						</Col>
 
-						{/* to move to component for fixing padding defaults for cols */}
-
 						<Col style={styles.removePadding}>
 							<Col style={styles.headerLightGray}>
 								<Text>Sensation</Text>
@@ -1054,8 +1041,6 @@ please indicate the location in the picture.)"
 								neurologicalExamination.rightUpperLimbsSensation
 							}
 							setChecked={(text: string | string[]) => {
-								// console.log("Hello There ", text);
-								// setGeneral({ fever: text, ...general });
 								updateNeurologicalExamination({
 									rightUpperLimbsSensation: text as string,
 								});
@@ -1103,8 +1088,6 @@ please indicate the location in the picture.)"
 								neurologicalExamination.rightUpperLimbsReflexes
 							}
 							setChecked={(text: string | string[]) => {
-								// console.log("Hello There ", text);
-								// setGeneral({ fever: text, ...general });
 								updateNeurologicalExamination({
 									rightUpperLimbsReflexes: text as string,
 								});
@@ -1168,8 +1151,6 @@ please indicate the location in the picture.)"
 								neurologicalExamination.lefttUpperLimbsReflexes
 							}
 							setChecked={(text: string | string[]) => {
-								// console.log("Hello There ", text);
-								// setGeneral({ fever: text, ...general });
 								updateNeurologicalExamination({
 									lefttUpperLimbsReflexes: text as string,
 								});
@@ -1257,8 +1238,6 @@ please indicate the location in the picture.)"
 								neurologicalExamination.rightLowerLimbsReflexes
 							}
 							setChecked={(text: string | string[]) => {
-								// console.log("Hello There ", text);
-								// setGeneral({ fever: text, ...general });
 								updateNeurologicalExamination({
 									rightLowerLimbsReflexes: text as string,
 								});
@@ -1275,8 +1254,6 @@ please indicate the location in the picture.)"
 								neurologicalExamination.leftLowerLimbsSensation
 							}
 							setChecked={(text: string | string[]) => {
-								// console.log("Hello There ", text);
-								// setGeneral({ fever: text, ...general });
 								updateNeurologicalExamination({
 									leftLowerLimbsSensation: text as string,
 								});
@@ -1324,8 +1301,6 @@ please indicate the location in the picture.)"
 								neurologicalExamination.leftLowerLimbsReflexes
 							}
 							setChecked={(text: string | string[]) => {
-								// console.log("Hello There ", text);
-								// setGeneral({ fever: text, ...general });
 								updateNeurologicalExamination({
 									leftLowerLimbsReflexes: text as string,
 								});
@@ -1340,8 +1315,6 @@ please indicate the location in the picture.)"
 					options={["All intact", "Abnormal"]}
 					checked={neurologicalExamination.cranialNerves}
 					setChecked={(text: string | string[]) => {
-						// console.log("Hello There ", text);
-						// setGeneral({ fever: text, ...general });
 						updateNeurologicalExamination({
 							cranialNerves: text as string,
 						});
@@ -1358,7 +1331,6 @@ please indicate the location in the picture.)"
 				/>
 				<Spacer size={8} />
 
-				{/* the following component state is not handled  */}
 				<Input
 					label="If abnormal, patient cannot illicit:"
 					text={neurologicalExamination.cannotIllicit}

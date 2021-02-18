@@ -33,10 +33,8 @@ export function PatientInformation() {
 					<FitTextToCell>
 						<Input
 							label="Years"
-							// placeholder="Years"
 							text={patientInfo.years}
 							setText={(text: string) => {
-								// console.log("info here:", text);
 								updatePatientInformation({ years: text });
 							}}
 						/>
@@ -46,10 +44,8 @@ export function PatientInformation() {
 					<FitTextToCell>
 						<Input
 							label="Mos"
-							// placeholder="Mos"
 							text={patientInfo.months}
 							setText={(text: string) => {
-								// console.log("info here:", text);
 								updatePatientInformation({ months: text });
 							}}
 							keyboardType="numeric"
@@ -60,10 +56,8 @@ export function PatientInformation() {
 					<FitTextToCell>
 						<Input
 							label="Days"
-							// placeholder="Days"
 							text={patientInfo.days}
 							setText={(text: string) => {
-								// console.log("info here:", text);
 								updatePatientInformation({ days: text });
 							}}
 						/>
@@ -92,7 +86,6 @@ export function PatientInformation() {
 						<Input
 							text={patientInfo.location}
 							setText={(text: string) => {
-								// console.log("Residence:", text);
 								updatePatientInformation({ location: text });
 							}}
 						/>
@@ -112,7 +105,6 @@ export function PatientInformation() {
 						<Input
 							text={patientInfo.otherMedicalCondition}
 							setText={(text: string) => {
-								// console.log("Medical Condition :", text);
 								updatePatientInformation({
 									otherMedicalCondition: text,
 								});
