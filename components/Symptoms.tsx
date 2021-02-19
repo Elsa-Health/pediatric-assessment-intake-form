@@ -57,7 +57,6 @@ export function Symptoms() {
 	//others symotoms
 	const { updateOthers, ...others } = useOthers((state) => state);
 
-	console.log("Fever : ", general.fever);
 	return (
 		<Table headerTitle="Symptoms">
 			<Col style={styles.headerDarkGray}>

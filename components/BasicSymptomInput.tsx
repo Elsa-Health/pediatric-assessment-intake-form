@@ -25,8 +25,6 @@ export const BasicSymptomInput = ({
 }) => {
 	const [checked, setChecked] = useState("");
 
-	//TODO : to manage input text outside the component
-
 	const [days, setDays] = useState("");
 	const [timesDay, setTimesDay] = useState("");
 	React.useEffect(() => {
