@@ -1,58 +1,60 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "yarn next dev",
-    "build:web": "next build",
-    "eject": "expo eject",
-    "test": "jest "
-  },
-  "dependencies": {
-    "@eva-design/eva": "^2.0.0",
-    "@ui-kitten/components": "^5.0.0",
-    "expo": "~39.0.2",
-    "expo-constants": "~9.2.0",
-    "expo-status-bar": "~1.0.2",
-    "isomorphic-fetch": "^3.0.0",
-    "jotai": "latest",
-    "lodash": "latest",
-    "nachos-ui": "^0.2.0-beta.1",
-    "next": "^10.0.5",
-    "next-fonts": "^1.5.1",
-    "next-images": "^1.6.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
-    "react-native-dotenv": "^2.4.2",
-    "react-native-paper": "3.6.0",
-    "react-native-svg": "^9.13.6",
-    "react-native-vector-icons": "latest",
-    "react-native-web": "~0.13.12",
-    "scheduler": "^0.19.0",
-    "zustand": "latest"
-  },
-  "devDependencies": {
-    "@babel/core": "~7.9.0",
-    "@expo/next-adapter": "^2.1.53",
-    "@testing-library/jest-native": "^3.4.3",
-    "@testing-library/react-native": "^7.1.0",
-    "@types/jest": "^26.0.15",
-    "@types/react": "~16.9.35",
-    "@types/react-dom": "~16.9.8",
-    "@types/react-native": "~0.63.2",
-    "@types/react-test-renderer": "^17.0.0",
-    "expo-cli": "^4.0.13",
-    "jest-expo": "^39.0.0",
-    "react-test-renderer": "^17.0.1",
-    "typescript": "~3.9.5"
-  },
-  "jest": {
-    "preset": "jest-expo",
-    "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
-    ]
-  },
-  "private": false
+	"main": "node_modules/expo/AppEntry.js",
+	"scripts": {
+		"start": "expo start",
+		"android": "expo start --android",
+		"ios": "expo start --ios",
+		"web:next": "yarn next dev",
+		"web": "expo start --web",
+		"build:web": "expo build:web",
+		"build:next": "next build",
+		"eject": "expo eject",
+		"test": "jest "
+	},
+	"dependencies": {
+		"@eva-design/eva": "^2.0.0",
+		"@ui-kitten/components": "^5.0.0",
+		"expo": "~39.0.2",
+		"expo-constants": "~9.2.0",
+		"expo-status-bar": "~1.0.2",
+		"isomorphic-fetch": "^3.0.0",
+		"jotai": "latest",
+		"lodash": "latest",
+		"nachos-ui": "^0.2.0-beta.1",
+		"next": "^10.0.5",
+		"next-fonts": "^1.5.1",
+		"next-images": "^1.6.2",
+		"react": "16.13.1",
+		"react-dom": "16.13.1",
+		"react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
+		"react-native-dotenv": "^2.4.2",
+		"react-native-paper": "3.6.0",
+		"react-native-svg": "^9.13.6",
+		"react-native-vector-icons": "latest",
+		"react-native-web": "~0.13.12",
+		"scheduler": "^0.19.0",
+		"zustand": "latest"
+	},
+	"devDependencies": {
+		"@babel/core": "~7.9.0",
+		"@expo/next-adapter": "^2.1.53",
+		"@testing-library/jest-native": "^3.4.3",
+		"@testing-library/react-native": "^7.1.0",
+		"@types/jest": "^26.0.15",
+		"@types/react": "~16.9.35",
+		"@types/react-dom": "~16.9.8",
+		"@types/react-native": "~0.63.2",
+		"@types/react-test-renderer": "^17.0.0",
+		"expo-cli": "^4.0.13",
+		"jest-expo": "^39.0.0",
+		"react-test-renderer": "^17.0.1",
+		"typescript": "~3.9.5"
+	},
+	"jest": {
+		"preset": "jest-expo",
+		"transformIgnorePatterns": [
+			"node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+		]
+	},
+	"private": false
 }
