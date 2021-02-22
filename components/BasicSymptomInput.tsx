@@ -13,21 +13,22 @@ export const BasicSymptomInput = ({
 	options,
 }: {
 	label?: string;
-	onChange?: (...args: any) => {};
+	onChange?: (res: {
+		checked?: string;
+		days?: string;
+		timesDay?: string;
+	}) => void;
 	times?: number;
 	showNumberDays?: boolean;
 	options?: string[];
+	setChecked?: any;
 }) => {
-	const [checked, setChecked] = useState();
-
-	//TODO : to manage input text outside the component
+	const [checked, setChecked] = useState("");
 
 	const [days, setDays] = useState("");
 	const [timesDay, setTimesDay] = useState("");
 	React.useEffect(() => {
-		// to fix issues for days left empty
-
-		if (checked !== "" && onChange) onChange({ checked, days, timesDay });
+		if (onChange) onChange({ checked, days, timesDay });
 	}, [checked, timesDay, days]);
 
 	return (
@@ -42,8 +43,10 @@ export const BasicSymptomInput = ({
 						options && options.length > 0 ? options : ["yes", "no"]
 					}
 					checked={checked}
-					setChecked={(text: React.SetStateAction<undefined>) => {
-						setChecked(text);
+					setChecked={(text: string | string[]) => {
+						console.log("Something check and here it is : ", text);
+
+						setChecked(text as string);
 					}}
 				/>
 			</Col>
