@@ -332,7 +332,7 @@ export function Symptoms() {
 				<Col cols={3.3}>
 					<Text>Type : </Text>
 					<SimpleQuestion
-						options={["Watery", "Rice Walter", "Normal", "Hard"]}
+						options={["Watery", "Rice Water", "Normal", "Hard"]}
 						checked={gi.diarrhoeaType}
 						setChecked={(text) => {
 							updateGI({ diarrhoeaType: text });

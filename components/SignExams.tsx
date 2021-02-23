@@ -337,10 +337,10 @@ export function SignsExam() {
 				<Col>
 					<SimpleQuestion
 						options={["yes", "no"]}
-						checked={generalExamination.handsPalmerPallor}
+						checked={generalExamination.handsPalmarPallor}
 						setChecked={(text: string | string[]) => {
 							updateGeneralExamination({
-								handsPalmerPallor: text as string,
+								handsPalmarPallor: text as string,
 							});
 						}}
 					/>

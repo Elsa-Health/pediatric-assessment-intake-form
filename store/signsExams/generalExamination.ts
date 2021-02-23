@@ -13,7 +13,7 @@ export const initialGeneralExamination = {
 	mouthOutside: [],
 	mouthInside: [],
 	handsFingerClubbing: "",
-	handsPalmerPallor: "",
+	handsPalmarPallor: "",
 	handsPeripheralCyanosis: "",
 	handsCapillaryRefillTime: "",
 
@@ -38,7 +38,7 @@ type GeneralExaminationData = {
 	mouthOutside?: string[];
 	mouthInside?: string[];
 	handsFingerClubbing?: string;
-	handsPalmerPallor?: string;
+	handsPalmarPallor?: string;
 	handsPeripheralCyanosis?: string;
 	handsCapillaryRefillTime?: string;
 

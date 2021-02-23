@@ -197,7 +197,7 @@ const SubmitButton = ({
 
 		patientId: headerInfo.patientID,
 		visitDate: headerInfo.visitDate,
-		patientInfomation: {
+		patientInformation: {
 			...patientInfo,
 		},
 		chiefComplains: {
@@ -214,14 +214,14 @@ const SubmitButton = ({
 			neonatal: { ...neonatal },
 			...others,
 		},
-		additionalPatientInfomation: {
+		additionalPatientInformation: {
 			birthHistory: { ...birthHistory },
 			nutritionalHistory: { ...nutritionalHistory },
 			vaccinationHistory: { ...vaccinationHistory },
-			previousMedicalHistory: { ...medicalHistory },
+			medicalHistory: { ...medicalHistory },
 		},
 		signsExams: {
-			vitalSigns: { ...vitalSignsExam },
+			vital: { ...vitalSignsExam },
 			general: { ...generalExam },
 			respiratory: { ...respiratoryExam },
 			abdominal: { ...abdominalExam },
