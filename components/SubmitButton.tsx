@@ -67,6 +67,7 @@ import {
 	initialUrineTests,
 	initialDifferentials,
 	useOthers,
+	initialSkinExamination,
 } from "../store";
 
 import { Button } from "react-native-paper";
@@ -290,6 +291,7 @@ const SubmitButton = ({
 		updateGeneralExamination(initialGeneralExamination);
 		updateRespiratoryExamination(initialRespiratoryExamination);
 		updateAbdominalExamination(initialAbdominalExamination);
+		updateSkinExamination(initialSkinExamination);
 		updateNeurologicalExamination(initialneurologicalExamination);
 
 		// clearing differentials store
@@ -332,7 +334,7 @@ const SubmitButton = ({
 			})
 			.catch((err) => {
 				setLoadingIn(false);
-
+				console.log("errr", err);
 				if (Platform.OS == "web")
 					alert(
 						"Something went wrong while submitting the data : " +
