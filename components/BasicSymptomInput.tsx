@@ -11,6 +11,12 @@ export const BasicSymptomInput = ({
 	times,
 	showNumberDays = true,
 	options,
+	checked,
+	setChecked,
+	days,
+	setDays,
+	timesDay,
+	setTimesDay,
 }: {
 	label?: string;
 	onChange?: (res: {
@@ -18,19 +24,16 @@ export const BasicSymptomInput = ({
 		days?: string;
 		timesDay?: string;
 	}) => void;
-	times?: number;
+	times?: boolean;
 	showNumberDays?: boolean;
 	options?: string[];
-	setChecked?: any;
+	checked: string | undefined;
+	setChecked: (data: string) => void;
+	days: string | undefined;
+	setDays: (data: string) => void;
+	timesDay?: string | undefined;
+	setTimesDay?: (data: string) => void;
 }) => {
-	const [checked, setChecked] = useState("");
-
-	const [days, setDays] = useState("");
-	const [timesDay, setTimesDay] = useState("");
-	React.useEffect(() => {
-		if (onChange) onChange({ checked, days, timesDay });
-	}, [checked, timesDay, days]);
-
 	return (
 		<>
 			<Col style={styles.headerLightGray}>
@@ -58,9 +61,7 @@ export const BasicSymptomInput = ({
 								label="# TImes / Day"
 								placeholder="# TImes / Day"
 								text={timesDay}
-								setText={(
-									text: React.SetStateAction<string>
-								) => {
+								setText={(text: string) => {
 									setTimesDay(text);
 								}}
 							/>
@@ -72,7 +73,7 @@ export const BasicSymptomInput = ({
 							label="Days"
 							placeholder="Days"
 							text={days}
-							setText={(text: React.SetStateAction<string>) => {
+							setText={(text: string) => {
 								setDays(text);
 							}}
 						/>

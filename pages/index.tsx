@@ -26,6 +26,7 @@ interface User {
 
 export default function App() {
 	const [check, setCheck] = useState("");
+
 	const [user, setUser] = useState<User>({
 		email: null,
 		uid: null,
