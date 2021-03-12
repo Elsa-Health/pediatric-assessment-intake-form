@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Platform, View } from "react-native";
+import { DEVELOPMENT_URL, PRODUCTION_URL } from "@env";
 
 import _ from "lodash";
 
@@ -320,7 +321,7 @@ const SubmitButton = ({
 
 		setLoadingIn(true);
 
-		fetch(process.env.NEXT_PUBLIC_SUBMIT_URL, params)
+		fetch(__DEV__ ? DEVELOPMENT_URL : PRODUCTION_URL, params)
 			.then((res) => res.json())
 			.then((res) => {
 				setLoadingIn(false);
@@ -342,6 +343,8 @@ const SubmitButton = ({
 					);
 			});
 	};
+
+	console.log("is dev : ", __DEV__);
 
 	return (
 		<View>
