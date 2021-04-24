@@ -405,6 +405,8 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Abdominal Cramps"
+					checked={gi.abdominalCramps}
+					days={gi.abdominalCrampsDays}
 					onChange={(res) => {
 						updateGI({
 							abdominalCramps: res.checked,
@@ -414,6 +416,8 @@ export function Symptoms() {
 				/>
 				<BasicSymptomInput
 					label="Lack of appetite"
+					checked={gi.lackOfAppetite}
+					days={gi.lackOfAppetiteDays}
 					onChange={(res) => {
 						updateGI({
 							lackOfAppetite: res.checked,
@@ -426,6 +430,8 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Weight Loss"
+					checked={gi.weightLoss}
+					days={gi.weightLossDays}
 					onChange={(res) => {
 						updateGI({
 							weightLoss: res.checked,
@@ -433,8 +439,11 @@ export function Symptoms() {
 						});
 					}}
 				/>
+				{/* TODO: Starting here (delete comment) */}
 				<BasicSymptomInput
 					label="Difficulty swallowing"
+					checked={gi.difficultySwallowing}
+					days={gi.difficultySwallowingDays}
 					onChange={(res) => {
 						updateGI({
 							difficultySwallowing: res.checked,
@@ -447,6 +456,8 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Pain on urination"
+					checked={gi.painInUrination}
+					days={gi.painInUrinationDays}
 					onChange={(res) => {
 						updateGI({
 							painOnUrination: res.checked,
@@ -457,6 +468,9 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Frequency of urination"
+					checked={gi.frequencyOfUrination}
+					days={gi.frequencyOfUrinationDays}
+					timesDay={gi.frequencyOfUrinationTimesDay}
 					options={["Incraese", "Decrease"]}
 					times={true}
 					onChange={(res) => {
@@ -476,6 +490,9 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Headache"
+					checked={cns.headache}
+					days={cns.headacheDays}
+					// times={true}
 					onChange={(res) => {
 						updateCNS({
 							headache: res.checked,
@@ -485,6 +502,9 @@ export function Symptoms() {
 				/>
 				<BasicSymptomInput
 					label="Coma"
+					checked={cns.coma}
+					days={cns.comaDays}
+					// times={true}
 					onChange={(res) => {
 						updateCNS({
 							coma: res.checked,
@@ -497,6 +517,9 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Hypothermia"
+					checked={cns.hypothermia}
+					days={cns.hypothermiaDays}
+					// times={true}
 					onChange={(res) => {
 						updateCNS({
 							hypothermia: res.checked,
@@ -506,6 +529,9 @@ export function Symptoms() {
 				/>
 				<BasicSymptomInput
 					label="Seizures"
+					checked={cns.seizures}
+					days={cns.seizuresDays}
+					// times={true}
 					onChange={(res) => {
 						updateCNS({
 							seizures: res.checked,
@@ -518,6 +544,9 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Neck Pain"
+					checked={cns.neckPain}
+					days={cns.neckPainDays}
+					// times={true}
 					onChange={(res) => {
 						updateCNS({
 							neckPain: res.checked,
@@ -528,10 +557,13 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="High pitched crying"
+					checked={cns.highlyPitchedCrying}
+					days={cns.highlyPitchedCryingDays}
 					onChange={(res) => {
-						updateCNS({
-							highPitchedCrying: res.checked,
-							highPitchedCryingDays: res.days,
+						// console.log("What does : ", res);
+						setCNS({
+							highlyPitchedCrying: res.checked,
+							highlyPitchedCryingDays: res.days,
 						});
 					}}
 				/>
@@ -544,6 +576,9 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Myalgia"
+					checked={musculoskeletal.myalgia}
+					days={musculoskeletal.myalgiaDays}
+					// times={true}
 					onChange={(res) => {
 						updateMusculoskeletal({
 							myalgia: res.checked,
@@ -554,6 +589,9 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="History of Trauma"
+					checked={musculoskeletal.historyOfTrauma}
+					days={musculoskeletal.historyOfTraumaDays}
+					// times={true}
 					onChange={(res) => {
 						updateMusculoskeletal({
 							historyOfTrauma: res.checked,
@@ -566,6 +604,9 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Fatigue"
+					checked={musculoskeletal.fatique}
+					days={musculoskeletal.fatiqueDays}
+					// times={true}
 					onChange={(res) => {
 						updateMusculoskeletal({
 							fatique: res.checked,
@@ -591,6 +632,9 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Red Eyes"
+					checked={earsAndEyes.redEyes}
+					days={earsAndEyes.redEyesDays}
+					// times={true}
 					onChange={(res) => {
 						updateEarsAndEyes({
 							redEyes: res.checked,
@@ -601,6 +645,9 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Painful Eyes"
+					checked={earsAndEyes.painfulEyes}
+					days={earsAndEyes.painfulEyesDays}
+					// times={true}
 					onChange={(res) => {
 						updateEarsAndEyes({
 							painfulEyes: res.checked,
@@ -613,6 +660,9 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Ear Pain"
+					checked={earsAndEyes.earPain}
+					days={earsAndEyes.earPainDays}
+					// times={true}
 					onChange={(res) => {
 						updateEarsAndEyes({
 							earPain: res.checked,
@@ -623,6 +673,9 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Eye Discharge"
+					checked={earsAndEyes.eyeDischarge}
+					days={earsAndEyes.eyeDischargeDays}
+					// times={true}
 					onChange={(res) => {
 						updateEarsAndEyes({
 							eyeDischarge: res.checked,
@@ -635,6 +688,9 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Ear Discharge"
+					checked={earsAndEyes.earDischarge}
+					days={earsAndEyes.earDischargeDays}
+					// times={true}
 					onChange={(res) => {
 						updateEarsAndEyes({
 							earDischarge: res.checked,
@@ -645,6 +701,9 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Sunken Eyes"
+					checked={earsAndEyes.sunkenEyes}
+					days={earsAndEyes.sunkenEyesDays}
+					// times={true}
 					onChange={(res) => {
 						updateEarsAndEyes({
 							sunkenEyes: res.checked,
@@ -661,6 +720,9 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Dryness"
+					checked={mouth.dryness}
+					days={mouth.drynessDays}
+					// times={true}
 					onChange={(res) => {
 						updateMouth({
 							dryness: res.checked,
@@ -671,6 +733,9 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Cotton Feeling"
+					checked={mouth.cottonFeeling}
+					days={mouth.cottonFeelingDays}
+					// times={true}
 					onChange={(res) => {
 						updateMouth({
 							cottonFeeling: res.checked,
@@ -683,6 +748,9 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Ulcerations Inside of Mouth"
+					checked={mouth.ulcerationsInside}
+					days={mouth.ulcerationsInsideDays}
+					// times={true}
 					onChange={(res) => {
 						updateMouth({
 							ulcerationsInside: res.checked,
@@ -693,6 +761,9 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Ulcerations around Mouth/ Corners"
+					checked={mouth.ulcerationsAround}
+					days={mouth.ulcerationsAroundDays}
+					// times={true}
 					onChange={(res) => {
 						updateMouth({
 							ulcerationsAround: res.checked,
@@ -709,14 +780,13 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Inability to breastfeed"
+					checked={neonatal.inabilityToBreastFeed}
+					// times={true}
 					showNumberDays={false}
-					onChange={(res: {
-						checked?: string | undefined;
-						days?: string | undefined;
-						timesDay?: string | undefined;
-					}) => {
-						updateNeonatal({
-							inabilityToBreastFeed: res.checked as string,
+					onChange={(res) => {
+						// console.log("What does : ", res);
+						setNeonatal({
+							inabilityToBreastFeed: res.checked,
 						});
 					}}
 				/>

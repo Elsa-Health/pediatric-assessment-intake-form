@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 import { Platform, View } from "react-native";
+// import { TextField } from 'material-bread'
+
+import {
+	DEVELOPMENT_URL,
+	PRODUCTION_URL,
+	NEXT_PUBLIC_PRODUCTION_URL,
+} from "@env";
 
 import _ from "lodash";
 
@@ -67,6 +74,7 @@ import {
 	initialUrineTests,
 	initialDifferentials,
 	useOthers,
+	initialSkinExamination,
 } from "../store";
 
 import { Button } from "react-native-paper";
@@ -286,11 +294,12 @@ const SubmitButton = ({
 		updateMedicalHistory(initialMedicalHistory);
 
 		// clearing signs and exams stores
-		updateVitalSigns(initialVitalSigns);
-		updateGeneralExamination(initialGeneralExamination);
-		updateRespiratoryExamination(initialRespiratoryExamination);
-		updateAbdominalExamination(initialAbdominalExamination);
-		updateNeurologicalExamination(initialneurologicalExamination);
+		setVitalSigns(initialVitalSigns);
+		setGeneralExamination(initialGeneralExamination);
+		setRespiratoryExamination(initialRespiratoryExamination);
+		setAbdominalExamination(initialAbdominalExamination);
+		setSkinExamination(initialSkinExamination);
+		setNeurologicalExamination(initialneurologicalExamination);
 
 		// clearing differentials store
 		updateDifferentials(initialDifferentials);
@@ -312,6 +321,8 @@ const SubmitButton = ({
 	};
 
 	const handleSubmit = async () => {
+		// console.log("Data", params.body);
+		// clearStores();
 		if (!window.confirm("Are you sure you want to submit?")) {
 			return;
 		}
@@ -332,12 +343,15 @@ const SubmitButton = ({
 			})
 			.catch((err) => {
 				setLoadingIn(false);
-
-				if (Platform.OS == "web")
+				// console.log("something went wrong ", err);
+				// setHeader;
+				if (Platform.OS == "web") {
+					console.log("Error: ", err);
 					alert(
 						"Something went wrong while submitting the data : " +
 							JSON.stringify(err)
 					);
+				}
 			});
 	};
 

@@ -11,6 +11,9 @@ export const BasicSymptomInput = ({
 	times,
 	showNumberDays = true,
 	options,
+	checked: checked_default,
+	days: days_default,
+	timesDay: timesDay_default,
 }: {
 	label?: string;
 	onChange?: (res: {
@@ -21,15 +24,31 @@ export const BasicSymptomInput = ({
 	times?: number;
 	showNumberDays?: boolean;
 	options?: string[];
-	setChecked?: any;
+	checked?: any;
+	days?: string | number;
+	timesDay: string | any;
 }) => {
-	const [checked, setChecked] = useState("");
+	const [checked, setChecked] = useState(checked_default);
 
-	const [days, setDays] = useState("");
+	// On mount, set the default checked value to
+	React.useEffect(() => {
+		setChecked(checked_default);
+		setDays(days_default);
+		setTimesDay(timesDay_default);
+	}, [checked_default, days_default, timesDay_default]);
+
+	//TODO : to manage input text outside the component
+
+	const [days, setDays] = useState(days_default);
 	const [timesDay, setTimesDay] = useState("");
 	React.useEffect(() => {
-		if (onChange) onChange({ checked, days, timesDay });
+		// to fix issues for days left empty
+
+		// if (checked !== "" && onChange) onChange({ checked, days, timesDay });
+		onChange && onChange({ checked, days, timesDay });
 	}, [checked, timesDay, days]);
+
+	// console.log(checked_default, "efault", label);
 
 	return (
 		<>
