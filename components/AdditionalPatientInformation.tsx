@@ -1,6 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
-import { RadioButton } from "react-native-paper";
+import { Text } from "react-native";
 import { Table, Col, Row } from ".";
 import {
 	useBirthHistory,
@@ -13,31 +12,24 @@ import { FitTextToCell } from "./FixTextToCell";
 import { Input } from "./Input";
 import { SimpleQuestion } from "./Question";
 
-// no state management so far included
-// remove this comment when intergrated with state management
-
 export function AdditionalPatientInformation() {
-	// stores to be moved to separate components
-	const birthHistory = useBirthHistory((state) => state);
-	const setBirthHistory = useBirthHistory((state) => state.setBirthHistory);
-
-	const nutritionHistory = useNutritionalHistory((state) => state);
-	const setNutritionHistory = useNutritionalHistory(
-		(state) => state.setNutritionalHistory
+	const { updateBirthHistory, ...birthHistory } = useBirthHistory(
+		(state) => state
 	);
 
-	const vaccinationHistory = useVaccinationHistory((state) => state);
-	const setVaccinationHistory = useVaccinationHistory(
-		(state) => state.setVaccinationHistory
-	);
+	const {
+		updateNutritionalHistory,
+		...nutritionHistory
+	} = useNutritionalHistory((state) => state);
 
-	const medicalHistory = useMedicalHistory((state) => state);
-	const setMedicalHistory = useMedicalHistory(
-		(state) => state.setMedicalHistory
-	);
+	const {
+		updateVaccinationHistory,
+		...vaccinationHistory
+	} = useVaccinationHistory((state) => state);
 
-	// console.log("Debugging the additional patient information ");
-	// console.table(medicalHistory);
+	const { updateMedicalHistory, ...medicalHistory } = useMedicalHistory(
+		(state) => state
+	);
 
 	return (
 		<Table headerTitle="Additional Patient Information:">
@@ -52,10 +44,8 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["full term", "pre-term", "post term"]}
 						checked={birthHistory.gestation}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setBirthHistory({ gestation: text });
+						setChecked={(text: string | string[]) => {
+							updateBirthHistory({ gestation: text as string });
 						}}
 					/>
 				</Col>
@@ -66,8 +56,10 @@ export function AdditionalPatientInformation() {
 					<FitTextToCell>
 						<Input
 							text={birthHistory.mothersAgeAtDelivery}
-							setText={(text) => {
-								setBirthHistory({ mothersAgeAtDelivery: text });
+							setText={(text: string) => {
+								updateBirthHistory({
+									mothersAgeAtDelivery: text,
+								});
 							}}
 						/>
 					</FitTextToCell>
@@ -82,11 +74,9 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={birthHistory.complicationsAfterDelivery}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setBirthHistory({
-								complicationsAfterDelivery: text,
+						setChecked={(text: string | string[]) => {
+							updateBirthHistory({
+								complicationsAfterDelivery: text as string,
 							});
 						}}
 					/>
@@ -98,8 +88,10 @@ export function AdditionalPatientInformation() {
 					<FitTextToCell>
 						<Input
 							text={birthHistory.apgarScore}
-							setText={(text) => {
-								setBirthHistory({ apgarScore: text });
+							setText={(text: string | string[]) => {
+								updateBirthHistory({
+									apgarScore: text as string,
+								});
 							}}
 						/>
 					</FitTextToCell>
@@ -114,8 +106,8 @@ export function AdditionalPatientInformation() {
 					<FitTextToCell>
 						<Input
 							text={birthHistory.additionalBirthHistoryNotes}
-							setText={(text) => {
-								setBirthHistory({
+							setText={(text: string) => {
+								updateBirthHistory({
 									additionalBirthHistoryNotes: text,
 								});
 							}}
@@ -134,10 +126,10 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={nutritionHistory.breastfed}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setNutritionHistory({ breastfed: text });
+						setChecked={(text: string | string[]) => {
+							updateNutritionalHistory({
+								breastfed: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -147,11 +139,11 @@ export function AdditionalPatientInformation() {
 				<Col>
 					<SimpleQuestion
 						options={["yes", "no"]}
-						checked={nutritionHistory.wasItExclusive}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setNutritionHistory({ wasItExclusive: text });
+						checked={nutritionHistory.wasBreastFeedingExclusive}
+						setChecked={(text: string | string[]) => {
+							updateNutritionalHistory({
+								wasBreastFeedingExclusive: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -163,23 +155,24 @@ export function AdditionalPatientInformation() {
 				<Col cols={2}>
 					<SimpleQuestion
 						options={["At Birth", "After Birth"]}
-						checked={nutritionHistory.breadfeedingStartTime}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setNutritionHistory({
-								breadfeedingStartTime: text,
+						checked={nutritionHistory.breastFeedingStartTime}
+						setChecked={(text: string | string[]) => {
+							updateNutritionalHistory({
+								breastFeedingStartTime: text as string,
 							});
 						}}
 					/>
 
-					<Text>If after birth, breastfeeding started after how many days? </Text>
+					<Text>
+						If after birth, breastfeeding started after how many
+						days?{" "}
+					</Text>
 					<Input
-						text={nutritionHistory.breastfeedingStartTimeDays}
+						text={nutritionHistory.breastFeedingStartTimeDays}
 						label="Days"
-						setText={(text) => {
-							setNutritionHistory({
-								breastfeedingStartTimeMonths: text,
+						setText={(text: string) => {
+							updateNutritionalHistory({
+								breastFeedingStartTimeDays: text,
 							});
 						}}
 					/>
@@ -191,29 +184,17 @@ export function AdditionalPatientInformation() {
 					<Text>(If yes) When did the breastfeeding start?</Text>
 				</Col>
 				<Col>
-					{/* <Row style={{ alignItems: "center" }}> */}
-					{/* <SimpleQuestion
-              options={["At Birth", "After Birth"]}
-              checked={nutritionHistory.breadfeedingStartTime}
-              setChecked={(text) => {
-                // console.log("Hello There ", text);
-                // setGeneral({ fever: text, ...general });
-                setNutritionHistory({ breadfeedingStartTime: text });
-              }}
-            /> */}
-
 					<FitTextToCell>
 						<Input
-							text={nutritionHistory.breastfeedingStartTimeMonths}
+							text={nutritionHistory.breastFeedingStartTimeMonths}
 							label="Months"
-							setText={(text) => {
-								setNutritionHistory({
-									breastfeedingStartTimeMonths: text,
+							setText={(text: string) => {
+								updateNutritionalHistory({
+									breastFeedingStartTimeMonths: text,
 								});
 							}}
 						/>
 					</FitTextToCell>
-					{/* </Row> */}
 				</Col>
 
 				<Col style={styles.headerLightGray}>
@@ -223,31 +204,14 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={nutritionHistory.vitaminASupplements}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setNutritionHistory({ vitaminASupplements: text });
+						setChecked={(text: string | string[]) => {
+							updateNutritionalHistory({
+								vitaminASupplements: text as string,
+							});
 						}}
 					/>
 				</Col>
 			</Row>
-
-			{/* <Row>
-				<Col cols={2} style={styles.headerLightGray}>
-					<Text>Was the child on vitamin A supplements?</Text>
-				</Col>
-				<Col cols={4}>
-					<SimpleQuestion
-						options={["yes", "no"]}
-						checked={nutritionHistory.vitaminASupplements}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setNutritionHistory({ vitaminASupplements: text });
-						}}
-					/>
-				</Col>
-			</Row> */}
 
 			<Col style={styles.headerDarkGray}>
 				<Text>Vaccination History</Text>
@@ -260,11 +224,9 @@ export function AdditionalPatientInformation() {
 					<SimpleQuestion
 						options={["yes", "no"]}
 						checked={vaccinationHistory.updateOnAllVaccines}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setVaccinationHistory({
-								updateOnAllVaccines: text,
+						setChecked={(text: string | string[]) => {
+							updateVaccinationHistory({
+								updateOnAllVaccines: text as string,
 							});
 						}}
 					/>
@@ -279,8 +241,8 @@ export function AdditionalPatientInformation() {
 				<FitTextToCell>
 					<Input
 						text={vaccinationHistory.missingNotes}
-						setText={(text) => {
-							setVaccinationHistory({ missingNotes: text });
+						setText={(text: string) => {
+							updateVaccinationHistory({ missingNotes: text });
 						}}
 					/>
 				</FitTextToCell>
@@ -291,14 +253,14 @@ export function AdditionalPatientInformation() {
 
 			<Row>
 				<Col>
-					<Text>Any previous admission ? </Text>
 					<SimpleQuestion
+						label="Any previous admission ?"
 						options={["yes", "no"]}
 						checked={medicalHistory.previousAdmission}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setMedicalHistory({ previousAdmission: text });
+						setChecked={(text: string | string[]) => {
+							updateMedicalHistory({
+								previousAdmission: text as string,
+							});
 						}}
 					/>
 				</Col>
@@ -307,8 +269,8 @@ export function AdditionalPatientInformation() {
 						<Input
 							placeholder="If yes, why?"
 							text={medicalHistory.whyPreviousAdmission}
-							setText={(text) => {
-								setMedicalHistory({
+							setText={(text: string) => {
+								updateMedicalHistory({
 									whyPreviousAdmission: text,
 								});
 							}}
@@ -316,14 +278,14 @@ export function AdditionalPatientInformation() {
 					</FitTextToCell>
 				</Col>
 				<Col>
-					<Text>History of antibiotic use?</Text>
 					<SimpleQuestion
+						label="History of antibiotic use?"
 						options={["yes", "no"]}
 						checked={medicalHistory.antibioticUse}
-						setChecked={(text) => {
-							// console.log("Hello There ", text);
-							// setGeneral({ fever: text, ...general });
-							setMedicalHistory({ antibioticUse: text });
+						setChecked={(text: string | string[]) => {
+							updateMedicalHistory({
+								antibioticUse: text as string,
+							});
 						}}
 					/>
 				</Col>

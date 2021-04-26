@@ -9,15 +9,11 @@ export function RadioButton({
 	mutiple,
 }: {
 	options: any;
-	setChecked: any;
-	checked?: string | string[];
+	setChecked?: (text: string | string[]) => void;
+	checked: string | string[] | undefined;
 	mutiple?: boolean;
 }) {
-	// const [value, setValue] = useState(null);
-
-	// console.log("Radio check option : ", checked, " mutiple ", mutiple);
-
-	function removeMutipleItem(arr, value) {
+	function removeMutipleItem(arr: string[], value: string) {
 		var index = arr.indexOf(value);
 		if (index > -1) {
 			arr.splice(index, 1);
@@ -27,62 +23,55 @@ export function RadioButton({
 
 	return (
 		<>
-			{options.map(
-				(
-					res: string | ((prevState: null) => null) | null,
-					index: string
-				) => {
-					return (
-						<View key={res + "__" + index} style={styles.container}>
-							<TouchableOpacity
-								style={{ flexDirection: "row" }}
-								onPress={() => {
-									// setValue(res);
-									if (mutiple) {
-										//add mutplie to list
+			{options.map((res: string, index: string) => {
+				return (
+					<View key={res + "__" + index} style={styles.container}>
+						<TouchableOpacity
+							style={{ flexDirection: "row" }}
+							onPress={() => {
+								// setValue(res);
+								if (mutiple && setChecked) {
+									//add mutplie to list
+									if (checked?.includes(res)) {
+										//remove from an array
+										const tempo = removeMutipleItem(
+											checked as string[],
+											res
+										);
 
-										if (checked.includes(res)) {
-											//remove from an array
-											const tempo = removeMutipleItem(
-												checked,
-												res
-											);
-
-											setChecked([...tempo]);
-										} else {
-											setChecked([...checked, res]);
-										}
+										setChecked([...tempo]);
 									} else {
-										if (checked === res) {
-											// uncheck here
-											setChecked("");
-										} else {
-											setChecked(res);
-										}
+										setChecked([
+											...(checked as string[]),
+											res,
+										]);
 									}
-								}}
-							>
-								<View style={styles.radioCircle}>
-									{mutiple
-										? checked.indexOf(res) > -1 && (
-												<View
-													style={styles.selectedRb}
-												/>
-										  )
-										: checked === res && (
-												<View
-													style={styles.selectedRb}
-												/>
-										  )}
-								</View>
-								<Text style={styles.radioText}>
-									{res ? _.startCase(_.camelCase(res)) : ""}
-								</Text>
-							</TouchableOpacity>
-						</View>
-					);
-				}
-			)}
+								} else {
+									if (checked === res && setChecked) {
+										setChecked("");
+									} else {
+										if (setChecked) setChecked(res);
+									}
+								}
+							}}
+						>
+							<View style={styles.radioCircle}>
+								{mutiple
+									? checked &&
+									  checked.indexOf(res) > -1 && (
+											<View style={styles.selectedRb} />
+									  )
+									: checked === res && (
+											<View style={styles.selectedRb} />
+									  )}
+							</View>
+							<Text style={styles.radioText}>
+								{res ? _.startCase(_.camelCase(res)) : ""}
+							</Text>
+						</TouchableOpacity>
+					</View>
+				);
+			})}
 		</>
 	);
 }
@@ -94,16 +83,14 @@ const styles = StyleSheet.create({
 		justifyContent: "space-between",
 		alignItems: "center",
 		marginHorizontal: 10,
-		// backgroundColor:"red"
 	},
 	radioText: {
 		flex: 1,
-		// marginTop: 5,
+
 		marginLeft: ".4rem",
 		fontSize: 14,
 		color: "#000",
-		// fontWeight: '700',
-		// backgroundColor:"blue",
+
 		alignSelf: "center",
 	},
 	radioCircle: {

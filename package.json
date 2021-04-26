@@ -4,10 +4,12 @@
 		"start": "expo start",
 		"android": "expo start --android",
 		"ios": "expo start --ios",
+		"web:next": "yarn next dev",
 		"web": "expo start --web",
+		"build:web": "expo build:web",
+		"build:next": "next build",
 		"eject": "expo eject",
-		"test": "jest ",
-		"build:web":"expo build:web"
+		"test": "jest "
 	},
 	"dependencies": {
 		"@eva-design/eva": "^2.0.0",
@@ -19,10 +21,13 @@
 		"jotai": "latest",
 		"lodash": "latest",
 		"nachos-ui": "^0.2.0-beta.1",
+		"next": "^10.0.5",
+		"next-fonts": "^1.5.1",
+		"next-images": "^1.6.2",
 		"react": "16.13.1",
 		"react-dom": "16.13.1",
 		"react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
-		"react-native-dotenv": "^2.4.2",
+		"react-native-dotenv": "^2.5.3",
 		"react-native-paper": "3.6.0",
 		"react-native-svg": "^9.13.6",
 		"react-native-vector-icons": "latest",
@@ -32,6 +37,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "~7.9.0",
+		"@expo/next-adapter": "^2.1.53",
 		"@testing-library/jest-native": "^3.4.3",
 		"@testing-library/react-native": "^7.1.0",
 		"@types/jest": "^26.0.15",
