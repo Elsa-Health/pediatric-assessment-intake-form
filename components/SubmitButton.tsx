@@ -315,6 +315,8 @@ const SubmitButton = ({
 	};
 
 	const handleSubmit = async () => {
+		// console.log("Data", params.body);
+		// clearStores();
 		if (!window.confirm("Are you sure you want to submit?")) {
 			return;
 		}
@@ -336,11 +338,12 @@ const SubmitButton = ({
 			.catch((err) => {
 				setLoadingIn(false);
 				console.log("errr", err);
-				if (Platform.OS == "web")
+				if (Platform.OS == "web") {
 					alert(
 						"Something went wrong while submitting the data : " +
 							JSON.stringify(err)
 					);
+				}
 			});
 	};
 

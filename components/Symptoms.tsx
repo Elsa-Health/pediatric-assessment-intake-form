@@ -478,8 +478,8 @@ export function Symptoms() {
 					days={gi.weightLossDays}
 					setDays={(days) => {
 						updateGI({ weightLossDays: days });
-					}}
 				/>
+				{/* TODO: Starting here (delete comment) */}
 				<BasicSymptomInput
 					label="Difficulty swallowing"
 					checked={gi.difficultySwallowing}
@@ -508,6 +508,9 @@ export function Symptoms() {
 
 				<BasicSymptomInput
 					label="Frequency of urination"
+					checked={gi.frequencyOfUrination}
+					days={gi.frequencyOfUrinationDays}
+					timesDay={gi.frequencyOfUrinationTimesDay}
 					options={["Incraese", "Decrease"]}
 					times={true}
 					checked={gi.frequencyOfUrination}
@@ -805,6 +808,8 @@ export function Symptoms() {
 			<Row>
 				<BasicSymptomInput
 					label="Inability to breastfeed"
+					checked={neonatal.inabilityToBreastFeed}
+					// times={true}
 					showNumberDays={false}
 					checked={neonatal.inabilityToBreastFeed}
 					setChecked={(checked) => {

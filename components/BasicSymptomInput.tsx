@@ -16,7 +16,7 @@ export const BasicSymptomInput = ({
 	days,
 	setDays,
 	timesDay,
-	setTimesDay,
+	setTimesDay
 }: {
 	label?: string;
 	onChange?: (res: {
