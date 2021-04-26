@@ -478,6 +478,7 @@ export function Symptoms() {
 					days={gi.weightLossDays}
 					setDays={(days) => {
 						updateGI({ weightLossDays: days });
+					}}
 				/>
 				{/* TODO: Starting here (delete comment) */}
 				<BasicSymptomInput
