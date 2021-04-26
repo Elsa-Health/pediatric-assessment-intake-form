@@ -31,7 +31,6 @@ export function AdditionalPatientInformation() {
 		(state) => state
 	);
 
-	console.table(birthHistory);
 	return (
 		<Table headerTitle="Additional Patient Information:">
 			<Col style={styles.headerDarkGray}>

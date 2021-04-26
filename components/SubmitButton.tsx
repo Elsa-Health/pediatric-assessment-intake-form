@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { Platform, View } from "react-native";
-// import { TextField } from 'material-bread'
-
-import {
-	DEVELOPMENT_URL,
-	PRODUCTION_URL,
-	NEXT_PUBLIC_PRODUCTION_URL,
-} from "@env";
+import { DEVELOPMENT_URL, PRODUCTION_URL } from "@env";
 
 import _ from "lodash";
 
@@ -205,7 +199,7 @@ const SubmitButton = ({
 
 		patientId: headerInfo.patientID,
 		visitDate: headerInfo.visitDate,
-		patientInfomation: {
+		patientInformation: {
 			...patientInfo,
 		},
 		chiefComplains: {
@@ -222,14 +216,14 @@ const SubmitButton = ({
 			neonatal: { ...neonatal },
 			...others,
 		},
-		additionalPatientInfomation: {
+		additionalPatientInformation: {
 			birthHistory: { ...birthHistory },
 			nutritionalHistory: { ...nutritionalHistory },
 			vaccinationHistory: { ...vaccinationHistory },
-			previousMedicalHistory: { ...medicalHistory },
+			medicalHistory: { ...medicalHistory },
 		},
 		signsExams: {
-			vitalSigns: { ...vitalSignsExam },
+			vital: { ...vitalSignsExam },
 			general: { ...generalExam },
 			respiratory: { ...respiratoryExam },
 			abdominal: { ...abdominalExam },
@@ -294,12 +288,12 @@ const SubmitButton = ({
 		updateMedicalHistory(initialMedicalHistory);
 
 		// clearing signs and exams stores
-		setVitalSigns(initialVitalSigns);
-		setGeneralExamination(initialGeneralExamination);
-		setRespiratoryExamination(initialRespiratoryExamination);
-		setAbdominalExamination(initialAbdominalExamination);
-		setSkinExamination(initialSkinExamination);
-		setNeurologicalExamination(initialneurologicalExamination);
+		updateVitalSigns(initialVitalSigns);
+		updateGeneralExamination(initialGeneralExamination);
+		updateRespiratoryExamination(initialRespiratoryExamination);
+		updateAbdominalExamination(initialAbdominalExamination);
+		updateSkinExamination(initialSkinExamination);
+		updateNeurologicalExamination(initialneurologicalExamination);
 
 		// clearing differentials store
 		updateDifferentials(initialDifferentials);
@@ -329,7 +323,7 @@ const SubmitButton = ({
 
 		setLoadingIn(true);
 
-		fetch(process.env.NEXT_PUBLIC_SUBMIT_URL, params)
+		fetch(__DEV__ ? DEVELOPMENT_URL : PRODUCTION_URL, params)
 			.then((res) => res.json())
 			.then((res) => {
 				setLoadingIn(false);
@@ -343,10 +337,8 @@ const SubmitButton = ({
 			})
 			.catch((err) => {
 				setLoadingIn(false);
-				// console.log("something went wrong ", err);
-				// setHeader;
+				console.log("errr", err);
 				if (Platform.OS == "web") {
-					console.log("Error: ", err);
 					alert(
 						"Something went wrong while submitting the data : " +
 							JSON.stringify(err)
@@ -354,6 +346,8 @@ const SubmitButton = ({
 				}
 			});
 	};
+
+	console.log("is dev : ", __DEV__);
 
 	return (
 		<View>

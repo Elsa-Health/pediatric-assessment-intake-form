@@ -11,9 +11,12 @@ export const BasicSymptomInput = ({
 	times,
 	showNumberDays = true,
 	options,
-	checked: checked_default,
-	days: days_default,
-	timesDay: timesDay_default,
+	checked,
+	setChecked,
+	days,
+	setDays,
+	timesDay,
+	setTimesDay
 }: {
 	label?: string;
 	onChange?: (res: {
@@ -21,35 +24,16 @@ export const BasicSymptomInput = ({
 		days?: string;
 		timesDay?: string;
 	}) => void;
-	times?: number;
+	times?: boolean;
 	showNumberDays?: boolean;
 	options?: string[];
-	checked?: any;
-	days?: string | number;
-	timesDay: string | any;
+	checked: string | undefined;
+	setChecked: (data: string) => void;
+	days: string | undefined;
+	setDays: (data: string) => void;
+	timesDay?: string | undefined;
+	setTimesDay?: (data: string) => void;
 }) => {
-	const [checked, setChecked] = useState(checked_default);
-
-	// On mount, set the default checked value to
-	React.useEffect(() => {
-		setChecked(checked_default);
-		setDays(days_default);
-		setTimesDay(timesDay_default);
-	}, [checked_default, days_default, timesDay_default]);
-
-	//TODO : to manage input text outside the component
-
-	const [days, setDays] = useState(days_default);
-	const [timesDay, setTimesDay] = useState("");
-	React.useEffect(() => {
-		// to fix issues for days left empty
-
-		// if (checked !== "" && onChange) onChange({ checked, days, timesDay });
-		onChange && onChange({ checked, days, timesDay });
-	}, [checked, timesDay, days]);
-
-	// console.log(checked_default, "efault", label);
-
 	return (
 		<>
 			<Col style={styles.headerLightGray}>
@@ -77,9 +61,7 @@ export const BasicSymptomInput = ({
 								label="# TImes / Day"
 								placeholder="# TImes / Day"
 								text={timesDay}
-								setText={(
-									text: React.SetStateAction<string>
-								) => {
+								setText={(text: string) => {
 									setTimesDay(text);
 								}}
 							/>
@@ -91,7 +73,7 @@ export const BasicSymptomInput = ({
 							label="Days"
 							placeholder="Days"
 							text={days}
-							setText={(text: React.SetStateAction<string>) => {
+							setText={(text: string) => {
 								setDays(text);
 							}}
 						/>

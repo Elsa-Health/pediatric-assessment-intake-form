@@ -9,7 +9,6 @@ export function PatientInformation() {
 		(state) => state
 	);
 
-	console.log(patientInfo);
 	return (
 		<Table headerTitle="Patient Information">
 			<Row>
