@@ -46,7 +46,7 @@ interface User {
 	uid: string | null;
 }
 
-function App() {
+export default function App() {
 	// const mainStore = useMainStore((state) => state);
 	// const { SUBMIT_URL } = process.env;
 	// console.log("ROOT APP URL ", SUBMIT_URL);
@@ -123,5 +123,3 @@ function App() {
 		</View>
 	);
 }
-
-export default App;

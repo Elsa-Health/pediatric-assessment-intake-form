@@ -3,17 +3,17 @@ import { render } from "@testing-library/react-native";
 
 import App from "../App";
 
-// global.window = Object.create(window);
-// const url = "";
-// Object.defineProperty(window, "parent", {
-// 	value: {
-// 		location: url,
-// 	},
-// });
+global.window = Object.create(window);
+const url = "";
+Object.defineProperty(window, "parent", {
+	value: {
+		location: url,
+	},
+});
 
-// Object.defineProperty(window, "addEventListener", {
-// 	value: () => {},
-// });
+Object.defineProperty(window, "addEventListener", {
+	value: () => {},
+});
 
 test("examples of some things", async () => {
 	render(<App />);
