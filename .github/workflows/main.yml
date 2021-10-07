@@ -2,12 +2,12 @@ name: CI
 on:
   push:
     branches:
+      - main
       - dev
-      - test/**
   pull_request:
     branches:
+      - main
       - dev
-      - test/**
 jobs:
   test:
     name: Test + Code Coverage on Node ${{ matrix.node }} and ${{ matrix.os }}
