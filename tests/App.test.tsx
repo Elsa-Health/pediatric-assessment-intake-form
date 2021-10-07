@@ -16,7 +16,7 @@ Object.defineProperty(window, "addEventListener", {
 });
 
 test("examples of some things", async () => {
-	// render(<App />);
+	render(<App />);
 	// const { getByTestId, getByText, queryByTestId, toJSON } = render(<App />);
 
 	// console.log("All json is here")
