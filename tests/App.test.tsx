@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, waitFor } from "@testing-library/react-native";
+import { render } from "@testing-library/react-native";
 
 import App from "../App";
 
@@ -16,7 +16,8 @@ Object.defineProperty(window, "addEventListener", {
 });
 
 test("examples of some things", async () => {
-	const { getByTestId, getByText, queryByTestId, toJSON } = render(<App />);
+	render(<App />);
+	// const { getByTestId, getByText, queryByTestId, toJSON } = render(<App />);
 
 	// console.log("All json is here")
 	// const js=toJSON()?.children
