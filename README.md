@@ -5,6 +5,9 @@
 
 ## Elsa Pediatrics Patient Intake Form
 
+![CI](https://github.com/Elsa-Health/pediatric-assessment-intake-form/workflows/CI/badge.svg?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/Elsa-Health/pediatric-assessment-intake-form/badge.svg?branch=main)](https://coveralls.io/github/Elsa-Health/pediatric-assessment-intake-form?branch=main)
+
 ### Description
 
 [Elsa Health](https://elsa.health) pediatric patient intake form is a digitized version of an established data collection form for children under the age of 14. This is the exact form used during Elsa Health studies and data collection forms.
